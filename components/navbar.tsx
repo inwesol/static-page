@@ -31,7 +31,7 @@ export function NavBar() {
             <SheetHeader>
               <SheetTitle>Inwesol.</SheetTitle>
               <SheetDescription>
-                Navigate Your Professional Journey
+                Self Discovery Leads To Excellence
               </SheetDescription>
             </SheetHeader>
             <div className="flex flex-col space-y-3 mt-[1rem] z-[99]">
@@ -43,9 +43,9 @@ export function NavBar() {
                 </Link>
               </DialogClose>
               <DialogClose asChild>
-                <Link href="#aboutus">
+                <Link href="#problems">
                   <Button variant="outline" className="w-full">
-                    About Us
+                    Problems
                   </Button>
                 </Link>
               </DialogClose>
@@ -63,27 +63,27 @@ export function NavBar() {
                   </Button>
                 </Link>
               </DialogClose>
-              <DialogClose asChild>
+              {/* <DialogClose asChild>
                 <Link href="#testimonials">
                   <Button variant="outline" className="w-full">
                     Testimonials
                   </Button>
                 </Link>
-              </DialogClose>
-              <DialogClose asChild>
+              </DialogClose> */}
+              {/* <DialogClose asChild>
                 <Link href="#cta">
                   <Button variant="outline" className="w-full">
                     CTA
                   </Button>
                 </Link>
-              </DialogClose>
-              <DialogClose asChild>
+              </DialogClose> */}
+              {/* <DialogClose asChild>
                 <Link href="#faq">
                   <Button variant="outline" className="w-full">
                     FAQ
                   </Button>
                 </Link>
-              </DialogClose>
+              </DialogClose> */}
               <ModeToggle />
             </div>
           </SheetContent>
@@ -91,13 +91,13 @@ export function NavBar() {
         <NavigationMenu>
           <NavigationMenuList className="max-[825px]:hidden ">
             <Link href="/" className="pl-2">
-              <h1 className="font-bold">Inwesol.</h1>
+              <h1 className="font-bold text-[#283841] dark:invert">Inwesol.</h1>
             </Link>
           </NavigationMenuList>
         </NavigationMenu>
         <div className="flex items-center gap-2 max-[825px]:hidden">
-          <Link href="#aboutus">
-            <Button variant="ghost">About Us</Button>
+          <Link href="#problems">
+            <Button variant="ghost">Problems</Button>
           </Link>
           <Link href="#services">
             <Button variant="ghost">Services</Button>
@@ -105,15 +105,15 @@ export function NavBar() {
           <Link href="#benefits">
             <Button variant="ghost">Benefits</Button>
           </Link>
-          <Link href="#testimonials">
+          {/* <Link href="#testimonials">
             <Button variant="ghost">Testimonials</Button>
-          </Link>
-          <Link href="#cta">
+          </Link> */}
+          {/* <Link href="#cta">
             <Button variant="ghost">CTA</Button>
-          </Link>
-          <Link href="#faq">
+          </Link> */}
+          {/* <Link href="#faq">
             <Button variant="ghost">FAQ</Button>
-          </Link>
+          </Link> */}
           <ModeToggle />
         </div>
       </div>

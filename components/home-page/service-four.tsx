@@ -7,16 +7,17 @@ import { Section, Container } from "@/components/craft";
 // import { Button } from "@/components/ui/button";
 
 // Asset imports
-import Placeholder from "@/public/images/placeholder.webp";
+import Placeholder from "@/public/images/ai-assistance.webp";
 
 const ServiceFour = () => {
   return (
     <Section className="border-b">
       <Container className="grid items-stretch md:grid-cols-2 md:gap-12">
-        <div className="flex flex-col gap-6 py-8">
-          <h3 className="!my-0">Career Transition Coaching</h3>
+        <div className="flex flex-col gap-6 py-32">
+          <h3 className="!my-0">AI Assistance</h3>
           <p className="font-light leading-[1.4] opacity-70">
-            Navigate career changes with expert support.
+            24/7 personalized chatbot for tracking progress, accessing
+            information, and sustaining behavioral change.
           </p>
           {/* <div className="not-prose flex items-center gap-2">
             <Button className="w-fit" asChild>

@@ -8,7 +8,7 @@ import { Section, Container } from "@/components/craft";
 
 const AboutUs = () => {
   return (
-    <Section id="aboutus" className="relative backdrop-blur-sm">
+    <Section id="problems" className="relative backdrop-blur-sm">
       <Container className="flex flex-col gap-8">
         {/* <Badge className="not-prose w-fit" variant="outline">
           <Link
@@ -19,12 +19,14 @@ const AboutUs = () => {
             <ArrowRight className="w-4 transition-all group-hover:-rotate-45" />
           </Link>
         </Badge> */}
-        <h1 className="!mb-0">About Us</h1>
+        <h1 className="!mb-0">Why Inwesol?</h1>
         <h3 className="rounded-md border bg-muted/50 p-4 text-muted-foreground">
-          At Inwesol, we are passionate about helping professionals at all
-          stages find their true north. Our team of experienced career coaches
-          combines industry insights with personalized strategies to guide you
-          towards your dream career.
+          Inwesol makes career guidance accessible for everyone, especially in
+          rural India. We help people explore different careers and solve
+          job-related challenges through affordable, personalized coaching. Our
+          goal is to support individuals in discovering their capabilities and
+          finding meaningful work that contributes to long-term growth and
+          well-being.
         </h3>
 
         {/* <div className="flex gap-4">

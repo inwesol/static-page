@@ -33,19 +33,42 @@ export function CTA() {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    try {
+      const response = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result.message);
+        // Reset form or show success message
+        form.reset();
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Show error message to user
+    }
   }
 
   return (
     <Section id="cta">
-      <Container className="flex flex-col items-center gap-6 text-center">
-        <h2 className="!my-0">Ready to set sail on your career journey?</h2>
-        <p className="text-lg opacity-70 md:text-2xl">
-          <Balancer>Take the first step today!</Balancer>
-        </p>
+      <Container className="flex flex-col items-center gap-6 text-center rounded-md border bg-muted/50 p-4 text-muted-foreground">
+        <h2 className="!my-0">
+          Inwesol is Coming Soon! Get Notified when we launch.
+        </h2>
+        {/* <p className="text-lg opacity-70 md:text-2xl">
+          <Balancer>Get Notified when we launch</Balancer>
+        </p> */}
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -68,7 +91,9 @@ export function CTA() {
                 </FormItem>
               )}
             />
-            <Button type="submit">Ping Me!</Button>
+            <Button type="submit" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Submitting..." : "Notify Me!"}
+            </Button>
           </form>
         </Form>
       </Container>

@@ -23,9 +23,9 @@ export default function Home() {
           <ServiceThree />
           <ServiceFour />
           <Benefit />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <CTA />
-          <FAQ />
+          {/* <FAQ /> */}
           <Footer />
         </Container>
       </Section>

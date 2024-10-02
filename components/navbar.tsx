@@ -11,8 +11,10 @@ import {
   NavigationMenuList,
 } from "./ui/navigation-menu";
 import {
+  SheetClose,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -22,14 +24,19 @@ import ModeToggle from "./mode-toggle";
 export function NavBar() {
   return (
     <div className="flex items-center min-w-full w-full fixed justify-center p-2 z-[50] mt-[0.5rem]">
-      <div className="flex justify-between md:w-[720px] w-[95%] border dark:border-zinc-900 dark:bg-black bg-opacity-10 relative backdrop-filter backdrop-blur-lg bg-white border-white border-opacity-20 rounded-xl p-2 shadow-lg">
+      <div className="flex justify-between md:w-[720px] w-[95%] border dark:border-zinc-900 dark:bg-black dark:bg-opacity-10 relative dark:backdrop-filter dark:backdrop-blur-lg bg-opacity-10 backdrop-filter backdrop-blur-lg bg-white border-white border-opacity-20 dark:border-opacity-20 rounded-xl p-2 shadow-lg">
         <Dialog>
           <SheetTrigger className="min-[825px]:hidden p-2 transition">
             <MenuIcon />
           </SheetTrigger>
           <SheetContent side="left">
             <SheetHeader>
-              <SheetTitle>Inwesol.</SheetTitle>
+              <div className="flex items-center justify-between">
+                <SheetTitle>Inwesol.</SheetTitle>
+                <div className="pr-8">
+                  <ModeToggle />
+                </div>
+              </div>
               <SheetDescription>
                 Self Discovery Leads To Excellence
               </SheetDescription>
@@ -63,28 +70,6 @@ export function NavBar() {
                   </Button>
                 </Link>
               </DialogClose>
-              {/* <DialogClose asChild>
-                <Link href="#testimonials">
-                  <Button variant="outline" className="w-full">
-                    Testimonials
-                  </Button>
-                </Link>
-              </DialogClose> */}
-              {/* <DialogClose asChild>
-                <Link href="#cta">
-                  <Button variant="outline" className="w-full">
-                    CTA
-                  </Button>
-                </Link>
-              </DialogClose> */}
-              {/* <DialogClose asChild>
-                <Link href="#faq">
-                  <Button variant="outline" className="w-full">
-                    FAQ
-                  </Button>
-                </Link>
-              </DialogClose> */}
-              <ModeToggle />
             </div>
           </SheetContent>
         </Dialog>
@@ -107,12 +92,6 @@ export function NavBar() {
           </Link>
           {/* <Link href="#testimonials">
             <Button variant="ghost">Testimonials</Button>
-          </Link> */}
-          {/* <Link href="#cta">
-            <Button variant="ghost">CTA</Button>
-          </Link> */}
-          {/* <Link href="#faq">
-            <Button variant="ghost">FAQ</Button>
           </Link> */}
           <ModeToggle />
         </div>

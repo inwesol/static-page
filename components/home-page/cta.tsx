@@ -79,21 +79,28 @@ export function CTA() {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="sr-only">Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      className="md:w-64"
-                      placeholder="Your email address"
-                      {...field}
-                    />
-                  </FormControl>
+                  <div className="flex h-fit items-center justify-center gap-2">
+                    <FormLabel className="sr-only">Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="md:w-64"
+                        placeholder="Your email address"
+                        {...field}
+                      />
+                    </FormControl>
+                    <Button
+                      type="submit"
+                      disabled={form.formState.isSubmitting}
+                    >
+                      {form.formState.isSubmitting
+                        ? "Submitting..."
+                        : "Notify Me!"}
+                    </Button>
+                  </div>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" disabled={form.formState.isSubmitting}>
-              {form.formState.isSubmitting ? "Submitting..." : "Notify Me!"}
-            </Button>
           </form>
         </Form>
       </Container>

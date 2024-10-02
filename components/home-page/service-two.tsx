@@ -30,7 +30,7 @@ const ServiceTwo = () => {
         <div className="not-prose relative flex h-96 overflow-hidden rounded-lg border">
           <Image
             src={Placeholder}
-            alt="placeholder"
+            alt="career-coaching"
             className="fill object-cover"
           />
         </div>

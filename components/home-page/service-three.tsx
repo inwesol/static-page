@@ -16,12 +16,12 @@ const ServiceThree = () => {
         <div className="not-prose relative flex h-96 overflow-hidden rounded-lg border">
           <Image
             src={Placeholder}
-            alt="placeholder"
+            alt="behaviour-change"
             className="fill object-cover"
           />
         </div>
-        <div className="flex flex-col gap-6 py-32">
-          <h3 className="!my-0">Assisting Behavioural Change</h3>
+        <div className="flex flex-col gap-6 py-32 order-first md:order-last">
+          <h3 className="!my-0">Facilitating Behavioural Change</h3>
           <p className="font-light leading-[1.4] opacity-70">
             Behavioural change is supported and sustained through assessments
             and activities grounded in psychological evidence.

@@ -31,7 +31,7 @@ const ServiceFour = () => {
         <div className="not-prose relative flex h-96 overflow-hidden rounded-lg border">
           <Image
             src={Placeholder}
-            alt="placeholder"
+            alt="ai-assistance"
             className="fill object-cover"
           />
         </div>

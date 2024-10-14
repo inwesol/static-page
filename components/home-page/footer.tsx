@@ -15,7 +15,7 @@ import { Twitter, Facebook, Linkedin, Instagram } from "lucide-react";
 import { Section, Container } from "../craft";
 
 // Asset imports
-import Logo from "@/public/in-logo.svg";
+import Logo from "@/public/in-bg.svg";
 
 export default function Footer() {
   return (
@@ -24,13 +24,13 @@ export default function Footer() {
         <Container className="grid gap-6">
           <div className="not-prose flex flex-col gap-6">
             <Link href="/">
-              <h3 className="sr-only">brijr/components</h3>
+              {/* <h3 className="sr-only">brijr/components</h3> */}
               <Image
                 src={Logo}
                 alt="Logo"
-                width={120}
-                height={27.27}
-                className="transition-all hover:opacity-75 dark:invert"
+                width={272}
+                height={136}
+                className="transition-all hover:opacity-75 dark:invert -ml-16 -mb-12"
               ></Image>
             </Link>
             <p>

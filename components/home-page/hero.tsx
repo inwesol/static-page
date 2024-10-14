@@ -26,7 +26,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 // Asset imports
-import Logo from "@/public/in-logo.svg";
+import Logo from "@/public/in-bg.svg";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -76,8 +76,8 @@ const Hero = () => {
       <Container className="flex flex-col items-center text-center">
         <Image
           src={Logo}
-          width={272}
-          height={172}
+          width={472}
+          height={272}
           alt="Company Logo"
           className="not-prose mb-6 dark:invert md:mb-8"
         />

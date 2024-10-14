@@ -1,5 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
@@ -20,6 +21,7 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 import ModeToggle from "./mode-toggle";
+import Logo from "@/public/in-bg.svg";
 
 export function NavBar() {
   return (
@@ -32,7 +34,9 @@ export function NavBar() {
           <SheetContent side="left">
             <SheetHeader>
               <div className="flex items-center justify-between">
-                <SheetTitle>Inwesol.</SheetTitle>
+                <SheetTitle className="font-bold text-[#283841] dark:invert">
+                  Inwesol.
+                </SheetTitle>
                 <div className="pr-8">
                   <ModeToggle />
                 </div>
@@ -76,7 +80,14 @@ export function NavBar() {
         <NavigationMenu>
           <NavigationMenuList className="max-[825px]:hidden ">
             <Link href="/" className="pl-2">
-              <h1 className="font-bold text-[#283841] dark:invert">Inwesol.</h1>
+              {/* <h1 className="font-bold text-[#283841] dark:invert">Inwesol.</h1> */}
+              <Image
+                src={Logo}
+                width={172}
+                height={58}
+                alt="Company Logo"
+                className="dark:invert -my-6 -ml-2"
+              />
             </Link>
           </NavigationMenuList>
         </NavigationMenu>

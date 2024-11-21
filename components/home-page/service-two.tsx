@@ -14,9 +14,11 @@ const ServiceTwo = () => {
     <Section>
       <Container className="grid items-stretch md:grid-cols-2 md:gap-12">
         <div className="flex flex-col gap-6 py-32">
-          <h3 className="!my-0">Personalised Career Coaching</h3>
+          <h3 className="!my-0">Evidence-Based Career Coaching</h3>
           <p className="font-light leading-[1.4] opacity-70">
-            Empowers self-discovery and navigates suitable career journeys.
+            Psychology-backed coaching assists individuals in making informed
+            career decisions. It fosters self-discovery and aligns goals with
+            strengths and purpose.
           </p>
           {/* <div className="not-prose flex items-center gap-2">
             <Button className="w-fit" asChild>

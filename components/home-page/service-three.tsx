@@ -23,8 +23,9 @@ const ServiceThree = () => {
         <div className="flex flex-col gap-6 py-32 order-first md:order-last">
           <h3 className="!my-0">Facilitating Behavioural Change</h3>
           <p className="font-light leading-[1.4] opacity-70">
-            Behavioural change is supported and sustained through assessments
-            and activities grounded in psychological evidence.
+            Realise your capabilities with psychometric assessments and
+            behavioural activities. Drive meaningful progress in personal and
+            professional growth.
           </p>
           {/* <div className="not-prose flex items-center gap-2">
             <Button className="w-fit" asChild>

@@ -73,13 +73,13 @@ const Hero = () => {
 
   return (
     <Section>
-      <Container className="flex flex-col items-center text-center">
+      <Container className="flex flex-col items-center text-center md:my-24">
         <Image
           src={Logo}
           width={472}
           height={272}
           alt="Company Logo"
-          className="not-prose mb-6 dark:invert md:mb-8"
+          className="not-prose mb-6 dark:invert md:-mb-6"
         />
         <h1 className="!mb-0">
           <Balancer>Self Discovery Leads To Excellence</Balancer>

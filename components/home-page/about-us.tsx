@@ -23,10 +23,9 @@ const AboutUs = () => {
         <h3 className="rounded-md border bg-muted/50 p-4 text-muted-foreground">
           Inwesol makes career guidance accessible for everyone, especially in
           rural India. We help people explore different careers and solve
-          job-related challenges through affordable, personalized coaching. Our
-          goal is to support individuals in discovering their capabilities and
-          finding meaningful work that contributes to long-term growth and
-          well-being.
+          job-related challenges through personalized coaching. Our goal is to
+          support individuals in discovering their capabilities and finding
+          meaningful work that contributes to long-term growth and well-being.
         </h3>
 
         {/* <div className="flex gap-4">

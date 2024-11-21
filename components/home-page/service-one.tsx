@@ -27,10 +27,11 @@ const ServiceOne = () => {
           />
         </div>
         <div className="flex flex-col gap-6 py-32 order-first md:order-last">
-          <h3 className="!my-0">Accessible Career Resources</h3>
+          <h3 className="!my-0">Democratising Career Resources</h3>
           <p className="font-light leading-[1.4] opacity-70">
-            Democratizing career information through a guided platform with
-            infographics, blogs and newsletters.
+            Access career resources through infographics, blogs, newsletters,
+            and a vibrant community. Empower yourself with the knowledge to
+            explore various career paths.
           </p>
           {/* <div className="not-prose flex items-center gap-2">
             <Button className="w-fit" asChild>

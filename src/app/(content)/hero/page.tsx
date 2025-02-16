@@ -80,7 +80,7 @@ const HeroSection = () => {
             <span className="text-accent font-bold">&quot;why&quot;</span>
             <br />
             Knowing your purpose brings clarity, builds confidence, and reduces
-            stress, leading to a more purposeful career
+            stress, leading to a more purposeful career.
             <br />
           </span>
           <span className="text-accent font-bold">

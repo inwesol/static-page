@@ -193,7 +193,7 @@ export default function ComingSoon({ params }: { params: { slug: string } }) {
         className="w-full max-w-md mb-6"
       >
         <Image
-          src="/assets/coming-soon.svg"
+          src="/coming-soon.svg"
           alt="Coming Soon"
           width={500}
           height={500}

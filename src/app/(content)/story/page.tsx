@@ -18,7 +18,6 @@ const people = [
     designation: "CEO",
     image:
       "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1744848000&v=beta&t=dUfTD4siiUqBlRlP024wrIOIcQg7N7JLfvbfHVuNQDc",
-    //   "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
   },
   {
     id: 2,
@@ -26,7 +25,6 @@ const people = [
     designation: "COO",
     image:
       "https://media.licdn.com/dms/image/v2/C4D03AQEj7oGVSpHxkg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598375667648?e=1744848000&v=beta&t=Nj8_Z5xQoUzNIWxuaTu-SmDSYlrGYfYVmKQsutGr6rs",
-    //   "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
   },
 ];
 

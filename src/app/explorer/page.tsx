@@ -100,59 +100,67 @@ import Image from "next/image";
 
 export default function ComingSoon() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[#F8F4EB] px-6 md:px-12 py-12 text-center">
-      {/* Header Section */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="mb-6"
-      >
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
-          Coming Soon
-        </h1>
-      </motion.div>
+    // <div className="flex flex-col items-center justify-center min-h-screen bg-[#F8F4EB] px-6 md:px-12 py-12 text-center">
+    //   {/* Header Section */}
+    //   <motion.div
+    //     initial={{ opacity: 0, y: -20 }}
+    //     animate={{ opacity: 1, y: 0 }}
+    //     transition={{ duration: 0.8 }}
+    //     className="mb-6"
+    //   >
+    //     <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
+    //       Coming Soon
+    //     </h1>
+    //   </motion.div>
 
-      {/* Image Section */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-md mb-6"
-      >
-        <Image
-          src="/assets/coming-soon.svg"
-          width={500}
-          height={500}
-          alt="Coming Soon"
-          className="w-full"
-        />
-      </motion.div>
+    //   {/* Image Section */}
+    //   <motion.div
+    //     initial={{ opacity: 0, scale: 0.9 }}
+    //     animate={{ opacity: 1, scale: 1 }}
+    //     transition={{ duration: 0.8 }}
+    //     className="w-full max-w-md mb-6"
+    //   >
+    //     <Image
+    //       src="/assets/coming-soon.svg"
+    //       width={500}
+    //       height={500}
+    //       alt="Coming Soon"
+    //       className="w-full"
+    //     />
+    //   </motion.div>
 
-      {/* Content Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="max-w-2xl"
-      >
-        <p className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed">
-          Explorer lets you discover a wide range of career options, offering
-          valuable insights into the skills, abilities, and knowledge required
-          for each course and occupation. It serves as a helpful tool for
-          preliminary information and awareness. Whether you&apos;re exploring
-          new opportunities or refining your goals, Explorer is your first step
-          toward clarity on your career path.
-        </p>
+    //   {/* Content Section */}
+    //   <motion.div
+    //     initial={{ opacity: 0, y: 20 }}
+    //     animate={{ opacity: 1, y: 0 }}
+    //     transition={{ duration: 0.8 }}
+    //     className="max-w-2xl"
+    //   >
+    //     <p className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed">
+    //       Explorer lets you discover a wide range of career options, offering
+    //       valuable insights into the skills, abilities, and knowledge required
+    //       for each course and occupation. It serves as a helpful tool for
+    //       preliminary information and awareness. Whether you&apos;re exploring
+    //       new opportunities or refining your goals, Explorer is your first step
+    //       toward clarity on your career path.
+    //     </p>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 bg-[#3FA1D8] text-white rounded-xl font-semibold shadow-lg hover:bg-[#00B24B] transition-all"
-        >
-          Notify Me
-        </motion.button>
-      </motion.div>
+    //     <motion.button
+    //       whileHover={{ scale: 1.05 }}
+    //       whileTap={{ scale: 0.95 }}
+    //       className="px-6 py-3 bg-[#3FA1D8] text-white rounded-xl font-semibold shadow-lg hover:bg-[#00B24B] transition-all"
+    //     >
+    //       Notify Me
+    //     </motion.button>
+    //   </motion.div>
+    // </div>
+
+    // here CoCo testing we are doing.
+    <div className="flex flex-col items-center justify-center bg-[#F8F4EB] text-center">
+      <iframe
+        src="https://www.chatbase.co/chatbot-iframe/9K9P0DRLgclT-QepE7y97"
+        className="w-full min-h-screen border-0"
+      />
     </div>
   );
 }

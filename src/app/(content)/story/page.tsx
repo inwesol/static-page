@@ -50,7 +50,7 @@ const values = [
     description: "Explore, innovate, and think beyond limits.",
   },
   {
-    keyword: "Do What's Right",
+    keyword: "Do What&apos;s Right",
     description: "Act with integrity and uphold ethics.",
   },
   {
@@ -102,16 +102,16 @@ const OurStory = () => {
               We are 90s kids, and like many others, we were inspired by{" "}
               <em>3 Idiots</em> when it came out in 2009. It clearly depicts the
               pressure young people face in education and career paths. Even
-              though the movie came out 15 years ago, things haven't changed
+              though the movie came out 15 years ago, things haven&apos;t changed
               much. The academic pressure and confusion about career choices are
-              still very real for today’s youth.
+              still very real for today&apos;s youth.
             </p>
 
             <p className="text-lg leading-8 text-gray-700">
-              After talking to many young people, we learned that most don’t
+              After talking to many young people, we learned that most don&apos;t
               know which course to take or what job suits them. They often make
               decisions based on family or friends, not their interests and
-              strengths. And when they face challenges, there’s little support.
+              strengths. And when they face challenges, there&apos;s little support.
               Society pushes them to chase success, forgetting that every
               individual is unique and must find their path.
             </p>
@@ -126,7 +126,7 @@ const OurStory = () => {
                 success jhak maarke tumhare peeche ayegi.”
                 <br />
                 <span className="block mt-2 text-sm text-gray-600">
-                  (Don't chase success; focus on excellence, and success will
+                  (Don&apos;t chase success; focus on excellence, and success will
                   follow you.)
                 </span>
               </blockquote>

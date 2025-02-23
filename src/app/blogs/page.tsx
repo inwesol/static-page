@@ -23,7 +23,7 @@ const BlogPost = () => {
     image: "/images/blog1.jpg",
     content: `
       Crafting modern user interfaces is about blending aesthetics with functionality.
-      In this article, we'll explore how to achieve clean, responsive, and intuitive designs.
+      In this article, we&apos;ll explore how to achieve clean, responsive, and intuitive designs.
 
       ### Why Modern UI Matters
       Good design enhances user experience, improves retention, and drives conversions.
@@ -33,7 +33,7 @@ const BlogPost = () => {
       - **Performance:** Optimize load times and interactions.
       - **Accessibility:** Make it usable for everyone.
 
-      Modern UI is not just about style—it's about delivering seamless user experiences.
+      Modern UI is not just about style—it&apos;s about delivering seamless user experiences.
     `,
   };
 

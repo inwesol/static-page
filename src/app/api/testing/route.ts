@@ -5,7 +5,7 @@ const pool = createPool({
   connectionString: process.env.DB_URL,
 });
 
-export async function runQuery() {
+async function runQuery() {
   try {
     const { rows, rowCount } =
       //   await pool.sql`select count(onetsoc_code) as occupation_count from occupation_data od;`;

@@ -125,6 +125,14 @@
 html,
 body {
   font-family: "DM Sans", sans-serif !important;
+
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {

@@ -1,393 +1,144 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 
-import { cn } from "@/utils";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { cn } from "@/utils";
 
-const content = [
+const features = [
   {
+    step: "Step 1",
     title: "Venture into Explorer",
-    description:
+    content:
       "Explore a wide range of career options and become aware of the knowledge, skills, and abilities required for any occupation.",
-    // content: (
-    //   <div className="h-full w-full bg-[linear-gradient(to_bottom_right,#00B24B,#3FA1D8)] flex items-center justify-center text-white font-bold">
-    //     Guided Career Exploration
-    //   </div>
-    // ),
-    content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
-        <Image
-          src="/explorer.svg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
+    image: "/explorer.svg",
   },
   {
+    step: "Step 2",
     title: "Evaluate through Coco",
-    description:
+    content:
       "Coco assists in evaluating each choice by revealing its consequences. It supports you in understanding and identifying suitable courses, colleges, jobs, work contexts, and environments.",
-    content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
-        <Image
-          src="/coco.svg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
+    image: "/coco.svg",
   },
   {
+    step: "Step 3",
     title: "Resolve by Coaching",
-    description:
+    content:
       "Career Coaching guides you in finding your “why,” setting goals, resolving dilemmas, rewriting your story, making decisions, and crafting a clear road map.",
-    content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
-        <Image
-          src="/coaching.svg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="Coaching"
-        />
-      </div>
-    ),
+    image: "/coaching.svg",
   },
   {
+    step: "Step 4",
     title: "Change with Behavioural Tools",
-    description:
+    content:
       "Through Behavioural Tools, you can bring positive change within yourself while effectively managing wellbeing, sustaining new habits, and achieving your goals.",
-    content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
-        <Image
-          src="/b-tools.svg"
-          width={300}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="B-Tools"
-        />
-      </div>
-    ),
+    image: "/b-tools.svg",
   },
 ];
 
-export const StickyScroll = ({
-  contentClassName,
-}: {
-  contentClassName?: string;
-}) => {
-  const [activeCard, setActiveCard] = React.useState(0);
-  const ref = useRef<any>(null);
-  const { scrollYProgress } = useScroll({
-    container: ref,
-    offset: ["start start", "end start"],
-  });
-  const cardLength = content.length;
+interface Feature {
+  step: string;
+  title?: string;
+  content: string;
+  image: string;
+}
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const cardsBreakpoints = content.map((_, index) => index / cardLength);
-    const closestBreakpointIndex = cardsBreakpoints.reduce(
-      (acc, breakpoint, index) => {
-        const distance = Math.abs(latest - breakpoint);
-        if (distance < Math.abs(latest - cardsBreakpoints[acc])) {
-          return index;
-        }
-        return acc;
-      },
-      0
-    );
-    setActiveCard(closestBreakpointIndex);
-  });
+interface FeatureStepsProps {
+  className?: string;
+  autoPlayInterval?: number;
+}
 
-  const backgroundColors = [
-    "rgb(15 23 42)", // slate-900
-    "rgb(0 0 0)", // black
-    "rgb(23 23 23)", // neutral-900
-  ];
+function FeatureSteps({
+  className,
+  autoPlayInterval = 3000,
+}: FeatureStepsProps) {
+  const [currentFeature, setCurrentFeature] = useState(0);
+  const [progress, setProgress] = useState(0);
 
-  const linearGradients = [
-    "linear-gradient(to bottom right, rgb(6 182 212), rgb(16 185 129))", // cyan-500 to emerald-500
-    "linear-gradient(to bottom right, rgb(236 72 153), rgb(99 102 241))", // pink-500 to indigo-500
-    "linear-gradient(to bottom right, rgb(249 115 22), rgb(234 179 8))", // orange-500 to yellow-500
-  ];
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (progress < 100) {
+        setProgress((prev) => prev + 100 / (autoPlayInterval / 100));
+      } else {
+        setCurrentFeature((prev) => (prev + 1) % features.length);
+        setProgress(0);
+      }
+    }, 100);
 
-  // const [backgroundGradient, setBackgroundGradient] = useState(
-  //   linearGradients[0]
-  // );
-
-  // useEffect(() => {
-  //   setBackgroundGradient(linearGradients[activeCard % linearGradients.length]);
-  // }, [activeCard]);
+    return () => clearInterval(timer);
+  }, [progress, features.length, autoPlayInterval]);
 
   return (
-    <motion.div
-      animate={
-        {
-          // backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-        }
-      }
-      className="h-[30rem] relative space-x-10 rounded-md p-10 w-full flex justify-center items-center"
-    >
-      <div
-        className="h-full flex max-w-[1000px] w-full relative overflow-y-auto justify-between"
-        ref={ref}
-      >
-        <div className="div relative flex items-start px-4">
-          <div className="max-w-2xl">
-            {content.map((item, index) => (
-              <div key={item.title + index} className="my-20">
-                <motion.h2
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: activeCard === index ? 1 : 0.3,
-                  }}
-                  className="text-2xl font-bold text-gray-800"
+    <div className={cn("p-8 md:p-12 lg:py-16", className)}>
+      <div className="max-w-5xl mx-auto w-full">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12">
+          <div
+            className={cn(
+              "order-1 md:order-2 relative rounded-lg flex items-center justify-center h-[300px] sm:h-[350px] md:h-auto"
+            )}
+          >
+            <AnimatePresence mode="wait">
+              {features.map(
+                (feature, index) =>
+                  index === currentFeature && (
+                    <motion.div
+                      key={index}
+                      className="w-full h-full flex items-center justify-center rounded-lg overflow-hidden"
+                      initial={{ y: 100, opacity: 0, rotateX: -20 }}
+                      animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                      exit={{ y: -100, opacity: 0, rotateX: 20 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    >
+                      <Image
+                        src={feature.image}
+                        alt={feature.step}
+                        className="object-contain object-center"
+                        fill
+                        priority
+                      />
+                    </motion.div>
+                  )
+              )}
+            </AnimatePresence>
+          </div>
+
+          <div className="order-2 md:order-1 space-y-6 md:space-y-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={index}
+                className="flex items-start gap-4 md:gap-6"
+                initial={{ opacity: 0.3 }}
+                animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
+                transition={{ duration: 0.5 }}
+              >
+                <motion.div
+                  className={cn(
+                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2",
+                    index === currentFeature
+                      ? "bg-primary border-primary text-primary-foreground scale-110"
+                      : "bg-muted border-muted-foreground"
+                  )}
                 >
-                  {item.title}
-                </motion.h2>
-                <motion.p
-                  initial={{
-                    opacity: 0,
-                  }}
-                  animate={{
-                    opacity: activeCard === index ? 1 : 0.3,
-                  }}
-                  className="text-kg text-gray-600 max-w-sm mt-10"
-                >
-                  {item.description}
-                </motion.p>
-              </div>
+                  <span className="text-base md:text-lg font-semibold">
+                    {index + 1}
+                  </span>
+                </motion.div>
+
+                <div className="flex-1 space-y-2">
+                  <h3 className="text-lg md:text-xl font-semibold leading-snug">
+                    {feature.title || feature.step}
+                  </h3>
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                    {feature.content}
+                  </p>
+                </div>
+              </motion.div>
             ))}
-            <div className="h-40" />
           </div>
         </div>
-        <div
-          // style={{ background: backgroundGradient }}
-          className={cn(
-            "hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden",
-            contentClassName
-          )}
-        >
-          {content[activeCard].content ?? null}
-        </div>
       </div>
-    </motion.div>
+    </div>
   );
-};
+}
 
-// "use client";
-// import React, { useEffect, useRef, useState } from "react";
-// import { motion } from "framer-motion";
-// import { cn } from "@/utils";
-
-// const content = [
-//   {
-//     title: "Venture into Explorer",
-//     description:
-//       "Explore a wide range of career options and become aware of the knowledge, skills, and abilities required for any occupation.",
-//     content: "Guided Career Exploration",
-//   },
-//   {
-//     title: "Evaluate through Coco",
-//     description:
-//       "Coco assists in evaluating each choice by revealing its consequences. It supports you in understanding and identifying suitable courses, colleges, jobs, work contexts, and environments.",
-//     content: "AI-Powered Insights",
-//   },
-//   {
-//     title: "Resolve by Coaching",
-//     description:
-//       "Career Coaching guides you in finding your “why,” setting goals, resolving dilemmas, rewriting your story, making decisions, and crafting a clear road map.",
-//     content: "Seamless Collaboration",
-//   },
-//   {
-//     title: "Change with Behavioural Tools",
-//     description:
-//       "Through Behavioural Tools, you can bring positive change within yourself while effectively managing wellbeing, sustaining new habits, and achieving your goals.",
-//     content: "Holistic Wellbeing",
-//   },
-// ];
-
-// export const StickyScroll = ({ contentClassName }: { contentClassName?: string }) => {
-//   const [activeCard, setActiveCard] = useState(0);
-//   const refs = useRef<(HTMLElement | null)[]>([]);
-
-//   useEffect(() => {
-//     const observers: IntersectionObserver[] = [];
-
-//     refs.current.forEach((section, index) => {
-//       if (!section) return;
-//       const observer = new IntersectionObserver(
-//         ([entry]) => {
-//           if (entry.isIntersecting) setActiveCard(index);
-//         },
-//         { threshold: 0.5 }
-//       );
-//       observer.observe(section);
-//       observers.push(observer);
-//     });
-
-//     return () => observers.forEach((observer) => observer.disconnect());
-//   }, []);
-
-//   return (
-//     <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-start justify-center px-6 lg:px-20 py-16 space-y-12 lg:space-y-0 lg:space-x-16">
-//       {/* Left Content Section */}
-//       <div className="max-w-2xl w-full">
-//         {content.map((item, index) => (
-//           <motion.div
-//             key={index}
-//             ref={(el) => (refs.current[index] = el) as any}
-//             initial={{ opacity: 0 }}
-//             animate={{ opacity: activeCard === index ? 1 : 0.4 }}
-//             transition={{ duration: 0.4 }}
-//             className="mb-16"
-//           >
-//             <h2 className="text-3xl font-bold text-gray-900">{item.title}</h2>
-//             <p className="text-lg text-gray-700 mt-4">{item.description}</p>
-//           </motion.div>
-//         ))}
-//       </div>
-
-//       {/* Right Sticky Card */}
-//       <div className="hidden lg:flex flex-col items-center justify-center">
-//         <motion.div
-//           className={cn(
-//             "w-80 h-60 rounded-xl p-6 flex items-center justify-center text-white text-lg font-semibold",
-//             contentClassName
-//           )}
-//           style={{
-//             background:
-//               activeCard === 3
-//                 ? "linear-gradient(to bottom right, #F8F4EB, #00B24B)"
-//                 : "linear-gradient(to bottom right, #00B24B, #3FA1D8)",
-//             color: activeCard === 3 ? "#333" : "#fff",
-//           }}
-//         >
-//           {content[activeCard].content}
-//         </motion.div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// "use client";
-// import React, { useEffect, useRef, useState } from "react";
-// import { motion } from "framer-motion";
-// import { cn } from "@/utils";
-
-// const content = [
-//   {
-//     title: "Venture into Explorer",
-//     description:
-//       "Explore a wide range of career options and become aware of the knowledge, skills, and abilities required for any occupation.",
-//     content: "Guided Career Exploration",
-//   },
-//   {
-//     title: "Evaluate through Coco",
-//     description:
-//       "Coco assists in evaluating each choice by revealing its consequences. It supports you in understanding and identifying suitable courses, colleges, jobs, work contexts, and environments.",
-//     content: "AI-Powered Insights",
-//   },
-//   {
-//     title: "Resolve by Coaching",
-//     description:
-//       "Career Coaching guides you in finding your “why,” setting goals, resolving dilemmas, rewriting your story, making decisions, and crafting a clear road map.",
-//     content: "Seamless Collaboration",
-//   },
-//   {
-//     title: "Change with Behavioural Tools",
-//     description:
-//       "Through Behavioural Tools, you can bring positive change within yourself while effectively managing wellbeing, sustaining new habits, and achieving your goals.",
-//     content: "Holistic Wellbeing",
-//   },
-// ];
-
-// export const StickyScroll = ({
-//   contentClassName,
-// }: {
-//   contentClassName?: string;
-// }) => {
-//   const [activeCard, setActiveCard] = useState(0);
-//   const refs = useRef<(HTMLElement | null)[]>([]);
-//   const containerRef = useRef<HTMLDivElement | null>(null);
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       if (!containerRef.current) return;
-//       const sections = refs.current;
-//       let activeIndex = 0;
-
-//       for (let i = 0; i < sections.length; i++) {
-//         if (!sections[i]) continue;
-//         const rect = sections[i]!.getBoundingClientRect();
-//         if (rect.top <= window.innerHeight / 2) {
-//           activeIndex = i;
-//         }
-//       }
-//       setActiveCard(activeIndex);
-//     };
-
-//     window.addEventListener("scroll", handleScroll);
-//     return () => window.removeEventListener("scroll", handleScroll);
-//   }, []);
-
-//   return (
-//     <div className="relative w-full flex flex-col lg:flex-row items-start justify-center px-6 lg:px-20 py-16 space-y-12 lg:space-y-0 lg:space-x-16 h-full">
-//       {/* Left Content Section - Scrollable */}
-//       <div ref={containerRef} className="max-w-2xl w-full space-y-16">
-//         {content.map((item, index) => (
-//           <motion.div
-//             key={index}
-//             ref={(el) => (refs.current[index] = el) as any}
-//             initial={{ opacity: 0, x: -20 }}
-//             animate={{
-//               opacity: activeCard === index ? 1 : 0.5,
-//               x: activeCard === index ? 0 : -20,
-//             }}
-//             transition={{ duration: 0.4 }}
-//             className="border-l-4 pl-4 transition-all duration-300 ease-in-out"
-//             style={{
-//               borderColor: activeCard === index ? "#00B24B" : "#E5E7EB",
-//             }}
-//           >
-//             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
-//               {item.title}
-//             </h2>
-//             <p className="text-sm sm:text-base md:text-lg text-gray-700 mt-2 sm:mt-4">
-//               {item.description}
-//             </p>
-//           </motion.div>
-//         ))}
-//       </div>
-
-//       {/* Right Sticky Container (Fixed Properly) */}
-
-//       <div className="sticky top-20 w-full max-w-[300px] hidden lg:block">
-//         <motion.div
-//           className={cn(
-//             "w-full h-64 rounded-xl p-6 flex items-center justify-center text-white text-lg font-semibold shadow-lg transition-all duration-300 ease-in-out",
-//             contentClassName
-//           )}
-//           style={{
-//             background:
-//               activeCard === 3
-//                 ? "linear-gradient(to bottom right, #F8F4EB, #00B24B)"
-//                 : "linear-gradient(to bottom right, #00B24B, #3FA1D8)",
-//             color: activeCard === 3 ? "#333" : "#fff",
-//           }}
-//           animate={{ scale: activeCard === 3 ? 1.05 : 1 }}
-//         >
-//           {content[activeCard].content}
-//         </motion.div>
-//       </div>
-//     </div>
-//   );
-// };
+export default FeatureSteps;

@@ -2,7 +2,14 @@ import Link from "next/link";
 import { AnimationContainer, Icons } from "@/components";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { Button } from "../ui/button";
-import { Github, Twitter } from "lucide-react";
+import {
+  Facebook,
+  Github,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 
 // const socialLinks =
 //   [
@@ -163,38 +170,70 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
-      <div className="flex flex-row w-full border-t border-border/40">
-        <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-          &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
-          reserved.
-        </p>
-        <Twitter className="w-6 h-6 text-gray-600" />
-        <AnimationContainer delay={0.6}>
-          <div className="flex justify-between">
-            <div className="flex items-center">
-              <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-                &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All
-                rights reserved.
-              </p>
-            </div>
-            <div className="flex items-center">
-              <Twitter className="w-6 h-6 text-gray-600" />
-              <Github className="w-6 h-6 text-gray-600" />
-            </div>
+      <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
+        {/* <p className="text-sm text-muted-foreground mt-8 md:mt-0">
+            &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
+            reserved.
+          </p>
+          <Twitter className="w-6 h-6 text-gray-600" /> */}
+        {/* <AnimationContainer delay={0.6}> */}
+        <div className="flex justify-between w-full flex-1">
+          <p className="text-sm text-muted-foreground mt-8 md:mt-0">
+            &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
+            reserved.
+          </p>
+
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.instagram.com/inwesol/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Instagram className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/inwesol/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
+            </a>
+            <a
+              href="https://x.com/inwesol"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Twitter className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
+            </a>
+            <a
+              href="https://www.facebook.com/people/Inwesol/61572610318840/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Facebook className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
+            </a>
+
+            <a
+              href="https://www.youtube.com/@inwesol"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Youtube className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
+            </a>
           </div>
-        </AnimationContainer>
-      </div> */}
+        </div>
+        {/* </AnimationContainer> */}
+      </div>
 
       {/* old one */}
-      <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
+      {/* <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
         <AnimationContainer delay={0.6}>
           <p className="text-sm text-muted-foreground mt-8 md:mt-0">
             &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
             reserved.
           </p>
         </AnimationContainer>
-      </div>
+      </div> */}
     </footer>
   );
 };

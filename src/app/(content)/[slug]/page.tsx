@@ -109,6 +109,7 @@ const availableFeatures = {
     oneLiner:
       "Explorer helps you find different career options and understand what skills and knowledge you need.",
     slug: "explorer",
+    image: "/explorer.svg",
   },
   coco: {
     heading: "CoCo",
@@ -118,6 +119,7 @@ const availableFeatures = {
     oneLiner:
       "Coco is your personal AI Agent that provides career information, helps with decisions, and supports your overall wellbeing.",
     slug: "coco",
+    image: "/coco.svg",
   },
   coaching: {
     heading: "Coaching",
@@ -127,6 +129,7 @@ const availableFeatures = {
     oneLiner:
       "1:1 personalized career coaching with a psychologist will assist you in understanding your purpose and strengths, setting goals, and taking action.",
     slug: "coaching",
+    image: "/coaching.svg",
   },
   "behavioural-tools": {
     heading: "Behavioural Tools",
@@ -136,6 +139,7 @@ const availableFeatures = {
     oneLiner:
       "Behavioural Tools help you stay productive, focused, and on track, supporting your self-discovery journey and career progress.",
     slug: "behavioural-tools",
+    image: "/b-tools.svg",
   },
 };
 
@@ -193,7 +197,10 @@ export default function ComingSoon({ params }: { params: { slug: string } }) {
         className="w-full max-w-md mb-6"
       >
         <Image
-          src="/coming-soon.svg"
+          src={
+            availableFeatures[params.slug as keyof typeof availableFeatures]
+              ?.image || "/coming-soon.svg"
+          }
           alt="Coming Soon"
           width={500}
           height={500}

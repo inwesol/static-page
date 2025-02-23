@@ -26,17 +26,17 @@ const motto = [
   {
     title: "Purpose",
     description:
-      "We aim to foster well-being and empower individuals to realize their potential.",
+      "We aim to foster the well-being of individuals and empower them in realising their capabilities for achieving their goals.",
   },
   {
     title: "Vision",
     description:
-      "A world where every individual thrives through informed decisions and meaningful actions.",
+      "A world where every individual thrives by making informed decisions and taking meaningful actions.",
   },
   {
     title: "Mission",
     description:
-      "Integrating psychology, technology, and community to drive positive transitions in education and careers.",
+      "By integrating psychology, technology, and community, we enable decision-making that fosters well-being and drives behavioural change to navigate crucial transitions in individuals' educational and professional journeys.",
   },
 ];
 
@@ -102,18 +102,19 @@ const OurStory = () => {
               We are 90s kids, and like many others, we were inspired by{" "}
               <em>3 Idiots</em> when it came out in 2009. It clearly depicts the
               pressure young people face in education and career paths. Even
-              though the movie came out 15 years ago, things haven&apos;t changed
-              much. The academic pressure and confusion about career choices are
-              still very real for today&apos;s youth.
+              though the movie came out 15 years ago, things haven&apos;t
+              changed much. The academic pressure and confusion about career
+              choices are still very real for today&apos;s youth.
             </p>
 
             <p className="text-lg leading-8 text-gray-700">
-              After talking to many young people, we learned that most don&apos;t
-              know which course to take or what job suits them. They often make
-              decisions based on family or friends, not their interests and
-              strengths. And when they face challenges, there&apos;s little support.
-              Society pushes them to chase success, forgetting that every
-              individual is unique and must find their path.
+              After talking to many young people, we learned that most
+              don&apos;t know which course to take or what job suits them. They
+              often make decisions based on family or friends, not their
+              interests and strengths. And when they face challenges,
+              there&apos;s little support. Society pushes them to chase success,
+              forgetting that every individual is unique and must find their
+              path.
             </p>
 
             <p className="text-lg leading-8 text-gray-700">
@@ -122,12 +123,12 @@ const OurStory = () => {
 
             <AnimationContainer delay={0.2}>
               <blockquote className="bg-gray-100 border-l-4 border-primary pl-4 py-4 italic font-semibold text-lg text-gray-800">
-              &quot;Success ke peeche mat bhaago, excellence ka peecha karo,
+                &quot;Success ke peeche mat bhaago, excellence ka peecha karo,
                 success jhak maarke tumhare peeche ayegi.&quot;
                 <br />
                 <span className="block mt-2 text-sm text-gray-600">
-                  (Don&apos;t chase success; focus on excellence, and success will
-                  follow you.)
+                  (Don&apos;t chase success; focus on excellence, and success
+                  will follow you.)
                 </span>
               </blockquote>
             </AnimationContainer>
@@ -148,27 +149,27 @@ const OurStory = () => {
           <div className="text-center">
             <h2 className="text-4xl font-bold text-gray-900">Our Motto</h2>
             <p className="text-3xl font-extrabold text-transparent mt-4 bg-gradient-to-r from-primary1 to-accent bg-clip-text inline-bloc">
-              <span className="text-gray-500">&quot;</span>Self-discovery leads to
-              excellence.<span className="text-gray-500">&quot;</span>
+              <span className="text-gray-500">&quot;</span>Self-discovery leads
+              to excellence.<span className="text-gray-500">&quot;</span>
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             {motto.map((item, index) => (
               <div
                 key={index}
                 className="relative p-6 shadow-sm rounded-xl border border-gray-200 transition-all hover:shadow-md"
               >
-                <div className="absolute -top-3 -left-3 w-8 h-8 bg-accent/40 text-gray-700 text-sm flex items-center justify-center rounded-full shadow-sm">
+                {/* <div className="absolute -top-3 -left-3 w-8 h-8 bg-accent/40 text-gray-700 text-sm flex items-center justify-center rounded-full shadow-sm">
                   {index + 1}
-                </div>
+                </div> */}
 
                 <AnimationContainer
                   key={index}
                   className="w-full h-full"
                   delay={(index + 1) * 0.2}
                 >
-                  <h3 className="text-xl font-medium text-gray-800 mb-3">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
                     {item.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed">

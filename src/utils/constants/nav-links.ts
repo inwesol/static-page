@@ -41,11 +41,11 @@ export const NAV_LINKS = [
 
   {
     title: "Explorer",
-    href: "/features/explorer",
+    href: "/explorer",
   },
   {
     title: "CoCo",
-    href: "/features/coco",
+    href: "/coco",
   },
   {
     title: "Our Story",

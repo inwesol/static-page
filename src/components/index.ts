@@ -21,7 +21,7 @@ import DashboardNavbar from "./dashboard/dashboard-navbar";
 import PricingCards from "./pricing-cards";
 
 // blog
-import Blogs from "./blog/blogs";
+import Blogs from "./blog-list-content/blogs";
 
 
 export {

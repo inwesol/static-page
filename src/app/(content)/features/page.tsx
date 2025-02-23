@@ -167,7 +167,7 @@ const Features = () => {
                       </p>
 
                       <a
-                        href={`features/${eachFeature.slug}`}
+                        href={`/${eachFeature.slug}`}
                         className="border-[1px] border-accent/10 m-0 h-8 w-28 bg-accent/10 rounded-full hover:bg-accent/20 transition-colors duration-200 focus:outline-accent mt-4 flex items-center justify-center"
                       >
                         <span className="text-accent text-sm font-medium">

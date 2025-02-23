@@ -70,6 +70,7 @@
 "use client";
 
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 interface Blog {
@@ -91,10 +92,11 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
     <div className="bg-white shadow-md rounded-2xl overflow flex flex-col h-[500px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
       {/* Blog Image */}
       <div className="relative w-full h-56 overflow">
-        <img
+        <Image
           src={blog.image}
           alt={blog.title}
           className="w-full h-full object-cover"
+          fill
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       </div>

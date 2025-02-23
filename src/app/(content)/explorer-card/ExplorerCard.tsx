@@ -91,7 +91,7 @@ const ExplorerCard = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <div className="flex h-fit items-center justify-center gap-2">
+                    {/* <div className="flex h-fit items-center justify-center gap-2">
                       <FormLabel className="sr-only">Email</FormLabel>
                       <FormControl>
                         <Input
@@ -101,12 +101,7 @@ const ExplorerCard = () => {
                         />
                       </FormControl>
                       <button
-                        className="relative px-6 py-3 border-[1px] border-[#00B24B] bg-[#00B24B] text-white font-semibold rounded-[10px] 
-      hover:bg-[#00A143] transition-colors duration-200 
-      text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#00B24B] focus:ring-offset-2 
-      disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto 
-      before:absolute before:inset-0 before:rounded-[10px] before:border-[2px] before:border-[#3FA1D8] before:opacity-0
-      before:transition-opacity before:duration-300 before:animate-border-glow"
+                        className="relative px-6 py-3 border-[1px] border-[#00B24B] bg-[#00B24B] text-white font-semibold rounded-[10px] hover:bg-[#00A143] transition-colors duration-200 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#00B24B] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto before:absolute before:inset-0 before:rounded-[10px] before:border-[2px] before:border-[#3FA1D8] before:opacity-0 before:transition-opacity before:duration-300 before:animate-border-glow"
                         type="submit"
                         disabled={form.formState.isSubmitting}
                       >
@@ -114,7 +109,35 @@ const ExplorerCard = () => {
                           ? "Submitting..."
                           : "Notify Me!"}
                       </button>
+                    </div> */}
+
+                    <div className="w-full max-w-xl mx-auto mt-6">
+                      <div className="relative">
+                        <FormControl>
+                          <Input
+                            id="email"
+                            type="email"
+                            placeholder="Enter your email"
+                            {...field}
+                            className="w-full h-14 px-4 pr-40 rounded-full border border-gray-300 bg-white shadow-sm font-medium text-sm sm:text-base text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3FA1D8] transition"
+                            aria-label="Email address"
+                            required
+                          />
+                        </FormControl>
+
+                        <button
+                          type="submit"
+                          className="absolute top-1/2 right-1.5 transform -translate-y-1/2 h-11 px-5 bg-gradient-to-r from-[#00B24B] to-[#009B40] text-white text-sm font-medium rounded-full hover:from-[#009B40] hover:to-[#007F33] transition focus:outline-none focus:ring-4 focus:ring-green-400/70 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                          disabled={form.formState.isSubmitting}
+                          aria-disabled={form.formState.isSubmitting}
+                        >
+                          {form.formState.isSubmitting
+                            ? "Submitting..."
+                            : "Get Started"}
+                        </button>
+                      </div>
                     </div>
+
                     <FormMessage />
                   </FormItem>
                 )}

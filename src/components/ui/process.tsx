@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import FeatureSteps from "@/components/ui/sticky-scroll-reveal";
 import Image from "next/image";
 import AnimationContainer from "../global/animation-container";
 import MagicBadge from "./magic-badge";
@@ -9,7 +9,7 @@ function StickyScrollRevealDemo() {
   return (
     <div className="bg-white">
       <AnimationContainer delay={0.2}>
-        <div className="flex flex-col items-center justify-center w-full py-12 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-center w-full py-12 max-w-3xl mx-auto px-4 pb-0 sm:py-6 lg:py-8 sm:px-6 lg:px-8">
           <MagicBadge title="Self-Discovery Journey" color="#3fa1d8" />
 
           <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold font-heading leading-snug mt-6">
@@ -23,7 +23,8 @@ function StickyScrollRevealDemo() {
           </p>
         </div>
       </AnimationContainer>
-      <StickyScroll />
+      
+      <FeatureSteps />
     </div>
   );
 }

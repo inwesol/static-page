@@ -50,7 +50,7 @@ const values = [
     description: "Explore, innovate, and think beyond limits.",
   },
   {
-    keyword: "Do What&apos;s Right",
+    keyword: "Do What's Right",
     description: "Act with integrity and uphold ethics.",
   },
   {

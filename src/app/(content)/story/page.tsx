@@ -122,8 +122,8 @@ const OurStory = () => {
 
             <AnimationContainer delay={0.2}>
               <blockquote className="bg-gray-100 border-l-4 border-primary pl-4 py-4 italic font-semibold text-lg text-gray-800">
-                “Success ke peeche mat bhaago, excellence ka peecha karo,
-                success jhak maarke tumhare peeche ayegi.”
+              &quot;Success ke peeche mat bhaago, excellence ka peecha karo,
+                success jhak maarke tumhare peeche ayegi.&quot;
                 <br />
                 <span className="block mt-2 text-sm text-gray-600">
                   (Don&apos;t chase success; focus on excellence, and success will
@@ -148,8 +148,8 @@ const OurStory = () => {
           <div className="text-center">
             <h2 className="text-4xl font-bold text-gray-900">Our Motto</h2>
             <p className="text-3xl font-extrabold text-transparent mt-4 bg-gradient-to-r from-primary1 to-accent bg-clip-text inline-bloc">
-              <span className="text-gray-500">"</span>Self-discovery leads to
-              excellence.<span className="text-gray-500">"</span>
+              <span className="text-gray-500">&quot;</span>Self-discovery leads to
+              excellence.<span className="text-gray-500">&quot;</span>
             </p>
           </div>
 

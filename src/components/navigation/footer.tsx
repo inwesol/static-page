@@ -11,23 +11,32 @@ import {
   Youtube,
 } from "lucide-react";
 
-// const socialLinks =
-//   [
-//   {
-//     icon: "<Twitter className="h-5 w-5" />",
-//     href: "https://twitter.com",
-//     label: "Twitter",
-//   },
-//   {
-//     icon: <Github className="h-5 w-5" />,
-//     href: "https://github.com",
-//     label: "GitHub",
-//   },
-//         ];
-
-const bottomLinks = [
-  { text: "T", url: "#" },
-  { text: "P", url: "#" },
+const socialLinks = [
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/inwesol/",
+    icon: Instagram,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/company/inwesol/",
+    icon: Linkedin,
+  },
+  {
+    name: "Twitter",
+    url: "https://x.com/inwesol",
+    icon: Twitter,
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/people/Inwesol/61572610318840/",
+    icon: Facebook,
+  },
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@inwesol",
+    icon: Youtube,
+  },
 ];
 
 const Footer = () => {
@@ -118,7 +127,7 @@ const Footer = () => {
               <ul className="mt-4 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
-                    href="/features/explorer"
+                    href="/explorer"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Explorer
@@ -126,7 +135,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/features/coco"
+                    href="/coco"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     CoCo
@@ -171,11 +180,6 @@ const Footer = () => {
       </div>
 
       <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
-        {/* <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-            &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
-            reserved.
-          </p>
-          <Twitter className="w-6 h-6 text-gray-600" /> */}
         {/* <AnimationContainer delay={0.6}> */}
         <div className="flex justify-between w-full flex-1">
           <p className="text-sm text-muted-foreground mt-8 md:mt-0">
@@ -184,56 +188,21 @@ const Footer = () => {
           </p>
 
           <div className="flex items-center gap-4">
-            <a
-              href="https://www.instagram.com/inwesol/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Instagram className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
-            </a>
-            <a
-              href="https://www.linkedin.com/company/inwesol/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Linkedin className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
-            </a>
-            <a
-              href="https://x.com/inwesol"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Twitter className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
-            </a>
-            <a
-              href="https://www.facebook.com/people/Inwesol/61572610318840/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Facebook className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
-            </a>
-
-            <a
-              href="https://www.youtube.com/@inwesol"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Youtube className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
-            </a>
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit our ${social.name} page`}
+              >
+                <social.icon className="w-6 h-6 text-gray-600 cursor-pointer hover:text-primary1" />
+              </a>
+            ))}
           </div>
         </div>
         {/* </AnimationContainer> */}
       </div>
-
-      {/* old one */}
-      {/* <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
-        <AnimationContainer delay={0.6}>
-          <p className="text-sm text-muted-foreground mt-8 md:mt-0">
-            &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
-            reserved.
-          </p>
-        </AnimationContainer>
-      </div> */}
     </footer>
   );
 };

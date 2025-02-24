@@ -51,31 +51,32 @@ const values = [
   },
   {
     keyword: "Do What's Right",
-    description: "Act with integrity and uphold ethics.",
+    description: "Act with integrity and uphold ethics in all you do.",
   },
   {
     keyword: "Be a Coach",
-    description: "Guide, support, and inspire potential.",
+    description: "Guide, support, and inspire to realise capabilities.",
   },
   {
     keyword: "Empathy First",
-    description: "Prioritize understanding and compassion.",
+    description: "Prioritize understanding and compassion in every action.",
   },
   {
     keyword: "Be Inclusive",
-    description: "Embrace inclusivity at every step.",
+    description:
+      "Embrace inclusivity at every step for both customers and employees.",
   },
   {
     keyword: "Trust the Evidence",
-    description: "Let research guide actions.",
+    description: "Let science and research guide your actions.",
   },
   {
     keyword: "Think Stakeholders",
-    description: "Create value for everyone, not just profits.",
+    description: "Focus on creating value for everyone, not just profits.",
   },
   {
     keyword: "Problem First",
-    description: "Understand and solve the core issue.",
+    description: "Prioritize understanding and solving the core issue.",
   },
 ];
 
@@ -124,6 +125,7 @@ const OurStory = () => {
             <AnimationContainer delay={0.2}>
               <blockquote className="bg-gray-100 border-l-4 border-primary pl-4 py-4 italic font-semibold text-lg text-gray-800">
                 &quot;Success ke peeche mat bhaago, excellence ka peecha karo,
+                <br />
                 success jhak maarke tumhare peeche ayegi.&quot;
                 <br />
                 <span className="block mt-2 text-sm text-gray-600">

@@ -84,13 +84,19 @@ const OurStory = () => {
   return (
     <MaxWidthWrapper className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 mb-40 overflow-hidden">
       <AnimationContainer delay={0.1} className="w-full">
-        <h1 className="text-6xl md:text-7xl font-extrabold mt-14 mb-10 text-center text-gray-900">
-          Our Story
-        </h1>
-
-        <p className="text-sm text-gray-500 text-center mb-10">
-          Last updated: February 4, 2025
-        </p>
+        <div className="flex flex-col-reverse items-center justify-between">
+          <h1 className="text-6xl md:text-7xl font-extrabold mb-10 text-center text-gray-900">
+            Our Story
+          </h1>
+          
+          <Image
+            src={"/think_different.svg"}
+            alt="Think Different"
+            width={400}
+            height={400}
+            className="object-cover"
+          />
+        </div>
 
         {/* before:absolute before:-inset-1 before:bg-gradient-to-r before:from-primary/30 before:to-transparent before:rounded-xl before:-z-10 */}
         <section className="rounded-xl border bg-primary1/5 border-gray-200 shadow-xl mx-auto relative px-6 sm:px-0">

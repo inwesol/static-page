@@ -12,8 +12,7 @@ import {
 } from "lucide-react";
 import { BentoGrid, type BentoItem } from "./bento-grid";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import { title } from "process";
+import { useState, useEffect, useCallback } from "react";
 
 const itemsSample: BentoItem[] = [
   {
@@ -53,80 +52,94 @@ const itemsSample: BentoItem[] = [
   },
 ];
 
-const occupations = [
-  "Accountant",
-  "Actor",
-  "Architect",
-  "Artist",
-  "Baker",
-  "Biologist",
-  "Chef",
-  "Data Scientist",
-  "Dentist",
-  "Designer",
-  "Developer",
-  "Doctor",
-  "Editor",
-  "Engineer",
-  "Farmer",
-  "Financial Analyst",
-  "Graphic Designer",
-  "HR Manager",
-  "Interior Designer",
-  "Journalist",
-  "Lawyer",
-  "Librarian",
-  "Marketing Manager",
-  "Mechanic",
-  "Nurse",
-  "Optometrist",
-  "Pharmacist",
-  "Photographer",
-  "Pilot",
-  "Police Officer",
-  "Professor",
-  "Psychologist",
-  "Real Estate Agent",
-  "Research Scientist",
-  "Sales Manager",
-  "Social Worker",
-  "Software Engineer",
-  "Teacher",
-  "Therapist",
-  "UX Designer",
-  "Veterinarian",
-  "Web Developer",
-  "Writer",
-  "Yoga Instructor",
-  "Zoologist",
-].sort();
+interface Occupation {
+  onetsoc_code: string;
+  title: string;
+  description: string;
+}
 
-const Waitlist = () => {
+const OccupationList = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [occupationList, setOccupationList] = useState<Occupation[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const filteredOccupations = occupations.filter((occupation) =>
-    occupation.toLowerCase().includes(searchTerm.toLowerCase())
+  const getOccupations = useCallback(async (): Promise<Occupation[]> => {
+    try {
+      const response = await fetch("/api/occupation-list", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        return result as Occupation[];
+      } else {
+        throw new Error("Fetch failed");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      throw error;
+    }
+  }, []);
+
+  const getSortedOccupations = useCallback(async (): Promise<Occupation[]> => {
+    const occupations = await getOccupations();
+    return occupations.sort((a, b) => a.title.localeCompare(b.title));
+  }, [getOccupations]);
+
+  // Fetch occupations only once when component mounts
+  useEffect(() => {
+    const fetchOccupations = async () => {
+      try {
+        setLoading(true);
+        const sortedOccupations = await getSortedOccupations();
+        setOccupationList(sortedOccupations);
+        setError(null);
+      } catch (err) {
+        setError("Failed to load occupations");
+        console.error("Failed to load occupations:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOccupations();
+  }, [getSortedOccupations]);
+
+  const filteredOccupations = occupationList.filter((occupation) =>
+    occupation.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const groupedOccupations = filteredOccupations.reduce((acc, occupation) => {
-    const firstLetter = occupation[0].toUpperCase();
-    const occupationSample = {
-      title: "Task Manager",
-      meta: "84 completed",
-      description: "Automated workflow management with priority scheduling",
+  const groupedOccupations = filteredOccupations.reduce<
+    Record<string, BentoItem[]>
+  >((acc, occupation) => {
+    const firstLetter = occupation.title[0].toUpperCase();
+
+    const occupationItem: BentoItem = {
+      title: occupation.title,
+      meta: "84 completed", // You might want to get this from the occupation data
+      description:
+        occupation.description || "Description about the occupation.",
       icon: <CheckCircle className="w-4 h-4 text-emerald-500" />,
       status: "Updated",
       tags: ["Productivity", "Automation"],
     };
 
+    // Add colSpan property if title length is more than 18 characters
+    // if (occupation.title.length > 18) {
+    //   occupationItem.colSpan = 2;
+    // }
+
     if (!acc[firstLetter]) {
       acc[firstLetter] = [];
     }
-    occupationSample.title = occupation;
-    // acc[firstLetter].push(occupation);
-    acc[firstLetter].push(occupationSample);
+
+    acc[firstLetter].push(occupationItem);
     return acc;
-  }, {} as Record<string, BentoItem[]>);
+  }, {});
 
   return (
     <MaxWidthWrapper className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 mb-40 overflow-hidden">
@@ -143,32 +156,33 @@ const Waitlist = () => {
           />
         </div>
 
-        <div className="space-y-8 my-6">
-          {Object.entries(groupedOccupations).map(
-            ([letter, occupationSample]) => (
-              <div key={letter} className="space-y-4 border-b">
-                <h3 className="text-lg font-semibold text-muted-foreground">
-                  {letter}
-                </h3>
-                <BentoGrid items={occupationSample} />
+        {loading && <div>Loading occupations...</div>}
 
-                {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-4">
-                {occupations.map((occupation) => (
-                  <div
-                    key={occupation}
-                    className="p-4 rounded-lg border bg-card hover:bg-accent/50 cursor-pointer transition-colors"
-                  >
-                    {occupation}
+        {error && <div className="text-red-500">{error}</div>}
+
+        {!loading && !error && (
+          <div className="space-y-8 my-6">
+            {Object.entries(groupedOccupations).length > 0 ? (
+              Object.entries(groupedOccupations).map(
+                ([letter, occupationItems]) => (
+                  <div key={letter} className="space-y-4 border-b">
+                    <h3 className="text-lg font-semibold text-muted-foreground">
+                      {letter}
+                    </h3>
+                    <BentoGrid items={occupationItems} />
                   </div>
-                ))}
-              </div> */}
+                )
+              )
+            ) : (
+              <div className="text-center py-8">
+                No matching occupations found
               </div>
-            )
-          )}
-        </div>
+            )}
+          </div>
+        )}
       </AnimationContainer>
     </MaxWidthWrapper>
   );
 };
 
-export default Waitlist;
+export default OccupationList;

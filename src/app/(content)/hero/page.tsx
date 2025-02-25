@@ -65,7 +65,7 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center pb-16 px-4 space-y-6 lg:space-y-12 h-screen">
+    <section className="flex flex-col items-center justify-center pb-16 px-4 space-y-6 lg:space-y-12 h-screen max-h-[800px]">
       <AnimationContainer delay={0.4} reverse viewport>
         <HeroHeading />
       </AnimationContainer>

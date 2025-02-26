@@ -63,7 +63,6 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ markdownContent }) => {
         <main className="flex-1 bg-white rounded-xl shadow-md p-6 sm:p-8 lg:p-12">
           <div ref={contentRef}>
             <ReactMarkdown
-              children={markdownContent}
               components={{
                 h1: ({ children }) => {
                   const id = String(children)
@@ -139,7 +138,9 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({ markdownContent }) => {
                   </code>
                 ),
               }}
-            />
+            >
+              {markdownContent}
+            </ReactMarkdown>
           </div>
         </main>
 

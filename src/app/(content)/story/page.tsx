@@ -1,4 +1,5 @@
 import { AnimationContainer, MaxWidthWrapper } from "@/components";
+import BlogLayout from "@/components/layout/blog";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -80,6 +81,51 @@ const values = [
   },
 ];
 
+// const blogContent = {
+//   title: "Career Coaching vs Career Counselling",
+//   description: `Your career journey is ever growing and ongoing etc whether you're a student exploring
+// possibilities or a professional striving for the next milestone. Choosing the right guidance can
+// make all the difference. Understanding the distinction between career counseling and career
+// coaching helps you make informed decisions that shape your future. In this blog, we&apos;ll explore
+// their origins, key differences, and how choosing the right support can significantly impact your
+// career trajectory.`,
+//   sections: [
+//     {
+//       heading: "Origins of Counselling",
+//       paragraphs: [
+//         `The <a href='https://www.newyorkbehavioralhealth.com/history-of-mental-health-counseling-part-i/?utm_source=chatgpt.com'>roots</a> of counselling can be traced back to the early 20th century. Frank Parsons, often hailed as the "father of vocational guidance," established the Bureau of Vocational Guidance in Boston. His mission was to assist individuals in aligning their personal traits with suitable careers. This pioneering work laid the foundation for modern <strong>career counselling</strong> practices and continues to influence how we approach career guidance today.`,
+
+//         `As the field evolved, traditional <strong>career counselling online</strong> began offering accessible and empathetic support, making it easier for individuals from all backgrounds to explore their options and make decisions about their futures.`,
+//       ],
+//     },
+//     {
+//       heading: "The Rise of Coaching",
+//       paragraphs: [
+//         `In contrast to the early days of counselling, <a href='http://thetimes.co.uk/'>coaching</a> emerged as a distinct profession in the latter half of the 20th century. Drawing inspiration from sports and business, coaching focuses on enhancing performance and realizing capability . The development of models such as the GROW model in 1986 exemplifies the structured approach that <strong>Career coaching brings</strong> to personal and professional development.`,
+
+//         `This evolution has also given rise to <strong>personal and professional coaching</strong> methods that empower individuals to set clear goals, overcome challenges, and achieve significant milestones. With a proactive and action-oriented mindset, career coaching emphasizes forward movement, making it an essential tool for those who want to take charge of their professional lives.`,
+//       ],
+//     },
+//     {
+//       heading: "Understanding Career Counselling",
+//       paragraphs: [
+//         `<strong>Career counselling</strong> is designed to provide guidance by helping you understand and navigate your career options. This process often includes assessments to evaluate your interests, skills, and values, advising you toward a career path that aligns with who you are. Whether you&apos;re considering a new field or trying to clarify your current direction, <strong>career counselling online</strong> platforms offer insights and support tailored to your unique situation.`,
+
+//         `By connecting with a career counsellor, you can expect a compassionate, clear, and inclusive approach that not only illuminates your strengths but also helps you envision a fulfilling future.`,
+//       ],
+//     },
+//     {
+//       heading: "The Power of Career Coaching",
+//       paragraphs: [
+//         `On the other hand, <strong>Career coaching</strong> is a dynamic, collaborative process focused on empowering you to achieve specific professional goals. Unlike the reflective nature of counselling, coaching is action-oriented—geared toward setting objectives, developing strategies, and building essential skills such as leadership, communication, and resilience.`,
+
+//         `A career coach works with you to break down long-term goals into manageable steps, fostering both skill development and self-confidence. Through regular check-ins and strategic planning, <strong>Career coaching</strong> helps you stay motivated and accountable as you navigate the evolving job market. This approach not only encourages growth but also cultivates a sense of community and connection, as you’re guided by professionals who understand your challenges and are eager to help you succeed.`,
+//       ],
+//     },
+//   ],
+// };
+
+
 const OurStory = () => {
   return (
     <MaxWidthWrapper className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 mb-40 overflow-hidden">
@@ -88,7 +134,7 @@ const OurStory = () => {
           <h1 className="text-6xl md:text-7xl font-extrabold mb-10 text-center text-gray-900">
             Our Story
           </h1>
-          
+
           <Image
             src={"/think_different.svg"}
             alt="Think Different"

@@ -6,7 +6,7 @@ import BlogLayout from "@/components/layout/blog";
 const markdown = `
 # Career Coaching vs Career Counselling:
 
-Your career journey is ever growing and ongoing etc whether you're a student exploring possibilities or a professional striving for the next milestone. Choosing the right guidance can make all the difference. Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future. In this blog, we’ll explore their origins, key differences, and how choosing the right support can significantly impact your career trajectory.
+Your career journey is ever growing and ongoing etc whether you&apos;re a student exploring possibilities or a professional striving for the next milestone. Choosing the right guidance can make all the difference. Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future. In this blog, we&apos;ll explore their origins, key differences, and how choosing the right support can significantly impact your career trajectory.
 
 # Origins of Counselling
 
@@ -22,7 +22,7 @@ This evolution has also given rise to **personal and professional coaching** met
 
 # Understanding Career Counselling
 
-**Career counselling** is designed to provide guidance by helping you understand and navigate your career options. This process often includes assessments to evaluate your interests, skills, and values, advising you toward a career path that aligns with who you are. Whether you’re considering a new field or trying to clarify your current direction, **career counselling online** platforms offer insights and support tailored to your unique situation.
+**Career counselling** is designed to provide guidance by helping you understand and navigate your career options. This process often includes assessments to evaluate your interests, skills, and values, advising you toward a career path that aligns with who you are. Whether you&apos;re considering a new field or trying to clarify your current direction, **career counselling online** platforms offer insights and support tailored to your unique situation.
 
 By connecting with a career counsellor, you can expect a compassionate, clear, and inclusive approach that not only illuminates your strengths but also helps you envision a fulfilling future.
 
@@ -30,7 +30,7 @@ By connecting with a career counsellor, you can expect a compassionate, clear, a
 
 On the other hand, **Career coaching** is a dynamic, collaborative process focused on empowering you to achieve specific professional goals. Unlike the reflective nature of counselling, coaching is action-oriented—geared toward setting objectives, developing strategies, and building essential skills such as leadership, communication, and resilience.
 
-A career coach works with you to break down long-term goals into manageable steps, fostering both skill development and self-confidence. Through regular check-ins and strategic planning, **Career coaching** helps you stay motivated and accountable as you navigate the evolving job market. This approach not only encourages growth but also cultivates a sense of community and connection, as you’re guided by professionals who understand your challenges and are eager to help you succeed.
+A career coach works with you to break down long-term goals into manageable steps, fostering both skill development and self-confidence. Through regular check-ins and strategic planning, **Career coaching** helps you stay motivated and accountable as you navigate the evolving job market. This approach not only encourages growth but also cultivates a sense of community and connection, as you&apos;re guided by professionals who understand your challenges and are eager to help you succeed.
 
 # Key Differences and Their Impact
 
@@ -46,13 +46,13 @@ A career coach works with you to break down long-term goals into manageable step
 
 ## Action-Oriented Growth
 
-The beauty of **Career coaching** lies in its ability to inspire action. By focusing on tangible steps and measurable outcomes, coaching not only improves your professional skills but also boosts your confidence. This dynamic approach can be especially beneficial in today’s fast-paced world, where adapting quickly and maintaining momentum are key to long-term success.
+The beauty of **Career coaching** lies in its ability to inspire action. By focusing on tangible steps and measurable outcomes, coaching not only improves your professional skills but also boosts your confidence. This dynamic approach can be especially beneficial in today&apos;s fast-paced world, where adapting quickly and maintaining momentum are key to long-term success.
 
 # Bringing It All Together
 
 Whether you choose **career counselling online** for its accessibility or decide that the structured, ongoing support of **Career coaching** is the right fit for you, remember that both pathways are designed to empower you. Embrace the guidance available, take confident steps toward your dreams, and join a community committed to helping you realize your full capability.
 
-Your journey is unique, and the right guidance can make all the difference. Explore [**our story**](https://www.inwesol.com/story) and see how we’re making a difference!"
+Your journey is unique, and the right guidance can make all the difference. Explore [**our story**](https://www.inwesol.com/story) and see how we&apos;re making a difference!"
 
 References
 

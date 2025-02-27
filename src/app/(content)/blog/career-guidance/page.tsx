@@ -5,7 +5,7 @@ import BlogLayout from "@/components/layout/blog-layout";
 
 const markdownContent = `# Career Guidance: Your Path to Clarity, Confidence, and Informed Decisions
 
-Choosing a career path is one of the most important decisions we make in life, and that&apos;s exactly why it can feel overwhelming. Whether you're a student exploring career options, a young professional seeking growth, or someone considering a career transition, the path ahead can be full of uncertainty.
+Choosing a career path is one of the most important decisions we make in life, and that&apos;s exactly why it can feel overwhelming. Whether you&apos;re a student exploring career options, a young professional seeking growth, or someone considering a career transition, the path ahead can be full of uncertainty.
 
 This is where **career guidance** comes in offering clarity, confidence, and direction. In this blog, we&apos;ll explore what **career guidance** is, why it&apos;s essential, and who can benefit from it. We&apos;ll also debunk some common misconceptions to ensure you&apos;re equipped with the right knowledge to take charge of your future.
 
@@ -42,7 +42,7 @@ In an era of rapid technological change and evolving job markets, making the rig
 
 - **Students** – Choosing the right subjects, courses, or career paths can be overwhelming. **Career guidance for students** provides clarity and direction.
 - **Young Professionals** – Those early in their careers can discover growth opportunities and develop skills for long-term success.
-- **Mid-Career Professionals** – If you're feeling stuck or considering a career change, guidance can help you realign with your passions.
+- **Mid-Career Professionals** – If you&apos;re feeling stuck or considering a career change, guidance can help you realign with your passions.
 - **Anyone Facing Career Uncertainty** – Whether re-entering the workforce or unsure about the next step, expert advice helps you move forward with confidence.
 
 # Myth Busting
@@ -60,7 +60,7 @@ While we are understanding Career Guidance in this blog, let&apos;s also clear s
 
 # Take Charge of Your Career Today
 
-The journey to a fulfilling career starts with the right guidance. Whether you're a student, a professional, or someone seeking change, **career guidance** can provide clarity, confidence, and a roadmap for success.
+The journey to a fulfilling career starts with the right guidance. Whether you&apos;re a student, a professional, or someone seeking change, **career guidance** can provide clarity, confidence, and a roadmap for success.
 
 Looking for support in your career journey? Start by exploring our career explorer and initiating a conversation with CoCo, you personalized **career guidance assistant**. Your future is in your hands—make it one that excites and fulfils you!`;
 

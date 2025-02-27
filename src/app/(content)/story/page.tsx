@@ -1,8 +1,8 @@
-import { AnimationContainer, MaxWidthWrapper } from "@/components";
-import BlogLayout from "@/components/layout/blog";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
+import { Button } from "@/components/ui/button";
+import { AnimationContainer, MaxWidthWrapper } from "@/components";
 
 const people = [
   {
@@ -81,51 +81,6 @@ const values = [
   },
 ];
 
-// const blogContent = {
-//   title: "Career Coaching vs Career Counselling",
-//   description: `Your career journey is ever growing and ongoing etc whether you're a student exploring
-// possibilities or a professional striving for the next milestone. Choosing the right guidance can
-// make all the difference. Understanding the distinction between career counseling and career
-// coaching helps you make informed decisions that shape your future. In this blog, we&apos;ll explore
-// their origins, key differences, and how choosing the right support can significantly impact your
-// career trajectory.`,
-//   sections: [
-//     {
-//       heading: "Origins of Counselling",
-//       paragraphs: [
-//         `The <a href='https://www.newyorkbehavioralhealth.com/history-of-mental-health-counseling-part-i/?utm_source=chatgpt.com'>roots</a> of counselling can be traced back to the early 20th century. Frank Parsons, often hailed as the "father of vocational guidance," established the Bureau of Vocational Guidance in Boston. His mission was to assist individuals in aligning their personal traits with suitable careers. This pioneering work laid the foundation for modern <strong>career counselling</strong> practices and continues to influence how we approach career guidance today.`,
-
-//         `As the field evolved, traditional <strong>career counselling online</strong> began offering accessible and empathetic support, making it easier for individuals from all backgrounds to explore their options and make decisions about their futures.`,
-//       ],
-//     },
-//     {
-//       heading: "The Rise of Coaching",
-//       paragraphs: [
-//         `In contrast to the early days of counselling, <a href='http://thetimes.co.uk/'>coaching</a> emerged as a distinct profession in the latter half of the 20th century. Drawing inspiration from sports and business, coaching focuses on enhancing performance and realizing capability . The development of models such as the GROW model in 1986 exemplifies the structured approach that <strong>Career coaching brings</strong> to personal and professional development.`,
-
-//         `This evolution has also given rise to <strong>personal and professional coaching</strong> methods that empower individuals to set clear goals, overcome challenges, and achieve significant milestones. With a proactive and action-oriented mindset, career coaching emphasizes forward movement, making it an essential tool for those who want to take charge of their professional lives.`,
-//       ],
-//     },
-//     {
-//       heading: "Understanding Career Counselling",
-//       paragraphs: [
-//         `<strong>Career counselling</strong> is designed to provide guidance by helping you understand and navigate your career options. This process often includes assessments to evaluate your interests, skills, and values, advising you toward a career path that aligns with who you are. Whether you&apos;re considering a new field or trying to clarify your current direction, <strong>career counselling online</strong> platforms offer insights and support tailored to your unique situation.`,
-
-//         `By connecting with a career counsellor, you can expect a compassionate, clear, and inclusive approach that not only illuminates your strengths but also helps you envision a fulfilling future.`,
-//       ],
-//     },
-//     {
-//       heading: "The Power of Career Coaching",
-//       paragraphs: [
-//         `On the other hand, <strong>Career coaching</strong> is a dynamic, collaborative process focused on empowering you to achieve specific professional goals. Unlike the reflective nature of counselling, coaching is action-oriented—geared toward setting objectives, developing strategies, and building essential skills such as leadership, communication, and resilience.`,
-
-//         `A career coach works with you to break down long-term goals into manageable steps, fostering both skill development and self-confidence. Through regular check-ins and strategic planning, <strong>Career coaching</strong> helps you stay motivated and accountable as you navigate the evolving job market. This approach not only encourages growth but also cultivates a sense of community and connection, as you’re guided by professionals who understand your challenges and are eager to help you succeed.`,
-//       ],
-//     },
-//   ],
-// };
-
-
 const OurStory = () => {
   return (
     <MaxWidthWrapper className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 mb-40 overflow-hidden">
@@ -144,7 +99,6 @@ const OurStory = () => {
           />
         </div>
 
-        {/* before:absolute before:-inset-1 before:bg-gradient-to-r before:from-primary/30 before:to-transparent before:rounded-xl before:-z-10 */}
         <section className="rounded-xl border bg-primary1/5 border-gray-200 shadow-xl mx-auto relative px-6 sm:px-0">
           <section className="max-w-4xl mx-auto my-12 space-y-8">
             <h2 className="text-3xl font-semibold border-b-2 border-gray-200 pb-2">
@@ -214,10 +168,6 @@ const OurStory = () => {
                 key={index}
                 className="relative p-6 shadow-sm rounded-xl border border-gray-200 transition-all hover:shadow-md"
               >
-                {/* <div className="absolute -top-3 -left-3 w-8 h-8 bg-accent/40 text-gray-700 text-sm flex items-center justify-center rounded-full shadow-sm">
-                  {index + 1}
-                </div> */}
-
                 <AnimationContainer
                   key={index}
                   className="w-full h-full"
@@ -262,7 +212,6 @@ const OurStory = () => {
           <div className="w-full flex flex-col items-center my-12 space-y-8">
             <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
               Meet Our Leaders
-              {/* Members */}
             </h2>
 
             <div className="flex gap-6 px-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
@@ -299,17 +248,6 @@ const OurStory = () => {
               ))}
             </div>
           </div>
-
-          {/* <div className="flex justify-center w-full sm:pt-14 pt-28">
-            <Link href="/">
-              <button className="relative px-6 py-2.5 text-white font-medium rounded-full overflow-hidden group transition-all duration-300 ease-out hover:scale-102">
-                <div className="absolute inset-0 bg-[#00B24B] group-hover:bg-[#00B24B]/90 transition-all duration-300"></div>
-                <div className="absolute inset-0 bg-[#3FA1D8]/0 group-hover:bg-[#3FA1D8]/20 rounded-full transition-all duration-300 ease-out"></div>
-                <span className="relative z-10">Homepage</span>
-                <div className="absolute inset-0 rounded-full border border-[#3FA1D8]/40 group-hover:border-[#3FA1D8]/60 transition-all duration-300"></div>
-              </button>
-            </Link>
-          </div> */}
 
           <div className="flex items-center justify-center w-full pt-16 sm:pt-12">
             <Link href="/">

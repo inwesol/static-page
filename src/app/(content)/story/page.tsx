@@ -1,7 +1,8 @@
-import { AnimationContainer, MaxWidthWrapper } from "@/components";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+
+import { Button } from "@/components/ui/button";
+import { AnimationContainer, MaxWidthWrapper } from "@/components";
 
 const people = [
   {
@@ -88,7 +89,7 @@ const OurStory = () => {
           <h1 className="text-6xl md:text-7xl font-extrabold mb-10 text-center text-gray-900">
             Our Story
           </h1>
-          
+
           <Image
             src={"/think_different.svg"}
             alt="Think Different"
@@ -98,7 +99,6 @@ const OurStory = () => {
           />
         </div>
 
-        {/* before:absolute before:-inset-1 before:bg-gradient-to-r before:from-primary/30 before:to-transparent before:rounded-xl before:-z-10 */}
         <section className="rounded-xl border bg-primary1/5 border-gray-200 shadow-xl mx-auto relative px-6 sm:px-0">
           <section className="max-w-4xl mx-auto my-12 space-y-8">
             <h2 className="text-3xl font-semibold border-b-2 border-gray-200 pb-2">
@@ -168,10 +168,6 @@ const OurStory = () => {
                 key={index}
                 className="relative p-6 shadow-sm rounded-xl border border-gray-200 transition-all hover:shadow-md"
               >
-                {/* <div className="absolute -top-3 -left-3 w-8 h-8 bg-accent/40 text-gray-700 text-sm flex items-center justify-center rounded-full shadow-sm">
-                  {index + 1}
-                </div> */}
-
                 <AnimationContainer
                   key={index}
                   className="w-full h-full"
@@ -216,7 +212,6 @@ const OurStory = () => {
           <div className="w-full flex flex-col items-center my-12 space-y-8">
             <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
               Meet Our Leaders
-              {/* Members */}
             </h2>
 
             <div className="flex gap-6 px-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
@@ -253,17 +248,6 @@ const OurStory = () => {
               ))}
             </div>
           </div>
-
-          {/* <div className="flex justify-center w-full sm:pt-14 pt-28">
-            <Link href="/">
-              <button className="relative px-6 py-2.5 text-white font-medium rounded-full overflow-hidden group transition-all duration-300 ease-out hover:scale-102">
-                <div className="absolute inset-0 bg-[#00B24B] group-hover:bg-[#00B24B]/90 transition-all duration-300"></div>
-                <div className="absolute inset-0 bg-[#3FA1D8]/0 group-hover:bg-[#3FA1D8]/20 rounded-full transition-all duration-300 ease-out"></div>
-                <span className="relative z-10">Homepage</span>
-                <div className="absolute inset-0 rounded-full border border-[#3FA1D8]/40 group-hover:border-[#3FA1D8]/60 transition-all duration-300"></div>
-              </button>
-            </Link>
-          </div> */}
 
           <div className="flex items-center justify-center w-full pt-16 sm:pt-12">
             <Link href="/">

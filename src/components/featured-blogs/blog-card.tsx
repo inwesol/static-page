@@ -31,9 +31,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
-        <span className="text-xs text-gray-500 uppercase tracking-wide">
-          {blog.date}
-        </span>
+        <span className="text-xs text-gray-500 tracking-wide">{blog.date}</span>
 
         <h3 className="text-xl font-semibold text-gray-900 mt-2 leading-tight">
           {blog.title}

@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 
 import TableOfContents from "./table-of-contents";
+import Image from "next/image";
 
 interface BlogLayoutProps {
   markdownContent: string;
@@ -14,7 +15,7 @@ interface BlogLayoutProps {
 const BlogLayout: React.FC<BlogLayoutProps> = ({
   markdownContent,
   bannerUrl,
-  imageFit = 'cover',
+  imageFit = "cover",
 }) => {
   const [headings, setHeadings] = useState<
     { id: string; text: string; level: number }[]
@@ -40,9 +41,11 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
       {/* Header Banner */}
       <header className="w-full max-w-6xl mx-auto mb-6 relative">
         <div className="bg-white rounded-xl shadow-md overflow-hidden">
-          <img
+          <Image
             src={bannerUrl}
             alt="Blog Banner"
+            width={500}
+            height={500}
             className={`w-full h-40 sm:h-48 lg:h-56 object-${imageFit}`}
           />
           <div className="p-5 border-t border-[#00B24B]/20 flex justify-between items-center">
@@ -58,7 +61,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
             </div>
 
             <p className="text-sm text-gray-500">
-              February 26, 2025 • 5 min read
+              February 27th, 2025 • 5 min read
             </p>
           </div>
         </div>

@@ -11,6 +11,10 @@ import { cn } from "./functions/cn";
 import { isValidUrl } from "./functions/urls";
 import { generateMetadata } from "./functions/metadata";
 
+// metrics
+import GoogleAnalytics from "./metrics/GoogleAnalytics"
+import MicrosoftClarity from "./metrics/MicrosoftClarity"
+
 export {
     // constants
     LIST_ITEM_VARIANTS,
@@ -35,4 +39,17 @@ export {
     cn,
     isValidUrl,
     generateMetadata,
+
+    // metrics
+    GoogleAnalytics,
+    MicrosoftClarity
 };
+
+// const Metrics = () => (
+//     <>
+//         <GoogleAnalytics />
+//         <MicrosoftClarity />
+//     </>
+// )
+
+// export default Metrics

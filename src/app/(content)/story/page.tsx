@@ -91,7 +91,7 @@ const OurStory = () => {
           </h1>
 
           <Image
-            src={"/think_different.svg"}
+            src={"/our-story.svg"}
             alt="Think Different"
             width={400}
             height={400}

@@ -44,5 +44,17 @@ export const generateMetadata = ({
   //   creator: "@shreyassihasane",
   // },
   // metadataBase: new URL(process.env.APP_DOMAIN!),
-  ...(noIndex && { robots: { index: false, follow: false } }),
+  ...(noIndex && { robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  } }),
 });

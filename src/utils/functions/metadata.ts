@@ -3,7 +3,7 @@ import { Metadata } from "next";
 export const generateMetadata = ({
   title = `Inwesol - Beyond careers, towards wellbeing`,
   description = `${process.env.NEXT_PUBLIC_APP_NAME} is the career guidance platform. It brings clarity, builds confidence, and reduces stress, leading to a more purposeful career.`,
-  image = "/web-app-manifest-512x512.png",  
+  image = "/thumbnail.png",  
   icons = [
     {
       rel: "apple-touch-icon",

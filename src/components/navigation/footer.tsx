@@ -51,7 +51,7 @@ const Footer = () => {
               <Icons.logoWithText />
             </div>
             <p className="text-muted-foreground mt-2 text-sm text-start">
-              Beyond careers towards wellbeing.
+              Beyond careers, towards wellbeing.
             </p>
           </div>
         </AnimationContainer>

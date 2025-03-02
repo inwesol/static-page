@@ -58,7 +58,7 @@ References
 
 <https://www.drbethy.com/career-directions-blog/career-coach-vs-career-counselor-drscl>
 
-[https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coa](https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/) [ching-vs-career-counseling/](https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/)`;
+[https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/](https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/)`;
 
 const CoachingVsCounselling = () => {
   return (

@@ -67,6 +67,15 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
         </div>
       </header>
 
+      <div className="w-full max-w-6xl mx-auto">
+        <a
+          href="/"
+          className="inline-flex justify-center items-center px-4 py-2 text-primary1 rounded-md text-base font-bold"
+        >
+          ←  Back to Home
+        </a>
+      </div>
+
       <div className="w-full max-w-6xl mx-auto flex flex-col-reverse lg:flex-row gap-6">
         <main className="flex-1 bg-white rounded-xl shadow-md p-6 sm:p-8 lg:p-12">
           <div ref={contentRef}>
@@ -135,6 +144,8 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
                 a: ({ children, href }) => (
                   <a
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-[#3FA1D8] hover:text-[#00B24B] transition-all font-medium underline"
                   >
                     {children}

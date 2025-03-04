@@ -1,4 +1,4 @@
-import { Providers } from "@/components";
+// import { Providers } from "@/components";
 import { Toaster } from "@/components/ui/sonner";
 import "@/styles/globals.css";
 import {
@@ -26,10 +26,12 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        <Providers>
+        {/* <Providers>
           <Toaster richColors theme="light" position="top-right" />
           {children}
-        </Providers>
+        </Providers> */}
+        <Toaster richColors theme="light" position="top-right" />
+        {children}
         <GoogleAnalytics />
         <MicrosoftClarity />
       </body>

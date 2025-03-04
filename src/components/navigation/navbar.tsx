@@ -11,7 +11,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn, NAV_LINKS } from "@/utils";
-import { useClerk } from "@clerk/nextjs";
+// import { useClerk } from "@clerk/nextjs";
 import { LucideIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -21,7 +21,7 @@ import AnimationContainer from "../global/animation-container";
 import { Icons } from "../global/icons";
 
 const Navbar = () => {
-  const { user } = useClerk();
+  // const { user } = useClerk();
 
   const [scroll, setScroll] = useState(false);
 

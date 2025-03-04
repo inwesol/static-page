@@ -127,7 +127,7 @@ const Footer = () => {
               <ul className="mt-4 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
-                    href="/explorer"
+                    href="/explorer/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Explorer
@@ -135,7 +135,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/coco"
+                    href="/coco/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     CoCo
@@ -151,7 +151,7 @@ const Footer = () => {
               <ul className="mt-4 text-sm text-muted-foreground">
                 <li className="">
                   <Link
-                    href="/story"
+                    href="/story/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Our Story
@@ -159,7 +159,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/privacy"
+                    href="/privacy/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Privacy Policy
@@ -167,7 +167,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/terms"
+                    href="/terms/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Terms & Conditions

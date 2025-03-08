@@ -1,5 +1,5 @@
 import React from "react";
-import { currentUser } from "@clerk/nextjs/server";
+// import { currentUser } from "@clerk/nextjs/server";
 
 import { Footer } from "@/components";
 import StickyScrollRevealDemo from "@/components/ui/process";
@@ -10,7 +10,7 @@ import FeaturesSection from "@/components/features-section/features-section";
 import FeaturedBlogs from "@/components/featured-blogs/featured-blogs";
 
 const HomePage = async () => {
-  const user = await currentUser();
+  // const user = await currentUser();
 
   return (
     <div className="h-full">

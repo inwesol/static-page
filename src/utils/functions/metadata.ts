@@ -64,12 +64,12 @@ export const generateMetadata = ({
     site: '@inwesol',
   },
   robots: {
-    index: !noIndex,
-    follow: !noIndex,
+    index: true,
+    follow: true,
     nocache: false,
     googleBot: {
-      index: !noIndex,
-      follow: !noIndex,
+      index: true,
+      follow: true,
       noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',

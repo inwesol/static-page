@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const MarketingLayout = ({ children }: Props) => {
+const Layout = ({ children }: Props) => {
   return (
     <>
       <div
@@ -20,4 +20,4 @@ const MarketingLayout = ({ children }: Props) => {
   );
 };
 
-export default MarketingLayout;
+export default Layout;

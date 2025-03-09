@@ -12,7 +12,7 @@ const featuredBlogs = [
       "A process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions.",
     image:
       "https://github.com/user-attachments/assets/7cffebfb-cf0c-4a0f-ade2-9f216b908be6",
-    link: "/blog/career-guidance",
+    link: "/blog/career-guidance/",
     date: "27th Feb 2025",
     tags: [],
   },
@@ -24,7 +24,7 @@ const featuredBlogs = [
     image:
       "https://github.com/user-attachments/assets/0d280d15-f9c1-4e1d-b1b8-17fee7287ec0",
 
-    link: "/blog/coaching-vs-counselling",
+    link: "/blog/coaching-vs-counselling/",
     date: "27th Feb 2025",
     tags: [],
   },

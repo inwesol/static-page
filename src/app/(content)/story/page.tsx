@@ -3,6 +3,12 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import { AnimationContainer, MaxWidthWrapper } from "@/components";
+import { generateMetadata } from "@/utils";
+
+export const metadata = generateMetadata({
+  title: "Story",
+  path: "/story",
+});
 
 const people = [
   {

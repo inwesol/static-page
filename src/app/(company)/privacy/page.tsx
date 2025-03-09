@@ -1,7 +1,13 @@
 import { AnimationContainer, MaxWidthWrapper } from "@/components";
 import { Button } from "@/components/ui/button";
+import { generateMetadata } from "@/utils";
 import Link from "next/link";
 import React from "react";
+
+export const metadata = generateMetadata({
+  title: "Privacy Policy",
+  path: "/privacy",
+});
 
 const Privacy = () => {
   return (

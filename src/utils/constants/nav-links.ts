@@ -41,15 +41,15 @@ export const NAV_LINKS = [
 
   {
     title: "Explorer",
-    href: "/explorer",
+    href: "/explorer/",
   },
   {
     title: "CoCo",
-    href: "/coco",
+    href: "/coco/",
   },
   {
     title: "Our Story",
-    href: "/story",
+    href: "/story/",
   },
   // {
   //   title: "Resources",

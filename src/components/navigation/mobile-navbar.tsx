@@ -14,13 +14,13 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn, NAV_LINKS } from "@/utils";
-import { useAuth } from "@clerk/nextjs";
+// import { useAuth } from "@clerk/nextjs";
 import { LucideIcon, Menu, X } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 
 const MobileNavbar = () => {
-  const { isSignedIn, signOut } = useAuth();
+  // const { isSignedIn, signOut } = useAuth();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 

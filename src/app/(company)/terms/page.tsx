@@ -1,6 +1,12 @@
 import { AnimationContainer, MaxWidthWrapper } from "@/components";
 import { Button } from "@/components/ui/button";
+import { generateMetadata } from "@/utils";
 import Link from "next/link";
+
+export const metadata = generateMetadata({
+  title: "Terms and Conditions",
+  path: "/terms",
+});
 
 const TermsPage = () => {
   return (

@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 
-interface Blog {
+export interface Blog {
   id: number;
   title: string;
   description: string;
@@ -14,7 +14,7 @@ interface Blog {
   link: string;
 }
 
-interface BlogCardProps {
+export interface BlogCardProps {
   blog: Blog;
 }
 

@@ -21,7 +21,7 @@ interface TableOfContentsProps {
 
 export default function TableOfContents({ headings }: TableOfContentsProps) {
   return (
-    <aside className="w-full lg:w-80 sticky top-8 h-fit">
+    <aside className="w-full lg:w-80 sticky top-[62px] md:top-20 h-fit">
       <Card className="bg-white rounded-xl shadow-lg border-t-4 border-[#00B24B]">
         <CardHeader className="p-4 sm:p-5">
           <Accordion

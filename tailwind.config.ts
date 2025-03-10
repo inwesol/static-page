@@ -213,6 +213,7 @@ const config = {
     },
   },
   plugins: [
+    // require("tailwind-scrollbar"),
     require("tailwindcss-animate"),
     require("tailwind-scrollbar-hide"),
     addVariablesForColors,

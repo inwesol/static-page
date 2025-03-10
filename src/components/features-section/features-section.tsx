@@ -14,7 +14,7 @@ const FeaturesSection = () => {
     {
       heading: "Explorer",
       description:
-        "Explorer lets you discover a wide range of career options, offering valuable insights into the skills, abilities, and knowledge required for each course and occupation. It serves as a helpful tool for preliminary information and awareness. Whether you’re exploring new opportunities or refining your goals, Explorer is your first step toward clarity on your career path.",
+        "Explorer lets you discover a wide range of career options, offering valuable insights into the skills, abilities, and knowledge required for each course and occupation. It serves as a helpful tool for preliminary information and awareness. Whether you're exploring new opportunities or refining your goals, Explorer is your first step toward clarity on your career path.",
       redirectUrl: "",
       oneLiner:
         "Explorer helps you find different career options and understand what skills and knowledge you need.",
@@ -85,10 +85,11 @@ const FeaturesSection = () => {
           {availableFeatures.map((eachFeature, index) => {
             const isWiderCard = index === 1 || index === 2;
             const commonClassName =
-              "h-full p-6 rounded-2xl shadow-md border bg-white flex flex-col justify-end";
+              "h-full p-6 rounded-2xl shadow-md border bg-white flex flex-col justify-end group relative transition-all duration-300 hover:shadow-lg cursor-pointer";
 
             return (
-              <div
+              <a
+                href={`/${eachFeature.slug}/`}
                 className={
                   isWiderCard
                     ? `sm:col-span-2 ${commonClassName}`
@@ -108,18 +109,15 @@ const FeaturesSection = () => {
                         {eachFeature.oneLiner}
                       </p>
 
-                      <a
-                        href={`/${eachFeature.slug}/`}
-                        className="border-[1px] border-accent/10 m-0 h-8 w-28 bg-accent/10 rounded-full hover:bg-accent/20 transition-colors duration-200 focus:outline-accent mt-4 flex items-center justify-center"
-                      >
+                      <div className="border-[1px] border-accent/10 m-0 h-8 w-28 bg-accent/10 rounded-full group-hover:bg-accent/20 transition-colors duration-200 mt-4 flex items-center justify-center">
                         <span className="text-accent text-sm font-medium">
                           Learn More
                         </span>
-                      </a>
+                      </div>
                     </div>
                   </div>
                 </AnimationContainer>
-              </div>
+              </a>
             );
           })}
         </div>

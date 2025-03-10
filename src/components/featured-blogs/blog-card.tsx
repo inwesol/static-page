@@ -16,9 +16,20 @@ export interface Blog {
 
 export interface BlogCardProps {
   blog: Blog;
+  isLinkWrapper?: boolean;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
+const BlogCard = ({ blog, isLinkWrapper = false }: BlogCardProps) => {
+  // Only render the "Read More" button if not wrapped in a link
+  const renderReadMoreButton = !isLinkWrapper && (
+    <a
+      href={blog.link}
+      className="text-blue-600 font-medium hover:underline mt-4 inline-block"
+    >
+      Read More
+    </a>
+  );
+
   return (
     <div className="bg-white shadow-md rounded-2xl overflow flex flex-col h-[500px] transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
       <div className="relative w-full h-56 overflow shadow-sm">
@@ -52,15 +63,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           ))}
         </div>
 
-        <div className="mt-5 flex justify-start">
-          <a
-            href={blog.link}
-            className="flex items-center gap-2 text-white font-medium bg-[#00B24B] bg-accent px-4 py-2 rounded-full transition-all hover:bg-accent/88 shadow-md hover:shadow-lg"
-          >
-            <span className="text-sm">Read More</span>
-            <ArrowUpRight size={18} stroke="white" />
-          </a>
-        </div>
+        {/* Conditionally render the button */}
+        {renderReadMoreButton}
       </div>
     </div>
   );

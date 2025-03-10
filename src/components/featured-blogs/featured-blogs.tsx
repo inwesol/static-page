@@ -65,27 +65,6 @@ const FeaturedBlogs = () => {
           Featured Blogs
         </h2>
 
-        {/* <div className="relative">
-          <div
-            className="flex transition-transform duration-500 items-center justify-center ease-in-out gap-6"
-            style={{
-              transform: `translateX(-${current * (100 / visibleCards)}%)`,
-            }}
-          >
-            {featuredBlogs.map((blog) => (
-              <div
-                key={blog.id}
-                className="flex-shrink-0"
-                style={{
-                  width: `calc(100% / ${visibleCards} - 1rem)`,
-                }}
-              >
-                <BlogCard blog={blog} />
-              </div>
-            ))}
-          </div>
-        </div> */}
-
         <div className="relative">
           <div
             className="flex transition-transform duration-500 items-center justify-center ease-in-out gap-6 flex-col sm:flex-row"
@@ -101,7 +80,13 @@ const FeaturedBlogs = () => {
                   width: `calc(100% / ${visibleCards} - 1rem)`,
                 }}
               >
-                <BlogCard blog={blog} />
+                <a
+                  href={blog.link}
+                  className="block h-full transition-transform hover:scale-105"
+                  aria-label={`Read more about ${blog.title}`}
+                >
+                  <BlogCard blog={blog} isLinkWrapper={true} />
+                </a>
               </div>
             ))}
           </div>

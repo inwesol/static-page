@@ -23,8 +23,6 @@ const HomePage = async () => {
       <FeaturedBlogs />
 
       <ExplorerCard />
-
-      <Footer />
     </div>
   );
 };

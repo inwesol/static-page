@@ -2,12 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Redis } from "@upstash/redis";
-
-interface TitleAndDescription {
-  title: string;
-  description: string;
-}
 
 interface Task {
   task_id: string | number;
@@ -41,7 +35,14 @@ interface Work {
   dwa_title: string;
 }
 
-type Tab = "tasks" | "skills" | "tools" | "work" | "interests" | "occupations";
+type Tab =
+  | "tasks"
+  | "skills"
+  | "tools"
+  | "work"
+  | "interests"
+  | "occupations"
+  | "titles";
 
 const OccupationDetails: React.FC = () => {
   const params = useParams();
@@ -64,6 +65,7 @@ const OccupationDetails: React.FC = () => {
     description: "",
     loading: true,
     error: "",
+    alternateTitles: [] as Record<"alternate_title", string>[],
   });
 
   const ITEMS_PER_LOAD: number = 10;
@@ -97,6 +99,8 @@ const OccupationDetails: React.FC = () => {
   const fetchInitialData = (id: string) => {};
 
   const fetchTabData = async (id: string, activeTab: Tab) => {
+    if (activeTab === "titles") return;
+
     setError(null);
     setIsLoading(true);
 
@@ -164,6 +168,15 @@ const OccupationDetails: React.FC = () => {
     };
   }, [params.id]);
 
+  const getAlternateTitles = async (id: string) => {
+    const alternateTitlesApiResponse = await fetch(
+      `/api/testing?id=${id}&data=alternateTitles`
+    );
+    const alternateTitles = await alternateTitlesApiResponse.json();
+
+    return alternateTitles;
+  };
+
   const fetchTitleAndDescriptionData = async (id: string) => {
     try {
       setTitleState((prev) => ({
@@ -176,6 +189,8 @@ const OccupationDetails: React.FC = () => {
         `/api/occupation-title-description?id=${id}`
       );
       const data = await response.json();
+
+      const alternateTitles = await getAlternateTitles(id);
 
       if (!response.ok) {
         setTitleState((prev) => ({
@@ -193,6 +208,7 @@ const OccupationDetails: React.FC = () => {
         loading: false,
         title: data[0]?.title,
         description: data[0]?.description,
+        alternateTitles,
       }));
     } catch (error) {
       setTitleState((prev) => ({
@@ -203,6 +219,8 @@ const OccupationDetails: React.FC = () => {
       throw error;
     }
   };
+
+  console.log(titleState.alternateTitles);
 
   const getCurrentData = (activeTab: Tab) => {
     switch (activeTab) {
@@ -218,6 +236,8 @@ const OccupationDetails: React.FC = () => {
         return tasks;
       case "occupations":
         return occupations;
+      case "titles":
+        return titleState.alternateTitles;
       default:
         return [];
     }
@@ -229,6 +249,7 @@ const OccupationDetails: React.FC = () => {
     tools: "Tools Used",
     work: "Work Activities",
     interests: "Interests",
+    titles: "Alternate Titles",
     occupations: "Related Occupations",
   };
 
@@ -268,7 +289,7 @@ const OccupationDetails: React.FC = () => {
         <>
           <div className="w-full max-w-6xl mx-auto">
             <a
-              href="/"
+              href="/explorer"
               className="inline-flex justify-center items-center px-4 py-2 text-primary1 rounded-md text-base font-bold"
             >
               ← Back to Explorer
@@ -296,6 +317,7 @@ const OccupationDetails: React.FC = () => {
                   "tools",
                   "work",
                   "interests",
+                  "titles",
                   "occupations",
                 ] as const
               ).map((tab) => (
@@ -451,6 +473,22 @@ const OccupationDetails: React.FC = () => {
                         {(item as Tool).example}
                       </span>
                     ))}
+                  </div>
+                )}
+
+                {activeTab === "titles" && (
+                  <div className="flex flex-wrap gap-2">
+                    {titleState.alternateTitles
+                      .slice(0, visibleItems)
+                      .map((item, index) => (
+                        <span
+                          key={index}
+                          className="inline-flex items-center px-3 py-1 bg-gray-50 text-sm text-gray-800 rounded-full hover:bg-gray-100 transition-all duration-200"
+                        >
+                          <span className="w-2 h-2 bg-[#3FA1D8] rounded-full mr-2 flex-shrink-0" />
+                          {item.alternate_title}
+                        </span>
+                      ))}
                   </div>
                 )}
 

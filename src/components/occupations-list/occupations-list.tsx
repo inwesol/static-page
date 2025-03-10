@@ -173,7 +173,7 @@ const OccupationsList = () => {
       {!isLoading && (
         <div className="relative w-16 flex-shrink-0">
           <aside
-            className="w-16 sticky top-0 flex flex-col items-center py-8 bg-white/80 backdrop-blur-md shadow-sm z-20 overflow-y-auto custom-scrollbar"
+            className="w-16 sticky top-[26px] flex flex-col items-center py-8 bg-white/80 backdrop-blur-md shadow-sm z-20 overflow-y-auto custom-scrollbar"
             style={{ maxHeight: "100vh" }}
           >
             {Object.keys(filteredOccupations)
@@ -199,19 +199,19 @@ const OccupationsList = () => {
         <header className="mb-2 sticky top-[56px] bg-gray-50/90 backdrop-blur-md py-6 border-b border-gray-200/30 z-10">
           <div className="max-w-6xl mx-auto">
             <h1 className="text-4xl font-medium text-[#00B24B] tracking-wide">
-              Occupations
+              Career Explorer
             </h1>
             <p className="mt-2 text-base text-gray-500">
-              Discover professions with a clean, modern twist.
+              Explore opportunities that align with your passions and ambitions.
             </p>
 
             <div className="mt-8 flex flex-col gap-6">
               <input
                 type="text"
-                placeholder="Search occupations..."
+                placeholder="Search career options..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-5 py-3 bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-[#3FA1D8] focus:border-[#00B24B]/20 text-base text-gray-800 placeholder-gray-400 transition-all duration-200"
+                className="w-full px-5 py-3 bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-1 focus:ring-[#3FA1D8] focus:border-[#00B24B]/20 text-base text-gray-800 placeholder-gray-400 transition-all duration-200 rounded-xl"
               />
             </div>
           </div>
@@ -260,7 +260,8 @@ const OccupationsList = () => {
                       className="mb-6"
                     >
                       <h2 className="text-2xl font-medium text-[#00B24B] mb-6 sticky top-20 bg-gray-50/90 py-3 border-b border-gray-200/20">
-                        {letter} ({totalCards})
+                        {letter} 
+                        {/* ({totalCards}) */}
                       </h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
                         {displayedCards.map((occupation) => (
@@ -308,7 +309,7 @@ const OccupationsList = () => {
                         <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
                           <button
                             onClick={() => loadMore(letter)}
-                            className="px-6 py-2 bg-[#00B24B] text-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20"
+                            className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
                           >
                             Load More ({visibleCount}/{totalCards})
                           </button>

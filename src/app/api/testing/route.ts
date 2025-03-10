@@ -93,6 +93,17 @@ async function getRelatedOccupations(id: string) {
   }
 }
 
+async function getAlternateTitles(id: string) {
+  try {
+    const { rows } =
+      await pool.sql`select alternate_title from alternate_titles at2 where onetsoc_code = ${id};`;
+
+    return rows;
+  } catch (error) {
+    console.log({ queryError: error });
+  }
+}
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -116,6 +127,7 @@ export async function GET(request: Request) {
       work: getDetailedWorkActivities,
       interest: getInterestDetails,
       occupation: getRelatedOccupations,
+      alternateTitles: getAlternateTitles,
     } as Record<string, (id: string) => Promise<QueryResultRow[] | undefined>>;
 
     if (!functionsMapper[dataToFetch]) {

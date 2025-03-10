@@ -2,7 +2,12 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { AnimationContainer, MaxWidthWrapper } from "@/components";
+import {
+  AnimationContainer,
+  Footer,
+  MaxWidthWrapper,
+  Navbar,
+} from "@/components";
 import { generateMetadata } from "@/utils";
 
 export const metadata = generateMetadata({
@@ -89,182 +94,187 @@ const values = [
 
 const OurStory = () => {
   return (
-    <MaxWidthWrapper className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 mb-40 overflow-hidden">
-      <AnimationContainer delay={0.1} className="w-full">
-        <div className="flex flex-col-reverse items-center justify-between">
-          <h1 className="text-6xl md:text-7xl font-extrabold mb-10 text-center text-gray-900">
-            Our Story
-          </h1>
+    <>
+      <Navbar />
+      <MaxWidthWrapper className="w-full max-w-3xl mx-auto px-4 sm:px-6 md:px-8 mb-40 overflow-hidden">
+        <AnimationContainer delay={0.1} className="w-full">
+          <div className="flex flex-col-reverse items-center justify-between">
+            <h1 className="text-6xl md:text-7xl font-extrabold mb-10 text-center text-gray-900">
+              Our Story
+            </h1>
 
-          <Image
-            src={"/our-story.svg"}
-            alt="Think Different"
-            width={400}
-            height={400}
-            className="object-cover"
-          />
-        </div>
+            <Image
+              src={"/our-story.svg"}
+              alt="Think Different"
+              width={400}
+              height={400}
+              className="object-cover"
+            />
+          </div>
 
-        <section className="rounded-xl border bg-primary1/5 border-gray-200 shadow-xl mx-auto relative px-6 sm:px-0">
-          <section className="max-w-4xl mx-auto my-12 space-y-8">
-            <h2 className="text-3xl font-semibold border-b-2 border-gray-200 pb-2">
-              Why Inwesol?
-            </h2>
+          <section className="rounded-xl border bg-primary1/5 border-gray-200 shadow-xl mx-auto relative px-6 sm:px-0">
+            <section className="max-w-4xl mx-auto my-12 space-y-8">
+              <h2 className="text-3xl font-semibold border-b-2 border-gray-200 pb-2">
+                Why Inwesol?
+              </h2>
 
-            <p className="text-lg leading-8 text-gray-700">
-              We are 90s kids, and like many others, we were inspired by{" "}
-              <em>3 Idiots</em> when it came out in 2009. It clearly depicts the
-              pressure young people face in education and career paths. Even
-              though the movie came out 15 years ago, things haven&apos;t
-              changed much. The academic pressure and confusion about career
-              choices are still very real for today&apos;s youth.
-            </p>
+              <p className="text-lg leading-8 text-gray-700">
+                We are 90s kids, and like many others, we were inspired by{" "}
+                <em>3 Idiots</em> when it came out in 2009. It clearly depicts
+                the pressure young people face in education and career paths.
+                Even though the movie came out 15 years ago, things haven&apos;t
+                changed much. The academic pressure and confusion about career
+                choices are still very real for today&apos;s youth.
+              </p>
 
-            <p className="text-lg leading-8 text-gray-700">
-              After talking to many young people, we learned that most
-              don&apos;t know which course to take or what job suits them. They
-              often make decisions based on family or friends, not their
-              interests and strengths. And when they face challenges,
-              there&apos;s little support. Society pushes them to chase success,
-              forgetting that every individual is unique and must find their
-              path.
-            </p>
+              <p className="text-lg leading-8 text-gray-700">
+                After talking to many young people, we learned that most
+                don&apos;t know which course to take or what job suits them.
+                They often make decisions based on family or friends, not their
+                interests and strengths. And when they face challenges,
+                there&apos;s little support. Society pushes them to chase
+                success, forgetting that every individual is unique and must
+                find their path.
+              </p>
 
-            <p className="text-lg leading-8 text-gray-700">
-              One line from <em>3 Idiots</em> that stuck with us is:
-            </p>
+              <p className="text-lg leading-8 text-gray-700">
+                One line from <em>3 Idiots</em> that stuck with us is:
+              </p>
 
-            <AnimationContainer delay={0.2}>
-              <blockquote className="bg-gray-100 border-l-4 border-primary pl-4 py-4 italic font-semibold text-lg text-gray-800">
-                &quot;Success ke peeche mat bhaago, excellence ka peecha karo,
-                <br />
-                success jhak maarke tumhare peeche ayegi.&quot;
-                <br />
-                <span className="block mt-2 text-sm text-gray-600">
-                  (Don&apos;t chase success; focus on excellence, and success
-                  will follow you.)
-                </span>
-              </blockquote>
-            </AnimationContainer>
+              <AnimationContainer delay={0.2}>
+                <blockquote className="bg-gray-100 border-l-4 border-primary pl-4 py-4 italic font-semibold text-lg text-gray-800">
+                  &quot;Success ke peeche mat bhaago, excellence ka peecha karo,
+                  <br />
+                  success jhak maarke tumhare peeche ayegi.&quot;
+                  <br />
+                  <span className="block mt-2 text-sm text-gray-600">
+                    (Don&apos;t chase success; focus on excellence, and success
+                    will follow you.)
+                  </span>
+                </blockquote>
+              </AnimationContainer>
 
-            <p className="text-lg leading-8 text-gray-700">
-              At Inwesol, we believe this is the key to empowering young people
-              to thrive. Our objective is to guide individuals in
-              self-discovery, help them realize their capabilities, support them
-              in achieving their goals, and enable them to work toward
-              excellence. We focus on prevention and development, creating
-              solutions that foster well-being and drive positive behavioral
-              change.
-            </p>
+              <p className="text-lg leading-8 text-gray-700">
+                At Inwesol, we believe this is the key to empowering young
+                people to thrive. Our objective is to guide individuals in
+                self-discovery, help them realize their capabilities, support
+                them in achieving their goals, and enable them to work toward
+                excellence. We focus on prevention and development, creating
+                solutions that foster well-being and drive positive behavioral
+                change.
+              </p>
+            </section>
           </section>
-        </section>
 
-        <section className="max-w-4xl mx-auto mt-16 space-y-12">
-          <div className="text-center">
-            <h2 className="text-4xl font-bold text-gray-900">Our Motto</h2>
-            <p className="text-3xl font-extrabold text-transparent mt-4 bg-gradient-to-r from-primary1 to-accent bg-clip-text inline-bloc">
-              <span className="text-gray-500">&quot;</span>Self-discovery leads
-              to excellence.<span className="text-gray-500">&quot;</span>
-            </p>
-          </div>
+          <section className="max-w-4xl mx-auto mt-16 space-y-12">
+            <div className="text-center">
+              <h2 className="text-4xl font-bold text-gray-900">Our Motto</h2>
+              <p className="text-3xl font-extrabold text-transparent mt-4 bg-gradient-to-r from-primary1 to-accent bg-clip-text inline-bloc">
+                <span className="text-gray-500">&quot;</span>Self-discovery
+                leads to excellence.
+                <span className="text-gray-500">&quot;</span>
+              </p>
+            </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            {motto.map((item, index) => (
-              <div
-                key={index}
-                className="relative p-6 shadow-sm rounded-xl border border-gray-200 transition-all hover:shadow-md"
-              >
-                <AnimationContainer
-                  key={index}
-                  className="w-full h-full"
-                  delay={(index + 1) * 0.2}
-                >
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {item.description}
-                  </p>
-                </AnimationContainer>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="max-w-4xl mx-auto mt-16">
-          <h2 className="text-4xl font-bold text-gray-900 text-center">
-            Our Values
-          </h2>
-
-          <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {values.map((value, idx) => (
-              <div
-                key={idx}
-                className="relative p-6 bg-white rounded-xl shadow-xl transition-all duration-300 before:absolute before:-inset-1 before:bg-gradient-to-r before:from-primary/30 before:to-transparent before:rounded-xl before:-z-10"
-              >
-                <AnimationContainer delay={(idx + 1) * 0.1}>
-                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                    <span className="font-semibold">{value.keyword}</span>
-                    {" - "}
-                    {value.description}
-                  </p>
-                </AnimationContainer>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="max-w-4xl mx-auto mt-32">
-          <div className="w-full flex flex-col items-center my-12 space-y-8">
-            <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
-              Meet Our Leaders
-            </h2>
-
-            <div className="flex gap-6 px-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
-              {people.map((person, index) => (
+            <div className="grid grid-cols-1 gap-6">
+              {motto.map((item, index) => (
                 <div
-                  key={person.id}
-                  className="relative w-36 sm:w-48 md:w-56 h-auto group flex-shrink-0"
+                  key={index}
+                  className="relative p-6 shadow-sm rounded-xl border border-gray-200 transition-all hover:shadow-md"
                 >
-                  <Link href={person.link} target="_blank">
-                    <AnimationContainer delay={(index + 1) * 0.2}>
-                      <div className="w-full aspect-square rounded-full overflow-hidden transition-all duration-300 ease-in-out group-hover:brightness-110 group-hover:shadow-[0_0_20px_rgba(0,255,255,0.3)]">
-                        <Image
-                          src={person.image}
-                          alt={person.name}
-                          layout="fill"
-                          objectFit="cover"
-                          className="rounded-full transition-transform duration-500 group-hover:scale-105"
-                        />
-                      </div>
-                    </AnimationContainer>
-
-                    <div className="absolute top-full mt-2 text-center w-full">
-                      <div className="">
-                        <p className="text-lg font-semibold text-gray-900">
-                          {person.name}
-                        </p>
-                        <p className="text-base font-extrabold text-accent drop-shadow-sm">
-                          {person.designation}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
+                  <AnimationContainer
+                    key={index}
+                    className="w-full h-full"
+                    delay={(index + 1) * 0.2}
+                  >
+                    <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </AnimationContainer>
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          <div className="flex items-center justify-center w-full pt-16 sm:pt-12">
-            <Link href="/">
-              <Button className="px-6 py-3 bg-[#3FA1D8] text-white rounded-xl font-semibold shadow-lg hover:bg-[#00B24B] transition-all">
-                Back to homepage
-              </Button>
-            </Link>
-          </div>
-        </section>
-      </AnimationContainer>
-    </MaxWidthWrapper>
+          <section className="max-w-4xl mx-auto mt-16">
+            <h2 className="text-4xl font-bold text-gray-900 text-center">
+              Our Values
+            </h2>
+
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {values.map((value, idx) => (
+                <div
+                  key={idx}
+                  className="relative p-6 bg-white rounded-xl shadow-xl transition-all duration-300 before:absolute before:-inset-1 before:bg-gradient-to-r before:from-primary/30 before:to-transparent before:rounded-xl before:-z-10"
+                >
+                  <AnimationContainer delay={(idx + 1) * 0.1}>
+                    <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                      <span className="font-semibold">{value.keyword}</span>
+                      {" - "}
+                      {value.description}
+                    </p>
+                  </AnimationContainer>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="max-w-4xl mx-auto mt-32">
+            <div className="w-full flex flex-col items-center my-12 space-y-8">
+              <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
+                Meet Our Leaders
+              </h2>
+
+              <div className="flex gap-6 px-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
+                {people.map((person, index) => (
+                  <div
+                    key={person.id}
+                    className="relative w-36 sm:w-48 md:w-56 h-auto group flex-shrink-0"
+                  >
+                    <Link href={person.link} target="_blank">
+                      <AnimationContainer delay={(index + 1) * 0.2}>
+                        <div className="w-full aspect-square rounded-full overflow-hidden transition-all duration-300 ease-in-out group-hover:brightness-110 group-hover:shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+                          <Image
+                            src={person.image}
+                            alt={person.name}
+                            layout="fill"
+                            objectFit="cover"
+                            className="rounded-full transition-transform duration-500 group-hover:scale-105"
+                          />
+                        </div>
+                      </AnimationContainer>
+
+                      <div className="absolute top-full mt-2 text-center w-full">
+                        <div className="">
+                          <p className="text-lg font-semibold text-gray-900">
+                            {person.name}
+                          </p>
+                          <p className="text-base font-extrabold text-accent drop-shadow-sm">
+                            {person.designation}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center w-full pt-16 sm:pt-12">
+              <Link href="/">
+                <Button className="px-6 py-3 bg-[#3FA1D8] text-white rounded-xl font-semibold shadow-lg hover:bg-[#00B24B] transition-all">
+                  Back to homepage
+                </Button>
+              </Link>
+            </div>
+          </section>
+        </AnimationContainer>
+      </MaxWidthWrapper>
+      <Footer />
+    </>
   );
 };
 

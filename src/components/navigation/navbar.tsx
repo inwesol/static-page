@@ -50,7 +50,7 @@ const Navbar = () => {
       <AnimationContainer reverse delay={0.1} className="size-full">
         <MaxWidthWrapper className="flex items-center justify-between">
           <div className="flex items-center space-x-12">
-            <Link href="/#home">
+            <Link href="/#home" aria-label="Go to homepage">
               <Icons.logoWithText />
             </Link>
 

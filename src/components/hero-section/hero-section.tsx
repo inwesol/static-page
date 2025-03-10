@@ -114,7 +114,7 @@ const HeroSection = () => {
                         >
                           {form.formState.isSubmitting
                             ? "Submitting..."
-                            : "Get Started"}
+                            : "Notify Me"}
                         </button>
                       </div>
                     </div>

@@ -146,18 +146,19 @@ const OccupationsList = () => {
 
   const scrollToLetter = (letter: string) => {
     const element = document.getElementById(`letter-${letter}`);
-    const header = document.querySelector("header"); // Select the sticky header
+    const header = document.getElementById("sticky-header");
     if (element && header) {
-      const headerHeight = header.offsetHeight; // Get the height of the sticky header
+      const headerHeight = header.offsetHeight;
       const elementPosition =
         element.getBoundingClientRect().top + window.scrollY;
-      const offsetPosition = elementPosition - headerHeight - 20; // Add a small buffer (20px)
+
+      const offsetPosition = elementPosition - (headerHeight + 56);
 
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
       });
-      setActiveLetter(letter); // Update the active letter
+      setActiveLetter(letter);
     }
   };
 
@@ -196,7 +197,10 @@ const OccupationsList = () => {
       )}
 
       <div className="flex-1 ml-0 px-8">
-        <header className="mb-2 sticky top-[56px] bg-gray-50/90 backdrop-blur-md py-6 border-b border-gray-200/30 z-10">
+        <header
+          className="mb-2 sticky top-[56px] bg-gray-50/90 backdrop-blur-md py-6 border-b border-gray-200/30 z-10"
+          id="sticky-header"
+        >
           <div className="max-w-6xl mx-auto">
             <h1 className="text-4xl font-medium text-[#00B24B] tracking-wide">
               Career Explorer
@@ -217,10 +221,10 @@ const OccupationsList = () => {
           </div>
         </header>
 
-        <main className="max-w-6xl mx-auto">
+        <main className="max-w-6xl mx-auto h-full">
           <TooltipProvider>
             {isLoading ? (
-              <div className="absolute inset-0 bg-opacity-80 flex items-center justify-center z-10">
+              <div className="inset-0 bg-opacity-80 flex items-center justify-center z-10 h-1/2">
                 <div className="text-center">
                   <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 border-2 border-[#3FA1D8] border-t-transparent mx-auto mb-4"></div>
                   <p className="text-[#3FA1D8] text-base sm:text-lg md:text-xl">
@@ -260,7 +264,7 @@ const OccupationsList = () => {
                       className="mb-6"
                     >
                       <h2 className="text-2xl font-medium text-[#00B24B] mb-6 sticky top-20 bg-gray-50/90 py-3 border-b border-gray-200/20">
-                        {letter} 
+                        {letter}
                         {/* ({totalCards}) */}
                       </h2>
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">

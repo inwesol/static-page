@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 
 import { useRouter } from "next/navigation";
+import { PlaceholdersAndVanishInput } from "../input-animating-placeholder/input-animating-placeholder";
 
 interface Occupation {
   title: string;
@@ -202,20 +203,29 @@ const OccupationsList = () => {
           id="sticky-header"
         >
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl font-medium text-[#00B24B] tracking-wide">
+            <h1 className="text-2xl font-medium text-[#00B24B] tracking-wide">
               Career Explorer
             </h1>
-            <p className="mt-2 text-base text-gray-500">
+            <p className="mt-1 text-sm text-gray-500">
               Explore opportunities that align with your passions and ambitions.
             </p>
 
-            <div className="mt-8 flex flex-col gap-6">
-              <input
-                type="text"
-                placeholder="Search career options..."
-                value={searchQuery}
+            <div className="mt-4 flex flex-col gap-6">
+              <PlaceholdersAndVanishInput
+                placeholders={[
+                  "Chief Executives",
+                  "Chief Sustainability Officers",
+                  "General and Operations Managers",
+                  "Legislators",
+                  "Advertising and Promotions Managers",
+                  "Marketing Managers",
+                  "Sales Managers",
+                  "Public Relations Managers",
+                  "Fundraising Managers",
+                  "Administrative Services Managers",
+                ]}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full px-5 py-3 bg-white border border-gray-200 shadow-sm focus:outline-none focus:ring-1 focus:ring-[#3FA1D8] focus:border-[#00B24B]/20 text-base text-gray-800 placeholder-gray-400 transition-all duration-200 rounded-xl"
+                onSubmit={() => {}}
               />
             </div>
           </div>
@@ -247,81 +257,84 @@ const OccupationsList = () => {
                 </div>
               </div>
             ) : Object.keys(filteredOccupations).length > 0 ? (
-              Object.keys(filteredOccupations)
-                .sort()
-                .map((letter) => {
-                  const visibleCount = visibleCards[letter] || INITIAL_CARDS;
-                  const totalCards = filteredOccupations[letter].length;
-                  const displayedCards = filteredOccupations[letter].slice(
-                    0,
-                    visibleCount
-                  );
+              <div className="mb-24">
+                {Object.keys(filteredOccupations)
+                  .sort()
+                  .map((letter) => {
+                    const visibleCount = visibleCards[letter] || INITIAL_CARDS;
+                    const totalCards = filteredOccupations[letter].length;
+                    const displayedCards = filteredOccupations[letter].slice(
+                      0,
+                      visibleCount
+                    );
 
-                  return (
-                    <section
-                      key={letter}
-                      id={`letter-${letter}`}
-                      className="mb-6"
-                    >
-                      <h2 className="text-2xl font-medium text-[#00B24B] mb-6 sticky top-20 bg-gray-50/90 py-3 border-b border-gray-200/20">
-                        {letter}
-                        {/* ({totalCards}) */}
-                      </h2>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                        {displayedCards.map((occupation) => (
-                          <div
-                            key={occupation.title}
-                            className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
-                            onClick={() =>
-                              router.push(
-                                `/explorer/${occupation.onetsoc_code}`
-                              )
-                            }
-                          >
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <h3 className="text-base font-medium text-[#3FA1D8] mb-2 line-clamp-1">
-                                  {occupation.title}
-                                </h3>
-                              </TooltipTrigger>
-                              {occupation.title.length > 30 && ( // Adjust threshold based on when truncation occurs
-                                <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                  <p className="text-base font-medium">
+                    return (
+                      <section
+                        key={letter}
+                        className={"mb-6"}
+                        id={`letter-${letter}`}
+                      >
+                        <h2 className="text-2xl font-medium text-[#00B24B] mb-6 sticky top-20 bg-gray-50/90 py-3 border-b border-gray-200/20">
+                          {letter}
+                          {/* ({totalCards}) */}
+                        </h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                          {displayedCards.map((occupation) => (
+                            <div
+                              key={occupation.title}
+                              className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
+                              onClick={() =>
+                                router.push(
+                                  `/explorer/${occupation.onetsoc_code}`
+                                )
+                              }
+                            >
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <h3 className="text-base font-medium text-[#3FA1D8] mb-2 line-clamp-1">
                                     {occupation.title}
-                                  </p>
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <p className="text-sm text-gray-500 group-hover:text-gray-600 line-clamp-2">
-                                  {occupation.description}
-                                </p>
-                              </TooltipTrigger>
-                              {occupation.description.length > 100 && (
-                                <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                  <p className="text-sm">
+                                  </h3>
+                                </TooltipTrigger>
+                                {occupation.title.length > 30 && ( // Adjust threshold based on when truncation occurs
+                                  <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
+                                    <p className="text-base font-medium">
+                                      {occupation.title}
+                                    </p>
+                                  </TooltipContent>
+                                )}
+                              </Tooltip>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <p className="text-sm text-gray-500 group-hover:text-gray-600 line-clamp-2">
                                     {occupation.description}
                                   </p>
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                          </div>
-                        ))}
-                      </div>
-                      {visibleCount < totalCards && (
-                        <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
-                          <button
-                            onClick={() => loadMore(letter)}
-                            className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
-                          >
-                            Load More ({visibleCount}/{totalCards})
-                          </button>
+                                </TooltipTrigger>
+                                {occupation.description.length > 100 && (
+                                  <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
+                                    <p className="text-sm">
+                                      {occupation.description}
+                                    </p>
+                                  </TooltipContent>
+                                )}
+                              </Tooltip>
+                            </div>
+                          ))}
                         </div>
-                      )}
-                    </section>
-                  );
-                })
+
+                        {visibleCount < totalCards && (
+                          <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
+                            <button
+                              onClick={() => loadMore(letter)}
+                              className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
+                            >
+                              Load More ({visibleCount}/{totalCards})
+                            </button>
+                          </div>
+                        )}
+                      </section>
+                    );
+                  })}
+              </div>
             ) : (
               <p className="text-gray-500 text-center mt-8 text-lg">
                 No occupations found.

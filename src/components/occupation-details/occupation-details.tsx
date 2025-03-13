@@ -262,7 +262,7 @@ const OccupationDetails: React.FC = () => {
           <div className="text-center">
             <div className="animate-spin rounded-full h-6 w-6 sm:h-8 sm:w-8 md:h-10 md:w-10 border-2 border-[#3FA1D8] border-t-transparent mx-auto mb-4"></div>
             <p className="text-[#3FA1D8] text-base sm:text-lg md:text-xl">
-              Loading occupation data...
+              Loading data...
             </p>
           </div>
         </div>

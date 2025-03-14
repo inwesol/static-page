@@ -181,13 +181,13 @@ const Footer = () => {
 
       <div className="my-8 border-t border-border/40 pt-4 md:pt-8 md:flex md:items-center md:justify-between w-full">
         {/* <AnimationContainer delay={0.6}> */}
-        <div className="flex justify-between w-full flex-1">
-          <p className="text-sm text-muted-foreground mt-8 md:mt-0">
+        <div className="flex flex-col-reverse md:flex-row justify-between w-full flex-1">
+          <p className="text-sm text-muted-foreground mt-4 md:mt-0 text-center md:text-left">
             &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
             reserved.
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center md:justify-end gap-4">
             {socialLinks.map((social) => (
               <a
                 key={social.name}

@@ -34,17 +34,42 @@ async function appendToSheet(sheetId: string, range: string, values: any[]) {
 }
 
 export async function POST(request: Request) {
+  // Get the URL to extract query parameters
+  const url = new URL(request.url);
+  const formType = url.searchParams.get('for');
+  
   const body = await request.json();
-  const { email } = body;
-
-  const sheetId = process.env.GOOGLE_SHEET_ID as string;
-  const range = 'Sheet1!A:A';  // Adjust based on your sheet structure
-  const values = [email];
-
-  try {
-    await appendToSheet(sheetId, range, values);
-    return NextResponse.json({ message: 'Form data saved successfully' }, { status: 200 });
-  } catch (error) {
-    return NextResponse.json({ message: 'Error saving form data' }, { status: 500 });
+  
+  // Handle different form types
+  if (formType === 'contact-us') {
+    const { email, firstName, lastName, message, phone = '', subject } = body;
+    
+    const sheetId = process.env.GOOGLE_SHEET_ID as string;
+    const range = 'Sheet2!A:G';  // Using Sheet2 with columns A through G
+    const timestamp = new Date().toISOString();
+    const values = [timestamp, email, firstName, lastName, subject, message, phone ];
+    
+    try {
+      await appendToSheet(sheetId, range, values);
+      return NextResponse.json({ message: 'Contact form data saved successfully' }, { status: 200 });
+    } catch (error) {
+      console.error('Error saving contact form data:', error);
+      return NextResponse.json({ message: 'Error saving contact form data' }, { status: 500 });
+    }
+  } else {
+    // Original email-only form logic
+    const { email } = body;
+    
+    const sheetId = process.env.GOOGLE_SHEET_ID as string;
+    const range = 'Sheet1!A:A';
+    const values = [email];
+    
+    try {
+      await appendToSheet(sheetId, range, values);
+      return NextResponse.json({ message: 'Form data saved successfully' }, { status: 200 });
+    } catch (error) {
+      console.error('Error saving form data:', error);
+      return NextResponse.json({ message: 'Error saving form data' }, { status: 500 });
+    }
   }
 }

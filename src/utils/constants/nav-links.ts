@@ -52,6 +52,15 @@ export const NAV_LINKS = [
     href: "/story/",
   },
   // {
+  //   title: "Events",
+  //   href: "/events/",
+  // },
+  {
+    title: "Contact Us",
+    href: "/contact-us/",
+  },
+
+  // {
   //   title: "Resources",
   //   href: "/resources",
   //   menu: [

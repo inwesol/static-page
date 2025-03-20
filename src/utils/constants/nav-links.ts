@@ -51,10 +51,10 @@ export const NAV_LINKS = [
     title: "Our Story",
     href: "/story/",
   },
-  // {
-  //   title: "Events",
-  //   href: "/events/",
-  // },
+  {
+    title: "Cohort Program",
+    href: "/events/cohort/",
+  },
   {
     title: "Contact Us",
     href: "/contact-us/",

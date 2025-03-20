@@ -141,6 +141,14 @@ const Footer = () => {
                     CoCo
                   </Link>
                 </li>
+                <li className="mt-2">
+                  <Link
+                    href="/events/cohort/"
+                    className="hover:text-foreground transition-all duration-300"
+                  >
+                    Cohort Program
+                  </Link>
+                </li>
               </ul>
             </div>
           </AnimationContainer>

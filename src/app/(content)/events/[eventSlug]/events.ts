@@ -3,10 +3,12 @@ export const availableEvents =  {
     "id": "cc-2025-cohort-01",
     "slug": "cohort",
     "type": "cohort_based",
-    "title": "Self-Discovery Program",
+    "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
+    "title": "Self Discovery Journey",
     "description": "It’s a space where you explore yourself, understand your strengths, and create a path that truly reflects who you are. Over a month, through guided conversations, engaging activities, and expert-led discussions, you will take a deep dive into your interests, abilities, and aspirations. We don’t offer advice or ready-made answers—we help you realize your capability and build your own roadmap.",
     "startDate": "2025-04-15T00:00:00Z",
     "endDate": "2025-05-15T00:00:00Z",
+    "registrationEndDate": "2025-04-10T00:00:00Z",
     "duration": "4 weeks",
     "format": "Cohort-based program",
     "price": 11999.00,
@@ -17,7 +19,7 @@ export const availableEvents =  {
     "instructor": {
       "name": "Akarsh Sriramoju",
       "title": "Education Psychologist",
-      "bio": "15+ years experience helping professionals transition careers and advance to leadership positions. Former HR Director at Fortune 500 companies.",
+      "bio": "Akarsh has 4 years of experience as an educational psychologist and academic researcher. A gold medalist from University of Hyderabad in Neural and Cognitive Sciences, he is proficient in coaching psychology, shaping careers and well-being.",
       "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1744848000&v=beta&t=dUfTD4siiUqBlRlP024wrIOIcQg7N7JLfvbfHVuNQDc"
     },
     // "schedule": [
@@ -128,13 +130,13 @@ export const availableEvents =  {
         "description": "Learn ways to handle uncertainty and reduce pressure."
       },
     ],
-    // "testimonials": [
-    //   {
-    //     "name": "Michael T.",
-    //     "position": "Project Manager to Director",
-    //     "quote": "This cohort program was transformational. I landed a director position within 2 months of completing it, with a 35% salary increase."
-    //   }
-    // ],
+    "testimonials": [
+      {
+        "name": "Ritwika S.",
+        "position": "Business Development Executive",
+        "quote": "My experience throughout the sessions with Akarsh has been transformative, helping me gain clarity and focus in my personal and professional life. The structured guidance and actionable strategies provided during our sessions have been instrumental in building my confidence and improving my consistency. I particularly valued the emphasis on emotional stability and identifying my pros and cons, positively influencing my overall mindset. I am grateful for the support and highly recommend these sessions to anyone seeking growth and direction."
+      }
+    ],
     // "registrationUrl": "https://example.com/events/career-transformation-cohort-spring-2025"
   },
   seminar: {

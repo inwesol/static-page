@@ -322,7 +322,7 @@ const ContactUs = () => {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full md:w-auto bg-indigo-500 hover:bg-indigo-500/90 text-white font-medium py-2 px-6 rounded-xl transition-colors"
+                      className="w-full md:w-auto bg-primary-blue-500 hover:bg-primary-blue-600 font-medium py-2 px-6 rounded-xl transition-colors"
                     >
                       {isSubmitting ? (
                         <>

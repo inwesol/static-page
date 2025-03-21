@@ -109,8 +109,10 @@ type Event = {
   type: string;
   title: string;
   description: string;
+  bannerImageUrl: string;
   startDate?: string;
   endDate?: string;
+  registrationEndDate?: string;
   date?: string;
   duration: string;
   format: string;
@@ -149,6 +151,16 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
   const [isScheduling, setIsScheduling] = useState(false);
   const [schedulingComplete, setSchedulingComplete] = useState(false);
   const router = useRouter();
+
+  const isRegistrationClosed = () => {
+    if (!event.registrationEndDate) return false;
+
+    const today = new Date();
+    const endDate = parseISO(event.registrationEndDate);
+    return today > endDate;
+  };
+
+  const registrationClosed = isRegistrationClosed();
 
   const formatDate = (dateString: string) => {
     try {
@@ -190,12 +202,24 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
 
   return (
     <div className="relative">
+      {/* Banner Image */}
+      <div className="w-full h-[200px] md:h-[300px] lg:h-[350px] relative mb-0">
+        <Image
+          src={event.bannerImageUrl}
+          alt={event.title}
+          fill
+          className="object-contain"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-green-800/10"></div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main content - 2/3 width on desktop */}
           <div className="lg:col-span-2">
             <div className="mb-6">
-              <Badge className="mb-2 bg-indigo-100 text-indigo-800 hover:bg-indigo-200">
+              <Badge className="mb-2 bg-primary-green-100 text-primary-green-800 hover:bg-primary-green-200">
                 {getEventTypeLabel(event.type)}
               </Badge>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -206,7 +230,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {event.startDate && event.endDate ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-indigo-600 mr-2" />
+                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
                     <span>
                       {formatDate(event.startDate)} -{" "}
                       {formatDate(event.endDate)}
@@ -214,23 +238,23 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   </div>
                 ) : event.date ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-indigo-600 mr-2" />
+                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
                     <span>{formatDate(event.date)}</span>
                   </div>
                 ) : null}
 
                 <div className="flex items-center">
-                  <Clock className="h-5 w-5 text-indigo-600 mr-2" />
+                  <Clock className="h-5 w-5 text-primary-green-600 mr-2" />
                   <span>{event.duration}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-indigo-600 mr-2" />
+                  <MapPin className="h-5 w-5 text-primary-green-600 mr-2" />
                   <span>{getLocationString()}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <Users className="h-5 w-5 text-indigo-600 mr-2" />
+                  <Users className="h-5 w-5 text-primary-green-600 mr-2" />
                   <span>
                     {event.seatsRemaining} seats remaining out of {event.seats}
                   </span>
@@ -245,7 +269,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     {event.offers && (
                       <TabsTrigger
                         value="offers"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-indigo-600 data-[state=active]:border-b-2 data-[state=active]:border-indigo-600 border-b-2 border-transparent"
+                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
                       >
                         What&apos;s Inside?
                       </TabsTrigger>
@@ -253,7 +277,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     {event.facilitates && (
                       <TabsTrigger
                         value="facilitates"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-indigo-600 data-[state=active]:border-b-2 data-[state=active]:border-indigo-600 border-b-2 border-transparent"
+                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
                       >
                         Why This Program?
                       </TabsTrigger>
@@ -261,21 +285,21 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     {event.achieves && (
                       <TabsTrigger
                         value="achieves"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-indigo-600 data-[state=active]:border-b-2 data-[state=active]:border-indigo-600 border-b-2 border-transparent"
+                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
                       >
                         What&apos;ll You Get?
                       </TabsTrigger>
                     )}
                     <TabsTrigger
                       value="instructor"
-                      className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-indigo-600 data-[state=active]:border-b-2 data-[state=active]:border-indigo-600 border-b-2 border-transparent"
+                      className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
                     >
-                      Instructor
+                      Program Coach
                     </TabsTrigger>
                     {(event.schedule || event.agenda) && (
                       <TabsTrigger
                         value="schedule"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-indigo-600 data-[state=active]:border-b-2 data-[state=active]:border-indigo-600 border-b-2 border-transparent"
+                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
                       >
                         {event.schedule ? "Schedule" : "Agenda"}
                       </TabsTrigger>
@@ -296,9 +320,9 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           <ul className="space-y-3">
                             {event.offers.map((offer, index) => (
                               <li key={index} className="flex items-start">
-                                <Search className="h-5 w-5 text-indigo-600 mr-3 flex-shrink-0 mt-0.5" />
+                                <Search className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-indigo-600 mb-1">
+                                  <h4 className="font-medium text-primary-green-600 mb-1">
                                     {offer.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -325,9 +349,9 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           <ul className="space-y-3">
                             {event.facilitates.map((item, index) => (
                               <li key={index} className="flex items-start">
-                                <ChevronRight className="h-5 w-5 text-indigo-600 mr-3 flex-shrink-0 mt-0.5" />
+                                <ChevronRight className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-indigo-600 mb-1">
+                                  <h4 className="font-medium text-primary-green-600 mb-1">
                                     {item.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -354,9 +378,9 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           <ul className="space-y-3">
                             {event.achieves.map((item, index) => (
                               <li key={index} className="flex items-start">
-                                <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" />
+                                <CheckCircle className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-indigo-600 mb-1">
+                                  <h4 className="font-medium text-primary-green-600 mb-1">
                                     {item.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -378,16 +402,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       <div className="flex flex-col md:flex-row gap-6">
                         <div className="md:w-1/4 w-1/3 mx-auto md:mx-0">
                           <div className="aspect-square bg-gray-200 rounded-full overflow-hidden">
-                            {/* Replace with actual image when available */}
-                            {/* <Image
-                              src={event.instructor.imageUrl}
-                              alt={event.instructor.name}
-                              width={300}
-                              height={300}
-                              className="rounded-full transition-transform duration-500 group-hover:scale-105"
-                            /> */}
-
-                            <div className="w-full h-full flex items-center justify-center bg-indigo-100 text-indigo-800">
+                            <div className="w-full h-full flex items-center justify-center bg-primary-green-100 text-primary-green-800">
                               {/* <User className="h-12 w-12" /> */}
                               <Image
                                 src={event.instructor.imageUrl}
@@ -405,7 +420,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           <h3 className="text-xl font-semibold mb-1">
                             {event.instructor.name}
                           </h3>
-                          <p className="text-indigo-600 mb-4">
+                          <p className="text-primary-green-600 mb-4">
                             {event.instructor.title}
                           </p>
                           <p className="text-gray-600">
@@ -430,7 +445,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                               <CardContent className="p-4">
                                 <div className="flex flex-col md:flex-row md:items-center justify-between">
                                   <div>
-                                    <p className="font-medium text-indigo-600">
+                                    <p className="font-medium text-primary-green-600">
                                       {item.topic || item.activity}
                                     </p>
                                     {item.session && (
@@ -457,6 +472,45 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 )}
               </div>
             </Tabs>
+
+            {/* Testimonials Section */}
+            {event.testimonials && event.testimonials.length > 0 && (
+              <div className="mt-12 mb-8">
+                <h2 className="text-2xl font-bold mb-6">What People Say</h2>
+                <div className="grid grid-cols-1 gap-6 max-w-3xl">
+                  {event.testimonials.map((testimonial, index) => (
+                    <Card
+                      key={index}
+                      className="bg-primary-green-50/50 border-none shadow-sm rounded-xl"
+                    >
+                      <CardContent className="p-6">
+                        <div className="flex flex-col h-full">
+                          <div className="mb-4">
+                            <svg
+                              className="h-8 w-8 text-primary-green-400"
+                              fill="currentColor"
+                              viewBox="0 0 32 32"
+                              aria-hidden="true"
+                            >
+                              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                            </svg>
+                          </div>
+                          <p className="text-gray-700 italic mb-4 flex-grow">
+                            &ldquo;{testimonial.quote}&rdquo;
+                          </p>
+                          <div className="mt-auto">
+                            <p className="font-semibold">{testimonial.name}</p>
+                            <p className="text-sm text-gray-600">
+                              {testimonial.position}
+                            </p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Registration card - 1/3 width on desktop, sticky on desktop */}
@@ -470,8 +524,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
 
                   <CardDescription>
                     This is your chance to truly understand yourself, build your
-                    own path, and take charge of your future. No pre-made
-                    answers—just guided discovery and real clarity.
+                    own path, and take charge of your future.
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -490,7 +543,12 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     <Separator />
                     <div className="flex justify-between">
                       <span className="text-gray-600">
-                        Spots are limited. Secure yours today!
+                        Registration Closing Date
+                      </span>
+                      <span className="font-medium">
+                        {event.registrationEndDate
+                          ? formatDate(event.registrationEndDate)
+                          : "N/A"}
                       </span>
                     </div>
                   </div>
@@ -498,8 +556,13 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 <CardFooter>
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Button className="w-full bg-primary-green-400 hover:bg-primary-green-600 rounded-xl">
-                        Schedule Free Session Now
+                      <Button
+                        className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+                        disabled={registrationClosed}
+                      >
+                        {registrationClosed
+                          ? "Registration Closed"
+                          : "Schedule Now"}
                       </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[900px]">
@@ -542,7 +605,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                               </h4>
                               <div className="flex flex-row gap-4">
                                 <div className="flex items-start">
-                                  <Mail className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                                  <Mail className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
                                   <div>
                                     <p className="font-medium">
                                       Check Your Email
@@ -555,7 +618,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                                 </div>
 
                                 <div className="flex items-start">
-                                  <Calendar className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                                  <Calendar className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
                                   <div>
                                     <p className="font-medium">
                                       Add to Your Calendar
@@ -567,7 +630,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                                 </div>
 
                                 <div className="flex items-start">
-                                  <CheckCircle className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                                  <CheckCircle className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
                                   <div>
                                     <p className="font-medium">
                                       Download Attached Goodie
@@ -608,8 +671,11 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
       <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
         <Drawer>
           <DrawerTrigger asChild>
-            <Button className="w-full bg-primary-green-400 hover:bg-primary-green-600 rounded-xl">
-              Schedule Free Session Now
+            <Button
+              className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+              disabled={registrationClosed}
+            >
+              {registrationClosed ? "Registration Closed" : "Schedule Now"}
             </Button>
           </DrawerTrigger>
           <DrawerContent>
@@ -623,11 +689,11 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 <DrawerDescription className="text-center text-gray-600">
                   {schedulingComplete
                     ? "Thank you for scheduling your session"
-                    : "Choose a time that works for you"}
+                    : `Choose a time that works for you.`}
                 </DrawerDescription>
               </DrawerHeader>
 
-              <div className="p-4 pb-0">
+              <div className="p-4">
                 {schedulingComplete ? (
                   <div className="space-y-6">
                     {/* <Alert className="bg-green-50 border-green-200">
@@ -640,7 +706,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     <div className="space-y-4 py-8">
                       <h4 className="font-medium">After Schedule Checklist:</h4>
                       <div className="flex items-start">
-                        <Mail className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                        <Mail className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
                         <div>
                           <p className="font-medium">Check Your Email</p>
                           <p className="text-sm text-gray-500">
@@ -650,7 +716,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       </div>
 
                       <div className="flex items-start">
-                        <Calendar className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                        <Calendar className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
                         <div>
                           <p className="font-medium">Add to Your Calendar</p>
                           <p className="text-sm text-gray-500">
@@ -659,7 +725,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                         </div>
                       </div>
                       <div className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-indigo-600 mr-2 mt-0.5" />
+                        <CheckCircle className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
                         <div>
                           <p className="font-medium">
                             Download Attached Goodie
@@ -685,7 +751,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       onClick={() => {
                         setSchedulingComplete(true);
                       }}
-                      className="w-full bg-primary-green-400 hover:bg-primary-green-600"
+                      className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl"
                     >
                       Confirm Scheduling
                     </Button>

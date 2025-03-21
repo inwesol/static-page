@@ -59,6 +59,33 @@ const HeroSection = () => {
 
   return (
     <section className="flex flex-col items-center justify-center pb-16 px-4 space-y-6 lg:space-y-12 h-screen max-h-[800px]">
+      <AnimationContainer delay={0.3} reverse viewport>
+        <div className="relative group">
+          <a
+            href="/events/cohort"
+            className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary-green-600 to-primary-blue-500 text-white font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 max-w-[90vw] sm:max-w-none"
+          >
+            <span className="animate-bounce shrink-0 text-xl">🚀</span>
+            <span className="truncate">First Cohort Program Launched!</span>
+            <span className="hidden sm:inline">Book Free Session Now</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-3 w-3 sm:h-4 sm:w-4 shrink-0"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+      </AnimationContainer>
+
       <AnimationContainer delay={0.4} reverse viewport>
         <HeroHeading />
       </AnimationContainer>

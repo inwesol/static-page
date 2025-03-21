@@ -101,6 +101,19 @@ const config = {
           900: '#007631',
           950: '#004d20',
         },
+        'primary-blue': {
+          50: '#edf6fc',
+          100: '#daedf9',
+          200: '#b6dbf3',
+          300: '#91c9ed',
+          400: '#6db7e7',
+          500: '#48a5e1',
+          600: '#3FA1D8', // Your original color
+          700: '#2383bc',
+          800: '#1c6998',
+          900: '#154f74',
+          950: '#0f3550',
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -206,6 +219,10 @@ const config = {
             transform: "rotate(360deg)",
           },
         },
+        'pulse-subtle': {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.04)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -222,6 +239,7 @@ const config = {
         rotate: "rotate 3s linear infinite both",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         loading: "loading 0.5s linear infinite",
+        'pulse-subtle': 'pulse-subtle 3s infinite',
       },
     },
   },

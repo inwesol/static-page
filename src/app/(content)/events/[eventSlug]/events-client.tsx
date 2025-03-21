@@ -553,7 +553,15 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="flex flex-col space-y-2">
+                  <div className="w-full text-center">
+                    <p className="font-medium text-primary-blue-500">
+                      Experience a Free Session
+                    </p>
+                    {/* <p className="text-xs text-gray-500 mb-2">
+                      (condition applied)
+                    </p> */}
+                  </div>
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button
@@ -669,6 +677,11 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
 
       {/* Mobile sticky registration button */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
+        <div className="text-center mb-1">
+          <p className="text-sm text-primary-blue-500 mb-1">
+            Experience a Free Session
+          </p>
+        </div>
         <Drawer>
           <DrawerTrigger asChild>
             <Button

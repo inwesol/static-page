@@ -5,8 +5,8 @@ export const availableEvents =  {
     "type": "cohort_based",
     "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
     "title": "Self Discovery Journey",
-    "description": "It’s a space where you explore yourself, understand your strengths, and create a path that truly reflects who you are. Over a month, through guided conversations, engaging activities, and expert-led discussions, you will take a deep dive into your interests, abilities, and aspirations. We don’t offer advice or ready-made answers—we help you realize your capability and build your own roadmap.",
-    "startDate": "2025-04-15T00:00:00Z",
+    "description": "It’s a space where you explore yourself, understand your strengths, and create a path that truly reflects who you are. Over a month, through guided conversations with our psychologists, engaging activities, and expert-led discussions, you will take a deep dive into your interests, abilities, and aspirations. We don’t offer advice or ready-made answers—we help you realize your capability, develop positive behaviours and build your own roadmap.",
+    "startDate": "2025-04-14T00:00:00Z",
     "endDate": "2025-05-15T00:00:00Z",
     "registrationEndDate": "2025-04-10T00:00:00Z",
     "duration": "4 weeks",
@@ -75,7 +75,7 @@ export const availableEvents =  {
     "offers": [
       {
         "heading": "8 One-on-One Coaching Sessions",
-        "description": "Thought-provoking conversations to help you understand yourself better and recognize what truly drives you."
+        "description": "Thought-provoking conversations with a Psychologist, to help you understand yourself better and recognize what truly drives you."
       },
       {
         "heading": "2 Masterclasses by Experts",
@@ -83,7 +83,7 @@ export const availableEvents =  {
       },
       {
         "heading": "Self-Discovery Activities & Assessments",
-        "description": "Exercises designed to help you reflect, question, and uncover patterns in your thoughts and actions."
+        "description": "Exercises designed to help you reflect, question, and recognise patterns in your thoughts and actions."
       },
       {
         "heading": "Community & Conversations",
@@ -97,21 +97,21 @@ export const availableEvents =  {
     "facilitates": [
       {
         "heading": "Personalized Exploration",
-        "description": "You are unique, so is your journey. Our one-on-one sessions are built around your experiences, thoughts, and reflections."
+        "description": "You are unique, so is your journey. Our one-on-one sessions are are non judgemental, but built around your experiences, thoughts, and reflections."
       },
       {
         "heading": "Whole-Self Growth",
-        "description": "This program is about you as a person, not just your career. We help you look beyond job titles and degrees to find what truly fits you."
+        "description": "This program is about you as a person, not just your career. We help you look beyond job titles and degrees to find what truly suits you."
       },
       {
         "heading": "Evidence-Based Approach",
-        "description": "Everything we do is rooted in coaching psychology—not opinions, not guesswork, but methods proven to help people understand themselves better."
+        "description": "Everything we do is rooted in coaching psychology—not opinions, not guesswork, but proven methods to help people understand themselves better."
       },
     ],
     "achieves": [
       {
         "heading": "Gain Clarity",
-        "description": "Understand your strengths and what aligns with your nature."
+        "description": "Understand your strengths and what aligns with your interests."
       },
       {
         "heading": "Build Confidence",
@@ -119,7 +119,7 @@ export const availableEvents =  {
       },
       {
         "heading": "Make Thoughtful Decisions",
-        "description": "Choose paths that match your skills and interests."
+        "description": "Choose paths that match your skills and abilities."
       },
       {
         "heading": "Shape Your Future",

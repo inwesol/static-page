@@ -290,11 +290,18 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                         What&apos;ll You Get?
                       </TabsTrigger>
                     )}
+
                     <TabsTrigger
                       value="instructor"
                       className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
                     >
                       Program Coach
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="pricing"
+                      className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
+                    >
+                      Pricing
                     </TabsTrigger>
                     {(event.schedule || event.agenda) && (
                       <TabsTrigger
@@ -312,10 +319,10 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.offers && (
                   <TabsContent value="offers">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="text-xl font-semibold mb-4">
                         What&apos;s Inside?
-                      </h3>
-                      <Card>
+                      </h3> */}
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.offers.map((offer, index) => (
@@ -341,10 +348,10 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.facilitates && (
                   <TabsContent value="facilitates">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="text-xl font-semibold mb-4">
                         Why This Program?
-                      </h3>
-                      <Card>
+                      </h3> */}
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.facilitates.map((item, index) => (
@@ -370,10 +377,10 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.achieves && (
                   <TabsContent value="achieves">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="text-xl font-semibold mb-4">
                         What&apos;ll You Get?
-                      </h3>
-                      <Card>
+                      </h3> */}
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.achieves.map((item, index) => (
@@ -396,10 +403,113 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   </TabsContent>
                 )}
 
+                <TabsContent value="pricing">
+                  <div>
+                    {/* <h3 className="text-xl font-semibold mb-4">
+                      What&apos;s the Price?
+                    </h3> */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* One Time Payment Card */}
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                        <CardHeader className="bg-primary-green-50 border-b border-gray-200 rounded-t-xl">
+                          <CardTitle className="text-lg text-primary-green-700">
+                            One Time Payment
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="text-center">
+                            <p className="text-3xl font-bold text-gray-800 mb-2">
+                              ₹12000{"  "}
+                              <span className="text-gray-600 font-normal text-sm">
+                                + GST (18%)
+                              </span>
+                            </p>
+                            {/* <p className="text-gray-600">+ GST (18%)</p> */}
+                          </div>
+                          <div className="mt-4 pt-4 border-t border-gray-100">
+                            <ul className="space-y-2">
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <span className="text-sm">
+                                  Complete access to program
+                                </span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <span className="text-sm">
+                                  Simple one-time payment
+                                </span>
+                              </li>
+                              <li className="flex items-center">
+                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <span className="text-sm">
+                                  No additional fees
+                                </span>
+                              </li>
+                            </ul>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Two Time Payment Card */}
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                        <CardHeader className="bg-primary-blue-50 border-b border-gray-200 rounded-t-xl">
+                          <CardTitle className="text-lg text-primary-blue-700">
+                            Two Time Payment
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <div className="space-y-4">
+                            <div className="flex items-center justify-between pb-2 border-b border-gray-100">
+                              <div className="flex items-center">
+                                <div className="bg-primary-blue-100 text-primary-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-2 font-semibold text-sm">
+                                  1
+                                </div>
+                                <span className="text-gray-700">
+                                  First Installment
+                                </span>
+                              </div>
+                              <div>
+                                <p className="font-semibold text-lg text-gray-800">
+                                  ₹6500
+                                </p>
+                                <p className="text-xs text-gray-600">
+                                  + GST (18%)
+                                </p>
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between pb-2">
+                              <div className="flex items-center">
+                                <div className="bg-primary-blue-100 text-primary-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-2 font-semibold text-sm">
+                                  2
+                                </div>
+                                <span className="text-gray-700">
+                                  Second Installment
+                                </span>
+                              </div>
+                              <div>
+                                <p className="font-semibold text-lg text-gray-800">
+                                  ₹6500
+                                </p>
+                                <p className="text-xs text-gray-600">
+                                  + GST (18%)
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                    <p className="mt-4 text-sm text-gray-600 italic">
+                      *Terms and conditions applied
+                    </p>
+                  </div>
+                </TabsContent>
+
                 <TabsContent value="instructor">
-                  <Card>
-                    <CardContent className="p-6">
-                      <div className="flex flex-col md:flex-row gap-6">
+                  <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                    <CardContent className="p-6 bg-primary-green-50 rounded-xl">
+                      <div className="flex flex-col md:flex-row gap-6 ">
                         <div className="md:w-1/4 w-1/3 mx-auto md:mx-0">
                           <div className="aspect-square bg-gray-200 rounded-full overflow-hidden">
                             <div className="w-full h-full flex items-center justify-center bg-primary-green-100 text-primary-green-800">
@@ -420,7 +530,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           <h3 className="text-xl font-semibold mb-1">
                             {event.instructor.name}
                           </h3>
-                          <p className="text-primary-green-600 mb-4">
+                          <p className="text-primary-green-700 mb-4">
                             {event.instructor.title}
                           </p>
                           <p className="text-gray-600">

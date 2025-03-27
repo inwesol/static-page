@@ -132,9 +132,14 @@ export const availableEvents =  {
     ],
     "testimonials": [
       {
-        "name": "Ritwika S.",
+        "name": "Ritwika S",
         "position": "Business Development Executive",
         "quote": "My experience throughout the sessions with Akarsh has been transformative, helping me gain clarity and focus in my personal and professional life. The structured guidance and actionable strategies provided during our sessions have been instrumental in building my confidence and improving my consistency. I particularly valued the emphasis on emotional stability and identifying my pros and cons, positively influencing my overall mindset. I am grateful for the support and highly recommend these sessions to anyone seeking growth and direction."
+      },
+      {
+        "name": "Amulika G",
+        "position": "Tennis Player",
+        "quote": "The coaching sessions I had with Akarsh helped me a lot. I felt truly heard and understood. There were specific breathing exercises and activities we did that allowed me to gain a better understanding of my situation. I also think that Akarsh’s ability to reach out consistently showing an effort helped me make more of an effort from my side as well. In a particular activity, we set up some images according to how I view life and the goals that I have. This activity helped me understand what I was missing in my present, and how that was affecting me."
       }
     ],
     // "registrationUrl": "https://example.com/events/career-transformation-cohort-spring-2025"

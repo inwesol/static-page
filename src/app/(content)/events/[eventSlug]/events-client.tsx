@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { format, parseISO } from "date-fns";
 import {
@@ -15,6 +15,7 @@ import {
   CreditCard,
   Mail,
   Search,
+  ChevronLeft,
 } from "lucide-react";
 import {
   Drawer,
@@ -150,7 +151,37 @@ interface EventsClientProps {
 const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
   const [isScheduling, setIsScheduling] = useState(false);
   const [schedulingComplete, setSchedulingComplete] = useState(false);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const router = useRouter();
+
+  // Auto-rotate testimonials every 5 seconds
+  useEffect(() => {
+    if (event.testimonials && event.testimonials.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentTestimonialIndex(
+          (prevIndex) => (prevIndex + 1) % event.testimonials!.length
+        );
+      }, 3500);
+
+      return () => clearInterval(interval);
+    }
+  }, [event.testimonials]);
+
+  const goToPreviousTestimonial = () => {
+    if (event.testimonials && event.testimonials.length > 1) {
+      setCurrentTestimonialIndex((prevIndex) =>
+        prevIndex === 0 ? event.testimonials!.length - 1 : prevIndex - 1
+      );
+    }
+  };
+
+  const goToNextTestimonial = () => {
+    if (event.testimonials && event.testimonials.length > 1) {
+      setCurrentTestimonialIndex(
+        (prevIndex) => (prevIndex + 1) % event.testimonials!.length
+      );
+    }
+  };
 
   const isRegistrationClosed = () => {
     if (!event.registrationEndDate) return false;
@@ -587,37 +618,91 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
             {event.testimonials && event.testimonials.length > 0 && (
               <div className="mt-12 mb-8">
                 <h2 className="text-2xl font-bold mb-6">What People Say</h2>
-                <div className="grid grid-cols-1 gap-6 max-w-3xl">
-                  {event.testimonials.map((testimonial, index) => (
-                    <Card
-                      key={index}
-                      className="bg-primary-green-50/50 border-none shadow-sm rounded-xl"
-                    >
-                      <CardContent className="p-6">
-                        <div className="flex flex-col h-full">
-                          <div className="mb-4">
-                            <svg
-                              className="h-8 w-8 text-primary-green-400"
-                              fill="currentColor"
-                              viewBox="0 0 32 32"
-                              aria-hidden="true"
-                            >
-                              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                            </svg>
-                          </div>
-                          <p className="text-gray-700 italic mb-4 flex-grow">
-                            &ldquo;{testimonial.quote}&rdquo;
-                          </p>
-                          <div className="mt-auto">
-                            <p className="font-semibold">{testimonial.name}</p>
-                            <p className="text-sm text-gray-600">
-                              {testimonial.position}
-                            </p>
-                          </div>
+                <div className="max-w-3xl relative">
+                  <Card className="bg-primary-green-50/50 border-none shadow-sm rounded-xl overflow-hidden">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col h-full">
+                        <div className="mb-4">
+                          <svg
+                            className="h-8 w-8 text-primary-green-400"
+                            fill="currentColor"
+                            viewBox="0 0 32 32"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                          </svg>
                         </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+
+                        {/* Testimonial content - use display method instead of absolute positioning */}
+                        {event.testimonials.map((testimonial, index) => (
+                          <div
+                            key={index}
+                            className={`transition-all duration-500 ease-in-out ${
+                              index === currentTestimonialIndex
+                                ? "opacity-100 transform-none"
+                                : "hidden"
+                            }`}
+                          >
+                            <p className="text-gray-700 italic mb-4">
+                              &ldquo;{testimonial.quote}&rdquo;
+                            </p>
+                            <div>
+                              <p className="font-semibold">
+                                {testimonial.name}
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                {testimonial.position}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {event.testimonials.length > 1 && (
+                    <>
+                      {/* Navigation controls - uncomment if you want button navigation */}
+                      {/* <div className="absolute inset-y-0 left-0 flex items-center">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={goToPreviousTestimonial}
+                          className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                          aria-label="Previous testimonial"
+                        >
+                          <ChevronLeft className="h-4 w-4 text-primary-green-600" />
+                        </Button>
+                      </div>
+                      <div className="absolute inset-y-0 right-0 flex items-center">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={goToNextTestimonial}
+                          className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                          aria-label="Next testimonial"
+                        >
+                          <ChevronRight className="h-4 w-4 text-primary-green-600" />
+                        </Button>
+                      </div> */}
+
+                      {/* Indicator dots */}
+                      <div className="flex justify-center mt-4 space-x-2">
+                        {event.testimonials.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentTestimonialIndex(index)}
+                            className={`h-2 rounded-full transition-all duration-300 ${
+                              index === currentTestimonialIndex
+                                ? "bg-primary-green-600 w-4"
+                                : "bg-gray-300 hover:bg-gray-400 w-2"
+                            }`}
+                            aria-label={`Go to testimonial ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             )}

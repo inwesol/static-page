@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     const { email, firstName, lastName, message, phone = '', subject } = body;
     
     const sheetId = process.env.GOOGLE_SHEET_ID as string;
-    const range = 'Sheet2!A:G';  // Using Sheet2 with columns A through G
+    const range = 'Contact-Us!A:G';  // Using Sheet2 with columns A through G
     const timestamp = new Date().toISOString();
     const values = [timestamp, email, firstName, lastName, subject, message, phone ];
     
@@ -56,12 +56,28 @@ export async function POST(request: Request) {
       console.error('Error saving contact form data:', error);
       return NextResponse.json({ message: 'Error saving contact form data' }, { status: 500 });
     }
-  } else {
+  }
+  else if (formType === 'webinar-registration') {
+    const { email, fullName, phone, occupation, company, specialRequirements } = body;
+    
+    const sheetId = process.env.GOOGLE_SHEET_ID as string;
+    const range = 'Webinar-List!A:G';  // Using Sheet2 with columns A through G
+    const timestamp = new Date().toISOString();
+    const values = [timestamp, email, fullName, phone, occupation, company, specialRequirements ];
+    
+    try {
+      await appendToSheet(sheetId, range, values);
+      return NextResponse.json({ message: 'Webinar registration form data saved successfully' }, { status: 200 });
+    } catch (error) {
+      console.error('Error saving webinar registration form data:', error);
+      return NextResponse.json({ message: 'Error saving webinar registration form data' }, { status: 500 });
+    }
+  }else {
     // Original email-only form logic
     const { email } = body;
     
     const sheetId = process.env.GOOGLE_SHEET_ID as string;
-    const range = 'Sheet1!A:A';
+    const range = 'Notify-Me!A:A';
     const values = [email];
     
     try {

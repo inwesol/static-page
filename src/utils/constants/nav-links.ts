@@ -43,18 +43,23 @@ export const NAV_LINKS = [
     title: "Explorer",
     href: "/explorer/",
   },
+  // {
+  //   title: "CoCo",
+  //   href: "/coco/",
+  // },
   {
-    title: "CoCo",
-    href: "/coco/",
+    title: "Cohort Program",
+    href: "/events/cohort/",
+  },
+  {
+    title: "Free Workshop",
+    href: "/events/webiner-know-your-why/",
   },
   {
     title: "Our Story",
     href: "/story/",
   },
-  {
-    title: "Cohort Program",
-    href: "/events/cohort/",
-  },
+  
   {
     title: "Contact Us",
     href: "/contact-us/",

@@ -133,20 +133,28 @@ const Footer = () => {
                     Explorer
                   </Link>
                 </li>
-                <li className="mt-2">
+                {/* <li className="mt-2">
                   <Link
                     href="/coco/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     CoCo
                   </Link>
-                </li>
+                </li> */}
                 <li className="mt-2">
                   <Link
                     href="/events/cohort/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Cohort Program
+                  </Link>
+                </li>
+                <li className="mt-2">
+                  <Link
+                    href="/events/webiner-know-your-why/"
+                    className="hover:text-foreground transition-all duration-300"
+                  >
+                    Free Workshop
                   </Link>
                 </li>
               </ul>

@@ -2,7 +2,7 @@ import { createPool, QueryResultRow } from "@vercel/postgres";
 import { NextResponse } from "next/server";
 
 const pool = createPool({
-  connectionString: process.env.DB_URL,
+  connectionString: process.env.NEON_DB_URL,
 });
 
 async function getTasksRequired(id: string) {

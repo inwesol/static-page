@@ -220,9 +220,9 @@ export const availableEvents =  {
     ],
     "registrationUrl": "https://example.com/events/executive-presence-masterclass"
   },
-  "webiner-know-your-why": {
+  "webinar-know-your-why": {
     "id": "cc-2025-webinar-01",
-    "slug": "webiner-know-your-why",
+    "slug": "webinar-know-your-why",
     "type": "online_webinar",
     "title": "Online Workshop: Know Your Why",
     "description": "Is purpose the missing link in your journey? Join our webinar to learn what your ‘why’ is and how to find it for a purpose-driven career",

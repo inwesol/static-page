@@ -151,7 +151,7 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/events/webiner-know-your-why/"
+                    href="/events/webinar-know-your-why/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Free Workshop

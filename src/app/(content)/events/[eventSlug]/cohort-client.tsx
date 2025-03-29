@@ -716,7 +716,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                   <div
                     className="cursor-pointer rounded-xl lg:rounded-2xl transform transition-all duration-200 hover:scale-[1.01] hover:shadow-md"
                     onClick={() =>
-                      router.push("/events/webiner-know-your-why/")
+                      router.push("/events/webinar-know-your-why/")
                     }
                   >
                     <Card className="border border-primary-blue-100 shadow-sm rounded-xl overflow-hidden">

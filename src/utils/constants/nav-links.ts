@@ -53,7 +53,7 @@ export const NAV_LINKS = [
   },
   {
     title: "Free Workshop",
-    href: "/events/webiner-know-your-why/",
+    href: "/events/webinar-know-your-why/",
   },
   {
     title: "Our Story",

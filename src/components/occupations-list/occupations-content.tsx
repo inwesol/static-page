@@ -282,7 +282,7 @@ export function OccupationsContent({
         style={{ top: `${HEADER_OFFSET}px` }}
       >
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-4">
             <div className="flex-shrink-0">
               <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
                 Career Explorer
@@ -293,7 +293,7 @@ export function OccupationsContent({
               </p>
             </div>
 
-            <div className="w-2/3">
+            <div className="w-full lg:w-2/3">
               <OccupationsListSearch
                 occupations={occupations}
                 onFilteredOccupationsChange={setFilteredOccupations}

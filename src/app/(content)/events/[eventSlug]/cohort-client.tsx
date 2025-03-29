@@ -16,6 +16,7 @@ import {
   Mail,
   Search,
   ChevronLeft,
+  Timer,
 } from "lucide-react";
 import {
   Drawer,
@@ -148,7 +149,7 @@ interface EventsClientProps {
   event: Event;
 }
 
-const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
+const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   const [isScheduling, setIsScheduling] = useState(false);
   const [schedulingComplete, setSchedulingComplete] = useState(false);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -351,8 +352,8 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   <TabsContent value="offers">
                     <div>
                       {/* <h3 className="text-xl font-semibold mb-4">
-                        What&apos;s Inside?
-                      </h3> */}
+                            What&apos;s Inside?
+                        </h3> */}
                       <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
@@ -380,8 +381,8 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   <TabsContent value="facilitates">
                     <div>
                       {/* <h3 className="text-xl font-semibold mb-4">
-                        Why This Program?
-                      </h3> */}
+                            Why This Program?
+                        </h3> */}
                       <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
@@ -409,8 +410,8 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   <TabsContent value="achieves">
                     <div>
                       {/* <h3 className="text-xl font-semibold mb-4">
-                        What&apos;ll You Get?
-                      </h3> */}
+                            What&apos;ll You Get?
+                        </h3> */}
                       <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
@@ -437,12 +438,12 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 <TabsContent value="pricing">
                   <div>
                     {/* <h3 className="text-xl font-semibold mb-4">
-                      What&apos;s the Price?
-                    </h3> */}
+                        What&apos;s the Price?
+                        </h3> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {/* One Time Payment Card */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
-                        <CardHeader className="bg-primary-green-50 border-b border-gray-200 rounded-t-xl">
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl lg:rounded-2xl">
+                        <CardHeader className="bg-primary-green-50 border-b border-gray-200 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-green-700">
                             One Time Payment
                           </CardTitle>
@@ -483,8 +484,8 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       </Card>
 
                       {/* Two Time Payment Card */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
-                        <CardHeader className="bg-primary-blue-50 border-b border-gray-200 rounded-t-xl">
+                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl lg:rounded-2xl">
+                        <CardHeader className="bg-primary-blue-50 border-b border-gray-200 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-blue-700">
                             Two Time Payment
                           </CardTitle>
@@ -611,101 +612,153 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     </div>
                   </TabsContent>
                 )}
-              </div>
-            </Tabs>
 
-            {/* Testimonials Section */}
-            {event.testimonials && event.testimonials.length > 0 && (
-              <div className="mt-12 mb-8">
-                <h2 className="text-2xl font-bold mb-6">What People Say</h2>
-                <div className="max-w-3xl relative">
-                  <Card className="bg-primary-green-50/50 border-none shadow-sm rounded-xl overflow-hidden">
-                    <CardContent className="p-6">
-                      <div className="flex flex-col h-full">
-                        <div className="mb-4">
-                          <svg
-                            className="h-8 w-8 text-primary-green-400"
-                            fill="currentColor"
-                            viewBox="0 0 32 32"
-                            aria-hidden="true"
-                          >
-                            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                          </svg>
-                        </div>
-
-                        {/* Testimonial content - use display method instead of absolute positioning */}
-                        {event.testimonials.map((testimonial, index) => (
-                          <div
-                            key={index}
-                            className={`transition-all duration-500 ease-in-out ${
-                              index === currentTestimonialIndex
-                                ? "opacity-100 transform-none"
-                                : "hidden"
-                            }`}
-                          >
-                            <p className="text-gray-700 italic mb-4">
-                              &ldquo;{testimonial.quote}&rdquo;
-                            </p>
-                            <div>
-                              <p className="font-semibold">
-                                {testimonial.name}
-                              </p>
-                              <p className="text-sm text-gray-600">
-                                {testimonial.position}
-                              </p>
+                {/* Testimonials Section */}
+                {event.testimonials && event.testimonials.length > 0 && (
+                  <div className="mt-12 mb-8">
+                    <h2 className="text-2xl font-bold mb-6">What People Say</h2>
+                    <div className="max-w-3xl relative">
+                      <Card className="bg-primary-green-50/50 border-none shadow-sm rounded-xl overflow-hidden">
+                        <CardContent className="p-6">
+                          <div className="flex flex-col h-full">
+                            <div className="mb-4">
+                              <svg
+                                className="h-8 w-8 text-primary-green-400"
+                                fill="currentColor"
+                                viewBox="0 0 32 32"
+                                aria-hidden="true"
+                              >
+                                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                              </svg>
                             </div>
+
+                            {/* Testimonial content - use display method instead of absolute positioning */}
+                            {event.testimonials.map((testimonial, index) => (
+                              <div
+                                key={index}
+                                className={`transition-all duration-500 ease-in-out ${
+                                  index === currentTestimonialIndex
+                                    ? "opacity-100 transform-none"
+                                    : "hidden"
+                                }`}
+                              >
+                                <p className="text-gray-700 italic mb-4">
+                                  &ldquo;{testimonial.quote}&rdquo;
+                                </p>
+                                <div>
+                                  <p className="font-semibold">
+                                    {testimonial.name}
+                                  </p>
+                                  <p className="text-sm text-gray-600">
+                                    {testimonial.position}
+                                  </p>
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
+                        </CardContent>
+                      </Card>
 
-                  {event.testimonials.length > 1 && (
-                    <>
-                      {/* Navigation controls - uncomment if you want button navigation */}
-                      {/* <div className="absolute inset-y-0 left-0 flex items-center">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={goToPreviousTestimonial}
-                          className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
-                          aria-label="Previous testimonial"
-                        >
-                          <ChevronLeft className="h-4 w-4 text-primary-green-600" />
-                        </Button>
-                      </div>
-                      <div className="absolute inset-y-0 right-0 flex items-center">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={goToNextTestimonial}
-                          className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
-                          aria-label="Next testimonial"
-                        >
-                          <ChevronRight className="h-4 w-4 text-primary-green-600" />
-                        </Button>
-                      </div> */}
+                      {event.testimonials.length > 1 && (
+                        <>
+                          {/* Navigation controls - uncomment if you want button navigation */}
+                          {/* <div className="absolute inset-y-0 left-0 flex items-center">
+                                <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={goToPreviousTestimonial}
+                                className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                                aria-label="Previous testimonial"
+                                >
+                                <ChevronLeft className="h-4 w-4 text-primary-green-600" />
+                                </Button>
+                            </div>
+                            <div className="absolute inset-y-0 right-0 flex items-center">
+                                <Button
+                                variant="ghost"
+                                size="icon"
+                                onClick={goToNextTestimonial}
+                                className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                                aria-label="Next testimonial"
+                                >
+                                <ChevronRight className="h-4 w-4 text-primary-green-600" />
+                                </Button>
+                            </div> */}
 
-                      {/* Indicator dots */}
-                      <div className="flex justify-center mt-4 space-x-2">
-                        {event.testimonials.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setCurrentTestimonialIndex(index)}
-                            className={`h-2 rounded-full transition-all duration-300 ${
-                              index === currentTestimonialIndex
-                                ? "bg-primary-green-600 w-4"
-                                : "bg-gray-300 hover:bg-gray-400 w-2"
-                            }`}
-                            aria-label={`Go to testimonial ${index + 1}`}
-                          />
-                        ))}
-                      </div>
-                    </>
-                  )}
+                          {/* Indicator dots */}
+                          <div className="flex justify-center mt-4 space-x-2">
+                            {event.testimonials.map((_, index) => (
+                              <button
+                                key={index}
+                                onClick={() =>
+                                  setCurrentTestimonialIndex(index)
+                                }
+                                className={`h-2 rounded-full transition-all duration-300 ${
+                                  index === currentTestimonialIndex
+                                    ? "bg-primary-green-600 w-4"
+                                    : "bg-gray-300 hover:bg-gray-400 w-2"
+                                }`}
+                                aria-label={`Go to testimonial ${index + 1}`}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Free Webinar Card */}
+                <div className="mt-12 mb-8">
+                  <h2 className="text-2xl font-bold mb-6">
+                    Upcoming Free Webinar
+                  </h2>
+                  <div
+                    className="cursor-pointer rounded-xl lg:rounded-2xl transform transition-all duration-200 hover:scale-[1.01] hover:shadow-md"
+                    onClick={() =>
+                      router.push("/events/webinar-know-your-why/")
+                    }
+                  >
+                    <Card className="border border-primary-blue-100 shadow-sm rounded-xl overflow-hidden">
+                      <CardHeader className="bg-primary-blue-50 border-b border-primary-blue-100 pb-4">
+                        <CardTitle className="text-xl text-primary-blue-700">
+                          Online Workshop: Know Your Why
+                        </CardTitle>
+                        <CardDescription>
+                          Is purpose the missing link in your journey? <br />{" "}
+                          Join our webinar to learn what your &quot;why&quot; is
+                          and how to find it for a purpose-driven career.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="p-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="flex items-center">
+                            <CalendarDays className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <span>April 05, 2025</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Clock className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <span>11:00 AM - 1:00 PM IST</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Timer className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <span>2 hours</span>
+                          </div>
+                          <div className="flex items-center">
+                            <MapPin className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <span>Zoom Webinar</span>
+                          </div>
+                          {/* <div className="flex items-center">
+                            <CreditCard className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <span className="font-medium">Free</span>
+                          </div> */}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
               </div>
-            )}
+            </Tabs>
           </div>
 
           {/* Registration card - 1/3 width on desktop, sticky on desktop */}
@@ -754,8 +807,8 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       Experience a Free Session
                     </p>
                     {/* <p className="text-xs text-gray-500 mb-2">
-                      (condition applied)
-                    </p> */}
+                        (condition applied)
+                        </p> */}
                   </div>
                   <Dialog>
                     <DialogTrigger asChild>
@@ -850,17 +903,17 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       </div>
 
                       {/* <DialogFooter className="flex justify-end gap-4">
-                        {schedulingComplete ? (
-                          <Button
-                            onClick={() => router.push("/events")}
-                            className="bg-primary-green-400 hover:bg-primary-green-600"
-                          >
-                            View All Events
-                          </Button>
-                        ) : (
-                          <Button variant="outline">Cancel</Button>
-                        )}
-                      </DialogFooter> */}
+                            {schedulingComplete ? (
+                            <Button
+                                onClick={() => router.push("/events")}
+                                className="bg-primary-green-400 hover:bg-primary-green-600"
+                            >
+                                View All Events
+                            </Button>
+                            ) : (
+                            <Button variant="outline">Cancel</Button>
+                            )}
+                        </DialogFooter> */}
                     </DialogContent>
                   </Dialog>
                 </CardFooter>
@@ -992,4 +1045,4 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
   );
 };
 
-export default EventsClient;
+export default CohortClient;

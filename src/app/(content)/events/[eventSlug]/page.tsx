@@ -3,6 +3,8 @@ import React from "react";
 import EventsClient from "./events-client";
 import { availableEvents } from "./events";
 import { notFound } from "next/navigation";
+import CohortClient from "./cohort-client";
+import WebinarClient from "./webinar-client";
 
 // This makes the page dynamic so it re-evaluates for each request
 export const dynamic = "force-dynamic";
@@ -28,7 +30,13 @@ const EventPage = ({ params }: EventPageProps) => {
   return (
     <>
       <Navbar />
-      <EventsClient event={event} />
+      {event.type === "cohort_based" ? (
+        <CohortClient event={event} />
+      ) : event.type === "online_webinar" ? (
+        <WebinarClient event={event} />
+      ) : (
+        <EventsClient event={event} />
+      )}
       <Footer />
     </>
   );

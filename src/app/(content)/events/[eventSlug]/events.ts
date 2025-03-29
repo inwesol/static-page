@@ -8,7 +8,7 @@ export const availableEvents =  {
     "description": "It’s a space where you explore yourself, understand your strengths, and create a path that truly reflects who you are. Over a month, through guided conversations with our psychologists, engaging activities, and expert-led discussions, you will take a deep dive into your interests, abilities, and aspirations. We don’t offer advice or ready-made answers—we help you realize your capability, develop positive behaviours and build your own roadmap.",
     "startDate": "2025-04-14T00:00:00Z",
     "endDate": "2025-05-15T00:00:00Z",
-    "registrationEndDate": "2025-04-10T00:00:00Z",
+    "registrationEndDate": "2025-04-10T11:59:59Z",
     "duration": "4 weeks",
     "format": "Cohort-based program",
     "price": 11999.00,
@@ -132,9 +132,14 @@ export const availableEvents =  {
     ],
     "testimonials": [
       {
-        "name": "Ritwika S.",
+        "name": "Ritwika S",
         "position": "Business Development Executive",
         "quote": "My experience throughout the sessions with Akarsh has been transformative, helping me gain clarity and focus in my personal and professional life. The structured guidance and actionable strategies provided during our sessions have been instrumental in building my confidence and improving my consistency. I particularly valued the emphasis on emotional stability and identifying my pros and cons, positively influencing my overall mindset. I am grateful for the support and highly recommend these sessions to anyone seeking growth and direction."
+      },
+      {
+        "name": "Amulika G",
+        "position": "Tennis Player",
+        "quote": "The coaching sessions I had with Akarsh helped me a lot. I felt truly heard and understood. There were specific breathing exercises and activities we did that allowed me to gain a better understanding of my situation. I also think that Akarsh’s ability to reach out consistently showing an effort helped me make more of an effort from my side as well. In a particular activity, we set up some images according to how I view life and the goals that I have. This activity helped me understand what I was missing in my present, and how that was affecting me."
       }
     ],
     // "registrationUrl": "https://example.com/events/career-transformation-cohort-spring-2025"
@@ -215,27 +220,87 @@ export const availableEvents =  {
     ],
     "registrationUrl": "https://example.com/events/executive-presence-masterclass"
   },
-  "webiner-1": {
+  "webinar-know-your-why": {
     "id": "cc-2025-webinar-01",
-    "slug": "webiner-1",
+    "slug": "webinar-know-your-why",
     "type": "online_webinar",
-    "title": "Resume Revamp: Stand Out in the AI Screening Era",
-    "description": "Learn how to craft a resume that bypasses AI screening tools and catches the eye of hiring managers. This interactive webinar will teach you the latest techniques for resume optimization in 2025.",
-    "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
-    "date": "2025-04-22T17:00:00Z",
-    "duration": "90 minutes",
+    "title": "Online Workshop: Know Your Why",
+    "description": "Is purpose the missing link in your journey? Join our webinar to learn what your ‘why’ is and how to find it for a purpose-driven career",
+    "bannerImageUrl": "https://github.com/user-attachments/assets/cae8c9f0-7a2d-4e42-93c1-cff67c9ac47a",
+    "date": "2025-04-05T11:00:00Z",
+    "time": "11:00 AM - 1:00 PM IST",
+    "registrationEndDate": "2025-04-04T11:59:59Z",
+    "duration": "2 hours",
     "format": "Live online webinar",
-    "price": 49.00,
+    "price": 0.00,
     "currency": "USD",
-    "location": "Zoom",
+    "location": "Zoom Webinar",
     "seats": 100,
     "seatsRemaining": 76,
     "instructor": {
-      "name": "Alex Rivera",
-      "title": "Resume Expert & Career Coach",
-      "bio": "Former tech recruiter turned career coach. Helped over 500 professionals land interviews at top companies.",
-      "imageUrl": "https://example.com/images/instructors/alex-rivera.jpg"
+      "name": "Akarsh Sriramoju",
+      "title": "Education Psychologist",
+      "bio": "Akarsh has 4 years of experience as an educational psychologist and academic researcher. A gold medalist from University of Hyderabad in Neural and Cognitive Sciences, he is proficient in coaching psychology, shaping careers and well-being.",
+      "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1744848000&v=beta&t=dUfTD4siiUqBlRlP024wrIOIcQg7N7JLfvbfHVuNQDc"
     },
+    "offers": [
+      {
+        "heading": "8 One-on-One Coaching Sessions",
+        "description": "Thought-provoking conversations with a Psychologist, to help you understand yourself better and recognize what truly drives you."
+      },
+      {
+        "heading": "2 Masterclasses by Experts",
+        "description": "Deep discussions with professionals who share insights on growth, choices, and personal alignment."
+      },
+      {
+        "heading": "Self-Discovery Activities & Assessments",
+        "description": "Exercises designed to help you reflect, question, and recognise patterns in your thoughts and actions."
+      },
+      {
+        "heading": "Community & Conversations",
+        "description": "A space to connect with others on the same journey—exchange ideas, share experiences, and learn from different perspectives."
+      },
+      {
+        "heading": "Guided Action Plan Creation",
+        "description": "You won’t be handed a pre-made plan. Instead, we guide you in building your own, based on your discoveries throughout the program."
+      },
+    ],
+    "facilitates": [
+      {
+        "heading": "Personalized Exploration",
+        "description": "You are unique, so is your journey. Our one-on-one sessions are are non judgemental, but built around your experiences, thoughts, and reflections."
+      },
+      {
+        "heading": "Whole-Self Growth",
+        "description": "This program is about you as a person, not just your career. We help you look beyond job titles and degrees to find what truly suits you."
+      },
+      {
+        "heading": "Evidence-Based Approach",
+        "description": "Everything we do is rooted in coaching psychology—not opinions, not guesswork, but proven methods to help people understand themselves better."
+      },
+    ],
+    "achieves": [
+      {
+        "heading": "Gain Clarity",
+        "description": "Understand your strengths and what aligns with your interests."
+      },
+      {
+        "heading": "Build Confidence",
+        "description": "Make choices that feel right for you, not just what’s expected."
+      },
+      {
+        "heading": "Make Thoughtful Decisions",
+        "description": "Choose paths that match your skills and abilities."
+      },
+      {
+        "heading": "Shape Your Future",
+        "description": "Walk away with a plan that you created for yourself."
+      },
+      {
+        "heading": "Develop Emotional Balance",
+        "description": "Learn ways to handle uncertainty and reduce pressure."
+      },
+    ],
     "agenda": [
       {
         "time": "17:00 - 17:10",
@@ -267,12 +332,12 @@ export const availableEvents =  {
     ],
     "testimonials": [
       {
-        "name": "David L.",
-        "position": "Data Analyst",
-        "quote": "Applied the techniques from this webinar and immediately saw a 40% increase in interview callbacks."
+        "name": "Abhishek M",
+        "position": "Graduate Student",
+        "quote": "Applied the techniques from this webinar and immediately saw a confidence boost and a better understanding of my why."
       }
     ],
-    "registrationUrl": "https://example.com/events/resume-revamp-webinar"
+    // "registrationUrl": "https://example.com/events/resume-revamp-webinar"
   },
   "webiner-2": {
     "id": "cc-2025-webinar-02",

@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { OccupationsListSearch } from "./occupations-list-search";
 import { Occupation } from "./types";
+import { InterestFilter } from "./interest-filter";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -56,8 +57,10 @@ const getElementVisibleHeight = (element: HTMLElement): number => {
 
 export function OccupationsContent({
   occupations,
+  browseBy = "all",
 }: {
   occupations: Occupation[];
+  browseBy?: string;
 }) {
   const router = useRouter();
   const [filteredOccupations, setFilteredOccupations] = useState<
@@ -173,81 +176,47 @@ export function OccupationsContent({
     return () => window.removeEventListener("scroll", debouncedHandleScroll);
   }, [filteredOccupations, activeLetter, measurements]);
 
-  // Expanded scroll to letter function with better handling
-  // const scrollToLetter = useCallback(
-  //   (letter: string) => {
-  //     const targetElement = document.getElementById(`letter-${letter}`);
-  //     if (!targetElement) return;
+  // Handle interest search
+  const handleInterestSearch = (interests: string[]) => {
+    // Mock implementation of interest-based filtering
+    // In a real implementation, each occupation would have RIASEC codes
+    // and you would filter based on those codes
 
-  //     const { headerHeight } = measurements;
+    // For demonstration purposes, let's create a simple filtering mechanism:
+    // 1. Filter occupations that start with any of the selected interest letters
+    // 2. Group them by first letter for display
 
-  //     // Get all section elements and their current visibility states
-  //     const sectionsBeforeTarget = Object.keys(filteredOccupations)
-  //       .sort()
-  //       .filter((l) => l < letter)
-  //       .map((l) => document.getElementById(`letter-${l}`))
-  //       .filter((el): el is HTMLElement => el !== null);
+    const joinedInterests = interests.join("");
+    const firstLetterFiltered = occupations.filter((occupation) => {
+      // In a real implementation, you would check if the occupation has matching RIASEC codes
+      // This is a mock filter that just checks if any title words start with the selected interests
+      const words = occupation.title.split(" ");
+      return words.some((word) =>
+        interests.some((interest) => word.toUpperCase().startsWith(interest))
+      );
+    });
 
-  //     // Check if target section is already visible in the viewport
-  //     const targetRect = targetElement.getBoundingClientRect();
-  //     const isTargetVisible =
-  //       targetRect.top >= headerHeight &&
-  //       targetRect.bottom <= window.innerHeight;
+    // If no results from the simplified matching, just show a subset of occupations
+    // to demonstrate the UI still works
+    const filteredOccupations =
+      firstLetterFiltered.length > 0
+        ? firstLetterFiltered
+        : occupations.slice(0, 20); // Show first 20 as fallback
 
-  //     // If target is already well-positioned, just update the active letter
-  //     if (isTargetVisible) {
-  //       setActiveLetter(letter);
-  //       return;
-  //     }
+    // Group by first letter for display
+    const grouped = filteredOccupations.reduce((acc, occupation) => {
+      const firstLetter = occupation.title[0].toUpperCase();
+      if (!acc[firstLetter]) acc[firstLetter] = [];
+      acc[firstLetter].push(occupation);
+      return acc;
+    }, {} as Record<string, Occupation[]>);
 
-  //     // Calculate scroll position accounting for any collapsed/expanded content
-  //     let scrollPosition =
-  //       window.scrollY + targetRect.top - (headerHeight + HEADER_OFFSET);
+    // Update state with filtered results
+    setFilteredOccupations(grouped);
 
-  //     // Check if sections before this one have "Load More" content expanded
-  //     // This helps adjust the scroll position based on real content height
-  //     const expandedSections = sectionsBeforeTarget.filter((section) => {
-  //       const visibleCards = section ? getElementVisibleHeight(section) : 0;
-  //       // Consider a section expanded if it has significant visible height
-  //       return visibleCards > 100; // Arbitrary threshold to detect expanded content
-  //     });
-
-  //     // Add slight adjustment for expanded sections to improve accuracy
-  //     if (expandedSections.length > 0) {
-  //       // Small adjustment per expanded section to account for content variations
-  //       scrollPosition += expandedSections.length * 10;
-  //     }
-
-  //     // Smooth scroll to position
-  //     window.scrollTo({
-  //       top: scrollPosition,
-  //       behavior: "smooth",
-  //     });
-
-  //     // Set active letter after scrolling
-  //     setActiveLetter(letter);
-
-  //     // Add a slight delay and re-check scroll position to ensure accuracy
-  //     setTimeout(() => {
-  //       const newTargetRect = targetElement.getBoundingClientRect();
-  //       const isNowVisible =
-  //         newTargetRect.top >= headerHeight &&
-  //         newTargetRect.top < headerHeight + 100;
-
-  //       // If the target is still not positioned optimally, make a small adjustment
-  //       if (!isNowVisible) {
-  //         window.scrollTo({
-  //           top:
-  //             window.scrollY +
-  //             newTargetRect.top -
-  //             (headerHeight + HEADER_OFFSET),
-  //           behavior: "smooth",
-  //         });
-  //       }
-  //     }, 600); // Wait for initial scroll to complete
-  //   },
-  //   [filteredOccupations, measurements]
-  // );
+    // Reset visible cards count when filter changes
+    setVisibleCards({});
+  };
 
   // Update loadMore function to recalculate positions after loading more content
   const loadMore = (letter: string) => {
@@ -255,23 +224,45 @@ export function OccupationsContent({
       ...prev,
       [letter]: (prev[letter] || INITIAL_CARDS) + LOAD_INCREMENT,
     }));
+  };
 
-    // After content expands, recalculate measurements and scroll position
-    // setTimeout(() => {
-    //   if (activeLetter === letter) {
-    //     const element = document.getElementById(`letter-${letter}`);
-    //     if (element) {
-    //       const { headerHeight } = measurements;
-    //       const elementPosition =
-    //         element.getBoundingClientRect().top + window.scrollY;
+  // Render the appropriate header based on browseBy prop
+  const renderHeader = () => {
+    if (browseBy === "interest") {
+      return (
+        <div className="flex-shrink-0 w-full">
+          <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide mb-2">
+            Browse by Interests
+          </h1>
+          <p className="text-sm text-gray-500 mb-4">
+            Find careers that match your interests and skills using the Holland
+            Code (RIASEC).
+          </p>
+          <InterestFilter onSearch={handleInterestSearch} />
+        </div>
+      );
+    }
 
-    //       window.scrollTo({
-    //         top: elementPosition - (headerHeight + HEADER_OFFSET),
-    //         behavior: "smooth",
-    //       });
-    //     }
-    //   }
-    // }, 100); // Short delay to allow DOM to update
+    // Default header (browseBy === "all")
+    return (
+      <>
+        <div className="flex-shrink-0">
+          <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
+            Career Explorer
+          </h1>
+          <p className="mt-1 text-sm text-gray-500">
+            Explore opportunities that align with your passions and ambitions.
+          </p>
+        </div>
+
+        <div className="w-full lg:w-2/3">
+          <OccupationsListSearch
+            occupations={occupations}
+            onFilteredOccupationsChange={setFilteredOccupations}
+          />
+        </div>
+      </>
+    );
   };
 
   return (
@@ -283,22 +274,7 @@ export function OccupationsContent({
       >
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-4">
-            <div className="flex-shrink-0">
-              <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
-                Career Explorer
-              </h1>
-              <p className="mt-1 text-sm text-gray-500">
-                Explore opportunities that align with your passions and
-                ambitions.
-              </p>
-            </div>
-
-            <div className="w-full lg:w-2/3">
-              <OccupationsListSearch
-                occupations={occupations}
-                onFilteredOccupationsChange={setFilteredOccupations}
-              />
-            </div>
+            {renderHeader()}
           </div>
         </div>
       </header>

@@ -4,3 +4,10 @@ export interface Occupation {
   category?: string;
   onetsoc_code: string;
 } 
+
+// Type for the Interest options (RIASEC)
+export interface InterestOption {
+  value: string;
+  label: string;
+  description: string;
+}

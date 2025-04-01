@@ -16,13 +16,18 @@ async function getOccupations(): Promise<Occupation[]> {
   return response.json();
 }
 
-export default async function OccupationsListServer() {
+export default async function OccupationsListServer({
+  browseBy = "all",
+}: {
+  browseBy?: string;
+}) {
   // Fetch data server-side
   const occupations = await getOccupations();
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 flex">
-      <OccupationsContent occupations={occupations} />
+      <OccupationsContent occupations={occupations} browseBy={browseBy} />
+      {/* <OccupationsContent occupations={occupations} /> */}
     </div>
   );
 }

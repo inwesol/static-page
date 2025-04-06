@@ -137,6 +137,11 @@ export const availableEvents =  {
         "quote": "My experience throughout the sessions with Akarsh has been transformative, helping me gain clarity and focus in my personal and professional life. The structured guidance and actionable strategies provided during our sessions have been instrumental in building my confidence and improving my consistency. I particularly valued the emphasis on emotional stability and identifying my pros and cons, positively influencing my overall mindset. I am grateful for the support and highly recommend these sessions to anyone seeking growth and direction."
       },
       {
+        "name": "Abhinav Rao",
+        "position": "Operations Manager",
+        "quote": "We’ve completed around seven sessions together, and I wanted to take a moment to acknowledge and appreciate the process. The sessions have been very helpful, and I have gained a better clarity and perspective. I also do feel that taking these sessions earlier would have been much more impactful in my case. You've also been very patient and flexible in terms of facilitating the sessions. I would definitely recommend this if someone in my circle is looking for some structured support for professional development."
+      },
+      {
         "name": "Amulika G",
         "position": "Tennis Player",
         "quote": "The coaching sessions I had with Akarsh helped me a lot. I felt truly heard and understood. There were specific breathing exercises and activities we did that allowed me to gain a better understanding of my situation. I also think that Akarsh’s ability to reach out consistently showing an effort helped me make more of an effort from my side as well. In a particular activity, we set up some images according to how I view life and the goals that I have. This activity helped me understand what I was missing in my present, and how that was affecting me."

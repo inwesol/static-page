@@ -3,7 +3,7 @@ import { content } from "googleapis/build/src/apis/content";
 export const availableBlogs = {
     "career-guidance": {
     heading: "Career Guidance",
-    oneLiner: "Career guidance is a process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions.",
+    oneLiner: "Career guidance is a process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions. Explore Inwesol blogs for career guidance, practical tips, and industry insights to help you achieve professional excellence.",
     slug: "career-guidance",
     createdOn: "",
     createdBy: "",
@@ -73,7 +73,7 @@ Looking for support in your career journey? Start by exploring our career explor
     },
     "coaching-vs-counselling": {
     heading: "Career Coaching vs Career Counselling",
-    oneLiner: "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future.",
+    oneLiner: "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future. Get expert insights to choose the best approach for your personal growth.",
     slug: "coaching-vs-counselling",
     createdOn: "",
     createdBy: "",

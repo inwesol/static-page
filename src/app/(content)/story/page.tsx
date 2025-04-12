@@ -12,6 +12,8 @@ import { generateMetadata } from "@/utils";
 
 export const metadata = generateMetadata({
   title: "Story",
+  description:
+    "Our story is about empowering young people to thrive. We believe this is the key to empowering young people to thrive. Our objective is to guide individuals in self-discovery, help them realize their capabilities, support them in achieving their goals, and enable them to work toward excellence. We focus on prevention and development, creating solutions that foster well-being and drive positive behavioral change.",
   path: "/story",
 });
 

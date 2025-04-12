@@ -2,14 +2,7 @@ import Link from "next/link";
 import { AnimationContainer, Icons } from "@/components";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { Button } from "../ui/button";
-import {
-  Facebook,
-  Github,
-  Instagram,
-  Linkedin,
-  Twitter,
-  Youtube,
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 
 const socialLinks = [
   {
@@ -133,14 +126,14 @@ const Footer = () => {
                     Explorer
                   </Link>
                 </li>
-                {/* <li className="mt-2">
+                <li className="mt-2">
                   <Link
                     href="/coco/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     CoCo
                   </Link>
-                </li> */}
+                </li>
                 <li className="mt-2">
                   <Link
                     href="/events/cohort/"
@@ -149,14 +142,14 @@ const Footer = () => {
                     Cohort Program
                   </Link>
                 </li>
-                <li className="mt-2">
+                {/* <li className="mt-2">
                   <Link
                     href="/events/webinar-know-your-why/"
                     className="hover:text-foreground transition-all duration-300"
                   >
                     Free Workshop
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </AnimationContainer>

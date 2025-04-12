@@ -6,9 +6,9 @@ export const availableEvents =  {
     "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
     "title": "Self Discovery Journey",
     "description": "It’s a space where you explore yourself, understand your strengths, and create a path that truly reflects who you are. Over a month, through guided conversations with our psychologists, engaging activities, and expert-led discussions, you will take a deep dive into your interests, abilities, and aspirations. We don’t offer advice or ready-made answers—we help you realize your capability, develop positive behaviours and build your own roadmap.",
-    "startDate": "2025-04-14T00:00:00Z",
-    "endDate": "2025-05-15T00:00:00Z",
-    "registrationEndDate": "2025-04-10T11:59:59Z",
+    // "startDate": "2025-04-14T00:00:00Z",
+    // "endDate": "2025-05-15T00:00:00Z",
+    "registrationEndDate": "2045-04-10T11:59:59Z",
     "duration": "4 weeks",
     "format": "Cohort-based program",
     "price": 11999.00,
@@ -225,7 +225,7 @@ export const availableEvents =  {
     ],
     "registrationUrl": "https://example.com/events/executive-presence-masterclass"
   },
-  "webinar-know-your-why": {
+  "webinar-1": {
     "id": "cc-2025-webinar-01",
     "slug": "webinar-know-your-why",
     "type": "online_webinar",

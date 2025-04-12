@@ -51,10 +51,10 @@ export const NAV_LINKS = [
     title: "Cohort Program",
     href: "/events/cohort/",
   },
-  {
-    title: "Free Workshop",
-    href: "/events/webinar-know-your-why/",
-  },
+  // {
+  //   title: "Free Workshop",
+  //   href: "/events/webinar-know-your-why/",
+  // },
   {
     title: "Our Story",
     href: "/story/",

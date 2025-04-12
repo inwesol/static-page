@@ -152,12 +152,13 @@ interface EventsClientProps {
 const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   const [isScheduling, setIsScheduling] = useState(false);
   const [schedulingComplete, setSchedulingComplete] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
   const router = useRouter();
 
   // Auto-rotate testimonials every 5 seconds
   useEffect(() => {
-    if (event.testimonials && event.testimonials.length > 1) {
+    if (event.testimonials && event.testimonials.length > 1 && !isHovered) {
       const interval = setInterval(() => {
         setCurrentTestimonialIndex(
           (prevIndex) => (prevIndex + 1) % event.testimonials!.length
@@ -166,7 +167,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
 
       return () => clearInterval(interval);
     }
-  }, [event.testimonials]);
+  }, [event.testimonials, isHovered]);
 
   const goToPreviousTestimonial = () => {
     if (event.testimonials && event.testimonials.length > 1) {
@@ -641,6 +642,8 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                     ? "opacity-100 transform-none"
                                     : "hidden"
                                 }`}
+                                onMouseEnter={() => setIsHovered(true)}
+                                onMouseLeave={() => setIsHovered(false)}
                               >
                                 <p className="text-gray-700 italic mb-4">
                                   &ldquo;{testimonial.quote}&rdquo;
@@ -709,7 +712,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 )}
 
                 {/* Free Webinar Card */}
-                <div className="mt-12 mb-8">
+                {/* <div className="mt-12 mb-8">
                   <h2 className="text-2xl font-bold mb-6">
                     Upcoming Free Webinar
                   </h2>
@@ -748,15 +751,15 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                             <MapPin className="h-5 w-5 text-primary-blue-600 mr-2" />
                             <span>Zoom Webinar</span>
                           </div>
-                          {/* <div className="flex items-center">
+                          <div className="flex items-center">
                             <CreditCard className="h-5 w-5 text-primary-blue-600 mr-2" />
                             <span className="font-medium">Free</span>
-                          </div> */}
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
                   </div>
-                </div>
+                </div> */}
               </div>
             </Tabs>
           </div>
@@ -789,7 +792,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                       </span>
                     </div>
                     <Separator />
-                    <div className="flex justify-between">
+                    {/* <div className="flex justify-between">
                       <span className="text-gray-600">
                         Registration Closing Date
                       </span>
@@ -798,7 +801,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                           ? formatDate(event.registrationEndDate)
                           : "N/A"}
                       </span>
-                    </div>
+                    </div> */}
                   </div>
                 </CardContent>
                 <CardFooter className="flex flex-col space-y-2">

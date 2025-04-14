@@ -49,6 +49,9 @@ const OccupationDetails: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<Tab>("tasks");
   const [visibleItems, setVisibleItems] = useState<number>(10);
+  const [expandedInterests, setExpandedInterests] = useState<Set<string>>(
+    new Set()
+  );
 
   const [tasks, setTasks] = useState<Task[]>([]);
   const [skills, setSkills] = useState<Skill[]>([]);
@@ -255,6 +258,18 @@ const OccupationDetails: React.FC = () => {
 
   const currentData = getCurrentData(activeTab);
 
+  const toggleInterest = (elementName: string) => {
+    setExpandedInterests((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(elementName)) {
+        newSet.delete(elementName);
+      } else {
+        newSet.add(elementName);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <main className="max-w-5xl mx-auto py-4 pt-10 px-2 sm:py-8 sm:pt-14 sm:px-4 font-sans min-h-[50vh] relative">
       {titleState.loading && (
@@ -403,20 +418,57 @@ const OccupationDetails: React.FC = () => {
 
                 {activeTab === "interests" && (
                   <div className="space-y-4">
-                    {interests.slice(0, visibleItems).map((item, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center p-2 bg-gray-50 rounded-md hover:bg-gray-100 transition-all duration-200"
-                      >
-                        <span className="w-2 h-2 bg-[#3FA1D8] rounded-full mr-3 flex-shrink-0" />
-                        <span className="text-sm text-gray-800 flex-1 font-bold">
-                          {(item as Interest).element_name} -{" "}
-                          <span className="font-normal">
-                            {(item as Interest).description}
-                          </span>
-                        </span>
-                      </div>
-                    ))}
+                    {interests
+                      .sort(
+                        (a, b) =>
+                          parseFloat(b.data_value) - parseFloat(a.data_value)
+                      )
+                      .slice(0, 3)
+                      .map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex flex-col p-2 bg-gray-50 rounded-md hover:bg-gray-100 transition-all duration-200"
+                        >
+                          <div
+                            className="flex items-center cursor-pointer"
+                            onClick={() =>
+                              toggleInterest((item as Interest).element_name)
+                            }
+                          >
+                            <span className="w-2 h-2 bg-[#3FA1D8] rounded-full mr-3 flex-shrink-0" />
+                            <span className="text-sm text-gray-800 flex-1 font-bold">
+                              {(item as Interest).element_name} -{" "}
+                              {(item as Interest).data_value}
+                            </span>
+                            <svg
+                              className={`w-4 h-4 transform transition-transform duration-200 ${
+                                expandedInterests.has(
+                                  (item as Interest).element_name
+                                )
+                                  ? "rotate-180"
+                                  : ""
+                              }`}
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M19 9l-7 7-7-7"
+                              />
+                            </svg>
+                          </div>
+                          {expandedInterests.has(
+                            (item as Interest).element_name
+                          ) && (
+                            <div className="mt-2 pl-5 text-sm text-gray-600">
+                              {(item as Interest).description}
+                            </div>
+                          )}
+                        </div>
+                      ))}
                   </div>
                 )}
 

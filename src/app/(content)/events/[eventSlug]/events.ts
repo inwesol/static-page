@@ -132,7 +132,7 @@ export const availableEvents =  {
         "description": "Learn ways to handle uncertainty and reduce pressure."
       },
     ],
-    "testimonials": REVIEWS,
+    "testimonials": [...REVIEWS],
     // "registrationUrl": "https://example.com/events/career-transformation-cohort-spring-2025"
   },
   seminar: {

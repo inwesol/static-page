@@ -19,10 +19,10 @@ const Testimonials = () => {
         <div className="flex flex-col items-center lg:items-center justify-center w-full py-8 max-w-xl mx-auto">
           <MagicBadge title="Testimonials" />
           <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold font-heading leading-snug mt-6">
-            What our users are saying
+            What Our Users Say About Their Self-Discovery Journey
           </h2>
           <p className="text-center text-base sm:text-md md:text-lg leading-relaxed max-w-2xl mt-4 text-neutral-700">
-            Here&apos;s what some of our users have to say about Inwesol.
+            Real stories of transformation, growth, and newfound clarity.
           </p>
         </div>
       </AnimationContainer>

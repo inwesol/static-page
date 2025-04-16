@@ -85,7 +85,7 @@ type EventSession = {
 type EventTestimonial = {
   name: string;
   position: string;
-  quote: string;
+  review: string;
 };
 
 type EventLocation =
@@ -646,7 +646,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                 onMouseLeave={() => setIsHovered(false)}
                               >
                                 <p className="text-gray-700 italic mb-4">
-                                  &ldquo;{testimonial.quote}&rdquo;
+                                  &ldquo;{testimonial.review}&rdquo;
                                 </p>
                                 <div>
                                   <p className="font-semibold">

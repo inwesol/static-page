@@ -76,7 +76,7 @@ type EventSession = {
 type EventTestimonial = {
   name: string;
   position: string;
-  quote: string;
+  review: string;
 };
 
 type EventLocation =
@@ -391,7 +391,7 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         <div className="text-center py-4">
                           <p className="text-gray-600 italic mb-6">
                             &quot;
-                            {event.testimonials[currentTestimonialIndex].quote}
+                            {event.testimonials[currentTestimonialIndex].review}
                             &quot;
                           </p>
                           <p className="font-medium">

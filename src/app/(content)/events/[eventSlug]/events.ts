@@ -206,7 +206,7 @@ export const availableEvents =  {
       {
         "name": "Jennifer K.",
         "position": "VP of Marketing",
-        "quote": "This workshop completely transformed how I present myself in the boardroom. Worth every penny."
+        "review": "This workshop completely transformed how I present myself in the boardroom. Worth every penny."
       }
     ],
     "registrationUrl": "https://example.com/events/executive-presence-masterclass"
@@ -325,7 +325,7 @@ export const availableEvents =  {
       {
         "name": "Abhishek M",
         "position": "Graduate Student",
-        "quote": "Applied the techniques from this webinar and immediately saw a confidence boost and a better understanding of my why."
+        "review": "Applied the techniques from this webinar and immediately saw a confidence boost and a better understanding of my why."
       }
     ],
     // "registrationUrl": "https://example.com/events/resume-revamp-webinar"
@@ -384,7 +384,7 @@ export const availableEvents =  {
       {
         "name": "Priya S.",
         "position": "Senior Developer",
-        "quote": "Using Maya's techniques, I negotiated a $25K increase over the initial offer. Life-changing!"
+        "review": "Using Maya's techniques, I negotiated a $25K increase over the initial offer. Life-changing!"
       }
     ],
     "registrationUrl": "https://example.com/events/salary-negotiation-women-tech"
@@ -447,7 +447,7 @@ export const availableEvents =  {
       {
         "name": "Rachel M.",
         "position": "Product Manager",
-        "quote": "Within 2 weeks of implementing Thomas's strategies, I received 3 inbound messages from recruiters at top tech companies."
+        "review": "Within 2 weeks of implementing Thomas's strategies, I received 3 inbound messages from recruiters at top tech companies."
       }
     ],
     "registrationUrl": "https://example.com/events/linkedin-optimization-webinar"

@@ -9,12 +9,16 @@ import Image from "next/image";
 interface BlogLayoutProps {
   markdownContent: string;
   bannerUrl: string;
+  createdOn: string;
+  readingTime: string;
   imageFit?: "contain" | "cover";
 }
 
 const BlogLayout: React.FC<BlogLayoutProps> = ({
   markdownContent,
   bannerUrl,
+  createdOn,
+  readingTime,
   imageFit = "cover",
 }) => {
   const [headings, setHeadings] = useState<
@@ -61,7 +65,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
             </div>
 
             <p className="text-sm text-gray-500">
-              February 27th, 2025 • 5 min read
+              {createdOn} • {readingTime}
             </p>
           </div>
         </div>
@@ -72,7 +76,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
           href="/"
           className="inline-flex justify-center items-center px-4 py-2 text-primary1 rounded-md text-base font-bold"
         >
-          ←  Back to Home
+          ← Back to Home
         </a>
       </div>
 

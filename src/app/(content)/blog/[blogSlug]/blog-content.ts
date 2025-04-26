@@ -5,9 +5,9 @@ export const availableBlogs = {
     heading: "Career Guidance",
     oneLiner: "Career guidance is a process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions. Explore Inwesol blogs for career guidance, practical tips, and industry insights to help you achieve professional excellence.",
     slug: "career-guidance",
-    createdOn: "",
+    createdOn: "February 27th, 2025",
     createdBy: "",
-    readingTime: "",
+    readingTime: "5 min read",
     imageFit:"contain",
     bannerUrl: "https://github.com/user-attachments/assets/7cffebfb-cf0c-4a0f-ade2-9f216b908be6",
     content: `# Career Guidance: Your Path to Clarity, Confidence, and Informed Decisions
@@ -75,9 +75,9 @@ Looking for support in your career journey? Start by exploring our career explor
     heading: "Career Coaching vs Career Counselling",
     oneLiner: "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future. Get expert insights to choose the best approach for your personal growth.",
     slug: "coaching-vs-counselling",
-    createdOn: "",
+    createdOn: "February 27th, 2025",
     createdBy: "",
-    readingTime: "",
+    readingTime: "5 min read",
     imageFit:"cover",
     bannerUrl: "https://github.com/user-attachments/assets/0d280d15-f9c1-4e1d-b1b8-17fee7287ec0",
     content: `
@@ -136,5 +136,76 @@ References
 <https://www.drbethy.com/career-directions-blog/career-coach-vs-career-counselor-drscl>
 
 [https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/](https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/)`,
+  },
+    "knowing-your-why": {
+    heading: "Knowing Your 'Why' Matters",
+    oneLiner: "Purpose is an active commitment to accomplish an aim that is both meaningful to the self and of consequence to the world beyond the self. Discover your why to align your career with your purpose.",
+    slug: "knowing-your-why",
+    createdOn: "April 26th, 2025",
+    createdBy: "",
+    readingTime: "4 min read",
+    imageFit:"cover",
+    bannerUrl: "/know-your-why.jpg",
+    content: `# Why Knowing Your 'Why' Matters in Career Wellbeing
+
+Purpose is an active commitment to accomplish an aim that is both meaningful to the self and of consequence to the world beyond the self. 
+
+Have you ever felt like you're working hard but still feel disconnected from what you do? Or maybe you've switched careers, chased better salaries, or followed the path everyone recommended, yet something still feels off. That “something” could be the missing piece , your “why”. 
+
+When you discover your purpose \- your reason for doing what you do, your career takes a different shape. It becomes something that energizes you, aligns with your values, and offers more than just a paycheck. It gives you direction, resilience, and clarity.
+
+This is the core of career wellbeing
+
+# So, What Is Career Wellbeing?
+
+Career Well Being refers to the fulfillment individuals feel in their everyday work. It is at its peak when their work aligns with their strengths, offers a sense of purpose, and keeps them deeply engaged.
+
+According to Gallup, career wellbeing is one of the five essential elements of overall well being, and it influences everything from your mental health to your physical health and even your relationships. When people experience purpose at work, research shows they are more engaged, more productive, and even healthier.
+
+# How Do You Know Your ‘Why’?
+
+For many of us, discovering our ‘why’ doesn’t happen overnight. It’s often a journey. There are a few different ways people tend to find their sense of purpose:
+
+1\. **Proactive Exploration**    
+Some people actively seek it. They reflect on their strengths, explore their interests, and ask themselves meaningful questions about what they want to contribute to the world. This kind of self-discovery is an intentional and reflective process.
+
+2\. **Reactive Moments**    
+For others, purpose emerges from experiences, sometimes difficult ones. A setback, a life-changing event, or even dissatisfaction with a current career path might lead to deep self-questioning, which sparks the need for change.
+
+3\. **Social Learning**    
+Sometimes, purpose is shaped by our surroundings. Role models, communities, or causes we care about can influence what we choose to pursue. The values of people around us often shape our own.
+
+Let’s see some stories on.. How Purpose Drove Individuals Towards Excellence
+
+### **Story #1: The Dancer Who Refused to Stop**
+
+Sudha Chandran, She started dancing at the age of three, and it wasn’t just a hobby, it was her identity. Despite societal pressure to follow a “safe” path, she followed her passion. But at sixteen, she met with a terrible accident that resulted in the loss of a leg. For most, that would have been the end of the story, but not for her. With a Jaipur foot and unshakable belief, she learned to dance again. She performed on national stages and starred in films. Her purpose gave her strength and a reason to rise again.This story is the best example of how both proactive efforts and reactive moments came together to shape her purpose.
+
+### **Story #2: The Inventor Who Changed His Village**
+
+Mallesham, a young man from a rural village, watched his mother suffer daily due to the tedious hand-weaving process. Her pain moved him deeply. Without any technical background, he set out to build a machine that could ease her work. Everyone doubted him. But he persisted, working for years to build what later became the **Lakshmi Asu machine**. His invention revolutionized traditional weaving and earned him national recognition. His story shows how empathy sparked his purpose, and how both reactive moments and proactive efforts helped him create a machine that truly made a difference. 
+
+### **Story #3: Murlikant Petkar** 
+
+India’s first Paralympic gold medalist, Murlikant Petkar was once a soldier who was severely injured during the 1965 war. Despite the physical challenges, he didn’t stop. He turned to swimming and eventually represented India, winning a gold medal in the 1972 paralympics. Even before his injury, he had a strong inclination toward sports, from wrestling at a young age to becoming a boxer in the army and winning a silver medal in Tokyo, Petkar consistently pursued **excellence**. He was always in search of becoming the **best version of himself**, driven by curiosity, discipline, and a deep love for sport. This proactive journey shows how purpose can be self-driven,  shaped by one’s own choices, values, and efforts to contribute meaningfully to the world. 
+
+These are just a few examples. Each story is different, yet one thing connects them , a strong sense of purpose.
+
+When your career aligns with your purpose, it creates:
+
+1\. **Clarity:** You know what you’re working toward and why it matters.    
+2\. **Perseverance**: Continued effort to do or achieve something despite difficulties or failures.    
+3\. **Resilience**: The ability to bounce back from setbacks.    
+4\. **Improved mental health and career wellbeing**: You feel more fulfilled, less stressed, and more confident about your choices.
+
+Here’s how a coach 🔗 [link to free session](https://www.inwesol.com/events/cohort/) can help you connect with what truly matters to you?
+
+Many times, we get stuck because we haven’t paused to reflect. We chase jobs, promotions, or trends, but forget to ask what really matters to us. That’s where coaching helps. With the right coach, you gain a safe space to explore your values, interests, and goals. You start recognizing patterns in your choices, understanding your strengths, and gradually finding clarity about your next steps. Whether you're just starting out, switching careers, or feeling lost in the noise, discovering your why can help you move forward with confidence.
+
+**References:**   
+• Damon, W., et al. (2024). "The Path to Purpose."    
+• Gallup (2021). State of the Global Workplace.  
+
+`,
   },
 };

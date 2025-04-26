@@ -11,6 +11,7 @@ export interface Blog {
   image: string;
   tags: string[];
   date: string;
+  readingTime: string;
   link: string;
 }
 
@@ -42,7 +43,9 @@ const BlogCard = ({ blog, isLinkWrapper = false }: BlogCardProps) => {
       </div>
 
       <div className="p-6 flex flex-col flex-grow">
-        <span className="text-xs text-gray-500 tracking-wide">{blog.date}</span>
+        <span className="text-xs text-gray-500 tracking-wide">
+          {blog.date} • {blog.readingTime}
+        </span>
 
         <h3 className="text-xl font-semibold text-gray-900 mt-2 leading-tight">
           {blog.title}

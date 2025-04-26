@@ -1,38 +1,26 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import BlogCard from "./blog-card";
-
-const featuredBlogs = [
-  {
-    id: 1,
-    title: "Career Guidance",
-    description:
-      "A process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions.",
-    image:
-      "https://github.com/user-attachments/assets/7cffebfb-cf0c-4a0f-ade2-9f216b908be6",
-    link: "/blog/career-guidance/",
-    date: "27th Feb 2025",
-    tags: [],
-  },
-  {
-    id: 2,
-    title: "Career Coaching vs Career Counselling",
-    description:
-      "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future.",
-    image:
-      "https://github.com/user-attachments/assets/0d280d15-f9c1-4e1d-b1b8-17fee7287ec0",
-
-    link: "/blog/coaching-vs-counselling/",
-    date: "27th Feb 2025",
-    tags: [],
-  },
-];
+import { availableBlogs } from "@/app/(content)/blog/[blogSlug]/blog-content";
 
 const FeaturedBlogs = () => {
   const [current, setCurrent] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
+
+  // Transform availableBlogs into the required format
+  const featuredBlogs = Object.entries(availableBlogs).map(
+    ([slug, blog], index) => ({
+      id: index + 1,
+      title: blog.heading,
+      description: blog.oneLiner,
+      image: blog.bannerUrl,
+      link: `/blog/${slug}/`,
+      date: blog.createdOn,
+      readingTime: blog.readingTime,
+      tags: [],
+    })
+  );
 
   useEffect(() => {
     const updateCardsToShow = () => {

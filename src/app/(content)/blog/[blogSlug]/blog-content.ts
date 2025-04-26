@@ -198,9 +198,11 @@ When your career aligns with your purpose, it creates:
 3\. **Resilience**: The ability to bounce back from setbacks.    
 4\. **Improved mental health and career wellbeing**: You feel more fulfilled, less stressed, and more confident about your choices.
 
-Here’s how a coach 🔗 [link to free session](https://www.inwesol.com/events/cohort/) can help you connect with what truly matters to you?
+Here’s how a coach can help you connect with what truly matters to you?
 
 Many times, we get stuck because we haven’t paused to reflect. We chase jobs, promotions, or trends, but forget to ask what really matters to us. That’s where coaching helps. With the right coach, you gain a safe space to explore your values, interests, and goals. You start recognizing patterns in your choices, understanding your strengths, and gradually finding clarity about your next steps. Whether you're just starting out, switching careers, or feeling lost in the noise, discovering your why can help you move forward with confidence.
+
+[Book your free session here](https://www.inwesol.com/events/cohort/)
 
 **References:**   
 • Damon, W., et al. (2024). "The Path to Purpose."    

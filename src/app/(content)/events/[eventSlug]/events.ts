@@ -23,7 +23,7 @@ export const availableEvents =  {
       "name": "Akarsh Sriramoju",
       "title": "Education Psychologist",
       "bio": "Akarsh has 4 years of experience as an educational psychologist and academic researcher. A gold medalist from University of Hyderabad in Neural and Cognitive Sciences, he is proficient in coaching psychology, shaping careers and well-being.",
-      "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1744848000&v=beta&t=dUfTD4siiUqBlRlP024wrIOIcQg7N7JLfvbfHVuNQDc"
+      "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1750896000&v=beta&t=S5A1yBDvU-XCZkU_-dx4n-XhnZx_1LpAVhS18QHxc9s"
     },
     // "schedule": [
     //   {

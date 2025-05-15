@@ -32,7 +32,8 @@ const QuestionnaireForm: React.FC = () => {
   ) => {
     // If the same response is clicked again, unselect it
     if (responses[questionNumber] === response) {
-      setResponse(questionNumber, null); // Unset the response
+      // setResponse(questionNumber, undefined); // Unset the response
+      return;
     } else {
       setResponse(questionNumber, response); // Set to new response
     }

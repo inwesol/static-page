@@ -48,6 +48,10 @@ export const NAV_LINKS = [
   //   href: "/coco/",
   // },
   {
+    title: "Career Maturity Test",
+    href: "/Maturity-Test/",
+  },
+  {
     title: "Cohort Program",
     href: "/events/cohort/",
   },

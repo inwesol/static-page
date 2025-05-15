@@ -1,5 +1,5 @@
 // app/api/redis-data/route.js (for App Router)
-// or pages/api/redis-data.js (for Pages Router)
+// or page1/api/redis-data.js (for Page1 Router)
 
 import { Redis } from "@upstash/redis";
 

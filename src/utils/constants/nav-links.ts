@@ -65,6 +65,12 @@ export const NAV_LINKS = [
     href: "/contact-us/",
   },
 
+  {
+    title: "Maturity Test",
+    href: "/Maturity-Test/",
+  },
+
+
   // {
   //   title: "Resources",
   //   href: "/resources",

@@ -68,6 +68,10 @@ export const NAV_LINKS = [
     title: "Contact Us",
     href: "/contact-us/",
   },
+  {
+    title: "Blogs",
+    href: "/blog/",
+  },
 
   // {
   //   title: "Resources",

@@ -3,7 +3,9 @@
 
 import { useState, useMemo, ChangeEvent } from "react";
 import BlogCard, { Blog } from "../featured-blogs/blog-card";
-
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {useEffect} from "react";
 // Define filter categories as a const array and derive a union type
 const filterCategories = [
   "All",
@@ -20,6 +22,8 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<"date" | "title">("date");
+  // const router = useRouter();
+  // console.log(router);
 
   // Handle filter toggle
   const toggleFilter = (filter: FilterCategory): void => {
@@ -83,22 +87,38 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
     return result;
   }, [blogs, selectedFilters, searchQuery, sortBy]);
 
+// Handle ... within description
+//   function getLastWordsWithEllipsis(text: string, wordCount: number): string {
+//   const words = text.trim().split(/\s+/);
+//   if (words.length <= wordCount) return text;
+//   return "..." + words.slice(-wordCount).join(" ");
+// }
+  useEffect(function(){
+    window.scrollTo({top:0,behaviour:"smooth"});
+  },[])
+
   return (
-    <div className="min-h-screen bg-accent/10 px-4 sm:px-6 lg:px-8 py-12 pt-12">
+        <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+    <div className="min-h-screen bg-accent/10 px-4 sm:px-6 lg:px-8 py-12 pt-12 bg-gradient-to-r from-primary-green-100 to-white">
+      <section className="max-w-5xl mx-auto">
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12">
+        <h1 className="text-3xl sm:text-4xl font-bold text-primary-green-600 mb-4">
           Blog Explorer
         </h1>
         <p className="text-gray-700 text-base sm:text-lg">
           Discover insightful articles and updates on various topics
         </p>
-      </div>
+        </div>
 
       {/* Controls */}
-      <div className="max-w-7xl mx-auto mb-10 space-y-6">
+        <div className="mb-10 space-y-6 max-w-4xl mx-auto">
         {/* Search Bar */}
-        <div className="relative mx-auto w-full sm:w-[640px] lg:w-[960px]">
+          <div className="relative w-full">
           <input
             type="text"
             placeholder="Search blogs by title, content, or tags..."
@@ -119,12 +139,12 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />
           </svg>
-        </div>
+          </div>
 
         {/* Filters and Sort */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mx-auto w-full sm:w-[640px] lg:w-[960px]">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mx-auto w-full">
           <div className="flex flex-wrap justify-center gap-2">
-            {filterCategories.map((filter) => (
+            {/* {filterCategories.map((filter) => (
               <button
                 key={filter}
                 onClick={() => toggleFilter(filter)}
@@ -136,7 +156,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
               >
                 {filter}
               </button>
-            ))}
+            ))} */}
           </div>
           <div className="relative">
             <select
@@ -159,11 +179,11 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
               <path d="M6 9l6 6 6-6" />
             </svg>
           </div>
-        </div>
-      </div>
+          </div>
+          </div>
 
-      {/* Blog Grid */}
-      <div className="max-w-7xl mx-auto">
+          {/* Blog Grid */}
+        <div className="w-full">
         {processedBlogs.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-600 text-lg">
@@ -171,16 +191,22 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-[repeat(2,320px)] lg:grid-cols-[repeat(3,320px)] gap-4 justify-center">
-            {processedBlogs.map((blog) => (
-              <div key={blog.id}>
-                <BlogCard blog={blog} />
-              </div>
-            ))}
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(320px,_1fr))] gap-4 justify-center">
+             {processedBlogs.map((blog) => (
+      <Link 
+      key={blog.id} 
+      href={`/blog/${blog.slug}`}
+      className="block hover:cursor-pointer transition-transform duration-300 hover:-translate-y-1"
+    >
+      <BlogCard blog={blog} isLinkWrapper={false} />
+    </Link>
+  ))}
           </div>
         )}
-      </div>
+        </div>
+      </section>
     </div>
+        </motion.div>
   );
 };
 

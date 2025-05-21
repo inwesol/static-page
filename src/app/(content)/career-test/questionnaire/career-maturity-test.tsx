@@ -19,8 +19,8 @@ import { useState, useRef } from "react";
 import { answerKey, questions, categoryMap } from "./questionsData";
 
 interface QuestionType {
-  id: string;
-  statement: string;
+  id: number;
+  ques: string;
 }
 
 interface PersonalInfo {
@@ -39,7 +39,7 @@ export default function CareerMaturityTest() {
 
   const handleSubmitTest = (): void => {
     const unansweredQues = questions.find((q) => !allAnswers?.[q.id]);
-    
+
     if (unansweredQues) {
       toast.dismiss();
       const ref = questionRefs.current[unansweredQues.id];
@@ -85,7 +85,9 @@ export default function CareerMaturityTest() {
               {questions.map((ques: QuestionType) => (
                 <div
                   key={ques.id}
-                  ref={(el) => (questionRefs.current[ques.id] = el)}
+                  ref={(el) => {
+                    questionRefs.current[ques.id] = el;
+                  }}
                 >
                   <Question
                     ques={ques}
@@ -110,7 +112,7 @@ export default function CareerMaturityTest() {
           </CardFooter>
         </Card>
       </motion.div>
-      
+
       <CustomDialog isOpen={formOpen} onClose={() => setFormOpen(false)}>
         <PersonalInfoForm />
       </CustomDialog>

@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  Dispatch,
+  SetStateAction,
+} from "react";
 import { z } from "zod";
 import { useForm, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,10 +38,14 @@ interface FormContextType {
   form: UseFormReturn<PersonalInfoFormValues>;
   submittedData: PersonalInfoFormValues | null;
   setSubmittedData: (data: PersonalInfoFormValues) => void;
+  allAnswers: AnswerMap;
+  setAllAnswers: Dispatch<SetStateAction<AnswerMap>>;
+  testScore: any;
+  setTestScore: (score: any) => void;
 }
 
 interface AnswerMap {
-  [questionId: string]: string;
+  [questionId: string | number]: "agree" | "disagree" | undefined;
 }
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
@@ -61,8 +72,8 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
 
   const [submittedData, setSubmittedData] =
     useState<PersonalInfoFormValues | null>(null);
-  const [allAnswers, setAllAnswers] = useState<AnswerMap>({})
-  const [testScore,setTestScore] = useState({});
+  const [allAnswers, setAllAnswers] = useState<AnswerMap>({});
+  const [testScore, setTestScore] = useState({});
   // useEffect(() => {
   //   const savedData =
   //     typeof window !== "undefined"
@@ -80,7 +91,17 @@ export const FormProvider = ({ children }: { children: React.ReactNode }) => {
   // }, [submittedData]);
 
   return (
-    <FormContext.Provider value={{ form, submittedData, setSubmittedData ,allAnswers,setAllAnswers, testScore,setTestScore}}>
+    <FormContext.Provider
+      value={{
+        form,
+        submittedData,
+        setSubmittedData,
+        allAnswers,
+        setAllAnswers,
+        testScore,
+        setTestScore,
+      }}
+    >
       {children}
     </FormContext.Provider>
   );

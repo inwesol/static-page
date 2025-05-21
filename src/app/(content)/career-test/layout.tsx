@@ -1,4 +1,5 @@
-import { Toaster } from "sonner";
+// import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 import React from "react";
 import { Footer, Navbar } from "@/components";
 import { FormProvider } from "@/context/personal-info-context/FormContext";
@@ -12,11 +13,10 @@ const Layout: React.FC<Props> = ({ children }) => {
     <>
       <Navbar />
       <main className="h-full">
-        <FormProvider>
-          {children}
-        </FormProvider>
+        <FormProvider>{children}</FormProvider>
       </main>
-      <Toaster position="top-right" expand="down" />
+      <Toaster richColors expand theme="light" position="top-right" />
+      {/* <Toaster position="top-right" expand /> */}
       <Footer />
     </>
   );

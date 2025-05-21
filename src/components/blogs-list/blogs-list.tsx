@@ -114,9 +114,9 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
           Discover insightful articles and updates on various topics
         </p>
         </div>
-
+        <div>
       {/* Controls */}
-        <div className="mb-10 space-y-6 max-w-4xl mx-auto">
+        <div className="mb-10 space-y-6 max-w-5xl mx-auto flex flex-col sm:flex-row gap-4 sm:justify-between sm:gap-0">
         {/* Search Bar */}
           <div className="relative w-full">
           <input
@@ -142,7 +142,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
           </div>
 
         {/* Filters and Sort */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mx-auto w-full">
+          <div className="!mt-0 sm:flex-shrink-0 sm:ml-4 ml-0 self-start">
           <div className="flex flex-wrap justify-center gap-2">
             {/* {filterCategories.map((filter) => (
               <button
@@ -162,7 +162,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
             <select
               value={sortBy}
               onChange={handleSortChange}
-              className="appearance-none w-full px-4 py-2 pr-10 rounded-full bg-white border border-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20"
+              className="appearance-none w-full px-4 py-3 pr-10 rounded-full bg-white border border-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20"
             >
               <option value="date">Sort by Date</option>
               <option value="title">Sort by Title</option>
@@ -181,6 +181,8 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
           </div>
           </div>
           </div>
+
+        </div>
 
           {/* Blog Grid */}
         <div className="w-full">

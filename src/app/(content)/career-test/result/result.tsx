@@ -53,7 +53,13 @@ export default function Result() {
   }
 
   function submitAnotherResponse() {
-    setSubmittedData(null);
+    setSubmittedData({
+      fullName: "",
+      email: "",
+      gender: "",
+      age: 0,
+      phoneNumber: "",
+    });
     setTestScore({});
     setAllAnswers({});
     form.reset({
@@ -179,7 +185,9 @@ export default function Result() {
                     </h3>
                     <p className="text-gray-600">
                       <strong>Score:</strong>{" "}
-                      <span className="text-primary-green-600">{score}%</span>
+                      <span className="text-primary-green-600">
+                        {score as number}%
+                      </span>
                     </p>
                   </div>
                   <div className="relative w-full bg-gray-200 rounded-full h-2 mb-4">

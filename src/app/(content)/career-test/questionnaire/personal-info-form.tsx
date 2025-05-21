@@ -32,7 +32,7 @@ interface PersonalInfo {
   fullName: string;
   email: string;
   gender: string;
-  age: number | string;
+  age: number;
   phoneNumber?: string;
 }
 interface Results {
@@ -55,7 +55,7 @@ export default function PersonalInfoForm() {
 
     for (const questionId in allAnswers) {
       const answer = allAnswers[questionId];
-      const correctAnswer = answerKey[questionId];
+      const correctAnswer = answerKey[Number(questionId)];
       if (answer === correctAnswer) {
         for (const category in categoryMap) {
           if (categoryMap[category].includes(parseInt(questionId, 10))) {

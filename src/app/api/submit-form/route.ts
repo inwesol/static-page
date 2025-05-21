@@ -102,7 +102,7 @@ export async function POST(request: Request) {
     }
   } else if (formType === "career-test") {
     // const { email, fullName, gender, age, phoneNumber, categoryScores } = body;
-    const { email, fullName, gender, age, phoneNumber, Concern,Curiosity,Consultation,Confidence } = body;
+    const { email, fullName, gender, age, phoneNumber, Concern, Curiosity, Consultation, Confidence } = body;
 
     // console.log("Received data:", {
     //   email,
@@ -114,7 +114,7 @@ export async function POST(request: Request) {
     // });
 
     const sheetId = process.env.GOOGLE_SHEET_ID as string;
-    const range = "Career-Test-Results!A1:J"; // Add a row number
+    const range = "Career-Test-Results!A:J"; // Add a row number
     const timestamp = new Date().toISOString();
 
     const values = [
@@ -142,7 +142,7 @@ export async function POST(request: Request) {
     } catch (error) {
       console.error("Error saving career test data:", error);
       return NextResponse.json(
-        { message: "Error saving career test data: " + error.message },
+        { message: "Error saving career test data: " + (error instanceof Error ? error.message : 'Unknown error') },
         { status: 500 }
       );
     }

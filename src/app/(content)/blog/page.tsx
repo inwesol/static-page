@@ -7,14 +7,12 @@ const BlogPage: React.FC = () => {
   const blogsArray: Blog[] = Object.entries(availableBlogs).map(
     ([slug, blog], index) => ({
       id: index + 1,
-      slug: slug,
       title: blog.heading,
       description: blog.oneLiner || blog.content?.slice(0, 100) || "",
       image: blog.bannerUrl,
       date: blog.createdOn,
-      readingTime: blog.readingTime,
       link: `/blog/${slug}/`,
-      tags: blog.tags || [],
+      tags: (blog as any).tags || [],
       ...blog,
     })
   );

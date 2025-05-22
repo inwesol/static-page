@@ -195,7 +195,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
                 {processedBlogs.map((blog) => (
                   <Link
                     key={blog.id}
-                    href={`/blog/${blog.slug}`}
+                    href={blog.link}
                     className="block transition-transform duration-300 hover:cursor-pointer hover:-translate-y-1"
                   >
                     <BlogCard blog={blog} isLinkWrapper={true} />

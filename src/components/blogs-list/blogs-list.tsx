@@ -1,9 +1,10 @@
-
 "use client";
 
 import { useState, useMemo, ChangeEvent } from "react";
 import BlogCard, { Blog } from "../featured-blogs/blog-card";
-
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 // Define filter categories as a const array and derive a union type
 const filterCategories = [
   "All",
@@ -20,6 +21,8 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [sortBy, setSortBy] = useState<"date" | "title">("date");
+  // const router = useRouter();
+  // console.log(router);
 
   // Handle filter toggle
   const toggleFilter = (filter: FilterCategory): void => {
@@ -83,48 +86,64 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
     return result;
   }, [blogs, selectedFilters, searchQuery, sortBy]);
 
+  // Handle ... within description
+  //   function getLastWordsWithEllipsis(text: string, wordCount: number): string {
+  //   const words = text.trim().split(/\s+/);
+  //   if (words.length <= wordCount) return text;
+  //   return "..." + words.slice(-wordCount).join(" ");
+  // }
+  useEffect(function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-accent/10 px-4 sm:px-6 lg:px-8 py-12 pt-12">
-      {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Blog Explorer
-        </h1>
-        <p className="text-gray-700 text-base sm:text-lg">
-          Discover insightful articles and updates on various topics
-        </p>
-      </div>
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="min-h-screen px-4 py-12 pt-12 bg-accent/10 sm:px-6 lg:px-8 bg-gradient-to-r from-primary-green-100 to-white">
+        <section className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="mb-12 text-center">
+            <h1 className="mb-4 text-3xl font-bold sm:text-4xl text-primary-green-600">
+              Blog Explorer
+            </h1>
+            <p className="text-base text-gray-700 sm:text-lg">
+              Discover insightful articles and updates on various topics
+            </p>
+          </div>
+          <div>
+            {/* Controls */}
+            <div className="flex flex-col max-w-5xl gap-4 mx-auto mb-10 space-y-6 sm:flex-row sm:justify-between sm:gap-0">
+              {/* Search Bar */}
+              <div className="relative w-full">
+                <input
+                  type="text"
+                  placeholder="Search blogs by title, content, or tags..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                  className="w-full px-5 py-3 rounded-full bg-white border border-gray-300 focus:border-[#00B24B] focus:ring-2 focus:ring-[#00B24B]/20 outline-none transition-all text-gray-700 placeholder-gray-400"
+                />
+                <svg
+                  className="absolute w-5 h-5 text-gray-400 -translate-y-1/2 right-4 top-1/2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </div>
 
-      {/* Controls */}
-      <div className="max-w-7xl mx-auto mb-10 space-y-6">
-        {/* Search Bar */}
-        <div className="relative mx-auto w-full sm:w-[640px] lg:w-[960px]">
-          <input
-            type="text"
-            placeholder="Search blogs by title, content, or tags..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="w-full px-5 py-3 rounded-full bg-white border border-gray-300 focus:border-[#00B24B] focus:ring-2 focus:ring-[#00B24B]/20 outline-none transition-all text-gray-700 placeholder-gray-400"
-          />
-          <svg
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div>
-
-        {/* Filters and Sort */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mx-auto w-full sm:w-[640px] lg:w-[960px]">
-          <div className="flex flex-wrap justify-center gap-2">
-            {filterCategories.map((filter) => (
+              {/* Filters and Sort */}
+              <div className="!mt-0 sm:flex-shrink-0 sm:ml-4 ml-0 self-start">
+                <div className="flex flex-wrap justify-center gap-2">
+                  {/* {filterCategories.map((filter) => (
               <button
                 key={filter}
                 onClick={() => toggleFilter(filter)}
@@ -136,51 +155,58 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
               >
                 {filter}
               </button>
-            ))}
-          </div>
-          <div className="relative">
-            <select
-              value={sortBy}
-              onChange={handleSortChange}
-              className="appearance-none w-full px-4 py-2 pr-10 rounded-full bg-white border border-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20"
-            >
-              <option value="date">Sort by Date</option>
-              <option value="title">Sort by Title</option>
-            </select>
-            <svg
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* Blog Grid */}
-      <div className="max-w-7xl mx-auto">
-        {processedBlogs.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">
-              No blogs found matching your criteria.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-[repeat(2,320px)] lg:grid-cols-[repeat(3,320px)] gap-4 justify-center">
-            {processedBlogs.map((blog) => (
-              <div key={blog.id}>
-                <BlogCard blog={blog} />
+            ))} */}
+                </div>
+                <div className="relative">
+                  <select
+                    value={sortBy}
+                    onChange={handleSortChange}
+                    className="appearance-none w-full px-4 py-3 pr-10 rounded-full bg-white border border-gray-200 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20"
+                  >
+                    <option value="date">Sort by Date</option>
+                    <option value="title">Sort by Title</option>
+                  </select>
+                  <svg
+                    className="absolute w-5 h-5 text-gray-400 -translate-y-1/2 pointer-events-none right-3 top-1/2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
-        )}
+
+          {/* Blog Grid */}
+          <div className="w-full">
+            {processedBlogs.length === 0 ? (
+              <div className="py-12 text-center">
+                <p className="text-lg text-gray-600">
+                  No blogs found matching your criteria.
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-[repeat(auto-fit,_minmax(320px,_1fr))] gap-4 justify-center">
+                {processedBlogs.map((blog) => (
+                  <Link
+                    key={blog.id}
+                    href={blog.link}
+                    className="block transition-transform duration-300 hover:cursor-pointer hover:-translate-y-1"
+                  >
+                    <BlogCard blog={blog} isLinkWrapper={true} />
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

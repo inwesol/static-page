@@ -55,10 +55,10 @@ export const NAV_LINKS = [
     title: "Cohort Program",
     href: "/events/cohort/",
   },
-  // {
-  //   title: "Free Workshop",
-  //   href: "/events/webinar-know-your-why/",
-  // },
+  {
+    title: "Blogs",
+    href: "/blog/",
+  },
   {
     title: "Our Story",
     href: "/story/",
@@ -68,7 +68,6 @@ export const NAV_LINKS = [
     title: "Contact Us",
     href: "/contact-us/",
   },
-
   // {
   //   title: "Resources",
   //   href: "/resources",

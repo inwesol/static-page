@@ -4,6 +4,7 @@ export interface QuestionType {
 }
 
 export type AnswerChoice = "agree" | "disagree";
+export type Category = "Concern" | "Curiosity" | "Confidence" | "Consultation";
 
 export const questions: QuestionType[] = [
   { id: 1, ques: "There is no point in deciding on a job when the future is so uncertain." },
@@ -39,14 +40,14 @@ export const answerKey: Record<number, AnswerChoice> = {
   4: "disagree", 8: "agree", 12: "agree", 16: "disagree", 20: "agree", 24: "agree" // Consultation
 };
 
-export const categoryMap: Record<string, number[]> = {
+export const categoryMap: Record<Category, number[]> = {
   Concern: [1, 5, 9, 13, 17, 21],
   Curiosity: [2, 6, 10, 14, 18, 22],
   Confidence: [3, 7, 11, 15, 19, 23],
   Consultation: [4, 8, 12, 16, 20, 24]
 };
 
-export const categoryDescriptions: Record<string, string> = {
+export const categoryDescriptions: Record<Category, string> = {
   Concern: `Concern refers to an individual's awareness of the importance of career planning and their orientation toward the future. It reflects how much an individual thinks about, prepares for, and feels responsible for their career development.`,
   Curiosity: `Curiosity refers to how an individual seeks information about themselves and the world of work. It involves exploring career options and reflecting on personal interests and values.`,
   Confidence: `Confidence refers to an individual's belief in their ability to make and implement career decisions successfully. It reflects persistence in planning and executing career plans.`,

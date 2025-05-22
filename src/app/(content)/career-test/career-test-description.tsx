@@ -1,5 +1,4 @@
 "use client";
-
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import {
@@ -52,7 +51,7 @@ const CareerTestDescription: React.FC = () => {
               take ownership of your career path.
             </p>
           </div>
-          <div>
+          {/* <div>
             <h3 className="text-lg font-semibold text-primary-green-500 mb-1">
               What does this test assess?
             </h3>
@@ -64,7 +63,7 @@ const CareerTestDescription: React.FC = () => {
               and{" "}
               <strong className="text-primary-green-600">Consultation</strong>.
             </p>
-          </div>
+          </div> */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 shadow-sm">
               <h4 className="font-semibold text-primary-green-600 mb-2">

@@ -1,35 +1,24 @@
 "use client";
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dispatch, SetStateAction } from "react";
-
-interface QuestionType {
-  id: number | string;
-  ques: string;
-}
+import type { QuestionType } from "./questionsData";
 
 interface QuestionProps {
   ques: QuestionType;
-  id: number | string;
-  allAnswers: Record<string | number, "agree" | "disagree" | undefined>;
+  allAnswers: Record<number, "agree" | "disagree" | undefined>;
   setAllAnswers: Dispatch<
-    SetStateAction<Record<string | number, "agree" | "disagree" | undefined>>
+    SetStateAction<Record<number, "agree" | "disagree" | undefined>>
   >;
 }
 
 export default function Question({
   ques,
-  id,
   allAnswers,
   setAllAnswers,
 }: QuestionProps) {
-  const handleAnswerClick = (
-    choice: "agree" | "disagree",
-    id: number | string
-  ) => {
+  const handleAnswerClick = (choice: "agree" | "disagree") => {
     setAllAnswers((prevState) => ({
       ...prevState,
-      [id]: choice,
+      [ques.id]: choice,
     }));
   };
 
@@ -40,25 +29,26 @@ export default function Question({
       <p className="inline-block md:text-base text-sm">
         {ques.id}. {ques.ques}
       </p>
-
       <div className="inline-flex gap-4 items-center">
         <button
-          onClick={() => handleAnswerClick("agree", id)}
+          onClick={() => handleAnswerClick("agree")}
           className={`w-[120px] px-4 py-1 rounded-3xl border transition border-primary-blue-600 text-sm ${
             selectedChoice === "agree"
               ? "bg-primary-blue-600 text-white"
               : "text-primary-blue-600"
           }`}
+          aria-pressed={selectedChoice === "agree"}
         >
           Agree
         </button>
         <button
-          onClick={() => handleAnswerClick("disagree", id)}
+          onClick={() => handleAnswerClick("disagree")}
           className={`w-[120px] px-4 py-1 rounded-3xl border transition border-primary-blue-600 text-sm ${
             selectedChoice === "disagree"
               ? "bg-primary-blue-600 text-white"
               : "text-primary-blue-600"
           }`}
+          aria-pressed={selectedChoice === "disagree"}
         >
           Disagree
         </button>

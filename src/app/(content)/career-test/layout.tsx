@@ -12,11 +12,9 @@ const Layout: React.FC<Props> = ({ children }) => {
     <>
       <Navbar />
       <main className="h-full">
-        <FormProvider>
-          {children}
-        </FormProvider>
+        <FormProvider>{children}</FormProvider>
       </main>
-      <Toaster position="top-right" expand="down" />
+      <Toaster position="top-right" expand />
       <Footer />
     </>
   );

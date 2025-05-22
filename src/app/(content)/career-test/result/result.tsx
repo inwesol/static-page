@@ -1,28 +1,23 @@
 "use client";
-
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useFormContextData } from "@/context/personal-info-context/FormContext";
-import html2pdf from "html2pdf.js";
-import { categoryDescriptions } from "../questionnaire/questionsData";
+const html2pdf = typeof window !== "undefined" ? require("html2pdf.js") : null;
+import { Category, categoryDescriptions } from "../questionnaire/questionsData";
 
-interface FormData {
-  fullName: string;
-  email: string;
-  gender: string;
-  age: string | number;
-  phoneNumber?: string;
-}
+type Results = Record<Category, number>;
 
-interface Results {
-  [category: string]: number;
-}
+const emptyResults: Results = {
+  Concern: 0,
+  Curiosity: 0,
+  Confidence: 0,
+  Consultation: 0,
+};
 
 export default function Result() {
   const router = useRouter();
   const {
     submittedData,
-    allAnswers,
     testScore,
     setTestScore,
     setSubmittedData,
@@ -31,13 +26,16 @@ export default function Result() {
   } = useFormContextData();
 
   useEffect(() => {
-    if (Object.entries(testScore).length === 0 || !submittedData) {
+    if (
+      !submittedData ||
+      !testScore ||
+      Object.values(testScore).every((v) => v === 0)
+    ) {
       router.push("/career-test/questionnaire");
-      return;
     }
   }, [testScore, submittedData, router]);
 
-  function generatePdf() {
+  const generatePdf = () => {
     if (!submittedData) return;
     const element = document.getElementById("pdf-content");
     if (!element) return;
@@ -49,36 +47,30 @@ export default function Result() {
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
     };
-    html2pdf().set(options).from(element).save();
-  }
 
-  function submitAnotherResponse() {
+    html2pdf().set(options).from(element).save();
+  };
+
+  const submitAnotherResponse = () => {
     setSubmittedData(null);
-    setTestScore({});
+    setTestScore(emptyResults);
     setAllAnswers({});
-    form.reset({
-      fullName: "",
-      email: "",
-      gender: "",
-      age: undefined,
-      phoneNumber: "",
-    });
+    form.reset();
     router.push("/career-test/questionnaire");
-  }
+  };
 
   return (
     <div className="min-h-screen bg-white py-10 px-4">
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col gap-4">
-        {/* Gradient Heading */}
-        <header className="font-bold mb-0 bg-gradient-to-r from-green-600 to-blue-600 text-white md:p-8 p-4">
-          <h1 className="md:text-4xl sm:text-3xl text-2xl">
+        <header className="bg-gradient-to-r from-green-600 to-blue-600 text-white md:p-8 p-4">
+          <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold">
             Career Maturity Test Results
           </h1>
         </header>
 
         <button
           onClick={generatePdf}
-          className="bg-primary-green-600 hover:bg-primary-green-700 text-white font-semibold py-2 px-6 !rounded-[4px] shadow transition self-end mr-8"
+          className="bg-primary-green-600 hover:bg-primary-green-700 text-white font-semibold py-2 px-6 rounded self-end mr-8"
           aria-label="Download PDF of results"
         >
           Download PDF
@@ -168,41 +160,42 @@ export default function Result() {
               aria-label="Test results"
               className="grid grid-cols-1 sm:grid-cols-2 gap-6"
             >
-              {Object.entries(testScore).map(([category, score]) => (
-                <article
-                  key={category}
-                  className="bg-white border border-green-200 shadow-sm rounded-xl p-5 hover:shadow-md transition-all duration-200"
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-xl font-semibold text-primary-green-600">
-                      {category}
-                    </h3>
-                    <p className="text-gray-600">
-                      <strong>Score:</strong>{" "}
-                      <span className="text-primary-green-600">{score}%</span>
+              {(Object.entries(testScore) as [Category, number][]).map(
+                ([category, score]) => (
+                  <article
+                    key={category}
+                    className="bg-white border border-green-200 rounded-xl p-5"
+                  >
+                    <div className="flex justify-between items-center mb-4">
+                      <h3 className="text-xl font-semibold text-primary-green-600">
+                        {category}
+                      </h3>
+                      <p className="text-gray-600">
+                        <strong>Score:</strong>{" "}
+                        <span className="text-primary-green-600">{score}%</span>
+                      </p>
+                    </div>
+                    <div className="relative w-full bg-gray-200 rounded-full h-2 mb-4">
+                      <div
+                        className="bg-gradient-to-r from-green-400 to-blue-400 h-full rounded-full"
+                        style={{ width: `${score}%` }}
+                      />
+                    </div>
+                    <p className="text-sm text-gray-700">
+                      {categoryDescriptions[category]}
                     </p>
-                  </div>
-                  <div className="relative w-full bg-gray-200 rounded-full h-2 mb-4">
-                    <div
-                      className="bg-gradient-to-r from-green-400 to-blue-400 h-full rounded-full"
-                      style={{ width: `${score}%` }}
-                    />
-                  </div>
-                  <p className="text-sm text-gray-700">
-                    {categoryDescriptions[category]}
-                  </p>
-                </article>
-              ))}
+                  </article>
+                )
+              )}
             </section>
           </div>
         )}
       </div>
 
-      {/* Submit Another Response */}
       <div className="flex justify-center my-6">
         <button
           onClick={submitAnotherResponse}
-          className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 !rounded-[4px] shadow transition"
+          className="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-6 rounded"
           aria-label="Submit another response"
         >
           Submit another response

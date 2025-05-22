@@ -1,6 +1,6 @@
 import CareerMaturityTest from "./career-maturity-test";
 
-const QuestionnnairePage: React.FC = () => {
+const QuestionnairePage: React.FC = () => {
   return (
     <div className="px-4">
       <CareerMaturityTest />
@@ -8,4 +8,4 @@ const QuestionnnairePage: React.FC = () => {
   );
 };
 
-export default QuestionnnairePage;
+export default QuestionnairePage;

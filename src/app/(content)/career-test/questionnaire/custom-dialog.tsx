@@ -8,8 +8,11 @@ interface CustomDialogProps {
   children: ReactNode;
 }
 
-export default function CustomDialog({ isOpen, onClose, children }: CustomDialogProps) {
-  // Disable background scroll when modal is open
+export default function CustomDialog({
+  isOpen,
+  onClose,
+  children,
+}: CustomDialogProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -21,7 +24,6 @@ export default function CustomDialog({ isOpen, onClose, children }: CustomDialog
     };
   }, [isOpen]);
 
-  // Don’t render if not open
   if (!isOpen) return null;
 
   return createPortal(
@@ -31,7 +33,7 @@ export default function CustomDialog({ isOpen, onClose, children }: CustomDialog
     >
       <div
         className="bg-white rounded-lg shadow-xl w-full max-w-lg m-4 p-0 relative"
-        onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()} // prevent closing on inner click
+        onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         <button
           className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"

@@ -4,7 +4,6 @@ import PersonalInfoForm from "./personal-info-form";
 import CustomDialog from "./custom-dialog";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -16,42 +15,22 @@ import {
 import { motion } from "framer-motion";
 import Question from "./question";
 import { useState, useRef } from "react";
-import { answerKey, questions, categoryMap } from "./questionsData";
-
-interface QuestionType {
-  id: string;
-  statement: string;
-}
-
-interface PersonalInfo {
-  name: string;
-  email: string;
-  age?: string;
-  gender: string;
-  phoneNumber: string;
-}
+import { questions } from "./questionsData";
 
 export default function CareerMaturityTest() {
-  const [formOpen, setFormOpen] = useState<boolean>(false);
-  const questionRefs = useRef<Record<string, HTMLDivElement | null>>({});
-  const { form, allAnswers, setAllAnswers } = useFormContextData();
-  const router = useRouter();
+  const [formOpen, setFormOpen] = useState(false);
+  const questionRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const { allAnswers, setAllAnswers } = useFormContextData();
 
   const handleSubmitTest = (): void => {
     const unansweredQues = questions.find((q) => !allAnswers?.[q.id]);
-    
     if (unansweredQues) {
       toast.dismiss();
       const ref = questionRefs.current[unansweredQues.id];
       ref?.scrollIntoView({ behavior: "smooth", block: "center" });
-
-      toast("Please answer all the questions before submitting.", {
+      toast.warning("Please answer all the questions before submitting.", {
         description: "Scroll to the unanswered question.",
         className: "bg-red-200 border border-red-600 text-red-700",
-        style: {
-          fontWeight: "600",
-          borderRadius: "4px",
-        },
       });
       return;
     }
@@ -79,25 +58,24 @@ export default function CareerMaturityTest() {
               choose disagree next to it.
             </CardDescription>
           </CardHeader>
-
           <CardContent>
             <div className="flex flex-col gap-4">
-              {questions.map((ques: QuestionType) => (
+              {questions.map((ques) => (
                 <div
                   key={ques.id}
-                  ref={(el) => (questionRefs.current[ques.id] = el)}
+                  ref={(el) => {
+                    questionRefs.current[ques.id] = el;
+                  }}
                 >
                   <Question
                     ques={ques}
-                    id={ques.id}
-                    allAnswers={allAnswers || {}}
+                    allAnswers={allAnswers}
                     setAllAnswers={setAllAnswers}
                   />
                 </div>
               ))}
             </div>
           </CardContent>
-
           <CardFooter className="justify-center">
             <Button
               variant="primary"
@@ -110,7 +88,6 @@ export default function CareerMaturityTest() {
           </CardFooter>
         </Card>
       </motion.div>
-      
       <CustomDialog isOpen={formOpen} onClose={() => setFormOpen(false)}>
         <PersonalInfoForm />
       </CustomDialog>

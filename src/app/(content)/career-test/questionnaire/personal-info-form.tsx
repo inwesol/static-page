@@ -1,5 +1,4 @@
 "use client";
-
 import { useFormContextData } from "@/context/personal-info-context/FormContext";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -24,23 +23,13 @@ import {
   answerKey,
   questions as questionFields,
   categoryMap,
-  categoryDescriptions,
+  Category,
 } from "./questionsData";
 
-// Type definitions
-interface PersonalInfo {
-  fullName: string;
-  email: string;
-  gender: string;
-  age: number | string;
-  phoneNumber?: string;
-}
-interface Results {
-  [category: string]: number;
-}
+type Results = Record<Category, number>;
 
 export default function PersonalInfoForm() {
-  const { form, setSubmittedData, allAnswers, setTestScore, testScore } =
+  const { form, setSubmittedData, allAnswers, setTestScore } =
     useFormContextData();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -54,27 +43,28 @@ export default function PersonalInfoForm() {
     };
 
     for (const questionId in allAnswers) {
-      const answer = allAnswers[questionId];
-      const correctAnswer = answerKey[questionId];
+      const answer = allAnswers[Number(questionId)];
+      const correctAnswer = answerKey[Number(questionId)];
       if (answer === correctAnswer) {
-        for (const category in categoryMap) {
-          if (categoryMap[category].includes(parseInt(questionId, 10))) {
+        (Object.keys(categoryMap) as Category[]).forEach((category) => {
+          if (categoryMap[category].includes(Number(questionId))) {
             categoryScores[category] += 1;
           }
-        }
+        });
       }
     }
 
-    for (const category in categoryScores) {
+    (Object.keys(categoryScores) as Category[]).forEach((category) => {
       categoryScores[category] = parseFloat(
         ((categoryScores[category] / 6) * 100).toFixed(2)
       );
-    }
+    });
+
     return categoryScores;
   }
 
-  const handleGenerateReport = async (formData: PersonalInfo) => {
-    setIsSubmitting(true); // Start loading
+  const handleGenerateReport = async (formData: any) => {
+    setIsSubmitting(true);
     const localTestScore = calculateScore();
     setTestScore(localTestScore);
     try {
@@ -111,7 +101,6 @@ export default function PersonalInfoForm() {
           Please fill out the form below to know your result
         </p>
       </div>
-
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(handleGenerateReport)}
@@ -155,7 +144,7 @@ export default function PersonalInfoForm() {
                     <SelectContent className="bg-white rounded-[4px]">
                       <SelectItem value="male">Male</SelectItem>
                       <SelectItem value="female">Female</SelectItem>
-                      <SelectItem value="binary">Binary</SelectItem>
+                      <SelectItem value="non-binary">Non-binary</SelectItem>
                       <SelectItem value="prefer not to say">
                         Prefer not to say
                       </SelectItem>

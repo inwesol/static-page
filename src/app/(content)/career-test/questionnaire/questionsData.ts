@@ -15,7 +15,7 @@ export const questions: QuestionType[] = [
   { id: 6, ques: "I don’t know how to go about getting into the kind of work I want to do." },
   { id: 7, ques: "Everyone seems to tell me something different; as a result I don’t know what kind of work to choose." },
   { id: 8, ques: "If you have doubts about what you want to do, ask your parents or friends for advice." },
-  { id: 9, ques: "I seldom think about the job that I want to enter." },
+  { id: 9, ques: "I rarely think about the job that I want to enter." },
   { id: 10, ques: "I am having difficulty in preparing myself for the work that I want to do." },
   { id: 11, ques: "I keep changing my occupational choice." },
   { id: 12, ques: "When it comes to choosing a career, I will ask other people to help me." },
@@ -28,7 +28,7 @@ export const questions: QuestionType[] = [
   { id: 19, ques: "There are so many things to consider in choosing an occupation, it is hard to make a decision." },
   { id: 20, ques: "It is important to consult close friends and get their ideas before making an occupational choice." },
   { id: 21, ques: "I really can’t find any work that has much appeal to me." },
-  { id: 22, ques: "I keep wondering how I can reconcile the kind of person I am with the kind of person I want to be in my occupation." },
+  { id: 22, ques: "I keep wondering how I can adapt the kind of person I am with the kind of person I want to be in my occupation." },
   { id: 23, ques: "I can’t understand how some people can be so certain about what they want to do." },
   { id: 24, ques: "In making career choices, one should pay attention to the thoughts and feelings of family members." },
 ];

@@ -48,7 +48,7 @@ const CareerTestDescription: React.FC = () => {
               Career maturity is your ability to make informed, confident, and
               well-prepared decisions about your future career. It reflects how
               ready you are to explore options, plan ahead, seek guidance, and
-              take ownership of your career path.
+              take ownership of your career path. Developed by Mark L. Savickas. Career maturity explores how individuals develop readiness to make informed and appropriate career decisions.
             </p>
           </div>
           {/* <div>

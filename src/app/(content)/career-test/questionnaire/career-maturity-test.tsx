@@ -28,9 +28,9 @@ export default function CareerMaturityTest() {
       toast.dismiss();
       const ref = questionRefs.current[unansweredQues.id];
       ref?.scrollIntoView({ behavior: "smooth", block: "center" });
-      toast.warning("Please answer all the questions before submitting.", {
+      toast.error("Please answer all the questions before submitting.", {
         description: "Scroll to the unanswered question.",
-        className: "bg-red-200 border border-red-600 text-red-700",
+        className: "bg-red-200 border border-red-600 text-red-700 px-2",
       });
       return;
     }

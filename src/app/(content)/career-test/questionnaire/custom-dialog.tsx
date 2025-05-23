@@ -32,7 +32,7 @@ export default function CustomDialog({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-xl w-full max-w-lg m-4 p-0 relative"
+        className="bg-white shadow-xl w-full m-4 max-w-lg p-0 relative rounded-xl overflow-hidden"
         onClick={(e: MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         <button

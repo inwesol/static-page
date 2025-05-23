@@ -66,7 +66,7 @@ export const NAV_LINKS = [
   },
   
   {
-    title: "Career Maturity Test",
+    title: "Career Readiness",
     href: "/career-test/",
   },
   // {

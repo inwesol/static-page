@@ -48,13 +48,17 @@ export const NAV_LINKS = [
   //   href: "/coco/",
   // },
   {
+    title: "Career Maturity Test",
+    href: "/Maturity-Test/",
+  },
+  {
     title: "Cohort Program",
     href: "/events/cohort/",
   },
-  // {
-  //   title: "Free Workshop",
-  //   href: "/events/webinar-know-your-why/",
-  // },
+  {
+    title: "Blogs",
+    href: "/blog/",
+  },
   {
     title: "Our Story",
     href: "/story/",
@@ -64,16 +68,10 @@ export const NAV_LINKS = [
     title: "Contact Us",
     href: "/contact-us/",
   },
-  
   {
     title: "Career Readiness",
     href: "/career-test/",
   },
-  // {
-  //   title: "Blogs",
-  //   href: "/blog/",
-  // },
-
   // {
   //   title: "Resources",
   //   href: "/resources",

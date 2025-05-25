@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
-
 import TableOfContents from "./table-of-contents";
 import Image from "next/image";
+import BackLink from "./back-link";
 
 interface BlogLayoutProps {
   markdownContent: string;
@@ -72,13 +72,9 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
       </header>
 
       <div className="w-full max-w-6xl mx-auto">
-        <a
-          href="/"
-          className="inline-flex justify-center items-center px-4 py-2 text-primary1 rounded-md text-base font-bold"
-        >
-          ← Back to Home
-        </a>
+        <BackLink />
       </div>
+
 
       <div className="w-full max-w-6xl mx-auto flex flex-col-reverse lg:flex-row gap-6">
         <main className="flex-1 bg-white rounded-xl shadow-md p-6 sm:p-8 lg:p-12">

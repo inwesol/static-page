@@ -65,6 +65,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+// import RotatingBorderButton from "@/components/ui/rotating-border-button";
 
 // Define the event type based on the data structure in events.ts
 type EventInstructor = {
@@ -154,7 +155,27 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   const [schedulingComplete, setSchedulingComplete] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [showDesktopDialog, setShowDesktopDialog] = useState<boolean>(false);
+  const [showMobileDialog, setShowMobileDialog] = useState<boolean>(false);
   const router = useRouter();
+
+  // Open dialog automatically on page load
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth >= 640) {
+      setShowDesktopDialog(true);
+      setShowMobileDialog(false);
+    } else {
+      setShowMobileDialog(true);
+      setShowDesktopDialog(false);
+    }
+  };
+
+  window.addEventListener("resize", handleResize);
+  handleResize(); // <-- Call once on mount
+
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   // Auto-rotate testimonials every 5 seconds
   useEffect(() => {
@@ -261,6 +282,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
               <p className="text-lg text-gray-600 mb-6">{event.description}</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                {/* nothing is getitng rendered here as startDate and endDate or date is missing */}
                 {event.startDate && event.endDate ? (
                   <div className="flex items-center">
                     <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
@@ -336,6 +358,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                     >
                       Pricing
                     </TabsTrigger>
+                    {/* right now not here so nothing rendered form this block */}
                     {(event.schedule || event.agenda) && (
                       <TabsTrigger
                         value="schedule"
@@ -812,19 +835,23 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                     {/* <p className="text-xs text-gray-500 mb-2">
                         (condition applied)
                         </p> */}
+                    <Button
+                      className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+                      disabled={registrationClosed}
+                      onClick={() =>
+                        setShowDesktopDialog((prevState) => !prevState)
+                      }
+                    >
+                      {registrationClosed
+                        ? "Registration Closed"
+                        : "Schedule Now"}
+                    </Button>
                   </div>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button
-                        className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
-                        disabled={registrationClosed}
-                      >
-                        {registrationClosed
-                          ? "Registration Closed"
-                          : "Schedule Now"}
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-[900px]">
+                  <Dialog
+                    open={showDesktopDialog}
+                    onOpenChange={setShowDesktopDialog}
+                  >
+                    <DialogContent className="sm:max-w-[900px] bg-gradient-to-r from-primary-green-200 to-white">
                       <DialogHeader>
                         <DialogTitle className="text-center text-2xl">
                           {schedulingComplete
@@ -838,7 +865,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                         </DialogDescription>
                       </DialogHeader>
 
-                      <div className="pl-12">
+                      <div>
                         {schedulingComplete ? (
                           <div className="space-y-6">
                             <Alert className="bg-green-50 border-green-200">
@@ -849,14 +876,15 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                             </Alert>
                           </div>
                         ) : (
-                          <div className="space-y-8">
+                          <div className="space-y-8 flex justify-center flex-col items-center">
                             <iframe
                               src="https://scheduler.zoom.us/akarshedpsy/coachingsession?embed=true"
                               style={{
                                 width: "100%",
-                                height: "560px",
-                                maxWidth: "750px",
+                                height: "360px",
+                                borderRadius: "12px",
                               }}
+                              className="self-stretch shadow-md border"
                             ></iframe>
                             <div className="space-y-4">
                               <h4 className="font-medium">
@@ -932,20 +960,31 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
           <p className="text-sm text-primary-blue-500 mb-1">
             Experience a Free Session
           </p>
+          <Button
+            className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+            disabled={registrationClosed}
+            onClick={() => {
+              window.innerWidth < 640
+                ? setShowMobileDialog((prev) => !prev)
+                : setShowDesktopDialog((prev) => !prev);
+            }}
+          >
+            {registrationClosed ? "Registration Closed" : "Schedule Now"}
+          </Button>
         </div>
-        <Drawer>
-          <DrawerTrigger asChild>
+        <Drawer open={showMobileDialog} onOpenChange={setShowMobileDialog}>
+          {/* <DrawerTrigger asChild>
             <Button
               className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
               disabled={registrationClosed}
             >
               {registrationClosed ? "Registration Closed" : "Schedule Now"}
             </Button>
-          </DrawerTrigger>
-          <DrawerContent>
+          </DrawerTrigger> */}
+          <DrawerContent className="bg-gradient-to-r from-primary-green-200 to-white">
             <div className="mx-auto w-full max-w-lg z-80">
-              <DrawerHeader>
-                <DrawerTitle>
+              <DrawerHeader className="!pb-0">
+                <DrawerTitle className="!text-center">
                   {schedulingComplete
                     ? "Scheduling Complete!"
                     : "Schedule Your Free Session"}
@@ -1003,12 +1042,13 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                   </div>
                 ) : (
                   <div className="space-y-4">
-                    <iframe
+                    <iframe className="shadow-md border"
                       src="https://scheduler.zoom.us/akarshedpsy/coachingsession?embed=true"
                       style={{
                         width: "100%",
-                        height: "560px",
+                        height: "460px",
                         maxWidth: "750px",
+                        borderRadius:"12px",
                       }}
                     ></iframe>
                     <Button

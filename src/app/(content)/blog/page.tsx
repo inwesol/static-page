@@ -10,6 +10,7 @@ const BlogPage: React.FC = () => {
       title: blog.heading,
       description: blog.oneLiner || blog.content?.slice(0, 100) || "",
       image: blog.bannerUrl,
+      readingTime:blog.readingTime,
       date: blog.createdOn,
       link: `/blog/${slug}/`,
       tags: [],

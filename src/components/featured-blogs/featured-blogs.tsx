@@ -49,14 +49,14 @@ const FeaturedBlogs = () => {
 
   return (
     <section className="w-full bg-[#f5fafd] py-14">
-      <div className="max-w-screen-lg mx-auto px-6">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-8">
+      <div className="max-w-screen-lg px-6 mx-auto">
+        <h2 className="mb-8 text-3xl font-bold text-center text-gray-900 sm:text-4xl">
           Featured Blogs
         </h2>
 
         <div className="relative">
           <div
-            className="flex transition-transform duration-500 items-center justify-center ease-in-out gap-6 flex-col sm:flex-row"
+            className="flex flex-col items-center justify-center gap-6 transition-transform duration-500 ease-in-out sm:flex-row"
             style={{
               transform: `translateX(-${current * (100 / visibleCards)}%)`,
             }}

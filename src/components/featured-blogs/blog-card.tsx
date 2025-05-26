@@ -27,22 +27,22 @@ const BlogCard = ({ blog, isLinkWrapper = false }: BlogCardProps) => {
         <Image
           src={blog.image}
           alt={blog.title}
-          className="w-full h-full object-contain"
+          className="object-contain w-full h-full"
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
         />
       </div>
 
-      <div className="p-6 flex flex-col flex-grow">
-        <span className="text-xs text-gray-500 tracking-wide">
+      <div className="flex flex-col flex-grow p-6">
+        <span className="text-xs tracking-wide text-gray-500">
           {blog.date} • {blog.readingTime}
         </span>
 
-        <h3 className="text-xl font-semibold text-gray-900 mt-2 leading-tight">
+        <h3 className="mt-2 text-xl font-semibold leading-tight text-gray-900">
           {blog.title}
         </h3>
 
-        <p className="text-gray-700 text-sm mt-2 line-clamp-5">
+        <p className="mt-2 text-sm text-gray-700 line-clamp-5">
           {blog.description}
         </p>
 
@@ -50,7 +50,7 @@ const BlogCard = ({ blog, isLinkWrapper = false }: BlogCardProps) => {
           {blog.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-gray-200 text-gray-700 text-xs font-medium rounded-full"
+              className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-200 rounded-full"
             >
               {tag}
             </span>
@@ -59,10 +59,10 @@ const BlogCard = ({ blog, isLinkWrapper = false }: BlogCardProps) => {
 
         {/* Render Read More only when not wrapped in Link */}
         {!isLinkWrapper && (
-          <div className="mt-auto pt-4">
-            <span className="inline-flex items-center text-blue-600 font-medium hover:underline">
+          <div className="pt-4 mt-auto">
+            <span className="inline-flex items-center font-medium text-blue-600 hover:underline">
               Read More
-              <ArrowUpRight className="ml-1 h-4 w-4" />
+              <ArrowUpRight className="w-4 h-4 ml-1" />
             </span>
           </div>
         )}

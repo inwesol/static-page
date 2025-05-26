@@ -102,17 +102,17 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
       <div className="min-h-screen bg-accent/10 px-4 sm:px-6 lg:px-8 py-8 bg-gradient-to-r from-primary-green-100 to-white">
         <section className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <h1 className="text-3xl sm:text-4xl font-bold text-primary-green-600 mb-4">
+          <div className="mb-12 text-center">
+            <h1 className="mb-4 text-3xl font-bold sm:text-4xl text-primary-green-600">
               Blog Explorer
             </h1>
-            <p className="text-gray-700 text-base sm:text-lg">
+            <p className="text-base text-gray-700 sm:text-lg">
               Discover insightful articles and updates on various topics
             </p>
           </div>
           <div>
             {/* Controls */}
-            <div className="mb-10 space-y-6 max-w-5xl mx-auto flex flex-col sm:flex-row gap-4 sm:justify-between sm:gap-0">
+            <div className="flex flex-col max-w-5xl gap-4 mx-auto mb-10 space-y-6 sm:flex-row sm:justify-between sm:gap-0">
               {/* Search Bar */}
               <div className="relative w-full">
                 <input
@@ -123,7 +123,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
                   className="w-full px-5 py-3 rounded-full bg-white border border-gray-300 focus:border-[#00B24B] focus:ring-2 focus:ring-[#00B24B]/20 outline-none transition-all text-gray-700 placeholder-gray-400"
                 />
                 <svg
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                  className="absolute w-5 h-5 text-gray-400 -translate-y-1/2 right-4 top-1/2"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -164,7 +164,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
                     <option value="title">Sort by Title</option>
                   </select>
                   <svg
-                    className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none"
+                    className="absolute w-5 h-5 text-gray-400 -translate-y-1/2 pointer-events-none right-3 top-1/2"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -182,8 +182,8 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
           {/* Blog Grid */}
           <div className="w-full">
             {processedBlogs.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-gray-600 text-lg">
+              <div className="py-12 text-center">
+                <p className="text-lg text-gray-600">
                   No blogs found matching your criteria.
                 </p>
               </div>
@@ -193,7 +193,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
                   <Link
                     key={blog.id}
                     href={blog.link}
-                    className="block hover:cursor-pointer transition-transform duration-300 hover:-translate-y-1"
+                    className="block transition-transform duration-300 hover:cursor-pointer hover:-translate-y-1"
                   >
                     <BlogCard blog={blog} isLinkWrapper={true} />
                   </Link>

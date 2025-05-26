@@ -55,10 +55,10 @@ export const NAV_LINKS = [
     title: "Cohort Program",
     href: "/events/cohort/",
   },
-  // {
-  //   title: "Free Workshop",
-  //   href: "/events/webinar-know-your-why/",
-  // },
+  {
+    title: "Blogs",
+    href: "/blog/",
+  },
   {
     title: "Our Story",
     href: "/story/",
@@ -69,10 +69,9 @@ export const NAV_LINKS = [
     href: "/contact-us/",
   },
   {
-    title: "Blogs",
-    href: "/blog/",
+    title: "Career Readiness",
+    href: "/career-test/",
   },
-
   // {
   //   title: "Resources",
   //   href: "/resources",
@@ -80,13 +79,13 @@ export const NAV_LINKS = [
   //     {
   //       title: "Blog",
   //       tagline: "Read articles on the latest trends in tech.",
-  //       href: "/resources/blog",
+  //       href: "/blog/",
   //       icon: NewspaperIcon,
   //     },
   //     {
-  //       title: "Help",
+  //       title: "Career Maturity Test",
   //       tagline: "Get answers to your questions.",
-  //       href: "/resources/help",
+  //       href: "/career-test/",
   //       icon: HelpCircleIcon,
   //     },
   //   ],

@@ -11,7 +11,6 @@ const BlogPage: React.FC = () => {
       description: blog.oneLiner || blog.content?.slice(0, 100) || "",
       image: blog.bannerUrl,
       date: blog.createdOn,
-      readingTime: blog.readingTime,
       link: `/blog/${slug}/`,
       tags: [],
     })

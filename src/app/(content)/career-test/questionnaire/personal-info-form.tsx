@@ -95,11 +95,11 @@ export default function PersonalInfoForm() {
 
   return (
     <>
-      <div className="rounded-md overflow-hidden">
-        <div className="bg-gradient-to-r from-green-700 via-blue-500 to-green-600 px-8 py-4 mb-6">
+      <div className="rounded-xl overflow-hidden">
+        <div className="bg-gradient-to-r from-primary-green-600 via-primary-blue-500 to-primary-green-600 px-8 py-4 mb-6">
           <h2 className="text-2xl font-bold text-white">Just a step away!</h2>
           <p className="text-white text-sm py-2">
-            Please fill out the form below to know your result
+            Please fill out the form below to get your instant report.
           </p>
         </div>
         <Form {...form}>
@@ -242,13 +242,13 @@ export default function PersonalInfoForm() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className={`bg-gradient-to-r from-primary-green-600 to-primary-blue-600 text-white font-semibold px-4 py-6 rounded-full transition-all duration-300 md:px-4 md:py-6 ${
+                className={`text-lg px-8 py-6 md:px-4 md:py-6 bg-gradient-to-r from-primary-blue-600 to-primary-green-600 hover:from-primary-blue-700 hover:to-primary-green-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
                   isSubmitting
                     ? "opacity-50 cursor-not-allowed"
-                    : "hover:from-primary-green-700 hover:to-primary-blue-700"
+                    : "hover:from-primary-blue-700 hover:to-primary-green-700"
                 }`}
               >
-                {isSubmitting ? "Generating..." : "Generate Result"}
+                {isSubmitting ? "Generating..." : "Generate Report"}
               </Button>
             </div>
           </form>

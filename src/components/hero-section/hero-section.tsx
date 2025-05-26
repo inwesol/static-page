@@ -65,12 +65,12 @@ const HeroSection = () => {
             href="/events/cohort"
             className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary-green-600 to-primary-blue-500 text-white font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 max-w-[90vw] sm:max-w-none"
           >
-            <span className="animate-bounce shrink-0 text-xl">🚀</span>
-            <span className="truncate">First Cohort Program Launched!</span>
-            <span className="hidden sm:inline">Book Free Session Now</span>
+            <span className="text-xl animate-bounce shrink-0">🚀</span>
+            {/* <span className="truncate">First Coaching Session Launched!</span> */}
+            <span className="sm:inline">Book Free Coaching Session Now!</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-3 w-3 sm:h-4 sm:w-4 shrink-0"
+              className="w-3 h-3 sm:h-4 sm:w-4 shrink-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -95,13 +95,13 @@ const HeroSection = () => {
           <span className="hidden sm:block">
             Coaching individuals to thrive in their careers through the{" "}
             <span className="whitespace-nowrap">self-discovery</span> of their{" "}
-            <span className="text-accent font-bold">&quot;why&quot;</span>
+            <span className="font-bold text-accent">&quot;why&quot;</span>
             <br />
             Knowing your purpose brings clarity, builds confidence, and reduces
             stress, leading to a more purposeful career.
             <br />
           </span>
-          <span className="text-accent font-bold">
+          <span className="font-bold text-accent">
             Our Motto: self-discovery leads to excellence
           </span>
         </p>
@@ -112,7 +112,7 @@ const HeroSection = () => {
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="flex h-fit items-center justify-center gap-2"
+              className="flex items-center justify-center gap-2 h-fit"
             >
               <FormField
                 control={form.control}

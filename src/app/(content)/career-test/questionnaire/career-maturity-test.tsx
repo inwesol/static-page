@@ -40,17 +40,17 @@ export default function CareerMaturityTest() {
   return (
     <>
       <motion.div
-        className="max-w-5xl mx-auto py-10"
+        className="max-w-5xl py-10 mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <Card className="shadow-xl border border-gray-200 bg-white rounded-2xl">
-          <CardHeader>
-            <CardTitle className="md:text-4xl sm:text-3xl text-2xl font-bold text-primary-green-600">
+        <Card className="bg-white border border-gray-200 shadow-xl rounded-2xl">
+          <CardHeader className="p-8 text-center">
+            <CardTitle className="text-2xl font-bold md:text-4xl sm:text-3xl text-primary-green-600">
               Career Maturity Test
             </CardTitle>
-            <CardDescription className="text-gray-600 md:text-base mt-2 text-sm">
+            <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
               There are 24 statements about choosing the kind of job or work
               that you will probably do when you finish school. Read each
               statement. If you agree or mostly agree with it, then choose agree
@@ -80,10 +80,10 @@ export default function CareerMaturityTest() {
             <Button
               variant="primary"
               size="lg"
-              className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 hover:from-primary-green-700 hover:to-primary-blue-700 text-white font-semibold px-4 py-1 rounded-full transition-all duration-300 md:px-6 md:py-3"
+              className="px-8 py-4 text-lg font-semibold text-white transition-all transform rounded-full shadow-lg bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 hover:shadow-xl hover:-translate-y-1"
               onClick={handleSubmitTest}
             >
-              Submit Test
+              Submit Response
             </Button>
           </CardFooter>
         </Card>

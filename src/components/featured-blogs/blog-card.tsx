@@ -13,7 +13,6 @@ export interface Blog {
   date: string;
   readingTime: string;
   link: string;
-  slug: string; // Add slug to interface
 }
 
 export interface BlogCardProps {
@@ -57,7 +56,7 @@ const BlogCard = ({ blog, isLinkWrapper = false }: BlogCardProps) => {
             </span>
           ))}
         </div>
-        
+
         {/* Render Read More only when not wrapped in Link */}
         {!isLinkWrapper && (
           <div className="mt-auto pt-4">

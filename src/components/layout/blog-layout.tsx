@@ -4,7 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import TableOfContents from "./table-of-contents";
 import Image from "next/image";
-import BackLink from "./back-link";
+// import BackLink from "./back-link";
+import { useRouter } from "next/navigation";
 
 interface BlogLayoutProps {
   markdownContent: string;
@@ -26,6 +27,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
   >([]);
   const [isTocOpen, setIsTocOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -72,7 +74,11 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
       </header>
 
       <div className="w-full max-w-6xl mx-auto">
-        <BackLink />
+        <div
+          className="inline-flex justify-center items-center text-primary1 text-base font-bold cursor-pointer mb-2" onClick={()=>router.back()}
+        >
+          ← Go Back
+        </div>
       </div>
 
 

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import BlogCard from "./blog-card";
 import { availableBlogs } from "@/app/(content)/blog/[blogSlug]/blog-content";
+import  Link  from 'next/link';
 
 const FeaturedBlogs = () => {
   const [current, setCurrent] = useState(0);
@@ -68,13 +69,13 @@ const FeaturedBlogs = () => {
                   width: `calc(100% / ${visibleCards} - 1rem)`,
                 }}
               >
-                <a
+                <Link
                   href={blog.link}
                   className="block h-full transition-transform hover:scale-105"
                   aria-label={`Read more about ${blog.title}`}
                 >
                   <BlogCard blog={blog} isLinkWrapper={true} />
-                </a>
+                </Link>
               </div>
             ))}
           </div>

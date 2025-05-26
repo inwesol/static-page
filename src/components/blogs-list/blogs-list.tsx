@@ -92,9 +92,6 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
   //   if (words.length <= wordCount) return text;
   //   return "..." + words.slice(-wordCount).join(" ");
   // }
-  useEffect(function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   return (
     <motion.div
@@ -102,7 +99,7 @@ const BlogListPage = ({ blogs }: { blogs: Blog[] }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="min-h-screen px-4 py-12 pt-12 bg-accent/10 sm:px-6 lg:px-8 bg-gradient-to-r from-primary-green-100 to-white">
+      <div className="min-h-screen bg-accent/10 px-4 sm:px-6 lg:px-8 py-8 bg-gradient-to-r from-primary-green-100 to-white">
         <section className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="mb-12 text-center">

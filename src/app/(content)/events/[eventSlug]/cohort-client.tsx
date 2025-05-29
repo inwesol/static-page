@@ -155,27 +155,39 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   const [schedulingComplete, setSchedulingComplete] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-  const [showDesktopDialog, setShowDesktopDialog] = useState<boolean>(false);
   const [showMobileDialog, setShowMobileDialog] = useState<boolean>(false);
+  const [iframeLoaded, setIframeLoaded] = useState<boolean>(false);
+  const [desktopIframeLoaded, setDesktopIframeLoaded] =
+    useState<boolean>(false);
   const router = useRouter();
 
   // Open dialog automatically on page load
-useEffect(() => {
-  const handleResize = () => {
-    if (window.innerWidth >= 640) {
-      setShowDesktopDialog(true);
-      setShowMobileDialog(false);
-    } else {
-      setShowMobileDialog(true);
-      setShowDesktopDialog(false);
+  useEffect(() => {
+    const handleResize = () => {
+      let timerId;
+      if (window.innerWidth >= 640) {
+        setShowMobileDialog(false);
+        setIframeLoaded(false);
+      } else {
+        if (timerId) clearTimeout(timerId);
+        timerId = setTimeout(() => {
+          setShowMobileDialog(true);
+        }, 3000);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize(); // <-- Call once on mount
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  function handleDrawerChange(isOpen: boolean) {
+    setShowMobileDialog(isOpen);
+    if (!isOpen) {
+      setIframeLoaded(false); // Reset when closing
     }
-  };
-
-  window.addEventListener("resize", handleResize);
-  handleResize(); // <-- Call once on mount
-
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+  }
 
   // Auto-rotate testimonials every 5 seconds
   useEffect(() => {
@@ -255,23 +267,24 @@ useEffect(() => {
   };
 
   return (
-    <div className="relative">
-      {/* Banner Image */}
-      <div className="w-full h-[200px] md:h-[300px] lg:h-[350px] relative mb-0">
-        <Image
-          src={event.bannerImageUrl}
-          alt={event.title}
-          fill
-          className="object-contain"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-green-800/10"></div>
-      </div>
+    <>
+      <div className="relative">
+        {/* Banner Image */}
+        <div className="w-full h-[200px] md:h-[300px] lg:h-[350px] relative mb-0">
+          <Image
+            src={event.bannerImageUrl}
+            alt={event.title}
+            fill
+            className="object-contain"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-green-800/10"></div>
+        </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main content - 2/3 width on desktop */}
-          <div className="lg:col-span-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="flex flex-col">
+            {/* Main content - 2/3 width on desktop */}
+            {/* <div className=""> */}
             <div className="mb-6">
               <Badge className="mb-2 bg-primary-green-100 text-primary-green-800 hover:bg-primary-green-200">
                 {getEventTypeLabel(event.type)}
@@ -318,58 +331,58 @@ useEffect(() => {
             </div>
 
             <Tabs defaultValue="offers" className="mb-10">
-              <div className=" border-gray-200 mb-8">
-                <div className="overflow-x-auto scrollbar-hide md:overflow-visible pb-1">
-                  <TabsList className="bg-transparent flex md:w-auto justify-start">
-                    {event.offers && (
-                      <TabsTrigger
-                        value="offers"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                      >
-                        What&apos;s Inside?
-                      </TabsTrigger>
-                    )}
-                    {event.facilitates && (
-                      <TabsTrigger
-                        value="facilitates"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                      >
-                        Why This Program?
-                      </TabsTrigger>
-                    )}
-                    {event.achieves && (
-                      <TabsTrigger
-                        value="achieves"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                      >
-                        What&apos;ll You Get?
-                      </TabsTrigger>
-                    )}
+              {/* <div className=" border-gray-200 mb-8">
+                  <div className="overflow-x-auto scrollbar-hide md:overflow-visible pb-1"> */}
+              <TabsList className="bg-transparent !flex flex-wrap max-w-4xl mr-auto justify-start ">
+                {event.offers && (
+                  <TabsTrigger
+                    value="offers"
+                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                  >
+                    What&apos;s Inside?
+                  </TabsTrigger>
+                )}
+                {event.facilitates && (
+                  <TabsTrigger
+                    value="facilitates"
+                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                  >
+                    Why This Program?
+                  </TabsTrigger>
+                )}
+                {event.achieves && (
+                  <TabsTrigger
+                    value="achieves"
+                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                  >
+                    What&apos;ll You Get?
+                  </TabsTrigger>
+                )}
 
-                    <TabsTrigger
-                      value="instructor"
-                      className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                    >
-                      Program Coach
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="pricing"
-                      className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                    >
-                      Pricing
-                    </TabsTrigger>
-                    {/* right now not here so nothing rendered form this block */}
-                    {(event.schedule || event.agenda) && (
-                      <TabsTrigger
-                        value="schedule"
-                        className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                      >
-                        {event.schedule ? "Schedule" : "Agenda"}
-                      </TabsTrigger>
-                    )}
-                  </TabsList>
-                </div>
-              </div>
+                <TabsTrigger
+                  value="instructor"
+                  className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                >
+                  Program Coach
+                </TabsTrigger>
+                <TabsTrigger
+                  value="pricing"
+                  className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                >
+                  Pricing
+                </TabsTrigger>
+                {/* right now not here so nothing rendered form this block */}
+                {(event.schedule || event.agenda) && (
+                  <TabsTrigger
+                    value="schedule"
+                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
+                  >
+                    {event.schedule ? "Schedule" : "Agenda"}
+                  </TabsTrigger>
+                )}
+              </TabsList>
+              {/* </div> */}
+              {/* </div> */}
 
               <div className="mt-4">
                 {event.offers && (
@@ -636,59 +649,89 @@ useEffect(() => {
                     </div>
                   </TabsContent>
                 )}
+              </div>
+            </Tabs>
 
-                {/* Testimonials Section */}
-                {event.testimonials && event.testimonials.length > 0 && (
-                  <div className="mt-12 mb-8">
-                    <h2 className="text-2xl font-bold mb-6">What People Say</h2>
-                    <div className="max-w-3xl relative">
-                      <Card className="bg-primary-green-50/50 border-none shadow-sm rounded-xl overflow-hidden">
-                        <CardContent className="p-6">
-                          <div className="flex flex-col h-full">
-                            <div className="mb-4">
-                              <svg
-                                className="h-8 w-8 text-primary-green-400"
-                                fill="currentColor"
-                                viewBox="0 0 32 32"
-                                aria-hidden="true"
-                              >
-                                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
-                              </svg>
+            {/* himanshu schedule */}
+            <div className="hidden sm:flex flex-col gap-2 mb-10">
+              <h1 className="text-2xl font-bold">Schedule Your Free Session</h1>
+              <p className="text-primary-green-600 text-sm">
+                Choose a time that works for you
+              </p>
+              {/* shimmer effect instead of loader*/}
+              {/* {!desktopIframeLoaded && <div className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl min-h-[680px] overflow-hidden self-stretch bg-white flex">
+                
+              </div> } */}
+              <div
+                className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl min-h-[640px] overflow-hidden self-stretch"
+                style={{ display: desktopIframeLoaded ? "block" : "none" }}
+              >
+                <iframe
+                  src="https://scheduler.zoom.us/akarshedpsy/coachingsession?embed=true"
+                  // loading="lazy"
+                  style={{
+                    width: "100%",
+                    minHeight: "inherit",
+                    border: "none",
+                  }}
+                  title="zoom scheduler"
+                  onLoad={() => setDesktopIframeLoaded(true)}
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Testimonials Section */}
+            {event.testimonials && event.testimonials.length > 0 && (
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold mb-6">What People Say</h2>
+                <div className="relative">
+                  <Card className="bg-primary-green-50/50 border-none shadow-sm rounded-xl overflow-hidden">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col h-full">
+                        <div className="mb-4">
+                          <svg
+                            className="h-8 w-8 text-primary-green-400"
+                            fill="currentColor"
+                            viewBox="0 0 32 32"
+                            aria-hidden="true"
+                          >
+                            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+                          </svg>
+                        </div>
+
+                        {/* Testimonial content - use display method instead of absolute positioning */}
+                        {event.testimonials.map((testimonial, index) => (
+                          <div
+                            key={index}
+                            className={`transition-all duration-500 ease-in-out ${
+                              index === currentTestimonialIndex
+                                ? "opacity-100 transform-none"
+                                : "hidden"
+                            }`}
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                          >
+                            <p className="text-gray-700 italic mb-4">
+                              &ldquo;{testimonial.review}&rdquo;
+                            </p>
+                            <div>
+                              <p className="font-semibold">
+                                {testimonial.name}
+                              </p>
+                              <p className="text-sm text-gray-600">
+                                {testimonial.position}
+                              </p>
                             </div>
-
-                            {/* Testimonial content - use display method instead of absolute positioning */}
-                            {event.testimonials.map((testimonial, index) => (
-                              <div
-                                key={index}
-                                className={`transition-all duration-500 ease-in-out ${
-                                  index === currentTestimonialIndex
-                                    ? "opacity-100 transform-none"
-                                    : "hidden"
-                                }`}
-                                onMouseEnter={() => setIsHovered(true)}
-                                onMouseLeave={() => setIsHovered(false)}
-                              >
-                                <p className="text-gray-700 italic mb-4">
-                                  &ldquo;{testimonial.review}&rdquo;
-                                </p>
-                                <div>
-                                  <p className="font-semibold">
-                                    {testimonial.name}
-                                  </p>
-                                  <p className="text-sm text-gray-600">
-                                    {testimonial.position}
-                                  </p>
-                                </div>
-                              </div>
-                            ))}
                           </div>
-                        </CardContent>
-                      </Card>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                      {event.testimonials.length > 1 && (
-                        <>
-                          {/* Navigation controls - uncomment if you want button navigation */}
-                          {/* <div className="absolute inset-y-0 left-0 flex items-center">
+                  {event.testimonials.length > 1 && (
+                    <>
+                      {/* Navigation controls - uncomment if you want button navigation */}
+                      {/* <div className="absolute inset-y-0 left-0 flex items-center">
                                 <Button
                                 variant="ghost"
                                 size="icon"
@@ -711,31 +754,29 @@ useEffect(() => {
                                 </Button>
                             </div> */}
 
-                          {/* Indicator dots */}
-                          <div className="flex justify-center mt-4 space-x-2">
-                            {event.testimonials.map((_, index) => (
-                              <button
-                                key={index}
-                                onClick={() =>
-                                  setCurrentTestimonialIndex(index)
-                                }
-                                className={`h-2 rounded-full transition-all duration-300 ${
-                                  index === currentTestimonialIndex
-                                    ? "bg-primary-green-600 w-4"
-                                    : "bg-gray-300 hover:bg-gray-400 w-2"
-                                }`}
-                                aria-label={`Go to testimonial ${index + 1}`}
-                              />
-                            ))}
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                )}
+                      {/* Indicator dots */}
+                      <div className="flex justify-center mt-4 space-x-2">
+                        {event.testimonials.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentTestimonialIndex(index)}
+                            className={`h-2 rounded-full transition-all duration-300 ${
+                              index === currentTestimonialIndex
+                                ? "bg-primary-green-600 w-4"
+                                : "bg-gray-300 hover:bg-gray-400 w-2"
+                            }`}
+                            aria-label={`Go to testimonial ${index + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            )}
 
-                {/* Free Webinar Card */}
-                {/* <div className="mt-12 mb-8">
+            {/* Free Webinar Card */}
+            {/* <div className="mt-12 mb-8">
                   <h2 className="text-2xl font-bold mb-6">
                     Upcoming Free Webinar
                   </h2>
@@ -783,14 +824,13 @@ useEffect(() => {
                     </Card>
                   </div>
                 </div> */}
-              </div>
-            </Tabs>
-          </div>
+            {/* </div> */}
 
-          {/* Registration card - 1/3 width on desktop, sticky on desktop */}
-          <div className="lg:block hidden">
-            <div className="sticky top-48">
-              <Card className="shadow-lg">
+            {/* Registration card - 1/3 width on desktop, sticky on desktop */}
+            {/* <div className="lg:block hidden"> */}
+            {/* <div className="sticky top-48"> */}
+
+            {/* <Card className="shadow-lg">
                 <CardHeader>
                   <CardTitle className="text-2xl">
                     Start Your Journey Now!
@@ -814,8 +854,9 @@ useEffect(() => {
                         {event.seatsRemaining} of {event.seats}
                       </span>
                     </div>
-                    <Separator />
-                    {/* <div className="flex justify-between">
+                    <Separator /> */}
+            {/* for future*/}
+            {/* <div className="flex justify-between">
                       <span className="text-gray-600">
                         Registration Closing Date
                       </span>
@@ -825,17 +866,20 @@ useEffect(() => {
                           : "N/A"}
                       </span>
                     </div> */}
-                  </div>
-                </CardContent>
+            {/* till here */}
+            {/* </div>
+                </CardContent> 
                 <CardFooter className="flex flex-col space-y-2">
                   <div className="w-full text-center">
                     <p className="font-medium text-primary-blue-500">
                       Experience a Free Session
-                    </p>
-                    {/* <p className="text-xs text-gray-500 mb-2">
+                    </p> */}
+            {/* for future */}
+            {/* <p className="text-xs text-gray-500 mb-2">
                         (condition applied)
                         </p> */}
-                    <Button
+            {/* till here */}
+            {/* <Button
                       className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
                       disabled={registrationClosed}
                       onClick={() =>
@@ -845,14 +889,15 @@ useEffect(() => {
                       {registrationClosed
                         ? "Registration Closed"
                         : "Schedule Now"}
-                    </Button>
-                  </div>
+                    </Button> */}
+            {/* </div>
                   <Dialog
                     open={showDesktopDialog}
                     onOpenChange={setShowDesktopDialog}
                   >
-                    <DialogContent className="sm:max-w-[900px] bg-gradient-to-r from-primary-green-200 to-white">
-                      <DialogHeader>
+                    <DialogContent className="sm:max-w-[900px] bg-gradient-to-r from-primary-green-200 to-white"> */}
+            {/* not needed for now */}
+            {/* <DialogHeader>
                         <DialogTitle className="text-center text-2xl">
                           {schedulingComplete
                             ? "Scheduling Complete!"
@@ -863,9 +908,9 @@ useEffect(() => {
                             ? "Thank you for scheduling your session."
                             : "Choose a time that works for you"}
                         </DialogDescription>
-                      </DialogHeader>
-
-                      <div>
+                      </DialogHeader> */}
+            {/* till here  */}
+            {/* <div>
                         {schedulingComplete ? (
                           <div className="space-y-6">
                             <Alert className="bg-green-50 border-green-200">
@@ -931,9 +976,9 @@ useEffect(() => {
                             </div>
                           </div>
                         )}
-                      </div>
-
-                      {/* <DialogFooter className="flex justify-end gap-4">
+                      </div> */}
+            {/* not needed for now  */}
+            {/* <DialogFooter className="flex justify-end gap-4">
                             {schedulingComplete ? (
                             <Button
                                 onClick={() => router.push("/events")}
@@ -945,125 +990,135 @@ useEffect(() => {
                             <Button variant="outline">Cancel</Button>
                             )}
                         </DialogFooter> */}
-                    </DialogContent>
+            {/* till here */}
+            {/* </DialogContent>
                   </Dialog>
                 </CardFooter>
-              </Card>
-            </div>
+              </Card> */}
+            {/* </div> */}
+            {/* // </div> */}
           </div>
         </div>
-      </div>
 
-      {/* Mobile sticky registration button */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
-        <div className="text-center mb-1">
-          <p className="text-sm text-primary-blue-500 mb-1">
-            Experience a Free Session
-          </p>
-          <Button
-            className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
-            disabled={registrationClosed}
-            onClick={() => {
-              window.innerWidth < 640
-                ? setShowMobileDialog((prev) => !prev)
-                : setShowDesktopDialog((prev) => !prev);
-            }}
-          >
-            {registrationClosed ? "Registration Closed" : "Schedule Now"}
-          </Button>
-        </div>
-        <Drawer open={showMobileDialog} onOpenChange={setShowMobileDialog}>
-          {/* <DrawerTrigger asChild>
+        {/* Mobile sticky registration button */}
+        <div className="sm:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
+          <div className="text-center mb-1">
+            <p className="text-sm text-primary-blue-500 mb-1">
+              Experience a Free Session
+            </p>
             <Button
               className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
               disabled={registrationClosed}
+              onClick={() => {
+                if (window.innerWidth < 640) setShowMobileDialog(true);
+                setIframeLoaded(false);
+              }}
             >
               {registrationClosed ? "Registration Closed" : "Schedule Now"}
             </Button>
-          </DrawerTrigger> */}
-          <DrawerContent className="bg-gradient-to-r from-primary-green-200 to-white">
-            <div className="mx-auto w-full max-w-lg z-80">
-              <DrawerHeader className="!pb-0">
-                <DrawerTitle className="!text-center">
-                  {schedulingComplete
-                    ? "Scheduling Complete!"
-                    : "Schedule Your Free Session"}
-                </DrawerTitle>
-                <DrawerDescription className="text-center text-gray-600">
-                  {schedulingComplete
-                    ? "Thank you for scheduling your session"
-                    : `Choose a time that works for you.`}
-                </DrawerDescription>
-              </DrawerHeader>
+          </div>
+          <Drawer open={showMobileDialog} onOpenChange={handleDrawerChange}>
+            <DrawerContent className="bg-gradient-to-r from-primary-green-200 to-white">
+              <div className="mx-auto w-full max-w-lg z-80">
+                <DrawerHeader className="!pb-0">
+                  <DrawerTitle className="!text-center">
+                    {schedulingComplete
+                      ? "Scheduling Complete!"
+                      : "Schedule Your Free Session"}
+                  </DrawerTitle>
+                  <DrawerDescription className="text-center text-gray-600">
+                    {schedulingComplete
+                      ? "Thank you for scheduling your session"
+                      : `Choose a time that works for you.`}
+                  </DrawerDescription>
+                </DrawerHeader>
 
-              <div className="p-4">
-                {schedulingComplete ? (
-                  <div className="space-y-6">
-                    {/* <Alert className="bg-green-50 border-green-200">
+                <div className="p-4">
+                  {schedulingComplete ? (
+                    <div className="space-y-6">
+                      {/* <Alert className="bg-green-50 border-green-200">
                       <AlertDescription className="text-green-700">
                         Your session is scheduled! We&apos;ve sent a
                         confirmation email with all the details.
                       </AlertDescription>
                     </Alert> */}
 
-                    <div className="space-y-4 py-8">
-                      <h4 className="font-medium">After Schedule Checklist:</h4>
-                      <div className="flex items-start">
-                        <Mail className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
-                        <div>
-                          <p className="font-medium">Check Your Email</p>
-                          <p className="text-sm text-gray-500">
-                            We&apos;ve sent detailed instructions to your email
-                          </p>
+                      <div className="space-y-4 py-8">
+                        <h4 className="font-medium">
+                          After Schedule Checklist:
+                        </h4>
+                        <div className="flex items-start">
+                          <Mail className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
+                          <div>
+                            <p className="font-medium">Check Your Email</p>
+                            <p className="text-sm text-gray-500">
+                              We&apos;ve sent detailed instructions to your
+                              email
+                            </p>
+                          </div>
                         </div>
-                      </div>
 
-                      <div className="flex items-start">
-                        <Calendar className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
-                        <div>
-                          <p className="font-medium">Add to Your Calendar</p>
-                          <p className="text-sm text-gray-500">
-                            Accept the calendar invite to your email
-                          </p>
+                        <div className="flex items-start">
+                          <Calendar className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
+                          <div>
+                            <p className="font-medium">Add to Your Calendar</p>
+                            <p className="text-sm text-gray-500">
+                              Accept the calendar invite to your email
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                      <div className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
-                        <div>
-                          <p className="font-medium">
-                            Download Attached Goodie
-                          </p>
-                          <p className="text-sm text-gray-500">
-                            Download the attached pdf to your email
-                          </p>
+                        <div className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />
+                          <div>
+                            <p className="font-medium">
+                              Download Attached Goodie
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              Download the attached pdf to your email
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="space-y-4">
-                    <iframe className="shadow-md border"
-                      src="https://scheduler.zoom.us/akarshedpsy/coachingsession?embed=true"
-                      style={{
-                        width: "100%",
-                        height: "460px",
-                        maxWidth: "750px",
-                        borderRadius:"12px",
-                      }}
-                    ></iframe>
-                    <Button
-                      onClick={() => {
-                        setSchedulingComplete(true);
-                      }}
-                      className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl"
-                    >
-                      Confirm Scheduling
-                    </Button>
-                  </div>
-                )}
-              </div>
+                  ) : (
+                    <div className="space-y-4">
+                      {!iframeLoaded && (
+                        <div
+                          className="flex justify-center items-center bg-white rounded-xl"
+                          style={{ height: "460px" }}
+                        >
+                          {/* shimmer effect instead of loading */}
+                          <Loader2 className="animate-spin h-8 w-8 text-primary-blue-500" /> 
+                        </div>
+                      )}
+                      <div
+                        className="min-h-[460px] rounded-xl border overflow-hidden"
+                        style={{ display: iframeLoaded ? "block" : "none" }}
+                      >
+                        <iframe
+                          src="https://scheduler.zoom.us/akarshedpsy/coachingsession?embed=true"
+                          title="zoom scheduler"
+                          style={{
+                            width: "100%",
+                            minHeight: "inherit",
+                            maxWidth: "750px",
+                          }}
+                          onLoad={() => setIframeLoaded(true)}
+                        />
+                      </div>
+                      <Button
+                        onClick={() => {
+                          setSchedulingComplete(true);
+                        }}
+                        className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl"
+                      >
+                        Confirm Scheduling
+                      </Button>
+                    </div>
+                  )}
+                </div>
 
-              {/* <DrawerFooter>
+                {/* <DrawerFooter>
                 {!schedulingComplete && (
                   <DrawerClose asChild>
                     <Button variant="outline">Cancel</Button>
@@ -1080,12 +1135,63 @@ useEffect(() => {
                   </DrawerClose>
                 )}
               </DrawerFooter> */}
-            </div>
-          </DrawerContent>
-        </Drawer>
+              </div>
+            </DrawerContent>
+          </Drawer>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
 export default CohortClient;
+
+{
+  /* <div className="flex flex-col items-center bg-gradient-to-r from-primary-blue-300 to white p-4 rounded-xl gap-2 mx-auto max-w-5xl border">
+                <h1 className="text-2xl font-medium">
+                  Schedule your Free Session
+                </h1>
+                <p className="text-gray-600 text-sm">
+                  Choose a time that works for you
+                </p>
+                <div className="self-stretch shadow-md border min-h-96 rounded-xl overflow-hidden">
+                  <iframe
+                    src="https://scheduler.zoom.us/akarshedpsy/coachingsession?embed=true"
+                    style={{
+                      width: "100%",
+                      minHeight: "inherit",
+                      // borderRadius: "12px",
+                      border: "none",
+                    }}
+                    title="zoom scheduler"
+                  ></iframe>
+                </div>
+              </div> */
+}
+
+{
+  /* <h2 className="self-start font-medium text-lg mt-2">After Schedule Checklist :</h2>
+        <div className="flex justify-between self-stretch">
+          <div>
+            <p className="flex gap-2 items-center font-medium text-base">
+              <Mail className="h-5 w-5 text-primary-blue-700" />
+              <span>Check Your Email</span>
+            </p>
+            <p className="text-gray-600 text-sm">We&apos;ve sent detailed instructions to your email</p>
+          </div>
+          <div>
+            <p className="flex gap-2 items-center font-medium text-base">
+              <Calendar className="h-5 w-5 text-primary-blue-700" />
+              <span>Add to Your Calendar</span>
+            </p>
+            <p className="text-gray-600 text-sm">Accept the calendar invite to your email</p>
+          </div>
+          <div>
+            <p className="flex gap-2 items-center font-medium text-base">
+              <CheckCircle className="h-5 w-5 text-primary-blue-700" />
+              <span>Download Attached Goodie</span>
+            </p>
+            <p className="text-gray-600 text-sm">Download the attached pdf to your email</p>
+          </div>
+        </div> */
+}

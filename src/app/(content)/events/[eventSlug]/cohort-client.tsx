@@ -365,12 +365,14 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 >
                   Program Coach
                 </TabsTrigger>
-                <TabsTrigger
+                {/* pricing tab */}
+                {/* <TabsTrigger
                   value="pricing"
                   className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
                 >
                   Pricing
-                </TabsTrigger>
+                </TabsTrigger> */}
+
                 {/* right now not here so nothing rendered form this block */}
                 {(event.schedule || event.agenda) && (
                   <TabsTrigger
@@ -472,14 +474,14 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                   </TabsContent>
                 )}
 
-                <TabsContent value="pricing">
-                  <div>
+                {/* <TabsContent value="pricing">
+                  <div> */}
                     {/* <h3 className="mb-4 text-xl font-semibold">
                         What&apos;s the Price?
                         </h3> */}
-                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2"> */}
                       {/* One Time Payment Card */}
-                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
+                      {/* <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
                         <CardHeader className="border-b border-gray-200 bg-primary-green-50 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-green-700">
                             One Time Payment
@@ -492,9 +494,9 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                               <span className="text-sm font-normal text-gray-600">
                                 + GST (18%)
                               </span>
-                            </p>
+                            </p> */}
                             {/* <p className="text-gray-600">+ GST (18%)</p> */}
-                          </div>
+                          {/* </div>
                           <div className="pt-4 mt-4 border-t border-gray-100">
                             <ul className="space-y-2">
                               <li className="flex items-center">
@@ -518,10 +520,10 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                             </ul>
                           </div>
                         </CardContent>
-                      </Card>
+                      </Card> */}
 
                       {/* Two Time Payment Card */}
-                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
+                      {/* <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
                         <CardHeader className="border-b border-gray-200 bg-primary-blue-50 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-blue-700">
                             Two Time Payment
@@ -573,7 +575,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                       *Terms and conditions applied
                     </p>
                   </div>
-                </TabsContent>
+                </TabsContent> */}
 
                 <TabsContent value="instructor">
                   <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">

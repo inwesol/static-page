@@ -13,9 +13,6 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const CareerTestDescription: React.FC = () => {
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
 
   const router = useRouter();
 
@@ -25,7 +22,7 @@ const CareerTestDescription: React.FC = () => {
 
   return (
     <motion.div
-      className="max-w-4xl px-4 py-12 mx-auto"
+      className="max-w-4xl px-4 py-4 mx-auto sm:py-8"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -116,7 +113,7 @@ const CareerTestDescription: React.FC = () => {
           <Button
             variant="primary"
             size="lg"
-            className="px-8 py-4 text-lg font-semibold text-white transition-all transform rounded-full shadow-lg bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 hover:shadow-xl hover:-translate-y-1"
+            className="px-8 py-4 text-lg font-semibold text-white transition-all transform rounded-full shadow-lg bg-gradient-to-r from-primary-blue-600 to-primary-green-600 hover:from-primary-blue-700 hover:to-primary-green-700 hover:shadow-xl hover:-translate-y-1"
             onClick={handleStartAssessment}
           >
             Start Assessment

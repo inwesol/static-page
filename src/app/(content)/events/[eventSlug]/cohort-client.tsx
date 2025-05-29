@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { format, parseISO } from "date-fns";
+import { ZoomSessionSkeletonCard } from "./zoom-session-skeleton-card";
 import {
   CalendarDays,
   Clock,
@@ -162,24 +163,34 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   const router = useRouter();
 
   // Open dialog automatically on page load
+  const timerIdRef = useRef<number | null>(null);
   useEffect(() => {
     const handleResize = () => {
-      let timerId;
       if (window.innerWidth >= 640) {
         setShowMobileDialog(false);
         setIframeLoaded(false);
+        // clear any pending timeout when switching to desktop
+        if (timerIdRef.current) {
+          clearTimeout(timerIdRef.current);
+          timerIdRef.current = null;
+        }
       } else {
-        if (timerId) clearTimeout(timerId);
-        timerId = setTimeout(() => {
+        // clear previous timeout if exists
+        if (timerIdRef.current) clearTimeout(timerIdRef.current);
+        timerIdRef.current = window.setTimeout(() => {
+          console.log("in setTimeout");
           setShowMobileDialog(true);
         }, 3000);
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // <-- Call once on mount
+    handleResize(); // <-- call once on mount
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (timerIdRef.current) clearTimeout(timerIdRef.current);
+    };
   }, []);
 
   function handleDrawerChange(isOpen: boolean) {
@@ -330,63 +341,65 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
               </div>
             </div>
 
-            <Tabs defaultValue="offers" className="mb-10">
+            <Tabs defaultValue="offers" className="mb-10 ">
               {/* <div className=" border-gray-200 mb-8">
                   <div className="overflow-x-auto scrollbar-hide md:overflow-visible pb-1"> */}
-              <TabsList className="bg-transparent !flex flex-wrap max-w-4xl mr-auto justify-start ">
-                {event.offers && (
-                  <TabsTrigger
-                    value="offers"
-                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
-                  >
-                    What&apos;s Inside?
-                  </TabsTrigger>
-                )}
-                {event.facilitates && (
-                  <TabsTrigger
-                    value="facilitates"
-                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
-                  >
-                    Why This Program?
-                  </TabsTrigger>
-                )}
-                {event.achieves && (
-                  <TabsTrigger
-                    value="achieves"
-                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
-                  >
-                    What&apos;ll You Get?
-                  </TabsTrigger>
-                )}
+              <div className="relative overflow-x-auto bg-muted scrollbar-hide pb-2">
+                <TabsList className="bg-transparent max-w-4xl mr-auto">
+                  {event.offers && (
+                    <TabsTrigger
+                      value="offers"
+                      className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                    >
+                      What&apos;s Inside?
+                    </TabsTrigger>
+                  )}
+                  {event.facilitates && (
+                    <TabsTrigger
+                      value="facilitates"
+                      className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                    >
+                      Why This Program?
+                    </TabsTrigger>
+                  )}
+                  {event.achieves && (
+                    <TabsTrigger
+                      value="achieves"
+                      className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                    >
+                      What&apos;ll You Get?
+                    </TabsTrigger>
+                  )}
 
-                <TabsTrigger
-                  value="instructor"
-                  className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
-                >
-                  Program Coach
-                </TabsTrigger>
-                {/* pricing tab */}
-                {/* <TabsTrigger
+                  <TabsTrigger
+                    value="instructor"
+                    className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                  >
+                    Program Coach
+                  </TabsTrigger>
+                  {/* pricing tab */}
+                  {/* <TabsTrigger
                   value="pricing"
                   className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
                 >
                   Pricing
                 </TabsTrigger> */}
 
-                {/* right now not here so nothing rendered form this block */}
-                {(event.schedule || event.agenda) && (
-                  <TabsTrigger
-                    value="schedule"
-                    className="px-4 py-3 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
-                  >
-                    {event.schedule ? "Schedule" : "Agenda"}
-                  </TabsTrigger>
-                )}
-              </TabsList>
+                  {/* right now not here so nothing rendered form this block */}
+                  {(event.schedule || event.agenda) && (
+                    <TabsTrigger
+                      value="schedule"
+                      className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent"
+                    >
+                      {event.schedule ? "Schedule" : "Agenda"}
+                    </TabsTrigger>
+                  )}
+                </TabsList>
+              </div>
               {/* </div> */}
               {/* </div> */}
 
-              <div className="mt-4">
+              <div className="sm:mt-4 mt-2">
                 {event.offers && (
                   <TabsContent value="offers">
                     <div>
@@ -476,12 +489,12 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
 
                 {/* <TabsContent value="pricing">
                   <div> */}
-                    {/* <h3 className="mb-4 text-xl font-semibold">
+                {/* <h3 className="mb-4 text-xl font-semibold">
                         What&apos;s the Price?
                         </h3> */}
-                    {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2"> */}
-                      {/* One Time Payment Card */}
-                      {/* <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
+                {/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2"> */}
+                {/* One Time Payment Card */}
+                {/* <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
                         <CardHeader className="border-b border-gray-200 bg-primary-green-50 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-green-700">
                             One Time Payment
@@ -495,8 +508,8 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                 + GST (18%)
                               </span>
                             </p> */}
-                            {/* <p className="text-gray-600">+ GST (18%)</p> */}
-                          {/* </div>
+                {/* <p className="text-gray-600">+ GST (18%)</p> */}
+                {/* </div>
                           <div className="pt-4 mt-4 border-t border-gray-100">
                             <ul className="space-y-2">
                               <li className="flex items-center">
@@ -522,8 +535,8 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                         </CardContent>
                       </Card> */}
 
-                      {/* Two Time Payment Card */}
-                      {/* <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
+                {/* Two Time Payment Card */}
+                {/* <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
                         <CardHeader className="border-b border-gray-200 bg-primary-blue-50 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-blue-700">
                             Two Time Payment
@@ -588,10 +601,10 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                               <Image
                                 src={event.instructor.imageUrl}
                                 alt={event.instructor.name}
-                                width={200}
-                                height={200}
+                                width={300}
+                                height={300}
                                 // layout="fill"
-                                // objectFit="cover"
+                                objectFit="cover"
                                 className="rounded-full"
                               />
                             </div>
@@ -661,9 +674,12 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 Choose a time that works for you
               </p>
               {/* shimmer effect instead of loader*/}
-              {/* {!desktopIframeLoaded && <div className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl min-h-[680px] overflow-hidden self-stretch bg-white flex">
-                
-              </div> } */}
+              {!desktopIframeLoaded && (
+                <div className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl h-[640px] overflow-hidden self-stretch bg-white flex">
+                  {/* Shimmer Loader */}
+                  <ZoomSessionSkeletonCard />
+                </div>
+              )}
               <div
                 className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl min-h-[640px] overflow-hidden self-stretch"
                 style={{ display: desktopIframeLoaded ? "block" : "none" }}
@@ -1090,7 +1106,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                           style={{ height: "460px" }}
                         >
                           {/* shimmer effect instead of loading */}
-                          <Loader2 className="animate-spin h-8 w-8 text-primary-blue-500" /> 
+                          <Loader2 className="animate-spin h-8 w-8 text-primary-blue-500" />
                         </div>
                       )}
                       <div

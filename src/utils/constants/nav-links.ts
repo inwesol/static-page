@@ -38,7 +38,10 @@ export const NAV_LINKS = [
   //     //     },
   //     // ],
   // },
-
+{
+    title: "Check Career Readiness",
+    href: "/career-test/",
+  },
   {
     title: "Explorer",
     href: "/explorer/",
@@ -47,12 +50,12 @@ export const NAV_LINKS = [
   //   title: "CoCo",
   //   href: "/coco/",
   // },
+  // {
+  //   title: "Career Maturity Test",
+  //   href: "/Maturity-Test/",
+  // },
   {
-    title: "Career Maturity Test",
-    href: "/Maturity-Test/",
-  },
-  {
-    title: "Cohort Program",
+    title: "Career Coaching",
     href: "/events/cohort/",
   },
   {
@@ -68,10 +71,7 @@ export const NAV_LINKS = [
     title: "Contact Us",
     href: "/contact-us/",
   },
-  {
-    title: "Career Readiness",
-    href: "/career-test/",
-  },
+  
   // {
   //   title: "Resources",
   //   href: "/resources",

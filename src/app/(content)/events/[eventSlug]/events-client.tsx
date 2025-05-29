@@ -212,7 +212,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
   const getEventTypeLabel = (type: string) => {
     switch (type) {
       case "cohort_based":
-        return "Cohort Program";
+        return "Coaching Session";
       case "offline_seminar":
         return "In-Person Seminar";
       case "online_webinar":
@@ -245,23 +245,23 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-green-800/10"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 md:py-16">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {/* Main content - 2/3 width on desktop */}
           <div className="lg:col-span-2">
             <div className="mb-6">
               <Badge className="mb-2 bg-primary-green-100 text-primary-green-800 hover:bg-primary-green-200">
                 {getEventTypeLabel(event.type)}
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
                 {event.title}
               </h1>
-              <p className="text-lg text-gray-600 mb-6">{event.description}</p>
+              <p className="mb-6 text-lg text-gray-600">{event.description}</p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-1 gap-4 mb-8 md:grid-cols-2">
                 {event.startDate && event.endDate ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
+                    <CalendarDays className="w-5 h-5 mr-2 text-primary-green-600" />
                     <span>
                       {formatDate(event.startDate)} -{" "}
                       {formatDate(event.endDate)}
@@ -269,23 +269,23 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   </div>
                 ) : event.date ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
+                    <CalendarDays className="w-5 h-5 mr-2 text-primary-green-600" />
                     <span>{formatDate(event.date)}</span>
                   </div>
                 ) : null}
 
                 <div className="flex items-center">
-                  <Clock className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <Clock className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{event.duration}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <MapPin className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{getLocationString()}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <Users className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <Users className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>
                     {event.seatsRemaining} seats remaining out of {event.seats}
                   </span>
@@ -294,9 +294,9 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
             </div>
 
             <Tabs defaultValue="offers" className="mb-10">
-              <div className=" border-gray-200 mb-8">
-                <div className="overflow-x-auto scrollbar-hide md:overflow-visible pb-1">
-                  <TabsList className="bg-transparent flex md:w-auto justify-start">
+              <div className="mb-8 border-gray-200 ">
+                <div className="pb-1 overflow-x-auto scrollbar-hide md:overflow-visible">
+                  <TabsList className="flex justify-start bg-transparent md:w-auto">
                     {event.offers && (
                       <TabsTrigger
                         value="offers"
@@ -350,17 +350,17 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.offers && (
                   <TabsContent value="offers">
                     <div>
-                      {/* <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="mb-4 text-xl font-semibold">
                         What&apos;s Inside?
                       </h3> */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.offers.map((offer, index) => (
                               <li key={index} className="flex items-start">
                                 <Search className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-primary-green-600 mb-1">
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
                                     {offer.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -379,17 +379,17 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.facilitates && (
                   <TabsContent value="facilitates">
                     <div>
-                      {/* <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="mb-4 text-xl font-semibold">
                         Why This Program?
                       </h3> */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.facilitates.map((item, index) => (
                               <li key={index} className="flex items-start">
                                 <ChevronRight className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-primary-green-600 mb-1">
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
                                     {item.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -408,17 +408,17 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.achieves && (
                   <TabsContent value="achieves">
                     <div>
-                      {/* <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="mb-4 text-xl font-semibold">
                         What&apos;ll You Get?
                       </h3> */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.achieves.map((item, index) => (
                               <li key={index} className="flex items-start">
                                 <CheckCircle className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-primary-green-600 mb-1">
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
                                     {item.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -436,43 +436,43 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
 
                 <TabsContent value="pricing">
                   <div>
-                    {/* <h3 className="text-xl font-semibold mb-4">
+                    {/* <h3 className="mb-4 text-xl font-semibold">
                       What&apos;s the Price?
                     </h3> */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       {/* One Time Payment Card */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
-                        <CardHeader className="bg-primary-green-50 border-b border-gray-200 rounded-t-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
+                        <CardHeader className="border-b border-gray-200 bg-primary-green-50 rounded-t-xl">
                           <CardTitle className="text-lg text-primary-green-700">
                             One Time Payment
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="p-6">
                           <div className="text-center">
-                            <p className="text-3xl font-bold text-gray-800 mb-2">
+                            <p className="mb-2 text-3xl font-bold text-gray-800">
                               ₹12000{"  "}
-                              <span className="text-gray-600 font-normal text-sm">
+                              <span className="text-sm font-normal text-gray-600">
                                 + GST (18%)
                               </span>
                             </p>
                             {/* <p className="text-gray-600">+ GST (18%)</p> */}
                           </div>
-                          <div className="mt-4 pt-4 border-t border-gray-100">
+                          <div className="pt-4 mt-4 border-t border-gray-100">
                             <ul className="space-y-2">
                               <li className="flex items-center">
-                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <CheckCircle className="w-4 h-4 mr-2 text-primary-green-600" />
                                 <span className="text-sm">
                                   Complete access to program
                                 </span>
                               </li>
                               <li className="flex items-center">
-                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <CheckCircle className="w-4 h-4 mr-2 text-primary-green-600" />
                                 <span className="text-sm">
                                   Simple one-time payment
                                 </span>
                               </li>
                               <li className="flex items-center">
-                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <CheckCircle className="w-4 h-4 mr-2 text-primary-green-600" />
                                 <span className="text-sm">
                                   No additional fees
                                 </span>
@@ -483,8 +483,8 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       </Card>
 
                       {/* Two Time Payment Card */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
-                        <CardHeader className="bg-primary-blue-50 border-b border-gray-200 rounded-t-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
+                        <CardHeader className="border-b border-gray-200 bg-primary-blue-50 rounded-t-xl">
                           <CardTitle className="text-lg text-primary-blue-700">
                             Two Time Payment
                           </CardTitle>
@@ -493,7 +493,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           <div className="space-y-4">
                             <div className="flex items-center justify-between pb-2 border-b border-gray-100">
                               <div className="flex items-center">
-                                <div className="bg-primary-blue-100 text-primary-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-2 font-semibold text-sm">
+                                <div className="flex items-center justify-center w-6 h-6 mr-2 text-sm font-semibold rounded-full bg-primary-blue-100 text-primary-blue-700">
                                   1
                                 </div>
                                 <span className="text-gray-700">
@@ -501,7 +501,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                                 </span>
                               </div>
                               <div>
-                                <p className="font-semibold text-lg text-gray-800">
+                                <p className="text-lg font-semibold text-gray-800">
                                   ₹6500
                                 </p>
                                 <p className="text-xs text-gray-600">
@@ -511,7 +511,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                             </div>
                             <div className="flex items-center justify-between pb-2">
                               <div className="flex items-center">
-                                <div className="bg-primary-blue-100 text-primary-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-2 font-semibold text-sm">
+                                <div className="flex items-center justify-center w-6 h-6 mr-2 text-sm font-semibold rounded-full bg-primary-blue-100 text-primary-blue-700">
                                   2
                                 </div>
                                 <span className="text-gray-700">
@@ -519,7 +519,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                                 </span>
                               </div>
                               <div>
-                                <p className="font-semibold text-lg text-gray-800">
+                                <p className="text-lg font-semibold text-gray-800">
                                   ₹6500
                                 </p>
                                 <p className="text-xs text-gray-600">
@@ -531,20 +531,20 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                         </CardContent>
                       </Card>
                     </div>
-                    <p className="mt-4 text-sm text-gray-600 italic">
+                    <p className="mt-4 text-sm italic text-gray-600">
                       *Terms and conditions applied
                     </p>
                   </div>
                 </TabsContent>
 
                 <TabsContent value="instructor">
-                  <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                  <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                     <CardContent className="p-6 bg-primary-green-50 rounded-xl">
-                      <div className="flex flex-col md:flex-row gap-6 ">
-                        <div className="md:w-1/4 w-1/3 mx-auto md:mx-0">
-                          <div className="aspect-square bg-gray-200 rounded-full overflow-hidden">
-                            <div className="w-full h-full flex items-center justify-center bg-primary-green-100 text-primary-green-800">
-                              {/* <User className="h-12 w-12" /> */}
+                      <div className="flex flex-col gap-6 md:flex-row ">
+                        <div className="w-1/3 mx-auto md:w-1/4 md:mx-0">
+                          <div className="overflow-hidden bg-gray-200 rounded-full aspect-square">
+                            <div className="flex items-center justify-center w-full h-full bg-primary-green-100 text-primary-green-800">
+                              {/* <User className="w-12 h-12" /> */}
                               <Image
                                 src={event.instructor.imageUrl}
                                 alt={event.instructor.name}
@@ -557,11 +557,11 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="md:w-3/4 mt-4 md:mt-0 text-center md:text-left">
-                          <h3 className="text-xl font-semibold mb-1">
+                        <div className="mt-4 text-center md:w-3/4 md:mt-0 md:text-left">
+                          <h3 className="mb-1 text-xl font-semibold">
                             {event.instructor.name}
                           </h3>
-                          <p className="text-primary-green-700 mb-4">
+                          <p className="mb-4 text-primary-green-700">
                             {event.instructor.title}
                           </p>
                           <p className="text-gray-600">
@@ -576,7 +576,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                 {(event.schedule || event.agenda) && (
                   <TabsContent value="schedule">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">
+                      <h3 className="mb-4 text-xl font-semibold">
                         {event.schedule ? "Program Schedule" : "Event Agenda"}
                       </h3>
                       <div className="space-y-4">
@@ -584,7 +584,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           (item, index) => (
                             <Card key={index}>
                               <CardContent className="p-4">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between">
+                                <div className="flex flex-col justify-between md:flex-row md:items-center">
                                   <div>
                                     <p className="font-medium text-primary-green-600">
                                       {item.topic || item.activity}
@@ -595,7 +595,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                                       </p>
                                     )}
                                   </div>
-                                  <div className="mt-2 md:mt-0 text-sm text-gray-600">
+                                  <div className="mt-2 text-sm text-gray-600 md:mt-0">
                                     {item.date && formatDate(item.date)}
                                     {item.time && <span>{item.time}</span>}
                                     {item.date && formatTime(item.date) && (
@@ -617,14 +617,14 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
             {/* Testimonials Section */}
             {event.testimonials && event.testimonials.length > 0 && (
               <div className="mt-12 mb-8">
-                <h2 className="text-2xl font-bold mb-6">What People Say</h2>
-                <div className="max-w-3xl relative">
-                  <Card className="bg-primary-green-50/50 border-none shadow-sm rounded-xl overflow-hidden">
+                <h2 className="mb-6 text-2xl font-bold">What People Say</h2>
+                <div className="relative max-w-3xl">
+                  <Card className="overflow-hidden border-none shadow-sm bg-primary-green-50/50 rounded-xl">
                     <CardContent className="p-6">
                       <div className="flex flex-col h-full">
                         <div className="mb-4">
                           <svg
-                            className="h-8 w-8 text-primary-green-400"
+                            className="w-8 h-8 text-primary-green-400"
                             fill="currentColor"
                             viewBox="0 0 32 32"
                             aria-hidden="true"
@@ -643,7 +643,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                                 : "hidden"
                             }`}
                           >
-                            <p className="text-gray-700 italic mb-4">
+                            <p className="mb-4 italic text-gray-700">
                               &ldquo;{testimonial.review}&rdquo;
                             </p>
                             <div>
@@ -668,10 +668,10 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           variant="ghost"
                           size="icon"
                           onClick={goToPreviousTestimonial}
-                          className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                          className="w-8 h-8 transition-all duration-200 rounded-full shadow-sm bg-white/80 hover:bg-white"
                           aria-label="Previous testimonial"
                         >
-                          <ChevronLeft className="h-4 w-4 text-primary-green-600" />
+                          <ChevronLeft className="w-4 h-4 text-primary-green-600" />
                         </Button>
                       </div>
                       <div className="absolute inset-y-0 right-0 flex items-center">
@@ -679,10 +679,10 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                           variant="ghost"
                           size="icon"
                           onClick={goToNextTestimonial}
-                          className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                          className="w-8 h-8 transition-all duration-200 rounded-full shadow-sm bg-white/80 hover:bg-white"
                           aria-label="Next testimonial"
                         >
-                          <ChevronRight className="h-4 w-4 text-primary-green-600" />
+                          <ChevronRight className="w-4 h-4 text-primary-green-600" />
                         </Button>
                       </div> */}
 
@@ -709,7 +709,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
           </div>
 
           {/* Registration card - 1/3 width on desktop, sticky on desktop */}
-          <div className="lg:block hidden">
+          <div className="hidden lg:block">
             <div className="sticky top-48">
               <Card className="shadow-lg">
                 <CardHeader>
@@ -723,7 +723,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4 mb-6">
+                  <div className="mb-6 space-y-4">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Duration</span>
                       <span className="font-medium">{event.duration}</span>
@@ -753,14 +753,14 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     <p className="font-medium text-primary-blue-500">
                       Experience a Free Session
                     </p>
-                    {/* <p className="text-xs text-gray-500 mb-2">
+                    {/* <p className="mb-2 text-xs text-gray-500">
                       (condition applied)
                     </p> */}
                   </div>
                   <Dialog>
                     <DialogTrigger asChild>
                       <Button
-                        className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+                        className="w-full transition-all transform bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl duration-400 hover:scale-115 hover:shadow-md animate-pulse-subtle"
                         disabled={registrationClosed}
                       >
                         {registrationClosed
@@ -770,7 +770,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[900px]">
                       <DialogHeader>
-                        <DialogTitle className="text-center text-2xl">
+                        <DialogTitle className="text-2xl text-center">
                           {schedulingComplete
                             ? "Scheduling Complete!"
                             : "Schedule Your Free Session"}
@@ -785,7 +785,7 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
                       <div className="pl-12">
                         {schedulingComplete ? (
                           <div className="space-y-6">
-                            <Alert className="bg-green-50 border-green-200">
+                            <Alert className="border-green-200 bg-green-50">
                               <AlertDescription className="text-green-700">
                                 Your session is scheduled! We&apos;ve sent a
                                 confirmation email with all the details.
@@ -871,23 +871,23 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
       </div>
 
       {/* Mobile sticky registration button */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 shadow-lg z-50">
-        <div className="text-center mb-1">
-          <p className="text-sm text-primary-blue-500 mb-1">
+      <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t border-gray-200 shadow-lg lg:hidden">
+        <div className="mb-1 text-center">
+          <p className="mb-1 text-sm text-primary-blue-500">
             Experience a Free Session
           </p>
         </div>
         <Drawer>
           <DrawerTrigger asChild>
             <Button
-              className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+              className="w-full transition-all transform bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl duration-400 hover:scale-115 hover:shadow-md animate-pulse-subtle"
               disabled={registrationClosed}
             >
               {registrationClosed ? "Registration Closed" : "Schedule Now"}
             </Button>
           </DrawerTrigger>
           <DrawerContent>
-            <div className="mx-auto w-full max-w-lg z-80">
+            <div className="w-full max-w-lg mx-auto z-80">
               <DrawerHeader>
                 <DrawerTitle>
                   {schedulingComplete
@@ -904,14 +904,14 @@ const EventsClient: React.FC<EventsClientProps> = ({ event }) => {
               <div className="p-4">
                 {schedulingComplete ? (
                   <div className="space-y-6">
-                    {/* <Alert className="bg-green-50 border-green-200">
+                    {/* <Alert className="border-green-200 bg-green-50">
                       <AlertDescription className="text-green-700">
                         Your session is scheduled! We&apos;ve sent a
                         confirmation email with all the details.
                       </AlertDescription>
                     </Alert> */}
 
-                    <div className="space-y-4 py-8">
+                    <div className="py-8 space-y-4">
                       <h4 className="font-medium">After Schedule Checklist:</h4>
                       <div className="flex items-start">
                         <Mail className="h-5 w-5 text-primary-blue-700 mr-2 mt-0.5" />

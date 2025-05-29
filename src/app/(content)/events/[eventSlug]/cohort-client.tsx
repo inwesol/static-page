@@ -247,7 +247,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   const getEventTypeLabel = (type: string) => {
     switch (type) {
       case "cohort_based":
-        return "Cohort Program";
+        return "Coaching Session";
       case "offline_seminar":
         return "In-Person Seminar";
       case "online_webinar":
@@ -289,16 +289,16 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
               <Badge className="mb-2 bg-primary-green-100 text-primary-green-800 hover:bg-primary-green-200">
                 {getEventTypeLabel(event.type)}
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
                 {event.title}
               </h1>
-              <p className="text-lg text-gray-600 mb-6">{event.description}</p>
+              <p className="mb-6 text-lg text-gray-600">{event.description}</p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                 {/* nothing is getitng rendered here as startDate and endDate or date is missing */}
                 {event.startDate && event.endDate ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
+                    <CalendarDays className="w-5 h-5 mr-2 text-primary-green-600" />
                     <span>
                       {formatDate(event.startDate)} -{" "}
                       {formatDate(event.endDate)}
@@ -306,27 +306,27 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                   </div>
                 ) : event.date ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
+                    <CalendarDays className="w-5 h-5 mr-2 text-primary-green-600" />
                     <span>{formatDate(event.date)}</span>
                   </div>
                 ) : null}
 
                 <div className="flex items-center">
-                  <Clock className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <Clock className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{event.duration}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <MapPin className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{getLocationString()}</span>
                 </div>
 
-                <div className="flex items-center">
-                  <Users className="h-5 w-5 text-primary-green-600 mr-2" />
+                {/* <div className="flex items-center">
+                  <Users className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>
                     {event.seatsRemaining} seats remaining out of {event.seats}
                   </span>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -388,17 +388,17 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.offers && (
                   <TabsContent value="offers">
                     <div>
-                      {/* <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="mb-4 text-xl font-semibold">
                             What&apos;s Inside?
                         </h3> */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.offers.map((offer, index) => (
                               <li key={index} className="flex items-start">
                                 <Search className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-primary-green-600 mb-1">
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
                                     {offer.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -417,17 +417,17 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.facilitates && (
                   <TabsContent value="facilitates">
                     <div>
-                      {/* <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="mb-4 text-xl font-semibold">
                             Why This Program?
                         </h3> */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.facilitates.map((item, index) => (
                               <li key={index} className="flex items-start">
                                 <ChevronRight className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-primary-green-600 mb-1">
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
                                     {item.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -446,17 +446,17 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 {event.achieves && (
                   <TabsContent value="achieves">
                     <div>
-                      {/* <h3 className="text-xl font-semibold mb-4">
+                      {/* <h3 className="mb-4 text-xl font-semibold">
                             What&apos;ll You Get?
                         </h3> */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                         <CardContent className="p-6">
                           <ul className="space-y-3">
                             {event.achieves.map((item, index) => (
                               <li key={index} className="flex items-start">
                                 <CheckCircle className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
                                 <div>
-                                  <h4 className="font-medium text-primary-green-600 mb-1">
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
                                     {item.heading}
                                   </h4>
                                   <p className="text-gray-600">
@@ -474,43 +474,43 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
 
                 <TabsContent value="pricing">
                   <div>
-                    {/* <h3 className="text-xl font-semibold mb-4">
+                    {/* <h3 className="mb-4 text-xl font-semibold">
                         What&apos;s the Price?
                         </h3> */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                       {/* One Time Payment Card */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl lg:rounded-2xl">
-                        <CardHeader className="bg-primary-green-50 border-b border-gray-200 rounded-t-xl lg:rounded-t-2xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
+                        <CardHeader className="border-b border-gray-200 bg-primary-green-50 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-green-700">
                             One Time Payment
                           </CardTitle>
                         </CardHeader>
                         <CardContent className="p-6">
                           <div className="text-center">
-                            <p className="text-3xl font-bold text-gray-800 mb-2">
+                            <p className="mb-2 text-3xl font-bold text-gray-800">
                               ₹12000{"  "}
-                              <span className="text-gray-600 font-normal text-sm">
+                              <span className="text-sm font-normal text-gray-600">
                                 + GST (18%)
                               </span>
                             </p>
                             {/* <p className="text-gray-600">+ GST (18%)</p> */}
                           </div>
-                          <div className="mt-4 pt-4 border-t border-gray-100">
+                          <div className="pt-4 mt-4 border-t border-gray-100">
                             <ul className="space-y-2">
                               <li className="flex items-center">
-                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <CheckCircle className="w-4 h-4 mr-2 text-primary-green-600" />
                                 <span className="text-sm">
                                   Complete access to program
                                 </span>
                               </li>
                               <li className="flex items-center">
-                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <CheckCircle className="w-4 h-4 mr-2 text-primary-green-600" />
                                 <span className="text-sm">
                                   Simple one-time payment
                                 </span>
                               </li>
                               <li className="flex items-center">
-                                <CheckCircle className="h-4 w-4 text-primary-green-600 mr-2" />
+                                <CheckCircle className="w-4 h-4 mr-2 text-primary-green-600" />
                                 <span className="text-sm">
                                   No additional fees
                                 </span>
@@ -521,8 +521,8 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                       </Card>
 
                       {/* Two Time Payment Card */}
-                      <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl lg:rounded-2xl">
-                        <CardHeader className="bg-primary-blue-50 border-b border-gray-200 rounded-t-xl lg:rounded-t-2xl">
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl lg:rounded-2xl">
+                        <CardHeader className="border-b border-gray-200 bg-primary-blue-50 rounded-t-xl lg:rounded-t-2xl">
                           <CardTitle className="text-lg text-primary-blue-700">
                             Two Time Payment
                           </CardTitle>
@@ -531,7 +531,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                           <div className="space-y-4">
                             <div className="flex items-center justify-between pb-2 border-b border-gray-100">
                               <div className="flex items-center">
-                                <div className="bg-primary-blue-100 text-primary-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-2 font-semibold text-sm">
+                                <div className="flex items-center justify-center w-6 h-6 mr-2 text-sm font-semibold rounded-full bg-primary-blue-100 text-primary-blue-700">
                                   1
                                 </div>
                                 <span className="text-gray-700">
@@ -539,7 +539,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                 </span>
                               </div>
                               <div>
-                                <p className="font-semibold text-lg text-gray-800">
+                                <p className="text-lg font-semibold text-gray-800">
                                   ₹6500
                                 </p>
                                 <p className="text-xs text-gray-600">
@@ -549,7 +549,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                             </div>
                             <div className="flex items-center justify-between pb-2">
                               <div className="flex items-center">
-                                <div className="bg-primary-blue-100 text-primary-blue-700 rounded-full w-6 h-6 flex items-center justify-center mr-2 font-semibold text-sm">
+                                <div className="flex items-center justify-center w-6 h-6 mr-2 text-sm font-semibold rounded-full bg-primary-blue-100 text-primary-blue-700">
                                   2
                                 </div>
                                 <span className="text-gray-700">
@@ -557,7 +557,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                 </span>
                               </div>
                               <div>
-                                <p className="font-semibold text-lg text-gray-800">
+                                <p className="text-lg font-semibold text-gray-800">
                                   ₹6500
                                 </p>
                                 <p className="text-xs text-gray-600">
@@ -569,20 +569,20 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                         </CardContent>
                       </Card>
                     </div>
-                    <p className="mt-4 text-sm text-gray-600 italic">
+                    <p className="mt-4 text-sm italic text-gray-600">
                       *Terms and conditions applied
                     </p>
                   </div>
                 </TabsContent>
 
                 <TabsContent value="instructor">
-                  <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                  <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                     <CardContent className="p-6 bg-primary-green-50 rounded-xl">
-                      <div className="flex flex-col md:flex-row gap-6 ">
-                        <div className="md:w-1/4 w-1/3 mx-auto md:mx-0">
-                          <div className="aspect-square bg-gray-200 rounded-full overflow-hidden">
-                            <div className="w-full h-full flex items-center justify-center bg-primary-green-100 text-primary-green-800">
-                              {/* <User className="h-12 w-12" /> */}
+                      <div className="flex flex-col gap-6 md:flex-row ">
+                        <div className="w-1/3 mx-auto md:w-1/4 md:mx-0">
+                          <div className="overflow-hidden bg-gray-200 rounded-full aspect-square">
+                            <div className="flex items-center justify-center w-full h-full bg-primary-green-100 text-primary-green-800">
+                              {/* <User className="w-12 h-12" /> */}
                               <Image
                                 src={event.instructor.imageUrl}
                                 alt={event.instructor.name}
@@ -595,11 +595,11 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                             </div>
                           </div>
                         </div>
-                        <div className="md:w-3/4 mt-4 md:mt-0 text-center md:text-left">
-                          <h3 className="text-xl font-semibold mb-1">
+                        <div className="mt-4 text-center md:w-3/4 md:mt-0 md:text-left">
+                          <h3 className="mb-1 text-xl font-semibold">
                             {event.instructor.name}
                           </h3>
-                          <p className="text-primary-green-700 mb-4">
+                          <p className="mb-4 text-primary-green-700">
                             {event.instructor.title}
                           </p>
                           <p className="text-gray-600">
@@ -614,7 +614,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 {(event.schedule || event.agenda) && (
                   <TabsContent value="schedule">
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">
+                      <h3 className="mb-4 text-xl font-semibold">
                         {event.schedule ? "Program Schedule" : "Event Agenda"}
                       </h3>
                       <div className="space-y-4">
@@ -622,7 +622,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                           (item, index) => (
                             <Card key={index}>
                               <CardContent className="p-4">
-                                <div className="flex flex-col md:flex-row md:items-center justify-between">
+                                <div className="flex flex-col justify-between md:flex-row md:items-center">
                                   <div>
                                     <p className="font-medium text-primary-green-600">
                                       {item.topic || item.activity}
@@ -633,7 +633,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                       </p>
                                     )}
                                   </div>
-                                  <div className="mt-2 md:mt-0 text-sm text-gray-600">
+                                  <div className="mt-2 text-sm text-gray-600 md:mt-0">
                                     {item.date && formatDate(item.date)}
                                     {item.time && <span>{item.time}</span>}
                                     {item.date && formatTime(item.date) && (
@@ -736,10 +736,10 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                 variant="ghost"
                                 size="icon"
                                 onClick={goToPreviousTestimonial}
-                                className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                                className="w-8 h-8 transition-all duration-200 rounded-full shadow-sm bg-white/80 hover:bg-white"
                                 aria-label="Previous testimonial"
                                 >
-                                <ChevronLeft className="h-4 w-4 text-primary-green-600" />
+                                <ChevronLeft className="w-4 h-4 text-primary-green-600" />
                                 </Button>
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center">
@@ -747,10 +747,10 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                                 variant="ghost"
                                 size="icon"
                                 onClick={goToNextTestimonial}
-                                className="h-8 w-8 rounded-full bg-white/80 shadow-sm hover:bg-white transition-all duration-200"
+                                className="w-8 h-8 transition-all duration-200 rounded-full shadow-sm bg-white/80 hover:bg-white"
                                 aria-label="Next testimonial"
                                 >
-                                <ChevronRight className="h-4 w-4 text-primary-green-600" />
+                                <ChevronRight className="w-4 h-4 text-primary-green-600" />
                                 </Button>
                             </div> */}
 
@@ -786,8 +786,8 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                       router.push("/events/webinar-know-your-why/")
                     }
                   >
-                    <Card className="border border-primary-blue-100 shadow-sm rounded-xl overflow-hidden">
-                      <CardHeader className="bg-primary-blue-50 border-b border-primary-blue-100 pb-4">
+                    <Card className="overflow-hidden border shadow-sm border-primary-blue-100 rounded-xl">
+                      <CardHeader className="pb-4 border-b bg-primary-blue-50 border-primary-blue-100">
                         <CardTitle className="text-xl text-primary-blue-700">
                           Online Workshop: Know Your Why
                         </CardTitle>
@@ -798,25 +798,25 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                           <div className="flex items-center">
-                            <CalendarDays className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <CalendarDays className="w-5 h-5 mr-2 text-primary-blue-600" />
                             <span>April 05, 2025</span>
                           </div>
                           <div className="flex items-center">
-                            <Clock className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <Clock className="w-5 h-5 mr-2 text-primary-blue-600" />
                             <span>11:00 AM - 1:00 PM IST</span>
                           </div>
                           <div className="flex items-center">
-                            <Timer className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <Timer className="w-5 h-5 mr-2 text-primary-blue-600" />
                             <span>2 hours</span>
                           </div>
                           <div className="flex items-center">
-                            <MapPin className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <MapPin className="w-5 h-5 mr-2 text-primary-blue-600" />
                             <span>Zoom Webinar</span>
                           </div>
                           <div className="flex items-center">
-                            <CreditCard className="h-5 w-5 text-primary-blue-600 mr-2" />
+                            <CreditCard className="w-5 h-5 mr-2 text-primary-blue-600" />
                             <span className="font-medium">Free</span>
                           </div>
                         </div>
@@ -841,8 +841,8 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                     own path, and take charge of your future.
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-4 mb-6">
+                {/* <CardContent>
+                  <div className="mb-6 space-y-4">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Duration</span>
                       <span className="font-medium">{event.duration}</span>
@@ -913,7 +913,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
             {/* <div>
                         {schedulingComplete ? (
                           <div className="space-y-6">
-                            <Alert className="bg-green-50 border-green-200">
+                            <Alert className="border-green-200 bg-green-50">
                               <AlertDescription className="text-green-700">
                                 Your session is scheduled! We&apos;ve sent a
                                 confirmation email with all the details.
@@ -1007,7 +1007,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
               Experience a Free Session
             </p>
             <Button
-              className="w-full bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+              className="w-full transition-all transform bg-primary-blue-500 hover:bg-primary-blue-600 rounded-xl duration-400 hover:scale-115 hover:shadow-md animate-pulse-subtle"
               disabled={registrationClosed}
               onClick={() => {
                 if (window.innerWidth < 640) setShowMobileDialog(true);

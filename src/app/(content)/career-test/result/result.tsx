@@ -2,9 +2,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useFormContextData } from "@/context/personal-info-context/FormContext";
-// const html2pdf = typeof window !== "undefined" ? require("html2pdf.js") : null;
 import { Category, categoryDescriptions } from "../questionnaire/questionsData";
 import { Icons } from "@/components";
+import { FileDownIcon } from "lucide-react";
 
 type Results = Record<Category, number>;
 
@@ -32,7 +32,7 @@ export default function Result() {
       !testScore ||
       Object.values(testScore).every((v) => v === 0)
     ) {
-      router.push("/career-test/questionnaire");
+      router.replace("/career-test/questionnaire");
     }
   }, [testScore, submittedData, router]);
 
@@ -69,7 +69,7 @@ export default function Result() {
     setTestScore(emptyResults);
     setAllAnswers({});
     form.reset();
-    router.push("/career-test/questionnaire");
+    router.replace("/career-test/questionnaire");
   };
 
   return (
@@ -80,14 +80,6 @@ export default function Result() {
             Career Maturity Test Results
           </h1>
         </header>
-
-        <button
-          onClick={generatePdf}
-          className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 hover:from-primary-green-700 hover:to-primary-blue-700 text-white font-semibold py-2 px-6 rounded self-end mr-8"
-          aria-label="Download PDF of report"
-        >
-          Download PDF
-        </button>
 
         {/* Main Content */}
         {submittedData && testScore && (
@@ -231,14 +223,25 @@ export default function Result() {
         )}
       </div>
 
-      <div className="flex justify-center my-6">
+      <div className="flex sm:flex-row sm:justify-end my-6 max-w-4xl mx-auto sm:gap-2 flex-col gap-4 items-center">
+
+        <button
+          onClick={generatePdf}
+          className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 hover:from-primary-green-700 hover:to-primary-blue-700 text-white font-semibold py-2 px-4 rounded-full flex gap-2 items-center text-base hover:shadow-xl hover:-translate-y-1 transform transition all"
+          aria-label="Download PDF of report"
+        >
+          <FileDownIcon />
+          Download Report
+        </button>
+
         <button
           onClick={submitAnotherResponse}
-          className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 hover:from-primary-green-700 hover:to-primary-blue-700 text-white font-semibold py-4 px-4 rounded-full"
+          className="bg-primary-blue-600 text-white font-semibold py-2 px-4 rounded-full text-base hover:bg-primary-blue-700 hover:shadow-xl hover:-translate-y-1 transform transition-all"
           aria-label="Submit another response"
         >
           Submit another response
         </button>
+
       </div>
     </div>
   );

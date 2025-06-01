@@ -18,6 +18,7 @@ import {
   Search,
   ChevronLeft,
   Timer,
+  MonitorCheck,
 } from "lucide-react";
 import {
   Drawer,
@@ -132,6 +133,7 @@ type Event = {
   testimonials?: EventTestimonial[];
   registrationUrl?: string;
   offers?: EventOffer[];
+  prerequisite?: EventOffer[];
   facilitates?: EventOffer[];
   achieves?: EventOffer[];
 };
@@ -384,6 +386,14 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 >
                   Pricing
                 </TabsTrigger> */}
+                  {event.prerequisite && (
+                    <TabsTrigger
+                      value="prerequisite"
+                      className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                    >
+                      Let&apos;s Get Ready
+                    </TabsTrigger>
+                  )}
 
                   {/* right now not here so nothing rendered form this block */}
                   {(event.schedule || event.agenda) && (
@@ -625,6 +635,35 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                     </CardContent>
                   </Card>
                 </TabsContent>
+
+                {event.prerequisite && (
+                  <TabsContent value="prerequisite">
+                    <div>
+                      {/* <h3 className="mb-4 text-xl font-semibold">
+                            What&apos;s Inside?
+                        </h3> */}
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
+                        <CardContent className="p-6">
+                          <ul className="space-y-3">
+                            {event.prerequisite.map((offer, index) => (
+                              <li key={index} className="flex items-start">
+                                <MonitorCheck className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                                <div>
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
+                                    {offer.heading}
+                                  </h4>
+                                  <p className="text-gray-600">
+                                    {offer.description}
+                                  </p>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </TabsContent>
+                )}
 
                 {(event.schedule || event.agenda) && (
                   <TabsContent value="schedule">

@@ -109,8 +109,11 @@ const HeroSection = () => {
 
       <AnimationContainer delay={0.3} reverse viewport>
         <div className="relative group flex sm:gap-4 flex-col sm:flex-row items-center sm:items-stretch gap-6">
-                    <a className="bg-[conic-gradient(from_var(--border-angle),#00b24b,#3FA1D8,yellow,#00b24b)] rounded-full p-[2px] -animate--animate-rotate-border hover:scale-105 transform transition-all hover:shadow-xl flex cursor-pointer overflow-hidden items-center box-border" href="/career-test">
-            <div className="bg-white text-gray-400 font-semibold rounded-full flex items-center px-2 sm:px-4 self-stretch w-full py-2 justify-center sm:text-sm text-xs">
+          <a
+            className="bg-[conic-gradient(from_var(--border-angle),#00b24b,#3FA1D8,yellow,#00b24b)] rounded-full p-[2px] -animate--animate-rotate-border hover:scale-105 transform transition-all hover:shadow-xl flex cursor-pointer overflow-hidden items-center box-border"
+            href="/career-test"
+          >
+            <div className="bg-white text-black font-semibold rounded-full flex items-center px-2 sm:px-4 self-stretch w-full py-2 justify-center sm:text-sm text-xs">
               Check Career Readiness
             </div>
           </a>

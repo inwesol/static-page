@@ -285,7 +285,7 @@ export function KnowledgeFilter({ onSearch }: KnowledgeFilterProps) {
           </div>
         </div>
         <ChevronDownIcon
-          className={`text-primary-green-600 text-base transition-all w-4 h-4
+          className={`text-primary-green-600 text-base transition-all w-4 h-4 ml-1
               ${collapsed ? "rotate-0" : "rotate-180"} duration-300`}
         />
       </button>

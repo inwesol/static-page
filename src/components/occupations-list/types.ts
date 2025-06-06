@@ -55,6 +55,6 @@ export type KnowledgeCategory = {
   id: string;
   name: string;
   description: string;
-  subSkills: KnowledgeSubKnowledge[];
+  subKnowledges: KnowledgeSubKnowledge[];
 };
 

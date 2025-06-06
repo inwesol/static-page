@@ -4,16 +4,23 @@ import { notFound } from "next/navigation";
 import React from "react";
 
 type BrowseByParams = {
-  params: {
+  params: Promise<{
     browserBy: string;
-  };
+  }>;
 };
 
-const BrowseByPage = ({ params }: BrowseByParams) => {
-  const { browserBy } = params;
+const BrowseByPage = async ({ params }: BrowseByParams) => {
+  const { browserBy } = await params;
+  console.log(browserBy);
 
   // Validate browseBy parameter to ensure it's one of the expected values
-  const validBrowseTypes = ["interest", "ability", "all"];
+  const validBrowseTypes = [
+    "interest",
+    "ability",
+    "skills",
+    "knowledge",
+    "all",
+  ];
   if (!validBrowseTypes.includes(browserBy)) {
     notFound(); // Redirect to 404 page if invalid browse type
   }

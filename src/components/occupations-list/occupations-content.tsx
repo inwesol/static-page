@@ -11,6 +11,9 @@ import {
 import { OccupationsListSearch } from "./occupations-list-search";
 import { Occupation } from "./types";
 import { InterestFilter } from "./interest-filter";
+import { AbilityFilter, abilityCategories } from "./ability-filter";
+import { skillCategories, SkillsFilter } from "./skills-filter";
+import { knowledgeCategories, KnowledgeFilter } from "./knowledge-filter";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -79,8 +82,8 @@ export function OccupationsContent({
   // Ref to track if component is mounted
   const isMounted = useRef(false);
 
+  // Initialize filtered occupations on mount
   useEffect(() => {
-    // Initialize filtered occupations on mount
     const grouped = occupations.reduce((acc, occupation) => {
       const firstLetter = occupation.title[0].toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
@@ -90,6 +93,9 @@ export function OccupationsContent({
 
     setFilteredOccupations(grouped);
   }, [occupations]);
+
+  // testing re-render
+  // console.log("re-rendering");
 
   // New effect to measure layout elements and handle resize
   useEffect(() => {
@@ -177,46 +183,180 @@ export function OccupationsContent({
   }, [filteredOccupations, activeLetter, measurements]);
 
   // Handle interest search
+  // Handle interest search with AND logic
   const handleInterestSearch = (interests: string[]) => {
-    // Mock implementation of interest-based filtering
-    // In a real implementation, each occupation would have RIASEC codes
-    // and you would filter based on those codes
+    // Filter occupations with code > 3 AND containing ALL selected interests
+    const filtered = occupations.filter(
+      (occupation) =>
+        occupation.code > 3 &&
+        interests.every((interest) => occupation.interest.includes(interest))
+    );
 
-    // For demonstration purposes, let's create a simple filtering mechanism:
-    // 1. Filter occupations that start with any of the selected interest letters
-    // 2. Group them by first letter for display
-
-    const joinedInterests = interests.join("");
-    const firstLetterFiltered = occupations.filter((occupation) => {
-      // In a real implementation, you would check if the occupation has matching RIASEC codes
-      // This is a mock filter that just checks if any title words start with the selected interests
-      const words = occupation.title.split(" ");
-      return words.some((word) =>
-        interests.some((interest) => word.toUpperCase().startsWith(interest))
-      );
-    });
-
-    // If no results from the simplified matching, just show a subset of occupations
-    // to demonstrate the UI still works
-    const filteredOccupations =
-      firstLetterFiltered.length > 0
-        ? firstLetterFiltered
-        : occupations.slice(0, 20); // Show first 20 as fallback
-
-    // Group by first letter for display
-    const grouped = filteredOccupations.reduce((acc, occupation) => {
+    // Group filtered occupations by first letter of the title
+    const grouped = filtered.reduce((acc, occupation) => {
       const firstLetter = occupation.title[0].toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
       acc[firstLetter].push(occupation);
       return acc;
     }, {} as Record<string, Occupation[]>);
 
-    // Update state with filtered results
     setFilteredOccupations(grouped);
-
-    // Reset visible cards count when filter changes
     setVisibleCards({});
+    setError(
+      filtered.length === 0
+        ? "No occupations found matching all selected interests. Try different combinations."
+        : null
+    );
   };
+
+  // Hadle ability search
+  const handleAbilitySearch = (selectedSubsubId: string | null) => {
+    // console.log("running");
+    // console.log("selection: ", selectedSubsubId);
+    if (!selectedSubsubId) {
+      // No filter, show all occupations grouped by first letter
+      const grouped = occupations.reduce((acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      }, {} as Record<string, Occupation[]>);
+      setFilteredOccupations(grouped);
+      setError(null);
+      // console.log("running with empty selectedId")
+      return;
+    }
+
+    // Find the selected subsub-ability in abilities data
+    let occupationIds: string[] = [];
+    abilityCategories.forEach((ability) =>
+      ability.subAbilities.forEach((sub) =>
+        sub.subsubAbilities.forEach((subsub) => {
+          if (subsub.id === selectedSubsubId) {
+            occupationIds = subsub.occupationIds;
+          }
+        })
+      )
+    );
+
+    // Filter occupations that match any occupationId in the subsub-ability
+    const filtered = occupations.filter((occ) =>
+      occupationIds.includes(occ.onetsoc_code)
+    );
+
+    // Group filtered occupations by first letter of the title
+    const grouped = filtered.reduce((acc, occupation) => {
+      const firstLetter = occupation.title[0].toUpperCase();
+      if (!acc[firstLetter]) acc[firstLetter] = [];
+      acc[firstLetter].push(occupation);
+      return {...acc};
+    }, {} as Record<string, Occupation[]>);
+    // console.log("Grouped: ", grouped);
+    setFilteredOccupations(grouped);
+    setError(
+      filtered.length === 0
+        ? "No occupations found matching the selected ability. Try a different one."
+        : null
+    );
+  };
+  // Hadle skill search
+  const handleSkillSearch = useCallback(
+    (selectedId: string | null) => {
+      // console.log("running")
+      if (!selectedId) {
+        // No filter, show all occupations grouped by first letter
+        const grouped = occupations.reduce((acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        }, {} as Record<string, Occupation[]>);
+        setFilteredOccupations(grouped);
+        setError(null);
+        return;
+      }
+
+      // Find selected subskill
+      let occupationIds: string[] = [];
+      skillCategories.forEach((category) =>
+        category.subSkills.forEach((subSkill) => {
+          if (subSkill.id === selectedId) {
+            occupationIds = subSkill.occupationIds;
+          }
+        })
+      );
+
+      // Filter occupations that match any occupationId in the subsub-ability
+      const filtered = occupations.filter((occ) =>
+        occupationIds.includes(occ.onetsoc_code)
+      );
+
+      // Group filtered occupations by first letter of the title
+      const grouped = filtered.reduce((acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      }, {} as Record<string, Occupation[]>);
+
+      setFilteredOccupations(grouped);
+      setError(
+        filtered.length === 0
+          ? "No occupations found matching the selected ability. Try a different one."
+          : null
+      );
+    },
+    [occupations]
+  );
+  // Handle knowledge search
+  const handleKnowldegSearch = useCallback(
+    (selectedId: string | null) => {
+      // console.log("running")
+      if (!selectedId) {
+        // No filter, show all occupations grouped by first letter
+        const grouped = occupations.reduce((acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        }, {} as Record<string, Occupation[]>);
+        setFilteredOccupations(grouped);
+        setError(null);
+        return;
+      }
+
+      // Find selected subskill
+      let occupationIds: string[] = [];
+      knowledgeCategories.forEach((category) =>
+        category.subKnowledges.forEach((subKnowledge) => {
+          if (subKnowledge.id === selectedId) {
+            occupationIds = subKnowledge.occupationIds;
+          }
+        })
+      );
+
+      // Filter occupations that match any occupationId in the subsub-ability
+      const filtered = occupations.filter((occ) =>
+        occupationIds.includes(occ.onetsoc_code)
+      );
+
+      // Group filtered occupations by first letter of the title
+      const grouped = filtered.reduce((acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      }, {} as Record<string, Occupation[]>);
+
+      setFilteredOccupations(grouped);
+      setError(
+        filtered.length === 0
+          ? "No occupations found matching the selected ability. Try a different one."
+          : null
+      );
+    },
+    [occupations]
+  );
 
   // Update loadMore function to recalculate positions after loading more content
   const loadMore = (letter: string) => {
@@ -242,7 +382,64 @@ export function OccupationsContent({
         </div>
       );
     }
-
+    // render the ability header if browseBy is ability
+    else if (browseBy === "ability") {
+      return (
+        <>
+          <div className="flex-shrink-0 w-full">
+            {/* <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
+              Browse by Abilities
+            </h1>
+            <p className="text-sm text-gray-500 mb-4">
+              Abilities are enduring attributes of the individual that influence
+              performance. Open and explore the folders below to see the
+              different categories and levels of information. Ratings on
+              occupations are available at the most detailed level.
+            </p> */}
+            <AbilityFilter onSearch={handleAbilitySearch} />
+          </div>
+        </>
+      );
+    }
+    // render the ability header if browseBy is skills
+    else if (browseBy === "skills") {
+      return (
+        <>
+          <div className="flex-shrink-0 w-full">
+            {/* <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
+              Browse by Skills
+            </h1>
+            <p className="text-sm text-gray-500 mb-4">
+              Basic skills are developed capacities that facilitate learning or
+              the more rapid acquisition of knowledge. Open and explore the
+              folders below to see the different categories and levels of
+              information. Ratings on occupations are available at the most
+              detailed level.
+            </p> */}
+            <SkillsFilter onSearch={handleSkillSearch} />
+          </div>
+        </>
+      );
+    }
+    // render the ability header if browseBy is knowledge
+    else if (browseBy === "knowledge") {
+      return (
+        <>
+          <div className="flex-shrink-0 w-full">
+            {/* <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
+              Browse by Knowledge
+            </h1>
+            <p className="text-sm text-gray-500 mb-4">
+              Knowledge is organized sets of principles and facts applying in
+              general domains. Open and explore the folders below to see the
+              different categories and levels of information. Ratings on
+              occupations are available at the most detailed level.
+            </p> */}
+            <KnowledgeFilter onSearch={handleKnowldegSearch} />
+          </div>
+        </>
+      );
+    }
     // Default header (browseBy === "all")
     return (
       <>
@@ -264,9 +461,8 @@ export function OccupationsContent({
       </>
     );
   };
-
   return (
-    <div className="w-full px-8">
+    <div className="w-full sm:px-8 px-4">
       <header
         className="mb-2 sticky top-0 bg-gray-50/90 backdrop-blur-md py-6 border-b border-gray-200/30 z-20"
         id="sticky-header"
@@ -283,13 +479,12 @@ export function OccupationsContent({
         <TooltipProvider>
           {error ? (
             <div className="absolute inset-0 flex items-center justify-center z-10">
-              <div className="text-center">
-                <p className="text-red-400 text-base sm:text-lg mb-4">
-                  {error}
-                </p>
-              </div>
+            <div className="text-center">
+              <p className="text-red-400 text-base sm:text-lg mb-4">{error}</p>
             </div>
-          ) : Object.keys(filteredOccupations).length > 0 ? (
+            </div>
+          ) : // </div>
+          Object.keys(filteredOccupations).length > 0 ? (
             <div className="mb-24">
               {Object.keys(filteredOccupations)
                 .sort()
@@ -300,7 +495,7 @@ export function OccupationsContent({
                     0,
                     visibleCount
                   );
-
+                  // console.log("hi from occupaton-content component")
                   return (
                     <section
                       key={letter}
@@ -347,13 +542,14 @@ export function OccupationsContent({
                                   {occupation.description}
                                 </p>
                               </TooltipTrigger>
-                              {occupation.description.length > 100 && (
-                                <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                  <p className="text-sm">
-                                    {occupation.description}
-                                  </p>
-                                </TooltipContent>
-                              )}
+                              {occupation.description &&
+                                occupation.description.length > 100 && (
+                                  <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
+                                    <p className="text-sm">
+                                      {occupation.description}
+                                    </p>
+                                  </TooltipContent>
+                                )}
                             </Tooltip>
                           </div>
                         ))}

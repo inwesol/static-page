@@ -8,7 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowRight, Book, Briefcase, PieChart } from "lucide-react";
+import { ArrowRight, Book, Briefcase, PieChart, Sparkles } from "lucide-react";
+import { BookOpen } from "lucide-react";
 
 const ExplorerPage = () => {
   const browseOptions = [
@@ -24,7 +25,7 @@ const ExplorerPage = () => {
     },
     {
       title: "Browse by Abilities",
-      description: "Find occupations that match your skills and capabilities",
+      description: "Discover key abilities that influence job performance across occupations. Explore by category to view detailed insights and ratings",
       path: "/explorer/ability",
       color: "border-green-500 hover:border-green-600",
       bgHover: "hover:bg-green-50/80",
@@ -32,12 +33,30 @@ const ExplorerPage = () => {
       icon: PieChart,
     },
     {
+      title: "Browse by Basic Skills",
+      description: "Explore core skills that support learning and quick knowledge acquisition. Browse categories for detailed insights and job-specific ratings",
+      path: "/explorer/skills",
+      color: "border-teal-400 hover:border-teal-500",
+      bgHover: "hover:bg-teal-50/80",
+      iconColor: "text-teal-500",
+      icon: Sparkles,
+    },
+    {
+      title: "Browse by Knowledge",
+      description: "Explore essential knowledge areas that apply across jobs. Browse by category to access detailed insights and occupation-specific ratings",
+      path: "/explorer/knowledge",
+      color: "border-purple-400 hover:border-purple-500",
+      bgHover: "hover:bg-purple-50/80",
+      iconColor:  "text-purple-500",
+      icon: BookOpen ,
+    },
+    {
       title: "Browse All Occupations",
       description: "View a complete list of all available occupations",
       path: "/explorer/all",
-      color: "border-purple-500 hover:border-purple-600",
-      bgHover: "hover:bg-purple-50/80",
-      iconColor: "text-purple-600",
+      color: "border-gray-400 hover:border-gray-500",
+      bgHover:  "hover:bg-gray-50/80",
+      iconColor:  "text-gray-500",
       icon: Briefcase,
     },
   ];
@@ -45,8 +64,8 @@ const ExplorerPage = () => {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto px-4 py-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-8">
+      <main className="container mx-auto px-4 sm:py-12 py-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-center sm:mb-8 text-primary-green-600 mb-4">
           Explore Occupations
         </h1>
         <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
@@ -61,7 +80,7 @@ const ExplorerPage = () => {
             return (
               <Link href={option.path} key={index} className="block group">
                 <Card
-                  className={`transition-all duration-300 ${option.color} border-2 ${option.bgHover} 
+                  className={`transition-all duration-300 ${option.color} border-2 rounded-xl ${option.bgHover} 
                   shadow-md group-hover:shadow-lg h-full cursor-pointer relative overflow-hidden`}
                 >
                   <CardHeader>

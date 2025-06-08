@@ -34,6 +34,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
+    //checks if page is already scrolled or not on page refresh
+    if (window.scrollY > 0) {
+      setScroll(true);
+    }
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);

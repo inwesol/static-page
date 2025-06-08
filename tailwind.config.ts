@@ -9,7 +9,7 @@ const {
 const config = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
+    "./page1/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
@@ -223,6 +223,11 @@ const config = {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.04)' },
         },
+        'border-rotate':{
+          to:{
+            '--border-angle':"360deg",
+          }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -240,6 +245,8 @@ const config = {
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         loading: "loading 0.5s linear infinite",
         'pulse-subtle': 'pulse-subtle 3s infinite',
+        '--animate-rotate-border':'border-rotate 3s infinite linear',
+
       },
     },
   },

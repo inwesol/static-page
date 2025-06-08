@@ -34,6 +34,14 @@ const BlogClient = ({ params }: { params: { blogSlug: string } }) => {
     <BlogLayout
       markdownContent={getContent()}
       bannerUrl={getBannerUrl()}
+      createdOn={
+        availableBlogs[params.blogSlug as keyof typeof availableBlogs]
+          ?.createdOn
+      }
+      readingTime={
+        availableBlogs[params.blogSlug as keyof typeof availableBlogs]
+          ?.readingTime
+      }
       imageFit={
         (availableBlogs[params.blogSlug as keyof typeof availableBlogs]
           ?.imageFit as "contain" | "cover") || "cover"

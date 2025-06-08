@@ -8,6 +8,7 @@ import {
   GoogleAnalytics,
   inter,
   MicrosoftClarity,
+  FacebookPixel,
 } from "@/utils";
 
 export const metadata = generateMetadata();
@@ -34,6 +35,7 @@ export default function RootLayout({
         {children}
         <GoogleAnalytics />
         <MicrosoftClarity />
+        <FacebookPixel />
       </body>
     </html>
   );

@@ -27,6 +27,12 @@ const nextConfig = {
         port: "",
         pathname: "/**", // Allow all images from this domain
       },
+      {
+        protocol: "https",
+        hostname: "www.facebook.com",
+        port: "",
+        pathname: "/**", // Allow all images from this domain
+      },
     ],
   },
 };

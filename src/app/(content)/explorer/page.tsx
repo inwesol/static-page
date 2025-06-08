@@ -11,6 +11,15 @@ import {
 import { ArrowRight, Book, Briefcase, PieChart, Sparkles } from "lucide-react";
 import { BookOpen } from "lucide-react";
 
+import { generateMetadata } from "@/utils";
+
+export const metadata = generateMetadata({
+  title: "Career Explorer",
+  description:
+    "Explore your career options with our interactive career explorer. Discover your strengths, interests, and career paths to make informed decisions and achieve your goals.",
+  path: "/explorer",
+});
+
 const ExplorerPage = () => {
   const browseOptions = [
     {

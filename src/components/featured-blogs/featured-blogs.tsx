@@ -1,38 +1,27 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
 import BlogCard from "./blog-card";
-
-const featuredBlogs = [
-  {
-    id: 1,
-    title: "Career Guidance",
-    description:
-      "A process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions.",
-    image:
-      "https://github.com/user-attachments/assets/7cffebfb-cf0c-4a0f-ade2-9f216b908be6",
-    link: "/blog/career-guidance/",
-    date: "27th Feb 2025",
-    tags: [],
-  },
-  {
-    id: 2,
-    title: "Career Coaching vs Career Counselling",
-    description:
-      "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future.",
-    image:
-      "https://github.com/user-attachments/assets/0d280d15-f9c1-4e1d-b1b8-17fee7287ec0",
-
-    link: "/blog/coaching-vs-counselling/",
-    date: "27th Feb 2025",
-    tags: [],
-  },
-];
+import { availableBlogs } from "@/app/(content)/blog/[blogSlug]/blog-content";
+import  Link  from 'next/link';
 
 const FeaturedBlogs = () => {
   const [current, setCurrent] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
+
+  // Transform availableBlogs into the required format
+  const featuredBlogs = Object.entries(availableBlogs).map(
+    ([slug, blog], index) => ({
+      id: index + 1,
+      title: blog.heading,
+      description: blog.oneLiner,
+      image: blog.bannerUrl,
+      link: `/blog/${slug}/`,
+      date: blog.createdOn,
+      readingTime: blog.readingTime,
+      tags: [],
+    })
+  );
 
   useEffect(() => {
     const updateCardsToShow = () => {
@@ -60,14 +49,14 @@ const FeaturedBlogs = () => {
 
   return (
     <section className="w-full bg-[#f5fafd] py-14">
-      <div className="max-w-screen-lg mx-auto px-6">
-        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-8">
+      <div className="max-w-screen-lg px-6 mx-auto">
+        <h2 className="mb-8 text-3xl font-bold text-center text-gray-900 sm:text-4xl">
           Featured Blogs
         </h2>
 
         <div className="relative">
           <div
-            className="flex transition-transform duration-500 items-center justify-center ease-in-out gap-6 flex-col sm:flex-row"
+            className="flex flex-col items-center justify-center gap-6 transition-transform duration-500 ease-in-out sm:flex-row"
             style={{
               transform: `translateX(-${current * (100 / visibleCards)}%)`,
             }}
@@ -80,13 +69,13 @@ const FeaturedBlogs = () => {
                   width: `calc(100% / ${visibleCards} - 1rem)`,
                 }}
               >
-                <a
+                <Link
                   href={blog.link}
                   className="block h-full transition-transform hover:scale-105"
                   aria-label={`Read more about ${blog.title}`}
                 >
                   <BlogCard blog={blog} isLinkWrapper={true} />
-                </a>
+                </Link>
               </div>
             ))}
           </div>

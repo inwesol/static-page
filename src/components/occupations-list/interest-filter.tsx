@@ -177,12 +177,12 @@ export const InterestFilter = ({
                     <SheetTitle className="text-primary-green-600 text-xl font-medium tracking-wide">
                       Explore Your Career Interests
                     </SheetTitle>
-                    <SheetDescription>
-                      <p className="text-gray-700 text-sm">
+                    <SheetDescription className="text-gray-700 text-sm">
+                      {/* <p className="text-gray-700 text-sm"> */}
                         Interests are preferences for work environments and
                         outcomes. Select an interest to discover occupations
                         that support the interest area.
-                      </p>
+                      {/* </p> */}
                     </SheetDescription>
                   </SheetHeader>
                   <div className="flex flex-col justify-between gap-4 mt-4">
@@ -218,13 +218,13 @@ export const InterestFilter = ({
                       value={selectedValue}
                       onValueChange={(value) => handleSelect(index, value)}
                     >
-                      <SelectTrigger className="w-full bg-white border-gray-200 hover:border-[#3FA1D8]/50 focus:ring-[#00B24B]/20">
+                      <SelectTrigger className="w-full bg-white border-gray-200 hover:border-[#3FA1D8]/50 ">
                         <SelectValue placeholder={`Select interest`} />
                       </SelectTrigger>
                       <SelectContent className="bg-white">
                         <SelectItem
                           value="none"
-                          className="cursor-pointer text-gray-400 italic focus:bg-[#00B24B]/10"
+                          className="cursor-pointer text-gray-400 italic"
                         >
                           None
                         </SelectItem>
@@ -232,7 +232,7 @@ export const InterestFilter = ({
                           <SelectItem
                             key={option.value}
                             value={option.value}
-                            className="focus:bg-[#00B24B]/10 cursor-pointer"
+                            className="cursor-pointer"
                           >
                             {option.value} — {option.label}
                           </SelectItem>

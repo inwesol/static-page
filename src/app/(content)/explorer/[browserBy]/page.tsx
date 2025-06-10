@@ -11,7 +11,6 @@ type BrowseByParams = {
 
 const BrowseByPage = async ({ params }: BrowseByParams) => {
   const { browserBy } = await params;
-  console.log(browserBy);
 
   // Validate browseBy parameter to ensure it's one of the expected values
   const validBrowseTypes = [

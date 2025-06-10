@@ -31,6 +31,8 @@ export type AbilityCategory = {
   id: string;
   name: string;
   description: string;
+  icon: React.ElementType;
+  color: string;
   subAbilities: AbilitySubAbility[];
 };
 export type SkillSubSkill = {
@@ -43,6 +45,8 @@ export type SkillsCategory = {
   id: string;
   name: string;
   description: string;
+  color:string;
+  icon:React.ElementType;
   subSkills: SkillSubSkill[];
 };
 export type KnowledgeSubKnowledge = {
@@ -55,6 +59,7 @@ export type KnowledgeCategory = {
   id: string;
   name: string;
   description: string;
+  color: string;
+  icon: React.ElementType;
   subKnowledges: KnowledgeSubKnowledge[];
 };
-

@@ -2,36 +2,26 @@
 
 import {
   ChevronDownIcon,
-  FolderClosedIcon,
-  FolderOpenIcon,
   ChevronRightIcon,
-  InfoIcon,
+  CheckCircleIcon,
+  Palette,
+  MessageSquareText,
+  Briefcase,
 } from "lucide-react";
 import type { KnowledgeCategory } from "./types";
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { useEffect, useRef, useState } from "react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { useState } from "react";
 
 interface KnowledgeFilterProps {
   onSearch: (selectedId: string | null) => void;
+  setShowPlaceholder: (value: boolean) => void;
 }
 // Knowledge categories structure
 export const knowledgeCategories: KnowledgeCategory[] = [
   {
     id: "Arts and Humanities",
     name: "Arts and Humanities",
+    icon: Palette,
+    color: "from-purple-400 to-purple-600",
     description:
       "Knowledge of facts and principles related to the branches of learning concerned with human thought, language, and the arts.",
     subKnowledges: [
@@ -79,8 +69,10 @@ export const knowledgeCategories: KnowledgeCategory[] = [
   {
     id: "Business and Management",
     name: "Business and Management",
+    icon: Briefcase,
+    color: "from-emerald-400 to-emerald-600",
     description:
-      "Knowledge of principles and facts related to business administration and accounting, human and material resource management in organizations, sales and marketing, economics, and office information and organizing systems.",
+      "Knowledge of business administration, accounting, resource management, marketing, economics, and organizational systems.",
     subKnowledges: [
       {
         id: "Active Learning",
@@ -115,6 +107,8 @@ export const knowledgeCategories: KnowledgeCategory[] = [
   {
     id: "Communications",
     name: "Communications",
+    icon: MessageSquareText,
+    color: "from-blue-400 to-blue-600",
     description: "Knowledge of the science and art of delivering information.",
     subKnowledges: [
       {
@@ -148,301 +142,239 @@ export const knowledgeCategories: KnowledgeCategory[] = [
     ],
   },
 ];
-export function KnowledgeFilter({ onSearch }: KnowledgeFilterProps) {
+
+export function KnowledgeFilter({
+  onSearch,
+  setShowPlaceholder,
+}: KnowledgeFilterProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [activeKnowledge, setActiveKnowledge] = useState<string | null>(null);
-  const [collapsed, setCollapsed] = useState(true);
-
-  // to scroll the selected Knowledge into view
-  const knowledgeRef = useRef<HTMLDivElement>(null);
-  const subKnowledgeRef = useRef<HTMLSpanElement>(null);
-
-  // Scroll the selected crumb into view when selection changes
-  useEffect(() => {
-    if (selected && subKnowledgeRef.current) {
-      subKnowledgeRef.current.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    } else if (activeKnowledge && knowledgeRef.current) {
-      knowledgeRef.current.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
-  }, [activeKnowledge, selected]);
+  // State for controlling which steps are expanded
+  const [expandedSteps, setExpandedSteps] = useState({
+    step1: true,
+    step2: false,
+  });
 
   const handleKnowledgeSelect = (id: string) => {
     // handles selection and sets to null if we click on the same button
-    setActiveKnowledge((prev) => (prev === id ? null : id));
-    // choosing any ability results in disselection of other sub and subsubabilities
+    const newActiveKnowledge = activeKnowledge === id ? null : id;
+    setActiveKnowledge(newActiveKnowledge);
+
+    // choosing any knowledge results in disselection of other sub and subKnowledges
     setSelected(null);
+    setShowPlaceholder(true);
+     // Auto-expand step 2 when an ability is selected, collapse step 3
+    if (newActiveKnowledge) {
+      setExpandedSteps((prev) => ({
+        ...prev,
+        step1: false,
+        step2: true,
+      }));
+    } else {
+      setExpandedSteps((prev) => ({ ...prev, step2: false }));
+    }
   };
 
   const handleSubKnowledgeSelect = (id: string) => {
     // if user chooses the previous option(means disselects the option) then fallback all occupations will be displayed
-    setSelected((prev) => (prev === id ? null : id));
+    const newSelected = selected === id ? null : id;
+    if (newSelected) {
+      setSelected(newSelected);
+      handleSearch(newSelected);
+      setExpandedSteps((prev) => ({ ...prev, step2: false }));
+    }
   };
 
-  const handleSearch = () => {
-    onSearch(selected);
+  const handleSearch = (id: string) => {
+    onSearch(id);
+    setShowPlaceholder(false);
   };
 
-  useEffect(() => {
-    setCollapsed(false);
-    setActiveKnowledge(knowledgeCategories[0].id);
-    setSelected(knowledgeCategories[0].subKnowledges[0].id);
-    // console.log(knowledgeCategories[0].subKnowledges[0].id);
-    setTimeout(() => {
-      onSearch(knowledgeCategories[0].subKnowledges[0].id);
-    });
-  }, []);
+  const toggleStep = (step: "step1" | "step2") => {
+    setExpandedSteps((prev) => ({
+      ...prev,
+      [step]: !prev[step],
+    }));
+  };
+
+  const selectedKnowledgeData = knowledgeCategories.find(
+    (k) => k.id === activeKnowledge
+  );
+  const selectedData = selectedKnowledgeData?.subKnowledges.find(
+    (s) => s.id === selected
+  );
 
   return (
-    <div className="max-w-6xl mx-auto rounded-2xl bg-white overflow-hidden shadow-lg border border-gray-100 transition-all duration-300 hover:shadow-xl">
-      {/* Collapsible Header */}
-      <button
-        className="w-full flex items-center justify-between p-5 bg-gradient-to-r from-[#F8FFF9] via-[#F2F9FF] to-[#F8FFF9] transition-all duration-300 hover:from-[#F0FFF2] hover:via-[#E8F6FF] hover:to-[#F0FFF2]"
-        onClick={() => setCollapsed(!collapsed)}
-        aria-expanded={!collapsed}
-        aria-controls="knowledges-collapsible-content"
-      >
-        <div className="flex items-center gap-1 md:gap-3 flex-1 min-w-0">
-          <div className="relative w-6 h-6 flex">
-            <FolderClosedIcon
-              className={`
-        absolute inset-0 w-4 h-4 text-primary-green-600
-        transition-all duration-300 self-center md:w-5 md:h-5
-        ${collapsed ? "opacity-100 scale-100" : "opacity-0 scale-90"}
-      `}
-              aria-hidden={!collapsed}
-            />
-            <FolderOpenIcon
-              className={`
-        absolute inset-0 w-4 h-4 text-primary-green-600
-        transition-all duration-300 self-center md:w-5 md:h-5
-        ${collapsed ? "opacity-0 scale-90" : "opacity-100 scale-100"}
-      `}
-              aria-hidden={collapsed}
-            />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="w-full overflow-x-auto scrollbar-hide text-left">
-              {activeKnowledge ? (
-                <Breadcrumb>
-                  <ol className="flex items-center flex-nowrap list-none p-0 m-0">
-                    <BreadcrumbItem>
-                      <BreadcrumbLink
-                        asChild
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setSelected(null);
-                        }}
-                      >
-                        <div
-                          className="text-primary-green-700 font-medium hover:underline whitespace-nowrap hover:text-primary-green-800 text-sm"
-                          ref={knowledgeRef}
-                        >
-                          {
-                            knowledgeCategories.find(
-                              (a) => a.id === activeKnowledge
-                            )?.name
-                          }
-                        </div>
-                      </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    {selected && (
-                      <>
-                        <BreadcrumbSeparator className="mx-1 text-gray-400">
-                          <ChevronRightIcon className="w-4 h-4" />
-                        </BreadcrumbSeparator>
-                        <BreadcrumbItem>
-                          <span
-                            className="text-purple-700 font-medium whitespace-nowrap text-sm"
-                            ref={subKnowledgeRef}
-                          >
-                            {
-                              knowledgeCategories
-                                .find((a) => a.id === activeKnowledge)
-                                ?.subKnowledges.find(
-                                  (ssa) => ssa.id === selected
-                                )?.name
-                            }
-                          </span>
-                        </BreadcrumbItem>
-                      </>
-                    )}
-                  </ol>
-                </Breadcrumb>
-              ) : (
-                <span className="text-lg font-semibold bg-gradient-to-r from-primary-green-600 to-primary-blue-600 bg-clip-text text-transparent">
-                  Select Knowledge
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-        <ChevronDownIcon
-          className={`text-primary-green-600 text-base transition-all w-4 h-4 ml-1
-              ${collapsed ? "rotate-0" : "rotate-180"} duration-300`}
-        />
-      </button>
-
-      {/* Collapsible Content */}
-      <div
-        id="knowledges-collapsible-content"
-        className={`overflow-hidden transition-[max-height] duration-300 ease-in-out ${
-          collapsed ? "max-h-0" : "max-h-[800px]"
-        }`}
-      >
-        {/* Knowledges Row */}
-        <div className="px-6 py-6 relative bg-primary-green-50">
-          <div className="absolute right-5 top-2">
-            <Sheet>
-              <SheetTrigger asChild>
-                <InfoIcon
-                  className="text-primary-green-400 absolute cursor-pointer hover:text-primary-green-500 transition-colors"
-                  width="16"
-                  height="16"
-                />
-              </SheetTrigger>
-              <SheetContent className="bg-gradient-to-r from-primary-green-200 to-primary-green-50 sm:w-96 w-full">
-                <SheetHeader>
-                  <SheetTitle className="text-primary-green-600 text-xl font-medium tracking-wide">
-                    Knowledge
-                  </SheetTitle>
-                  <SheetDescription>
-                    <p className="text-gray-700 text-sm">
-                      Select the knowledge that best suits for you
-                    </p>
-                  </SheetDescription>
-                </SheetHeader>
-                <div className="flex flex-col justify-between gap-4 mt-4">
-                  {knowledgeCategories.map((knowledge) => (
-                    <div
-                      className="rounded-xl shadow-sm hover:shadow-md border border-gray-200 bg-white p-2"
-                      key={knowledge.id}
-                    >
-                      <h1 className="text-primary-green-600">
-                        {knowledge.name}
-                      </h1>
-                      <p className="text-gray-600 text-sm">
-                        {knowledge.description}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-          <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-            {knowledgeCategories.map((knowledge) => (
-              <button
-                key={knowledge.id}
-                onClick={() => handleKnowledgeSelect(knowledge.id)}
-                className={`inline-flex items-center px-2 py-1 rounded-full border-2 font-medium transition-all text-sm sm:text-base
-                ${
-                  activeKnowledge === knowledge.id
-                    ? "bg-primary-green-600 text-white border-primary-green-600"
-                    : "bg-white text-primary-green-700 border-primary-green-200 hover:bg-primary-green-100"
-                }`}
-                aria-pressed={activeKnowledge === knowledge.id}
-                style={{ minWidth: "max-content" }}
-              >
-                {knowledge.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Sub-Knowledges Row (Capsules, horizontally scrollable) */}
-        {activeKnowledge && (
-          <div className="px-6 py-6 border-t border-primary-blue-100 transition-all duration-500 relative bg-purple-50">
-            <div className="absolute right-5 top-2">
-              <Sheet>
-                <SheetTrigger asChild>
-                  <InfoIcon
-                    className="text-purple-400 absolute cursor-pointer hover:text-purple-500 transition-colors"
-                    width="16"
-                    height="16"
-                  />
-                </SheetTrigger>
-                <SheetContent className="bg-gradient-to-r from-purple-200 to-purple-50 sm:w-96 overflow-y-auto scrollbar-hide w-full">
-                  <SheetHeader>
-                    <SheetTitle className="text-purple-600 text-xl font-medium tracking-wide">
-                      {activeKnowledge.toUpperCase()}
-                    </SheetTitle>
-                    <SheetDescription>
-                      <p className="text-gray-700 text-sm">
-                        {
-                          knowledgeCategories.find(
-                            (knowledge) => activeKnowledge === knowledge.id
-                          )?.description
-                        }
-                      </p>
-                    </SheetDescription>
-                  </SheetHeader>
-                  <div className="flex flex-col justify-between gap-4 mt-4">
-                    {knowledgeCategories
-                      .find((knowledge) => knowledge.id === activeKnowledge)
-                      ?.subKnowledges?.map((sk) => (
-                        <div
-                          className="rounded-xl shadow-sm hover:shadow-md border border-gray-200 bg-white p-2"
-                          key={sk.id}
-                        >
-                          <h1 className="text-purple-600">{sk.name}</h1>
-                          <p className="text-gray-600 text-sm">
-                            {sk.description}
-                          </p>
-                        </div>
-                      ))}
-                  </div>
-                </SheetContent>
-              </Sheet>
-            </div>
-            <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-              {knowledgeCategories
-                .find((a) => a.id === activeKnowledge)
-                ?.subKnowledges?.map((sub) => (
-                  <div
-                    key={sub.id}
-                    role="button"
-                    tabIndex={0}
-                    aria-pressed={selected === sub.id}
-                    onClick={() => handleSubKnowledgeSelect(sub.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ")
-                        handleSubKnowledgeSelect(sub.id);
-                    }}
-                    className={`inline-flex items-center px-2 py-1 rounded-full border-2 font-medium cursor-pointer transition-all text-sm sm:text-base
-            ${
-              selected === sub.id
-                ? "bg-purple-600 text-white border-purple-600"
-                : "bg-white text-purple-700 border-purple-200 hover:bg-purple-100"
-            }`}
-                    style={{ minWidth: "max-content" }}
-                  >
-                    {sub.name}
-                  </div>
-                ))}
-            </div>
-          </div>
-        )}
-
-        {/* Find button */}
-        {selected && (
-          <div className="px-6 py-5 border-t border-purple-100 flex justify-end">
-            <button
-              className="px-4 py-2 text-white bg-primary-green-600 hover:bg-primary-green-700 rounded-xl text-sm font-medium transition-all shadow-sm hover:shadow-md active:scale-95"
-              onClick={handleSearch}
-            >
-              Find Occupations
-            </button>
-          </div>
-        )}
+    <div className="max-w-6xl mx-auto pt-4">
+      {/* Header */}
+      <div className="mb-4">
+        <h1 className="text-2xl font-medium text-primary-green-600 mb-2">
+          Browse by Knowledge
+        </h1>
+        <p className="text-gray-600 text-sm">
+          Select your strongest knowledge to find matching career opportunities
+        </p>
       </div>
+
+      {/* Progress Steps */}
+      <div className="flex items-center justify-start mb-4">
+        <div className="flex items-center justify-start">
+          <div
+            className={`flex items-center ${
+              activeKnowledge ? "text-primary-blue-600" : "text-gray-400"
+            }`}
+          >
+            <span className="text-sm font-medium md:text-base ">Knowledge</span>
+          </div>
+          <ChevronRightIcon className="text-gray-400" size={20} />
+          <div
+            className={`flex items-center ${
+              selected ? "text-primary-blue-600" : "text-gray-400"
+            }`}
+          >
+            <span className="font-medium text-sm md:text-base ">Skill</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Step 1: Knowledges */}
+      <div
+        className={`mb-4 md:mb-6 border-1 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md border-gray-200 overflow-hidden bg-blue-50/50`}
+      >
+        <button
+          onClick={() => toggleStep("step1")}
+          className={`w-full flex items-center justify-between p-2 md:p-4 text-left transition-all duration-200 
+            bg-gradient-to-r from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
+        >
+          <h2 className="md:text-lg text-base font-semibold text-primary-blue-800 ">
+            1️⃣ Choose your primary Knowledge
+          </h2>
+          <div
+            className={`transition-transform duration-200 ${
+              expandedSteps.step1 ? "rotate-180" : "rotate-0"
+            }`}
+          >
+            <ChevronDownIcon className="text-gray-500" size={20} />
+          </div>
+        </button>
+
+        <div
+          className={`transition-all duration-300 ease-in-out overflow-hidden ${
+            expandedSteps.step1
+              ? "max-h-[2000px] opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          <div className="p-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {knowledgeCategories.map((knowledge) => {
+                const Icon = knowledge.icon;
+                const isSelected = activeKnowledge === knowledge.id;
+
+                return (
+                  <button
+                    key={knowledge.id}
+                    onClick={() => handleKnowledgeSelect(knowledge.id)}
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 text-left hover:shadow-lg ${
+                      isSelected
+                        ? "border-primary-blue-500 bg-primary-blue-50 shadow-md transform scale-[1.01]"
+                        : "border-gray-200 bg-white hover:border-gray-300"
+                    }`}
+                  >
+                    <div className="flex items-center space-x-4">
+                      <div
+                        className={`p-3 rounded-full bg-gradient-to-br ${knowledge.color} text-white`}
+                      >
+                        <Icon size={24} className="flex-shrink-0" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-gray-900 mb-1">
+                          {knowledge.name}
+                        </h3>
+                        <p className="text-gray-600 text-xs">
+                          {knowledge.description}
+                        </p>
+                      </div>
+                      {isSelected && (
+                        <CheckCircleIcon
+                          className="text-primary-blue-500 absolute top-2 right-2"
+                          size={20}
+                        />
+                      )}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* Step 2: Skills */}
+      {selectedKnowledgeData && (
+        <div
+          className={`mb-4 md:mb-6 border-1 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md border-gray-200 overflow-hidden bg-blue-50/50`}
+        >
+          <button
+            onClick={() => toggleStep("step2")}
+            className={`w-full flex items-center justify-between p-2 md:p-4 text-left transition-all duration-200 bg-gradient-to-r
+          from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
+          >
+            <h2 className="md:text-lg text-base font-semibold text-primary-blue-800">
+              2️⃣ Select your specific skill
+            </h2>
+            <div
+              className={`transition-transform duration-200 ${
+                expandedSteps.step2 ? "rotate-180" : "rotate-0"
+              }`}
+            >
+              <ChevronDownIcon className="text-gray-500" size={20} />
+            </div>
+          </button>
+
+          <div
+            className={`transition-all duration-300 ease-in-out overflow-hidden ${
+              expandedSteps.step2
+                ? "max-h-[2000px] opacity-100"
+                : "max-h-0 opacity-0"
+            }`}
+          >
+            <div className="p-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {selectedKnowledgeData.subKnowledges.map((sk) => {
+                  const isSelected = selected === sk.id;
+
+                  return (
+                    <button
+                      key={sk.id}
+                      onClick={() => handleSubKnowledgeSelect(sk.id)}
+                      className={`p-4 rounded-xl border-2 transition-all duration-200 text-left hover:shadow-lg ${
+                        isSelected
+                          ? "border-primary-green-500 bg-primary-green-50 shadow-md transform scale-[1.01]"
+                          : "border-gray-200 bg-white hover:border-gray-300"
+                      }`}
+                    >
+                      <div className="flex flex-col">
+                        <h3 className="font-semibold text-gray-900 mb-1">
+                          {sk.name}
+                        </h3>
+                        <p className="text-gray-600 text-xs">
+                          {sk.description}
+                        </p>
+                        {isSelected && (
+                          <CheckCircleIcon
+                            className="text-green-500 absolute top-2 right-2"
+                            size={18}
+                          />
+                        )}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

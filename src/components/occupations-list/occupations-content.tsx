@@ -14,6 +14,8 @@ import { InterestFilter } from "./interest-filter";
 import { AbilityFilter, abilityCategories } from "./ability-filter";
 import { skillCategories, SkillsFilter } from "./skills-filter";
 import { knowledgeCategories, KnowledgeFilter } from "./knowledge-filter";
+import { content } from "googleapis/build/src/apis/content";
+import { TargetIcon } from "lucide-react";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -78,6 +80,8 @@ export function OccupationsContent({
     windowWidth: 0,
     windowHeight: 0,
   });
+  // placeholder-content
+  const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true);
 
   // Ref to track if component is mounted
   const isMounted = useRef(false);
@@ -93,9 +97,6 @@ export function OccupationsContent({
 
     setFilteredOccupations(grouped);
   }, [occupations]);
-
-  // testing re-render
-  // console.log("re-rendering");
 
   // New effect to measure layout elements and handle resize
   useEffect(() => {
@@ -211,8 +212,6 @@ export function OccupationsContent({
 
   // Hadle ability search
   const handleAbilitySearch = (selectedSubsubId: string | null) => {
-    // console.log("running");
-    // console.log("selection: ", selectedSubsubId);
     if (!selectedSubsubId) {
       // No filter, show all occupations grouped by first letter
       const grouped = occupations.reduce((acc, occupation) => {
@@ -249,7 +248,7 @@ export function OccupationsContent({
       const firstLetter = occupation.title[0].toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
       acc[firstLetter].push(occupation);
-      return {...acc};
+      return { ...acc };
     }, {} as Record<string, Occupation[]>);
     // console.log("Grouped: ", grouped);
     setFilteredOccupations(grouped);
@@ -371,14 +370,7 @@ export function OccupationsContent({
     if (browseBy === "interest") {
       return (
         <div className="flex-shrink-0 w-full">
-          <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide mb-2">
-            Browse by Interests
-          </h1>
-          <p className="text-sm text-gray-500 mb-4">
-            Find careers that match your interests and skills using the Holland
-            Code (RIASEC).
-          </p>
-          <InterestFilter onSearch={handleInterestSearch} />
+          <InterestFilter onSearch={handleInterestSearch} setShowPlaceholder={setShowPlaceholder}/>
         </div>
       );
     }
@@ -387,16 +379,7 @@ export function OccupationsContent({
       return (
         <>
           <div className="flex-shrink-0 w-full">
-            {/* <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
-              Browse by Abilities
-            </h1>
-            <p className="text-sm text-gray-500 mb-4">
-              Abilities are enduring attributes of the individual that influence
-              performance. Open and explore the folders below to see the
-              different categories and levels of information. Ratings on
-              occupations are available at the most detailed level.
-            </p> */}
-            <AbilityFilter onSearch={handleAbilitySearch} />
+            <AbilityFilter onSearch={handleAbilitySearch} setShowPlaceholder={setShowPlaceholder}/>
           </div>
         </>
       );
@@ -406,36 +389,17 @@ export function OccupationsContent({
       return (
         <>
           <div className="flex-shrink-0 w-full">
-            {/* <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
-              Browse by Skills
-            </h1>
-            <p className="text-sm text-gray-500 mb-4">
-              Basic skills are developed capacities that facilitate learning or
-              the more rapid acquisition of knowledge. Open and explore the
-              folders below to see the different categories and levels of
-              information. Ratings on occupations are available at the most
-              detailed level.
-            </p> */}
-            <SkillsFilter onSearch={handleSkillSearch} />
+            <SkillsFilter onSearch={handleSkillSearch} setShowPlaceholder={setShowPlaceholder}/>
           </div>
         </>
       );
     }
-    // render the ability header if browseBy is knowledge
+    // render the knowledge header if browseBy is knowledge
     else if (browseBy === "knowledge") {
       return (
         <>
           <div className="flex-shrink-0 w-full">
-            {/* <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
-              Browse by Knowledge
-            </h1>
-            <p className="text-sm text-gray-500 mb-4">
-              Knowledge is organized sets of principles and facts applying in
-              general domains. Open and explore the folders below to see the
-              different categories and levels of information. Ratings on
-              occupations are available at the most detailed level.
-            </p> */}
-            <KnowledgeFilter onSearch={handleKnowldegSearch} />
+            <KnowledgeFilter onSearch={handleKnowldegSearch} setShowPlaceholder={setShowPlaceholder}/>
           </div>
         </>
       );
@@ -463,119 +427,140 @@ export function OccupationsContent({
   };
   return (
     <div className="w-full sm:px-8 px-4">
-      <header
-        className="mb-2 sticky top-0 bg-gray-50/90 backdrop-blur-md py-6 border-b border-gray-200/30 z-20"
-        id="sticky-header"
-        style={{ top: `${HEADER_OFFSET}px` }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-4">
-            {renderHeader()}
+      {renderHeader()}
+      {showPlaceholder && browseBy !== "all" ? (
+        <div className="max-w-4xl mx-auto p-6">
+          {/* Welcome Section */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6">
+              <TargetIcon className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-xl font-bold text-gray-900 mb-4">
+              {browseBy === "ability" &&
+                "Discover Careers That Match Your Abilities"}
+              {browseBy === "skills" && "Explore Careers That Fit Your Skills"}
+              {browseBy === "knowledge" &&
+                "Find Careers That Align With Your Knowledge"}
+              {browseBy === "interest" &&
+                "Match Your Interests With Ideal Careers"}
+            </h2>
+            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+              {browseBy === "ability" &&
+                "Complete all steps to find careers that align with your natural abilities. Our comprehensive matching system will show you personalized career recommendations based on what you do best."}
+              {browseBy === "skills" &&
+                "Identify careers that perfectly utilize your developed skills. Our comprehensive matching system will help you find roles where your expertise shines."}
+              {browseBy === "knowledge" &&
+                "Connect your areas of knowledge with rewarding career paths. We'll help you discover professions that value your educational background and expertise."}
+              {browseBy === "interest" &&
+                "Turn your passions into professions. Our system matches your personal interests with careers that will keep you engaged and motivated."}
+            </p>
+            <p className="text-sm text-gray-600 max-w-2xl mx-auto">{browseBy === "interest" &&
+                "Select any three , any two or anyone interest to view the careers that best suit your interest."}</p>
           </div>
         </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto h-full">
-        <TooltipProvider>
-          {error ? (
-            <div className="absolute inset-0 flex items-center justify-center z-10">
-            <div className="text-center">
-              <p className="text-red-400 text-base sm:text-lg mb-4">{error}</p>
-            </div>
-            </div>
-          ) : // </div>
-          Object.keys(filteredOccupations).length > 0 ? (
-            <div className="mb-24">
-              {Object.keys(filteredOccupations)
-                .sort()
-                .map((letter) => {
-                  const visibleCount = visibleCards[letter] || INITIAL_CARDS;
-                  const totalCards = filteredOccupations[letter].length;
-                  const displayedCards = filteredOccupations[letter].slice(
-                    0,
-                    visibleCount
-                  );
-                  // console.log("hi from occupaton-content component")
-                  return (
-                    <section
-                      key={letter}
-                      className={"mb-6"}
-                      id={`letter-${letter}`}
-                    >
-                      <h2
-                        className="text-2xl font-medium text-primary-green-600 mb-6 sticky bg-gray-50/90 py-3 border-b border-gray-200/20 z-10"
-                        style={{
-                          top: `${measurements.headerHeight + HEADER_OFFSET}px`,
-                        }}
+      ) : (
+        <main className="max-w-6xl mx-auto">
+          <TooltipProvider>
+            {error ? (
+              <div className="text-center">
+                <p className="text-red-400 text-base sm:text-lg my-20">
+                  {error}
+                </p>
+              </div>
+            ) : Object.keys(filteredOccupations).length > 0 ? (
+              <div className="mb-24">
+                {Object.keys(filteredOccupations)
+                  .sort()
+                  .map((letter) => {
+                    const visibleCount = visibleCards[letter] || INITIAL_CARDS;
+                    const totalCards = filteredOccupations[letter].length;
+                    const displayedCards = filteredOccupations[letter].slice(
+                      0,
+                      visibleCount
+                    );
+                    return (
+                      <section
+                        key={letter}
+                        className={"mb-6"}
+                        id={`letter-${letter}`}
                       >
-                        {letter}
-                      </h2>
+                        <h2
+                          className="text-2xl font-medium text-primary-green-600 mb-6 sticky bg-gray-50/90 py-3 border-b border-gray-200/20 z-10"
+                          style={{
+                            top: `${
+                              measurements.headerHeight + HEADER_OFFSET
+                            }px`,
+                          }}
+                        >
+                          {letter}
+                        </h2>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                        {displayedCards.map((occupation) => (
-                          <div
-                            key={occupation.title}
-                            className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
-                            onClick={() =>
-                              router.push(
-                                `/explorer/${occupation.onetsoc_code}`
-                              )
-                            }
-                          >
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <h3 className="text-base font-medium text-[#3FA1D8] mb-2 line-clamp-1">
-                                  {occupation.title}
-                                </h3>
-                              </TooltipTrigger>
-                              {occupation.title.length > 30 && (
-                                <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                  <p className="text-base font-medium">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                          {displayedCards.map((occupation) => (
+                            <div
+                              key={occupation.title}
+                              className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
+                              onClick={() =>
+                                router.push(
+                                  `/explorer/${occupation.onetsoc_code}`
+                                )
+                              }
+                            >
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <h3 className="text-base font-medium text-[#3FA1D8] mb-2 line-clamp-1">
                                     {occupation.title}
-                                  </p>
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <p className="text-sm text-gray-500 group-hover:text-gray-600 line-clamp-2">
-                                  {occupation.description}
-                                </p>
-                              </TooltipTrigger>
-                              {occupation.description &&
-                                occupation.description.length > 100 && (
+                                  </h3>
+                                </TooltipTrigger>
+                                {occupation.title.length > 30 && (
                                   <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                    <p className="text-sm">
-                                      {occupation.description}
+                                    <p className="text-base font-medium">
+                                      {occupation.title}
                                     </p>
                                   </TooltipContent>
                                 )}
-                            </Tooltip>
-                          </div>
-                        ))}
-                      </div>
-
-                      {visibleCount < totalCards && (
-                        <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
-                          <button
-                            onClick={() => loadMore(letter)}
-                            className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
-                          >
-                            Load More ({visibleCount}/{totalCards})
-                          </button>
+                              </Tooltip>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <p className="text-sm text-gray-500 group-hover:text-gray-600 line-clamp-2">
+                                    {occupation.description}
+                                  </p>
+                                </TooltipTrigger>
+                                {occupation.description &&
+                                  occupation.description.length > 100 && (
+                                    <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
+                                      <p className="text-sm">
+                                        {occupation.description}
+                                      </p>
+                                    </TooltipContent>
+                                  )}
+                              </Tooltip>
+                            </div>
+                          ))}
                         </div>
-                      )}
-                    </section>
-                  );
-                })}
-            </div>
-          ) : (
-            <p className="text-gray-500 text-center mt-8 text-lg">
-              No occupations found.
-            </p>
-          )}
-        </TooltipProvider>
-      </main>
+
+                        {visibleCount < totalCards && (
+                          <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
+                            <button
+                              onClick={() => loadMore(letter)}
+                              className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
+                            >
+                              Load More ({visibleCount}/{totalCards})
+                            </button>
+                          </div>
+                        )}
+                      </section>
+                    );
+                  })}
+              </div>
+            ) : (
+              <p className="text-gray-500 text-center mt-8 text-lg">
+                No occupations found.
+              </p>
+            )}
+          </TooltipProvider>
+        </main>
+      )}
     </div>
   );
 }

@@ -370,7 +370,10 @@ export function OccupationsContent({
     if (browseBy === "interest") {
       return (
         <div className="flex-shrink-0 w-full">
-          <InterestFilter onSearch={handleInterestSearch} setShowPlaceholder={setShowPlaceholder}/>
+          <InterestFilter
+            onSearch={handleInterestSearch}
+            setShowPlaceholder={setShowPlaceholder}
+          />
         </div>
       );
     }
@@ -379,7 +382,10 @@ export function OccupationsContent({
       return (
         <>
           <div className="flex-shrink-0 w-full">
-            <AbilityFilter onSearch={handleAbilitySearch} setShowPlaceholder={setShowPlaceholder}/>
+            <AbilityFilter
+              onSearch={handleAbilitySearch}
+              setShowPlaceholder={setShowPlaceholder}
+            />
           </div>
         </>
       );
@@ -389,7 +395,10 @@ export function OccupationsContent({
       return (
         <>
           <div className="flex-shrink-0 w-full">
-            <SkillsFilter onSearch={handleSkillSearch} setShowPlaceholder={setShowPlaceholder}/>
+            <SkillsFilter
+              onSearch={handleSkillSearch}
+              setShowPlaceholder={setShowPlaceholder}
+            />
           </div>
         </>
       );
@@ -399,7 +408,10 @@ export function OccupationsContent({
       return (
         <>
           <div className="flex-shrink-0 w-full">
-            <KnowledgeFilter onSearch={handleKnowldegSearch} setShowPlaceholder={setShowPlaceholder}/>
+            <KnowledgeFilter
+              onSearch={handleKnowldegSearch}
+              setShowPlaceholder={setShowPlaceholder}
+            />
           </div>
         </>
       );
@@ -407,20 +419,21 @@ export function OccupationsContent({
     // Default header (browseBy === "all")
     return (
       <>
-        <div className="flex-shrink-0">
-          <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
-            Career Explorer
-          </h1>
-          <p className="mt-1 text-sm text-gray-500">
-            Explore opportunities that align with your passions and ambitions.
-          </p>
-        </div>
-
-        <div className="w-full lg:w-2/3">
-          <OccupationsListSearch
-            occupations={occupations}
-            onFilteredOccupationsChange={setFilteredOccupations}
-          />
+        <div className="max-w-6xl mx-auto flex gap-3 py-4 flex-col lg:flex-row">
+          <div className="lg:flex-shrink-0">
+            <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
+              Career Explorer
+            </h1>
+            <p className="mt-1 text-sm text-gray-500">
+              Explore opportunities that align with your passions and ambitions.
+            </p>
+          </div>
+          <div className="lg:w-full lg:mt-2">
+            <OccupationsListSearch
+              occupations={occupations}
+              onFilteredOccupationsChange={setFilteredOccupations}
+            />
+          </div>
         </div>
       </>
     );
@@ -454,8 +467,10 @@ export function OccupationsContent({
               {browseBy === "interest" &&
                 "Turn your passions into professions. Our system matches your personal interests with careers that will keep you engaged and motivated."}
             </p>
-            <p className="text-sm text-gray-600 max-w-2xl mx-auto">{browseBy === "interest" &&
-                "Select any three , any two or anyone interest to view the careers that best suit your interest."}</p>
+            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+              {browseBy === "interest" &&
+                "Select any three , any two or anyone interest to view the careers that best suit your interest."}
+            </p>
           </div>
         </div>
       ) : (

@@ -72,7 +72,7 @@ export const OccupationsListSearch = ({
   }, [updateFilteredOccupations]);
 
   return (
-    <div className="mt-4 flex flex-col gap-6">
+    <div className="flex flex-col gap-6">
       <PlaceholdersAndVanishInput
         placeholders={[
           "Chief Executives",

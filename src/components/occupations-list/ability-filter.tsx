@@ -586,7 +586,6 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
   };
 
   const handleSubsubAbilitySelect = (id: string) => {
-    // if user chooses the previous option(means disselects the option) then fallback all occupations will be displayed
     const newSelected = selected === id ? null : id;
     if (newSelected) {
       setSelected(newSelected);
@@ -714,7 +713,7 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {ability.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {ability.description}
                         </p>
                       </div>
@@ -780,7 +779,7 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {subAbility.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {subAbility.description}
                         </p>
                         {isSelected && (
@@ -846,7 +845,7 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {ssa.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {ssa.description}
                         </p>
                         {isSelected && (

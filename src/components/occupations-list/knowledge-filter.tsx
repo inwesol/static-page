@@ -291,7 +291,7 @@ export function KnowledgeFilter({
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {knowledge.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {knowledge.description}
                         </p>
                       </div>
@@ -357,7 +357,7 @@ export function KnowledgeFilter({
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {sk.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {sk.description}
                         </p>
                         {isSelected && (

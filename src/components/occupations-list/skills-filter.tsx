@@ -243,7 +243,7 @@ export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps)
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {skill.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {skill.description}
                         </p>
                       </div>
@@ -309,7 +309,7 @@ export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps)
                         <h3 className="font-semibold text-gray-900 mb-1">
                           {ss.name}
                         </h3>
-                        <p className="text-gray-600 text-xs">
+                        <p className="text-gray-600 text-xs md:text-sm">
                           {ss.description}
                         </p>
                         {isSelected && (

@@ -669,7 +669,7 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
           from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
         >
           <h2 className="md:text-lg text-base font-semibold text-primary-blue-800 flex items-center gap-1">
-            1️⃣ Choose your primary ability
+            1️⃣ Choose your Primary Ability
           </h2>
           <div
             className={`transition-transform duration-200 ${
@@ -742,7 +742,7 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
           from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
           >
             <h2 className="md:text-lg text-base font-semibold text-primary-blue-800">
-              2️⃣ Select your secondary ability
+              {`2️⃣ Choose from ${selectedAbilityData.name}`}
             </h2>
             <div
               className={`transition-transform duration-200 ${
@@ -808,7 +808,7 @@ export function AbilityFilter({ onSearch ,setShowPlaceholder}: AbilityFilterProp
           from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
           >
             <h2 className="md:text-lg text-base font-semibold text-primary-blue-800">
-              3️⃣ Choose your specific skill
+              {`3️⃣ Choose from ${selectedSubAbilityData.name}`}
             </h2>
             <div
               className={`transition-transform duration-200 ${

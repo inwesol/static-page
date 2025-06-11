@@ -163,7 +163,7 @@ export function KnowledgeFilter({
     // choosing any knowledge results in disselection of other sub and subKnowledges
     setSelected(null);
     setShowPlaceholder(true);
-     // Auto-expand step 2 when an ability is selected, collapse step 3
+    // Auto-expand step 2 when an ability is selected, collapse step 3
     if (newActiveKnowledge) {
       setExpandedSteps((prev) => ({
         ...prev,
@@ -176,7 +176,6 @@ export function KnowledgeFilter({
   };
 
   const handleSubKnowledgeSelect = (id: string) => {
-    // if user chooses the previous option(means disselects the option) then fallback all occupations will be displayed
     const newSelected = selected === id ? null : id;
     if (newSelected) {
       setSelected(newSelected);
@@ -232,7 +231,7 @@ export function KnowledgeFilter({
               selected ? "text-primary-blue-600" : "text-gray-400"
             }`}
           >
-            <span className="font-medium text-sm md:text-base ">Skill</span>
+            <span className="font-medium text-sm md:text-base ">Sub-Knowledge</span>
           </div>
         </div>
       </div>
@@ -247,7 +246,7 @@ export function KnowledgeFilter({
             bg-gradient-to-r from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
         >
           <h2 className="md:text-lg text-base font-semibold text-primary-blue-800 ">
-            1️⃣ Choose your primary Knowledge
+            1️⃣ Choose your Primary Knowledge
           </h2>
           <div
             className={`transition-transform duration-200 ${
@@ -309,7 +308,7 @@ export function KnowledgeFilter({
           </div>
         </div>
       </div>
-      {/* Step 2: Skills */}
+      {/* Step 2: sub-knowledges */}
       {selectedKnowledgeData && (
         <div
           className={`mb-4 md:mb-6 border-1 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md border-gray-200 overflow-hidden bg-blue-50/50`}
@@ -320,8 +319,13 @@ export function KnowledgeFilter({
           from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
           >
             <h2 className="md:text-lg text-base font-semibold text-primary-blue-800">
-              2️⃣ Select your specific skill
+              {`2️⃣ Choose from ${selectedKnowledgeData.name}`}
             </h2>
+            {/* in case if we want to avoid the space below the list number */}
+            {/* <h2 className="md:text-lg text-base font-semibold text-primary-blue-800 flex gap-2">
+              <span>2️⃣</span>
+              <p>{`Choose from ${selectedKnowledgeData.name}`}</p>
+            </h2> */}
             <div
               className={`transition-transform duration-200 ${
                 expandedSteps.step2 ? "rotate-180" : "rotate-0"

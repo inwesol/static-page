@@ -441,14 +441,14 @@ export function OccupationsContent({
   return (
     <div className="w-full sm:px-8 px-4">
       {renderHeader()}
+      {/* placeholder-content*/}
       {showPlaceholder && browseBy !== "all" ? (
         <div className="max-w-4xl mx-auto p-6">
-          {/* Welcome Section */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6">
               <TargetIcon className="w-10 h-10 text-white" />
             </div>
-            <h2 className="text-xl font-bold text-gray-900 mb-4">
+            <h2 className="text-xl font-bold text-primary-blue-600 mb-4">
               {browseBy === "ability" &&
                 "Discover Careers That Match Your Abilities"}
               {browseBy === "skills" && "Explore Careers That Fit Your Skills"}
@@ -465,11 +465,7 @@ export function OccupationsContent({
               {browseBy === "knowledge" &&
                 "Connect your areas of knowledge with rewarding career paths. We'll help you discover professions that value your educational background and expertise."}
               {browseBy === "interest" &&
-                "Turn your passions into professions. Our system matches your personal interests with careers that will keep you engaged and motivated."}
-            </p>
-            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
-              {browseBy === "interest" &&
-                "Select any three , any two or anyone interest to view the careers that best suit your interest."}
+                "Turn your passions into professions. Our system matches your personal interests with careers that will keep you engaged and motivated. Choose your interest to discover the professions that align with what you truly enjoy."}
             </p>
           </div>
         </div>

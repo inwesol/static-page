@@ -189,7 +189,7 @@ export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps)
         </div>
       </div>
 
-      {/* Step 1: Knowledges */}
+      {/* Step 1: Skills */}
       <div
         className={`mb-4 md:mb-6 border-1 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md border-gray-200 overflow-hidden bg-blue-50/50`}
       >
@@ -199,7 +199,7 @@ export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps)
             bg-gradient-to-r from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
         >
           <h2 className="md:text-lg text-base font-semibold text-primary-blue-800 ">
-            1️⃣ Choose your primary skill
+            1️⃣ Choose your Primary Skill
           </h2>
           <div
             className={`transition-transform duration-200 ${
@@ -261,7 +261,7 @@ export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps)
           </div>
         </div>
       </div>
-      {/* Step 2: Skills */}
+      {/* Step 2: sub-Skills */}
       {selectedSkillData && (
         <div
           className={`mb-4 md:mb-6 border-1 rounded-xl transition-all duration-300 shadow-sm hover:shadow-md border-gray-200 overflow-hidden bg-blue-50/50`}
@@ -272,7 +272,7 @@ export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps)
           from-primary-blue-50 to-primary-green-50   hover:from-primary-blue-100 hover:to-primary-green-100`}
           >
             <h2 className="md:text-lg text-base font-semibold text-primary-blue-800">
-              2️⃣ Select your specific skill
+              {`2️⃣ Choose from ${selectedSkillData.name}`}
             </h2>
             <div
               className={`transition-transform duration-200 ${

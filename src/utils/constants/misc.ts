@@ -78,66 +78,38 @@ export const FEATURES = [
 
 export const REVIEWS = [
     {
-        name: "Michael Smith",
-        username: "@michaelsmith",
+        name: "Ritwika S",
+        position: "Business Development Executive",
         avatar: "https://randomuser.me/api/portraits/men/1.jpg",
         rating: 5,
-        review: "This tool is a lifesaver! Managing and tracking my links has never been easier. A must-have for anyone dealing with numerous links."
+        review: "My experience throughout the sessions with Akarsh has been transformative, helping me gain clarity and focus in my personal and professional life. The structured guidance and actionable strategies provided during our sessions have been instrumental in building my confidence and improving my consistency. I particularly valued the emphasis on emotional stability and identifying my pros and cons, positively influencing my overall mindset. I am grateful for the support and highly recommend these sessions to anyone seeking growth and direction."
     },
     {
-        name: "Emily Johnson",
-        username: "@emilyjohnson",
+        name: "Abhinav Rao",
+        position: "Operations Manager",
         avatar: "https://randomuser.me/api/portraits/women/1.jpg",
         rating: 4,
-        review: "Very useful app! It has streamlined my workflow considerably. A few minor bugs, but overall a great experience."
+        review: "We’ve completed around seven sessions together, and I wanted to take a moment to acknowledge and appreciate the process. The sessions have been very helpful, and I have gained a better clarity and perspective. I also do feel that taking these sessions earlier would have been much more impactful in my case. You've also been very patient and flexible in terms of facilitating the sessions. I would definitely recommend this if someone in my circle is looking for some structured support for professional development."
     },
     {
-        name: "Daniel Williams",
-        username: "@danielwilliams",
+        name: "Amulika G",
+        position: "Tennis Player",
         avatar: "https://randomuser.me/api/portraits/men/2.jpg",
         rating: 5,
-        review: "I've been using this app daily for months. The insights and analytics it provides are invaluable. Highly recommend it!"
+        review: "The coaching sessions I had with Akarsh helped me a lot. I felt truly heard and understood. There were specific breathing exercises and activities we did that allowed me to gain a better understanding of my situation. I also think that Akarsh’s ability to reach out consistently showing an effort helped me make more of an effort from my side as well. In a particular activity, we set up some images according to how I view life and the goals that I have. This activity helped me understand what I was missing in my present, and how that was affecting me."
     },
     {
-        name: "Sophia Brown",
-        username: "@sophiabrown",
+        name: "Vishwaja M",
+        position: "Software Developer",
+        avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+        rating: 5,
+        review: "Working with Akarsh has been a truly transformative experience. Each session began with guided meditation and breathwork, helping me stay grounded and manage stress with clarity and calm. His blend of mindfulness, strategy, and emotional insight helped me gain direction in both my career and personal life. Despite being in the U.S., our sessions were seamless and deeply impactful. I now feel more aligned, disciplined, and ready to pursue a path that reflects who I truly am."
+    },
+    {
+        name: "Arun S",
+        position: "Student, B.Tech(4th year)",
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",
         rating: 4,
-        review: "This app is fantastic! It offers everything I need to manage my links efficiently."
-    },
-    {
-        name: "James Taylor",
-        username: "@jamestaylor",
-        avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-        rating: 5,
-        review: "Absolutely love this app! It's intuitive and feature-rich. Has significantly improved how I manage and track links."
-    },
-    {
-        name: "Olivia Martinez",
-        username: "@oliviamartinez",
-        avatar: "https://randomuser.me/api/portraits/women/3.jpg",
-        rating: 4,
-        review: "Great app with a lot of potential. It has already saved me a lot of time. Looking forward to future updates and improvements."
-    },
-    {
-        name: "William Garcia",
-        username: "@williamgarcia",
-        avatar: "https://randomuser.me/api/portraits/men/4.jpg",
-        rating: 5,
-        review: "This app is a game-changer for link management. It's easy to use, extremely powerful and highly recommended!"
-    },
-    {
-        name: "Mia Rodriguez",
-        username: "@miarodriguez",
-        avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-        rating: 4,
-        review: "I've tried several link management tools, but this one stands out. It's simple, effective."
-    },
-    {
-        name: "Henry Lee",
-        username: "@henrylee",
-        avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-        rating: 5,
-        review: "This app has transformed my workflow. Managing and analyzing links is now a breeze. I can't imagine working without it."
-    },
+        review: "Before I started career coaching with Akarsh, I had no idea what I was going to do after college. I felt lost and overwhelmed thinking about the future. But through the sessions, he helped me gain clarity and direction. Together, we mapped out a realistic plan, figured out which jobs suited my interests and strengths, and created a roadmap I could actually follow. Now, I have a clear vision of where I'm headed, and I feel confident about my career. I’m really grateful for the support and would highly recommend this to anyone who’s feeling uncertain after college."
+    }
 ] as const;

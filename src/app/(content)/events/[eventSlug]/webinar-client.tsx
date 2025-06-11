@@ -76,7 +76,7 @@ type EventSession = {
 type EventTestimonial = {
   name: string;
   position: string;
-  quote: string;
+  review: string;
 };
 
 type EventLocation =
@@ -219,7 +219,7 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
   const getEventTypeLabel = (type: string) => {
     switch (type) {
       case "cohort_based":
-        return "Cohort Program";
+        return "Coaching Session";
       case "offline_seminar":
         return "In-Person Seminar";
       case "online_webinar":
@@ -294,24 +294,24 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-green-800/10"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           {/* Left side - Event details */}
           <div>
             <div className="mb-6">
               <Badge className="mb-2 bg-primary-green-100 text-primary-green-800 hover:bg-primary-green-200">
                 {getEventTypeLabel(event.type)}
               </Badge>
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              <h1 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
                 {event.title}
               </h1>
-              <p className="text-lg text-gray-600 mb-6">{event.description}</p>
+              <p className="mb-6 text-lg text-gray-600">{event.description}</p>
 
               {/* <div className="grid grid-cols-1 gap-4 mb-8"> */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {event.startDate && event.endDate ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
+                    <CalendarDays className="w-5 h-5 mr-2 text-primary-green-600" />
                     <span>
                       {formatDate(event.startDate)} -{" "}
                       {formatDate(event.endDate)}
@@ -319,23 +319,23 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                   </div>
                 ) : event.date ? (
                   <div className="flex items-center">
-                    <CalendarDays className="h-5 w-5 text-primary-green-600 mr-2" />
+                    <CalendarDays className="w-5 h-5 mr-2 text-primary-green-600" />
                     <span>{formatDate(event.date)}</span>
                   </div>
                 ) : null}
 
                 <div className="flex items-center">
-                  <Clock className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <Clock className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{event.time}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <Timer className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <Timer className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{event.duration}</span>
                 </div>
 
                 <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-primary-green-600 mr-2" />
+                  <MapPin className="w-5 h-5 mr-2 text-primary-green-600" />
                   <span>{getLocationString()}</span>
                 </div>
               </div>
@@ -344,15 +344,15 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
             {/* Instructor information */}
             {event.instructor && (
               <div className="mt-8">
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="mb-4 text-xl font-semibold">
                   Workshop Instructor
                 </h3>
-                <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                   <CardContent className="p-6 bg-primary-green-50 rounded-xl">
-                    <div className="flex flex-col md:flex-row gap-6 ">
-                      <div className="md:w-1/4 w-1/3 mx-auto md:mx-0">
-                        <div className="aspect-square bg-gray-200 rounded-full overflow-hidden">
-                          <div className="w-full h-full flex items-center justify-center bg-primary-green-100 text-primary-green-800">
+                    <div className="flex flex-col gap-6 md:flex-row ">
+                      <div className="w-1/3 mx-auto md:w-1/4 md:mx-0">
+                        <div className="overflow-hidden bg-gray-200 rounded-full aspect-square">
+                          <div className="flex items-center justify-center w-full h-full bg-primary-green-100 text-primary-green-800">
                             <Image
                               src={event.instructor.imageUrl}
                               alt={event.instructor.name}
@@ -363,11 +363,11 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="md:w-3/4 mt-4 md:mt-0 text-center md:text-left">
-                        <h3 className="text-xl font-semibold mb-1">
+                      <div className="mt-4 text-center md:w-3/4 md:mt-0 md:text-left">
+                        <h3 className="mb-1 text-xl font-semibold">
                           {event.instructor.name}
                         </h3>
-                        <p className="text-primary-green-700 mb-4">
+                        <p className="mb-4 text-primary-green-700">
                           {event.instructor.title}
                         </p>
                         <p className="text-gray-600">{event.instructor.bio}</p>
@@ -381,17 +381,17 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
             {/* Event testimonials if any */}
             {event.testimonials && event.testimonials.length > 0 && (
               <div className="mt-8">
-                <h3 className="text-xl font-semibold mb-4">
+                <h3 className="mb-4 text-xl font-semibold">
                   What Participants Say
                 </h3>
-                <Card className="border border-gray-200 hover:shadow-md transition-shadow rounded-xl">
+                <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
                   <CardContent className="p-6">
                     <div className="relative">
                       <div className="testimonial-slider">
-                        <div className="text-center py-4">
-                          <p className="text-gray-600 italic mb-6">
+                        <div className="py-4 text-center">
+                          <p className="mb-6 italic text-gray-600">
                             &quot;
-                            {event.testimonials[currentTestimonialIndex].quote}
+                            {event.testimonials[currentTestimonialIndex].review}
                             &quot;
                           </p>
                           <p className="font-medium">
@@ -406,22 +406,22 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         </div>
                       </div>
                       {event.testimonials.length > 1 && (
-                        <div className="flex justify-center mt-4 gap-2">
+                        <div className="flex justify-center gap-2 mt-4">
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-8 w-8 rounded-full"
+                            className="w-8 h-8 rounded-full"
                             onClick={goToPreviousTestimonial}
                           >
-                            <ChevronLeft className="h-4 w-4" />
+                            <ChevronLeft className="w-4 h-4" />
                           </Button>
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-8 w-8 rounded-full"
+                            className="w-8 h-8 rounded-full"
                             onClick={goToNextTestimonial}
                           >
-                            <ChevronRight className="h-4 w-4" />
+                            <ChevronRight className="w-4 h-4" />
                           </Button>
                         </div>
                       )}
@@ -434,18 +434,18 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
 
           {/* Right side - Registration form */}
           <div>
-            <Card className="shadow-md border-none bg-gray-50 rounded-xl">
+            <Card className="border-none shadow-md bg-gray-50 rounded-xl">
               <CardHeader>
-                <CardTitle className="text-3xl md:text-4xl font-bold text-primary-green-800 mt-2 text-center">
+                <CardTitle className="mt-2 text-3xl font-bold text-center md:text-4xl text-primary-green-800">
                   Register for Free Workshop
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 {submitSuccess ? (
-                  <div className="text-center py-8">
-                    <div className="bg-green-50 p-4 rounded-lg mb-6">
-                      <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
-                      <h3 className="text-xl font-medium text-green-800 mb-2">
+                  <div className="py-8 text-center">
+                    <div className="p-4 mb-6 rounded-lg bg-green-50">
+                      <CheckCircle className="w-12 h-12 mx-auto mb-4 text-green-500" />
+                      <h3 className="mb-2 text-xl font-medium text-green-800">
                         Registration Successful!
                       </h3>
                       <p className="text-green-700">
@@ -454,7 +454,7 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                       </p>
                     </div>
                     <Button
-                      className="bg-primary-green-600 hover:bg-primary-green-700 hover:text-white rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+                      className="transition-all transform bg-primary-green-600 hover:bg-primary-green-700 hover:text-white rounded-xl duration-400 hover:scale-115 hover:shadow-md animate-pulse-subtle"
                       onClick={() => router.push("/events/cohort/")}
                     >
                       Book Free Cohort Session
@@ -471,13 +471,13 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         name="fullName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="font-medium text-gray-700">
                               Full Name
                             </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Enter your full name"
-                                className="border-gray-300 bg-white focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
+                                className="bg-white border-gray-300 focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
                                 {...field}
                               />
                             </FormControl>
@@ -491,13 +491,13 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="font-medium text-gray-700">
                               Email
                             </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Enter your email address"
-                                className="border-gray-300 bg-white focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
+                                className="bg-white border-gray-300 focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
                                 {...field}
                               />
                             </FormControl>
@@ -511,13 +511,13 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="font-medium text-gray-700">
                               Phone Number
                             </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Enter your phone number"
-                                className="border-gray-300 bg-white focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
+                                className="bg-white border-gray-300 focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
                                 {...field}
                               />
                             </FormControl>
@@ -530,13 +530,13 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         name="occupation"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="font-medium text-gray-700">
                               Occupation (optional)
                             </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Enter your occupation"
-                                className="border-gray-300 bg-white focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
+                                className="bg-white border-gray-300 focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
                                 {...field}
                               />
                             </FormControl>
@@ -550,13 +550,13 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         name="company"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="font-medium text-gray-700">
                               Company (optional)
                             </FormLabel>
                             <FormControl>
                               <Input
                                 placeholder="Enter your company name"
-                                className="border-gray-300 bg-white focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
+                                className="bg-white border-gray-300 focus:border-primary-green-500 focus:ring-primary-green-500 rounded-xl"
                                 {...field}
                               />
                             </FormControl>
@@ -570,7 +570,7 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                         name="specialRequirements"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className="text-gray-700 font-medium">
+                            <FormLabel className="font-medium text-gray-700">
                               Your Message (optional)
                             </FormLabel>
                             <FormControl>
@@ -587,12 +587,12 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
 
                       <Button
                         type="submit"
-                        className="w-full bg-primary-blue-600 hover:bg-primary-blue-700 hover:text-white rounded-xl transition-all duration-400 transform hover:scale-115 hover:shadow-md animate-pulse-subtle"
+                        className="w-full transition-all transform bg-primary-blue-600 hover:bg-primary-blue-700 hover:text-white rounded-xl duration-400 hover:scale-115 hover:shadow-md animate-pulse-subtle"
                         disabled={isSubmitting || registrationClosed}
                       >
                         {isSubmitting ? (
                           <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
                             Submitting...
                           </>
                         ) : registrationClosed ? (
@@ -606,7 +606,7 @@ const WebinarClient: React.FC<EventsClientProps> = ({ event }) => {
                 )}
               </CardContent>
               <CardFooter className="flex flex-col">
-                <p className="text-xs text-gray-500 text-center">
+                <p className="text-xs text-center text-gray-500">
                   By registering, you agree to our terms and conditions. Your
                   information will be handled as described in our privacy
                   policy.

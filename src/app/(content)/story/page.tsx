@@ -12,6 +12,8 @@ import { generateMetadata } from "@/utils";
 
 export const metadata = generateMetadata({
   title: "Story",
+  description:
+    "Our story is about empowering young people to thrive. We believe this is the key to empowering young people to thrive. Our objective is to guide individuals in self-discovery, help them realize their capabilities, support them in achieving their goals, and enable them to work toward excellence. We focus on prevention and development, creating solutions that foster well-being and drive positive behavioral change.",
   path: "/story",
 });
 
@@ -22,7 +24,7 @@ const people = [
     designation: "CEO",
     link: "https://www.linkedin.com/in/akarshedpsy/",
     image:
-      "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1744848000&v=beta&t=dUfTD4siiUqBlRlP024wrIOIcQg7N7JLfvbfHVuNQDc",
+      "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1750896000&v=beta&t=S5A1yBDvU-XCZkU_-dx4n-XhnZx_1LpAVhS18QHxc9s",
   },
   {
     id: 2,
@@ -30,7 +32,7 @@ const people = [
     designation: "COO",
     link: "https://www.linkedin.com/in/goutham-toondla-2a2112123/",
     image:
-      "https://media.licdn.com/dms/image/v2/C4D03AQEj7oGVSpHxkg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598375667648?e=1744848000&v=beta&t=Nj8_Z5xQoUzNIWxuaTu-SmDSYlrGYfYVmKQsutGr6rs",
+      "https://media.licdn.com/dms/image/v2/C4D03AQEj7oGVSpHxkg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598375667648?e=1750896000&v=beta&t=uYDCiCs2xj1eVDY7uFGvKux4JXStZtuLITXAp_nw5is",
   },
 ];
 

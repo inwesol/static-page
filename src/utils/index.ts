@@ -14,7 +14,7 @@ import { generateMetadata } from "./functions/metadata";
 // metrics
 import GoogleAnalytics from "./metrics/GoogleAnalytics"
 import MicrosoftClarity from "./metrics/MicrosoftClarity"
-
+import FacebookPixel from "./metrics/FacebookPixel"
 export {
     // constants
     LIST_ITEM_VARIANTS,
@@ -42,7 +42,8 @@ export {
 
     // metrics
     GoogleAnalytics,
-    MicrosoftClarity
+    MicrosoftClarity,
+    FacebookPixel
 };
 
 // const Metrics = () => (

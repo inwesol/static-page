@@ -38,7 +38,10 @@ export const NAV_LINKS = [
   //     //     },
   //     // ],
   // },
-
+{
+    title: "Check Career Readiness",
+    href: "/career-test/",
+  },
   {
     title: "Explorer",
     href: "/explorer/",
@@ -47,13 +50,17 @@ export const NAV_LINKS = [
   //   title: "CoCo",
   //   href: "/coco/",
   // },
+  // {
+  //   title: "Career Maturity Test",
+  //   href: "/Maturity-Test/",
+  // },
   {
-    title: "Cohort Program",
+    title: "Career Coaching",
     href: "/events/cohort/",
   },
   {
-    title: "Free Workshop",
-    href: "/events/webinar-know-your-why/",
+    title: "Blogs",
+    href: "/blog/",
   },
   {
     title: "Our Story",
@@ -64,7 +71,7 @@ export const NAV_LINKS = [
     title: "Contact Us",
     href: "/contact-us/",
   },
-
+  
   // {
   //   title: "Resources",
   //   href: "/resources",
@@ -72,13 +79,13 @@ export const NAV_LINKS = [
   //     {
   //       title: "Blog",
   //       tagline: "Read articles on the latest trends in tech.",
-  //       href: "/resources/blog",
+  //       href: "/blog/",
   //       icon: NewspaperIcon,
   //     },
   //     {
-  //       title: "Help",
+  //       title: "Career Maturity Test",
   //       tagline: "Get answers to your questions.",
-  //       href: "/resources/help",
+  //       href: "/career-test/",
   //       icon: HelpCircleIcon,
   //     },
   //   ],

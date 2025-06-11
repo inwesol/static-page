@@ -2,19 +2,24 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
-
 import TableOfContents from "./table-of-contents";
 import Image from "next/image";
+// import BackLink from "./back-link";
+import { useRouter } from "next/navigation";
 
 interface BlogLayoutProps {
   markdownContent: string;
   bannerUrl: string;
+  createdOn: string;
+  readingTime: string;
   imageFit?: "contain" | "cover";
 }
 
 const BlogLayout: React.FC<BlogLayoutProps> = ({
   markdownContent,
   bannerUrl,
+  createdOn,
+  readingTime,
   imageFit = "cover",
 }) => {
   const [headings, setHeadings] = useState<
@@ -22,6 +27,7 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
   >([]);
   const [isTocOpen, setIsTocOpen] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (!contentRef.current) return;
@@ -61,20 +67,20 @@ const BlogLayout: React.FC<BlogLayoutProps> = ({
             </div>
 
             <p className="text-sm text-gray-500">
-              February 27th, 2025 • 5 min read
+              {createdOn} • {readingTime}
             </p>
           </div>
         </div>
       </header>
 
       <div className="w-full max-w-6xl mx-auto">
-        <a
-          href="/"
-          className="inline-flex justify-center items-center px-4 py-2 text-primary1 rounded-md text-base font-bold"
+        <div
+          className="inline-flex justify-center items-center text-primary1 text-base font-bold cursor-pointer mb-2" onClick={()=>router.back()}
         >
-          ←  Back to Home
-        </a>
+          ← Go Back
+        </div>
       </div>
+
 
       <div className="w-full max-w-6xl mx-auto flex flex-col-reverse lg:flex-row gap-6">
         <main className="flex-1 bg-white rounded-xl shadow-md p-6 sm:p-8 lg:p-12">

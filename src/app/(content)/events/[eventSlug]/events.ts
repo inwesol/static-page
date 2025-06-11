@@ -1,14 +1,17 @@
+import { REVIEWS } from "@/utils/constants/misc";
+
 export const availableEvents =  {
   cohort: {
     "id": "cc-2025-cohort-01",
     "slug": "cohort",
     "type": "cohort_based",
-    "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
+    // "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
+    "bannerImageUrl": "/imaaa.webp",
     "title": "Self Discovery Journey",
     "description": "It’s a space where you explore yourself, understand your strengths, and create a path that truly reflects who you are. Over a month, through guided conversations with our psychologists, engaging activities, and expert-led discussions, you will take a deep dive into your interests, abilities, and aspirations. We don’t offer advice or ready-made answers—we help you realize your capability, develop positive behaviours and build your own roadmap.",
-    "startDate": "2025-04-14T00:00:00Z",
-    "endDate": "2025-05-15T00:00:00Z",
-    "registrationEndDate": "2025-04-10T11:59:59Z",
+    // "startDate": "2025-04-14T00:00:00Z",
+    // "endDate": "2025-05-15T00:00:00Z",
+    "registrationEndDate": "2045-04-10T11:59:59Z",
     "duration": "4 weeks",
     "format": "Cohort-based program",
     "price": 11999.00,
@@ -19,8 +22,8 @@ export const availableEvents =  {
     "instructor": {
       "name": "Akarsh Sriramoju",
       "title": "Education Psychologist",
-      "bio": "Akarsh has 4 years of experience as an educational psychologist and academic researcher. A gold medalist from University of Hyderabad in Neural and Cognitive Sciences, he is proficient in coaching psychology, shaping careers and well-being.",
-      "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1744848000&v=beta&t=dUfTD4siiUqBlRlP024wrIOIcQg7N7JLfvbfHVuNQDc"
+      "bio": "Akarsh Sriramoju is an Educational Psychologist with 4 years of experience in both research and industry. A gold medalist in MSc Neural & Cognitive Sciences from the University of Hyderabad, he specialises in improving teaching methodologies, assessments, and coaching psychology. His work focuses on helping young people realise their capabilities by guiding them in their careers, well-being, and leadership. Driven by a vision to transform India, Akarsh is dedicated to empowering young people in educational and professional pathways.",
+      "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1750896000&v=beta&t=S5A1yBDvU-XCZkU_-dx4n-XhnZx_1LpAVhS18QHxc9s"
     },
     // "schedule": [
     //   {
@@ -77,18 +80,18 @@ export const availableEvents =  {
         "heading": "8 One-on-One Coaching Sessions",
         "description": "Thought-provoking conversations with a Psychologist, to help you understand yourself better and recognize what truly drives you."
       },
-      {
-        "heading": "2 Masterclasses by Experts",
-        "description": "Deep discussions with professionals who share insights on growth, choices, and personal alignment."
-      },
+      // {
+      //   "heading": "2 Masterclasses by Experts",
+      //   "description": "Deep discussions with professionals who share insights on growth, choices, and personal alignment."
+      // },
       {
         "heading": "Self-Discovery Activities & Assessments",
         "description": "Exercises designed to help you reflect, question, and recognise patterns in your thoughts and actions."
       },
-      {
-        "heading": "Community & Conversations",
-        "description": "A space to connect with others on the same journey—exchange ideas, share experiences, and learn from different perspectives."
-      },
+      // {
+      //   "heading": "Community & Conversations",
+      //   "description": "A space to connect with others on the same journey—exchange ideas, share experiences, and learn from different perspectives."
+      // },
       {
         "heading": "Guided Action Plan Creation",
         "description": "You won’t be handed a pre-made plan. Instead, we guide you in building your own, based on your discoveries throughout the program."
@@ -130,18 +133,29 @@ export const availableEvents =  {
         "description": "Learn ways to handle uncertainty and reduce pressure."
       },
     ],
-    "testimonials": [
+    "testimonials": [...REVIEWS],
+    "prerequisite": [
       {
-        "name": "Ritwika S",
-        "position": "Business Development Executive",
-        "quote": "My experience throughout the sessions with Akarsh has been transformative, helping me gain clarity and focus in my personal and professional life. The structured guidance and actionable strategies provided during our sessions have been instrumental in building my confidence and improving my consistency. I particularly valued the emphasis on emotional stability and identifying my pros and cons, positively influencing my overall mindset. I am grateful for the support and highly recommend these sessions to anyone seeking growth and direction."
+        "heading": "Quiet Environment",
+        "description": "Sit in a quiet, isolated room to avoid distractions."
       },
       {
-        "name": "Amulika G",
-        "position": "Tennis Player",
-        "quote": "The coaching sessions I had with Akarsh helped me a lot. I felt truly heard and understood. There were specific breathing exercises and activities we did that allowed me to gain a better understanding of my situation. I also think that Akarsh’s ability to reach out consistently showing an effort helped me make more of an effort from my side as well. In a particular activity, we set up some images according to how I view life and the goals that I have. This activity helped me understand what I was missing in my present, and how that was affecting me."
-      }
-    ],
+        "heading": "⁠Video On",
+        "description": "Keep your video on throughout the session."
+      },
+      {
+        "heading": "⁠Use a Laptop",
+        "description": "Prefer joining via laptop or desktop for a stable experience."
+      },
+      {
+        "heading": "⁠Stable Internet",
+        "description": "Ensure a reliable internet connection."
+      },
+      {
+        "heading": "⁠Be Fully Present",
+        "description": "Stay engaged and open to the process."
+      },
+    ]
     // "registrationUrl": "https://example.com/events/career-transformation-cohort-spring-2025"
   },
   seminar: {
@@ -215,12 +229,12 @@ export const availableEvents =  {
       {
         "name": "Jennifer K.",
         "position": "VP of Marketing",
-        "quote": "This workshop completely transformed how I present myself in the boardroom. Worth every penny."
+        "review": "This workshop completely transformed how I present myself in the boardroom. Worth every penny."
       }
     ],
     "registrationUrl": "https://example.com/events/executive-presence-masterclass"
   },
-  "webinar-know-your-why": {
+  "webinar-1": {
     "id": "cc-2025-webinar-01",
     "slug": "webinar-know-your-why",
     "type": "online_webinar",
@@ -334,7 +348,7 @@ export const availableEvents =  {
       {
         "name": "Abhishek M",
         "position": "Graduate Student",
-        "quote": "Applied the techniques from this webinar and immediately saw a confidence boost and a better understanding of my why."
+        "review": "Applied the techniques from this webinar and immediately saw a confidence boost and a better understanding of my why."
       }
     ],
     // "registrationUrl": "https://example.com/events/resume-revamp-webinar"
@@ -393,7 +407,7 @@ export const availableEvents =  {
       {
         "name": "Priya S.",
         "position": "Senior Developer",
-        "quote": "Using Maya's techniques, I negotiated a $25K increase over the initial offer. Life-changing!"
+        "review": "Using Maya's techniques, I negotiated a $25K increase over the initial offer. Life-changing!"
       }
     ],
     "registrationUrl": "https://example.com/events/salary-negotiation-women-tech"
@@ -456,7 +470,7 @@ export const availableEvents =  {
       {
         "name": "Rachel M.",
         "position": "Product Manager",
-        "quote": "Within 2 weeks of implementing Thomas's strategies, I received 3 inbound messages from recruiters at top tech companies."
+        "review": "Within 2 weeks of implementing Thomas's strategies, I received 3 inbound messages from recruiters at top tech companies."
       }
     ],
     "registrationUrl": "https://example.com/events/linkedin-optimization-webinar"

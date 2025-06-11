@@ -5,7 +5,7 @@ export const generateMetadata = ({
     default: `Inwesol - Beyond careers, towards wellbeing`,
     template: `%s | Inwesol`,
   },
-  description = `${process.env.NEXT_PUBLIC_APP_NAME} is the career guidance platform. It brings clarity, builds confidence, and reduces stress, leading to a more purposeful career.`,
+  description = `${process.env.NEXT_PUBLIC_APP_NAME} is the career guidance platform. It brings clarity, builds confidence, and reduces stress, leading to a more purposeful career. Get expert career guidance to make informed decisions and achieve your goals with evidence-based support.`,
   image = "/thumbnail.png",  
   icons = [
     {

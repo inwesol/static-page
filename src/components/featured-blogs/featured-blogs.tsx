@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import BlogCard from "./blog-card";
 import { availableBlogs } from "@/app/(content)/blog/[blogSlug]/blog-content";
-import  Link  from 'next/link';
+import Link from "next/link";
 
 const FeaturedBlogs = () => {
   const [current, setCurrent] = useState(0);
   const [visibleCards, setVisibleCards] = useState(3);
 
   // Transform availableBlogs into the required format
-  const featuredBlogs = Object.entries(availableBlogs).map(
-    ([slug, blog], index) => ({
+  const featuredBlogs = Object.entries(availableBlogs)
+    .map(([slug, blog], index) => ({
       id: index + 1,
       title: blog.heading,
       description: blog.oneLiner,
@@ -20,8 +20,8 @@ const FeaturedBlogs = () => {
       date: blog.createdOn,
       readingTime: blog.readingTime,
       tags: [],
-    })
-  );
+    }))
+    .slice(0, 4);
 
   useEffect(() => {
     const updateCardsToShow = () => {

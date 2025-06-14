@@ -263,4 +263,143 @@ At Inwesol, we believe every career journey should start from within. Our tools,
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
+    "how-to-choose-a-career": {
+    heading: "How to Choose a Career: 6 Self-Reflective Activities for Intermediate Students",
+    oneLiner: "Choosing a career is one of the most important decisions a person will ever make. For intermediate students, typically teenagers, this decision may seem overwhelming.",
+    slug: "how-to-choose-a-career",
+    createdOn: "June 13th, 2025",
+    createdBy: "",
+    readingTime: "5 min read",
+    imageFit:"contain",
+    bannerUrl: "/how-to-choose-a-career.jpg",
+    content: `# How to Choose a Career: 6 Self-Reflective Activities for Intermediate Students
+**Choosing a career is one of the most important decisions a person will ever make.**
+For intermediate students, typically teenagers , this decision may seem overwhelming. But this phase is actually a great time to start exploring possibilities. Why? Because building self-awareness early leads to more confident, informed decisions later.
+
+At **Inwesol**, we believe that every career journey should begin with understanding yourself. This blog shares 6 simple yet powerful self-reflective activities that can help students start their career discovery with clarity, curiosity, and confidence.
+
+![Career Exploration Funnel](/career-exploration-funnel.jpg)
+
+#  1. Start with Self-Assessment Questionnaires
+Imagine having a mirror that doesn’t just reflect your appearance, but your personality, interests, and capability. That’s what self-assessment tools do.
+Tools like:
+- **Career readiness** : Career maturity Test refers to your readiness to make informed career decisions based on awareness, information-seeking, confidence, and effective use of resources. Click here to take right now 
+- **Interests** : RIASEC (Holland Code ),  Matches your interests with real-world careers and work preferences.
+- **Personality** : Myers-Briggs Type Indicator (MBTI) Helps you understand your personality, how you think, feel, and behave.It also offers insights into how you work, communicate, and make decisions
+- **Skill test** : Careers are not just about what you like, they’re also about what you’re good at. List down like:
+  - **Hard skills:** Writing, coding, designing, math, drawing.
+  - **Soft skills:** Listening, teamwork, leadership, empathy.
+
+These assessments don’t give you a final answer, but they act like a mirror, reflecting your own interests and what feels natural and energising to you.
+
+# 2. Reflect through Journaling
+
+Your thoughts and feelings are important indicators of what excites you.
+
+Maintain a **career journal** where you write:
+- What subjects or activities make you feel good?
+- What do you enjoy doing when you have free time?
+- What kind of problems do you love solving?
+- Who or what inspires you?
+
+This simple habit can highlight underlying patterns. Over time, you’ll start to notice the threads that connect your passions, values, and potential career choices.
+
+📝 **Tip:** Journal weekly, even if it’s just a few lines. Reflection grows with repetition.
+
+# 3. Research and Explore Careers
+## A. Online Activities
+Once you know what excites you, explore careers that match those interests.
+
+Use websites like:
+- **India’s National Career Service (NCS)**
+- **My Next Move (US-based but useful)**
+- **Inwesol’s Career Explorer (coming soon!)**
+
+Look into:
+- What subjects should you study?
+- How does the career grow over time?
+- What kind of people thrive in it?
+- What does a day in that job look like?
+
+Research turns vague dreams into real possibilities.
+
+## B. Conduct Informational Interviews (Offline)
+No website can replace a real conversation.
+
+Talk to someone who already works in the field you’re curious about. It could be a family friend, neighbor, teacher, or someone from your extended network. Ask them:
+- What do they love about their work?
+- What’s challenging?
+- What should students know if they want to enter this field?
+
+These chats are eye-opening. You’ll learn what textbooks can’t teach.
+
+📝 **Tip:** Keep a list of insights from each conversation in your journal.
+
+# 4. Seek Guidance 
+## A. Clarify Your Values
+Do you want a career that brings stability? Creativity? Helping others? Recognition?
+
+Your **career values** act as an inner compass. Here are some value prompts to reflect on:
+- Do I want a job that allows me to work from anywhere?
+- Is financial independence a top priority?
+- Would I feel happiest working alone or in a team?
+- Do I want to make a difference in people’s lives?
+
+Your dream job isn’t just what you do—it’s how it fits into the life you want to build.
+
+## B. Set Career Goals (Big and Small)
+Break down the big question—“What do I want to be?”—into smaller, manageable goals.
+
+Example:
+- **Short-term goal:** Explore three new careers this month.
+- **Mid-term goal:** Choose a subject stream based on my interests by next academic year.
+- **Long-term goal:** Become a wildlife photographer or urban designer.
+
+Setting goals keeps you focused, but also flexible. You don’t need all the answers now—but you need a direction.
+
+📝 **Tip:** You can consider reaching out to an experienced career coach, they can help you think more clearly, structure your thoughts, and set meaningful goals.
+
+Sometimes, a trained professional brings clarity when you're feeling confused, someone dedicated to guiding you with structure and support. That’s why coaching is a core part of our product at **Inwesol**.
+
+# 5. Participate in Job Shadowing
+Job shadowing means spending a day or two with a professional at their workplace.
+
+It’s like a behind-the-scenes tour of a career. You’ll see what the job is really like—not just what people say it’s like.
+
+Even shadowing for a few hours can answer key questions:
+- Is this work exciting or repetitive?
+- Does it involve a lot of people or solo work?
+- Would I enjoy doing this every day?
+
+📝 **Tip:** If you can’t shadow in-person, look for virtual job-shadowing videos on YouTube or LinkedIn Learning.
+
+# 6. Join Career Workshops and Fairs
+Career fairs and student workshops are full of energy, ideas, and inspiration.
+
+These events let you:
+- Explore multiple career fields in one place.
+- Interact with mentors and professionals.
+- Participate in fun activities that reveal your interests and aptitudes.
+
+At **Inwesol**, we conduct workshops that help students experience self-discovery in a structured, engaging way, with career coaches and psychologists guiding the way.
+
+📝 **Tip:** Attend events with a curious mind, not just to collect pamphlets.
+
+# Conclusion: Your Career, Your Journey
+Choosing a career isn’t a one-time decision. It’s a **journey of discovering who you are and where you want to go.** The more you understand your strengths, interests, and values, the better your choices will be, not just for college, but for life.
+
+At **Inwesol**, we encourage students to start early, stay curious, and explore freely. It’s okay to change your mind. It’s okay to explore new things. What matters is that you’re **actively participating** in designing your future.
+
+**Remember:** You don’t have to have all the answers today.
+But by asking the right questions, you’re already on the right path.
+
+### 👣 **Ready to begin your journey?**
+
+Explore our free career resources, book a discovery session with our coaches, or attend an Inwesol workshop near you.
+
+[Take Career Readiness Test Now](https://inwesol.com/career-test/)
+
+[Book your free session here](https://www.inwesol.com/events/cohort/)
+`,
+  },
 };

@@ -11,9 +11,12 @@ import {
 import { OccupationsListSearch } from "./occupations-list-search";
 import { Occupation } from "./types";
 import { InterestFilter } from "./interest-filter";
-import { AbilityFilter, abilityCategories } from "./ability-filter";
-import { skillCategories, SkillsFilter } from "./skills-filter";
-import { knowledgeCategories, KnowledgeFilter } from "./knowledge-filter";
+import { AbilityFilter } from "./ability-filter";
+import { abilityCategories } from "./ability-category-constant";
+import { SkillsFilter } from "./skills-filter";
+import { skillCategories } from "./skill-category-constant";
+import { KnowledgeFilter } from "./knowledge-filter";
+import { knowledgeCategories } from "./knowledge-category-constant";
 import { content } from "googleapis/build/src/apis/content";
 import { TargetIcon } from "lucide-react";
 
@@ -513,7 +516,7 @@ export function OccupationsContent({
                               className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
                               onClick={() =>
                                 router.push(
-                                  `/explorer/${occupation.onetsoc_code}`
+                                  `/explorer/${browseBy}/${occupation.onetsoc_code}`
                                 )
                               }
                             >

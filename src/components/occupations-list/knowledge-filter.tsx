@@ -4,144 +4,14 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   CheckCircleIcon,
-  Palette,
-  MessageSquareText,
-  Briefcase,
 } from "lucide-react";
-import type { KnowledgeCategory } from "./types";
 import { useState } from "react";
+import { knowledgeCategories } from "./knowledge-category-constant";
 
 interface KnowledgeFilterProps {
   onSearch: (selectedId: string | null) => void;
   setShowPlaceholder: (value: boolean) => void;
 }
-// Knowledge categories structure
-export const knowledgeCategories: KnowledgeCategory[] = [
-  {
-    id: "Arts and Humanities",
-    name: "Arts and Humanities",
-    icon: Palette,
-    color: "from-purple-400 to-purple-600",
-    description:
-      "Knowledge of facts and principles related to the branches of learning concerned with human thought, language, and the arts.",
-    subKnowledges: [
-      {
-        id: "Active Listening",
-        name: "Active Listening",
-        description:
-          "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
-        occupationIds: ["15-1252.00", "27-1024.00"],
-      },
-      {
-        id: "Mathematics",
-        name: "Mathematics",
-        description: "Using mathematics to solve problems.",
-        occupationIds: ["15-1252.00", "15-1241.00"],
-      },
-      {
-        id: "Reading Comprehension",
-        name: "Reading Comprehension",
-        description:
-          "Understanding written sentences and paragraphs in work-related documents.",
-        occupationIds: ["25-1099.00", "23-1011.00"],
-      },
-      {
-        id: "Science",
-        name: "Science",
-        description: "Using scientific rules and methods to solve problems.",
-        occupationIds: ["19-1042.00", "19-2031.00"],
-      },
-      {
-        id: "Speaking",
-        name: "Speaking",
-        description: "Talking to others to convey information effectively.",
-        occupationIds: ["11-1021.00", "41-2031.00"],
-      },
-      {
-        id: "Writing",
-        name: "Writing",
-        description:
-          "Communicating effectively in writing as appropriate for the needs of the audience.",
-        occupationIds: ["27-3043.05", "15-1252.00"],
-      },
-    ],
-  },
-  {
-    id: "Business and Management",
-    name: "Business and Management",
-    icon: Briefcase,
-    color: "from-emerald-400 to-emerald-600",
-    description:
-      "Knowledge of business administration, accounting, resource management, marketing, economics, and organizational systems.",
-    subKnowledges: [
-      {
-        id: "Active Learning",
-        name: "Active Learning",
-        description:
-          "Understanding the implications of new information for both current and future problem-solving and decision-making.",
-        occupationIds: ["11-9039.00", "25-9031.00"],
-      },
-      {
-        id: "Critical Thinking",
-        name: "Critical Thinking",
-        description:
-          "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
-        occupationIds: ["13-1111.00", "15-2041.00"],
-      },
-      {
-        id: "Learning Strategies",
-        name: "Learning Strategies",
-        description:
-          "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
-        occupationIds: ["25-9021.00", "21-1012.00"],
-      },
-      {
-        id: "Monitoring",
-        name: "Monitoring",
-        description:
-          "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
-        occupationIds: ["43-1011.00", "29-1141.00"],
-      },
-    ],
-  },
-  {
-    id: "Communications",
-    name: "Communications",
-    icon: MessageSquareText,
-    color: "from-blue-400 to-blue-600",
-    description: "Knowledge of the science and art of delivering information.",
-    subKnowledges: [
-      {
-        id: "Active Learning",
-        name: "Active Learning",
-        description:
-          "Understanding the implications of new information for both current and future problem-solving and decision-making.",
-        occupationIds: ["11-9039.00", "25-9031.00"],
-      },
-      {
-        id: "Critical Thinking",
-        name: "Critical Thinking",
-        description:
-          "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
-        occupationIds: ["13-1111.00", "15-2041.00"],
-      },
-      {
-        id: "Learning Strategies",
-        name: "Learning Strategies",
-        description:
-          "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
-        occupationIds: ["25-9021.00", "21-1012.00"],
-      },
-      {
-        id: "Monitoring",
-        name: "Monitoring",
-        description:
-          "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
-        occupationIds: ["43-1011.00", "29-1141.00"],
-      },
-    ],
-  },
-];
 
 export function KnowledgeFilter({
   onSearch,
@@ -231,7 +101,9 @@ export function KnowledgeFilter({
               selected ? "text-primary-blue-600" : "text-gray-400"
             }`}
           >
-            <span className="font-medium text-sm md:text-base ">Sub-Knowledge</span>
+            <span className="font-medium text-sm md:text-base ">
+              Sub-Knowledge
+            </span>
           </div>
         </div>
       </div>

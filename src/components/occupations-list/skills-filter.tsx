@@ -4,108 +4,19 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   CheckCircleIcon,
-  Workflow,
-  BookOpenCheck,
 } from "lucide-react";
-import type { SkillsCategory } from "./types";
 import { useState } from "react";
+import { skillCategories } from "./skill-category-constant";
 
 interface SkillsFilterProps {
   onSearch: (selectedId: string | null) => void;
-  setShowPlaceholder:(value: boolean) => void;
+  setShowPlaceholder: (value: boolean) => void;
 }
-// Skills categories structure
-export const skillCategories: SkillsCategory[] = [
-  {
-    id: "Content",
-    name: "Content",
-    icon: BookOpenCheck,
-    color: "from-indigo-400 to-indigo-600",
-    description:
-      "Background structures needed to work with and acquire more specific skills in a variety of different domains.",
-    subSkills: [
-      {
-        id: "Active Listening",
-        name: "Active Listening",
-        description:
-          "Giving full attention to what other people are saying, taking time to understand the points being made, asking questions as appropriate, and not interrupting at inappropriate times.",
-        occupationIds: ["15-1252.00", "27-1024.00"],
-      },
-      {
-        id: "Mathematics",
-        name: "Mathematics",
-        description: "Using mathematics to solve problems.",
-        occupationIds: ["15-1252.00", "15-1241.00"],
-      },
-      {
-        id: "Reading Comprehension",
-        name: "Reading Comprehension",
-        description:
-          "Understanding written sentences and paragraphs in work-related documents.",
-        occupationIds: ["25-1099.00", "23-1011.00"],
-      },
-      {
-        id: "Science",
-        name: "Science",
-        description: "Using scientific rules and methods to solve problems.",
-        occupationIds: ["19-1042.00", "19-2031.00"],
-      },
-      {
-        id: "Speaking",
-        name: "Speaking",
-        description: "Talking to others to convey information effectively.",
-        occupationIds: ["11-1021.00", "41-2031.00"],
-      },
-      {
-        id: "Writing",
-        name: "Writing",
-        description:
-          "Communicating effectively in writing as appropriate for the needs of the audience.",
-        occupationIds: ["27-3043.05", "15-1252.00"],
-      },
-    ],
-  },
-  {
-    id: "Process",
-    name: "Process",
-    icon: Workflow,
-    color: "from-amber-400 to-amber-600",
-    description:
-      "Procedures that contribute to the more rapid acquisition of knowledge and skill across a variety of domains.",
-    subSkills: [
-      {
-        id: "Active Learning",
-        name: "Active Learning",
-        description:
-          "Understanding the implications of new information for both current and future problem-solving and decision-making.",
-        occupationIds: ["11-9039.00", "25-9031.00"],
-      },
-      {
-        id: "Critical Thinking",
-        name: "Critical Thinking",
-        description:
-          "Using logic and reasoning to identify the strengths and weaknesses of alternative solutions, conclusions, or approaches to problems.",
-        occupationIds: ["13-1111.00", "15-2041.00"],
-      },
-      {
-        id: "Learning Strategies",
-        name: "Learning Strategies",
-        description:
-          "Selecting and using training/instructional methods and procedures appropriate for the situation when learning or teaching new things.",
-        occupationIds: ["25-9021.00", "21-1012.00"],
-      },
-      {
-        id: "Monitoring",
-        name: "Monitoring",
-        description:
-          "Monitoring/Assessing performance of yourself, other individuals, or organizations to make improvements or take corrective action.",
-        occupationIds: ["43-1011.00", "29-1141.00"],
-      },
-    ],
-  },
-];
 
-export function SkillsFilter({ onSearch ,setShowPlaceholder}: SkillsFilterProps) {
+export function SkillsFilter({
+  onSearch,
+  setShowPlaceholder,
+}: SkillsFilterProps) {
   const [selected, setSelected] = useState<string | null>(null);
   const [activeSkill, setActiveSkill] = useState<string | null>(null);
   const [expandedSteps, setExpandedSteps] = useState({

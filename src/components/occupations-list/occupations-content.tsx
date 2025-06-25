@@ -10,6 +10,15 @@ import {
 } from "@/components/ui/tooltip";
 import { OccupationsListSearch } from "./occupations-list-search";
 import { Occupation } from "./types";
+import { InterestFilter } from "./interest-filter";
+import { AbilityFilter } from "./ability-filter";
+import { abilityCategories } from "./ability-category-constant";
+import { SkillsFilter } from "./skills-filter";
+import { skillCategories } from "./skill-category-constant";
+import { KnowledgeFilter } from "./knowledge-filter";
+import { knowledgeCategories } from "./knowledge-category-constant";
+import { content } from "googleapis/build/src/apis/content";
+import { TargetIcon } from "lucide-react";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -56,8 +65,10 @@ const getElementVisibleHeight = (element: HTMLElement): number => {
 
 export function OccupationsContent({
   occupations,
+  browseBy = "all",
 }: {
   occupations: Occupation[];
+  browseBy?: string;
 }) {
   const router = useRouter();
   const [filteredOccupations, setFilteredOccupations] = useState<
@@ -72,12 +83,14 @@ export function OccupationsContent({
     windowWidth: 0,
     windowHeight: 0,
   });
+  // placeholder-content
+  const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true);
 
   // Ref to track if component is mounted
   const isMounted = useRef(false);
 
+  // Initialize filtered occupations on mount
   useEffect(() => {
-    // Initialize filtered occupations on mount
     const grouped = occupations.reduce((acc, occupation) => {
       const firstLetter = occupation.title[0].toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
@@ -173,81 +186,179 @@ export function OccupationsContent({
     return () => window.removeEventListener("scroll", debouncedHandleScroll);
   }, [filteredOccupations, activeLetter, measurements]);
 
-  // Expanded scroll to letter function with better handling
-  // const scrollToLetter = useCallback(
-  //   (letter: string) => {
-  //     const targetElement = document.getElementById(`letter-${letter}`);
-  //     if (!targetElement) return;
+  // Handle interest search
+  // Handle interest search with AND logic
+  const handleInterestSearch = (interests: string[]) => {
+    // Filter occupations with code > 3 AND containing ALL selected interests
+    const filtered = occupations.filter(
+      (occupation) =>
+        occupation.code > 3 &&
+        interests.every((interest) => occupation.interest.includes(interest))
+    );
 
-  //     const { headerHeight } = measurements;
+    // Group filtered occupations by first letter of the title
+    const grouped = filtered.reduce((acc, occupation) => {
+      const firstLetter = occupation.title[0].toUpperCase();
+      if (!acc[firstLetter]) acc[firstLetter] = [];
+      acc[firstLetter].push(occupation);
+      return acc;
+    }, {} as Record<string, Occupation[]>);
 
-  //     // Get all section elements and their current visibility states
-  //     const sectionsBeforeTarget = Object.keys(filteredOccupations)
-  //       .sort()
-  //       .filter((l) => l < letter)
-  //       .map((l) => document.getElementById(`letter-${l}`))
-  //       .filter((el): el is HTMLElement => el !== null);
+    setFilteredOccupations(grouped);
+    setVisibleCards({});
+    setError(
+      filtered.length === 0
+        ? "No occupations found matching all selected interests. Try different combinations."
+        : null
+    );
+  };
 
-  //     // Check if target section is already visible in the viewport
-  //     const targetRect = targetElement.getBoundingClientRect();
-  //     const isTargetVisible =
-  //       targetRect.top >= headerHeight &&
-  //       targetRect.bottom <= window.innerHeight;
+  // Hadle ability search
+  const handleAbilitySearch = (selectedSubsubId: string | null) => {
+    if (!selectedSubsubId) {
+      // No filter, show all occupations grouped by first letter
+      const grouped = occupations.reduce((acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      }, {} as Record<string, Occupation[]>);
+      setFilteredOccupations(grouped);
+      setError(null);
+      // console.log("running with empty selectedId")
+      return;
+    }
 
-  //     // If target is already well-positioned, just update the active letter
-  //     if (isTargetVisible) {
-  //       setActiveLetter(letter);
-  //       return;
-  //     }
+    // Find the selected subsub-ability in abilities data
+    let occupationIds: string[] = [];
+    abilityCategories.forEach((ability) =>
+      ability.subAbilities.forEach((sub) =>
+        sub.subsubAbilities.forEach((subsub) => {
+          if (subsub.id === selectedSubsubId) {
+            occupationIds = subsub.occupationIds;
+          }
+        })
+      )
+    );
 
-  //     // Calculate scroll position accounting for any collapsed/expanded content
-  //     let scrollPosition =
-  //       window.scrollY + targetRect.top - (headerHeight + HEADER_OFFSET);
+    // Filter occupations that match any occupationId in the subsub-ability
+    const filtered = occupations.filter((occ) =>
+      occupationIds.includes(occ.onetsoc_code)
+    );
 
-  //     // Check if sections before this one have "Load More" content expanded
-  //     // This helps adjust the scroll position based on real content height
-  //     const expandedSections = sectionsBeforeTarget.filter((section) => {
-  //       const visibleCards = section ? getElementVisibleHeight(section) : 0;
-  //       // Consider a section expanded if it has significant visible height
-  //       return visibleCards > 100; // Arbitrary threshold to detect expanded content
-  //     });
+    // Group filtered occupations by first letter of the title
+    const grouped = filtered.reduce((acc, occupation) => {
+      const firstLetter = occupation.title[0].toUpperCase();
+      if (!acc[firstLetter]) acc[firstLetter] = [];
+      acc[firstLetter].push(occupation);
+      return { ...acc };
+    }, {} as Record<string, Occupation[]>);
+    // console.log("Grouped: ", grouped);
+    setFilteredOccupations(grouped);
+    setError(
+      filtered.length === 0
+        ? "No occupations found matching the selected ability. Try a different one."
+        : null
+    );
+  };
+  // Hadle skill search
+  const handleSkillSearch = useCallback(
+    (selectedId: string | null) => {
+      // console.log("running")
+      if (!selectedId) {
+        // No filter, show all occupations grouped by first letter
+        const grouped = occupations.reduce((acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        }, {} as Record<string, Occupation[]>);
+        setFilteredOccupations(grouped);
+        setError(null);
+        return;
+      }
 
-  //     // Add slight adjustment for expanded sections to improve accuracy
-  //     if (expandedSections.length > 0) {
-  //       // Small adjustment per expanded section to account for content variations
-  //       scrollPosition += expandedSections.length * 10;
-  //     }
+      // Find selected subskill
+      let occupationIds: string[] = [];
+      skillCategories.forEach((category) =>
+        category.subSkills.forEach((subSkill) => {
+          if (subSkill.id === selectedId) {
+            occupationIds = subSkill.occupationIds;
+          }
+        })
+      );
 
-  //     // Smooth scroll to position
-  //     window.scrollTo({
-  //       top: scrollPosition,
-  //       behavior: "smooth",
-  //     });
+      // Filter occupations that match any occupationId in the subsub-ability
+      const filtered = occupations.filter((occ) =>
+        occupationIds.includes(occ.onetsoc_code)
+      );
 
-  //     // Set active letter after scrolling
-  //     setActiveLetter(letter);
+      // Group filtered occupations by first letter of the title
+      const grouped = filtered.reduce((acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      }, {} as Record<string, Occupation[]>);
 
-  //     // Add a slight delay and re-check scroll position to ensure accuracy
-  //     setTimeout(() => {
-  //       const newTargetRect = targetElement.getBoundingClientRect();
-  //       const isNowVisible =
-  //         newTargetRect.top >= headerHeight &&
-  //         newTargetRect.top < headerHeight + 100;
+      setFilteredOccupations(grouped);
+      setError(
+        filtered.length === 0
+          ? "No occupations found matching the selected ability. Try a different one."
+          : null
+      );
+    },
+    [occupations]
+  );
+  // Handle knowledge search
+  const handleKnowldegSearch = useCallback(
+    (selectedId: string | null) => {
+      // console.log("running")
+      if (!selectedId) {
+        // No filter, show all occupations grouped by first letter
+        const grouped = occupations.reduce((acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        }, {} as Record<string, Occupation[]>);
+        setFilteredOccupations(grouped);
+        setError(null);
+        return;
+      }
 
-  //       // If the target is still not positioned optimally, make a small adjustment
-  //       if (!isNowVisible) {
-  //         window.scrollTo({
-  //           top:
-  //             window.scrollY +
-  //             newTargetRect.top -
-  //             (headerHeight + HEADER_OFFSET),
-  //           behavior: "smooth",
-  //         });
-  //       }
-  //     }, 600); // Wait for initial scroll to complete
-  //   },
-  //   [filteredOccupations, measurements]
-  // );
+      // Find selected subskill
+      let occupationIds: string[] = [];
+      knowledgeCategories.forEach((category) =>
+        category.subKnowledges.forEach((subKnowledge) => {
+          if (subKnowledge.id === selectedId) {
+            occupationIds = subKnowledge.occupationIds;
+          }
+        })
+      );
+
+      // Filter occupations that match any occupationId in the subsub-ability
+      const filtered = occupations.filter((occ) =>
+        occupationIds.includes(occ.onetsoc_code)
+      );
+
+      // Group filtered occupations by first letter of the title
+      const grouped = filtered.reduce((acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      }, {} as Record<string, Occupation[]>);
+
+      setFilteredOccupations(grouped);
+      setError(
+        filtered.length === 0
+          ? "No occupations found matching the selected ability. Try a different one."
+          : null
+      );
+    },
+    [occupations]
+  );
 
   // Update loadMore function to recalculate positions after loading more content
   const loadMore = (letter: string) => {
@@ -255,155 +366,215 @@ export function OccupationsContent({
       ...prev,
       [letter]: (prev[letter] || INITIAL_CARDS) + LOAD_INCREMENT,
     }));
-
-    // After content expands, recalculate measurements and scroll position
-    // setTimeout(() => {
-    //   if (activeLetter === letter) {
-    //     const element = document.getElementById(`letter-${letter}`);
-    //     if (element) {
-    //       const { headerHeight } = measurements;
-    //       const elementPosition =
-    //         element.getBoundingClientRect().top + window.scrollY;
-
-    //       window.scrollTo({
-    //         top: elementPosition - (headerHeight + HEADER_OFFSET),
-    //         behavior: "smooth",
-    //       });
-    //     }
-    //   }
-    // }, 100); // Short delay to allow DOM to update
   };
 
-  return (
-    <div className="w-full px-8">
-      <header
-        className="mb-2 sticky top-0 bg-gray-50/90 backdrop-blur-md py-6 border-b border-gray-200/30 z-20"
-        id="sticky-header"
-        style={{ top: `${HEADER_OFFSET}px` }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between lg:gap-4">
-            <div className="flex-shrink-0">
-              <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
-                Career Explorer
-              </h1>
-              <p className="mt-1 text-sm text-gray-500">
-                Explore opportunities that align with your passions and
-                ambitions.
-              </p>
-            </div>
-
-            <div className="w-full lg:w-2/3">
-              <OccupationsListSearch
-                occupations={occupations}
-                onFilteredOccupationsChange={setFilteredOccupations}
-              />
-            </div>
+  // Render the appropriate header based on browseBy prop
+  const renderHeader = () => {
+    if (browseBy === "interest") {
+      return (
+        <div className="flex-shrink-0 w-full">
+          <InterestFilter
+            onSearch={handleInterestSearch}
+            setShowPlaceholder={setShowPlaceholder}
+          />
+        </div>
+      );
+    }
+    // render the ability header if browseBy is ability
+    else if (browseBy === "ability") {
+      return (
+        <>
+          <div className="flex-shrink-0 w-full">
+            <AbilityFilter
+              onSearch={handleAbilitySearch}
+              setShowPlaceholder={setShowPlaceholder}
+            />
+          </div>
+        </>
+      );
+    }
+    // render the ability header if browseBy is skills
+    else if (browseBy === "skills") {
+      return (
+        <>
+          <div className="flex-shrink-0 w-full">
+            <SkillsFilter
+              onSearch={handleSkillSearch}
+              setShowPlaceholder={setShowPlaceholder}
+            />
+          </div>
+        </>
+      );
+    }
+    // render the knowledge header if browseBy is knowledge
+    else if (browseBy === "knowledge") {
+      return (
+        <>
+          <div className="flex-shrink-0 w-full">
+            <KnowledgeFilter
+              onSearch={handleKnowldegSearch}
+              setShowPlaceholder={setShowPlaceholder}
+            />
+          </div>
+        </>
+      );
+    }
+    // Default header (browseBy === "all")
+    return (
+      <>
+        <div className="max-w-6xl mx-auto flex gap-3 py-4 flex-col lg:flex-row">
+          <div className="lg:flex-shrink-0">
+            <h1 className="text-2xl lg:text-3xl font-medium text-primary-green-600 tracking-wide">
+              Career Explorer
+            </h1>
+            <p className="mt-1 text-sm text-gray-500">
+              Explore opportunities that align with your passions and ambitions.
+            </p>
+          </div>
+          <div className="lg:w-full lg:mt-2">
+            <OccupationsListSearch
+              occupations={occupations}
+              onFilteredOccupationsChange={setFilteredOccupations}
+            />
           </div>
         </div>
-      </header>
-
-      <main className="max-w-6xl mx-auto h-full">
-        <TooltipProvider>
-          {error ? (
-            <div className="absolute inset-0 flex items-center justify-center z-10">
+      </>
+    );
+  };
+  return (
+    <div className="w-full sm:px-8 px-4">
+      {renderHeader()}
+      {/* placeholder-content*/}
+      {showPlaceholder && browseBy !== "all" ? (
+        <div className="max-w-4xl mx-auto p-6">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mb-6">
+              <TargetIcon className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-xl font-bold text-primary-blue-600 mb-4">
+              {browseBy === "ability" &&
+                "Discover Careers That Match Your Abilities"}
+              {browseBy === "skills" && "Explore Careers That Fit Your Skills"}
+              {browseBy === "knowledge" &&
+                "Find Careers That Align With Your Knowledge"}
+              {browseBy === "interest" &&
+                "Match Your Interests With Ideal Careers"}
+            </h2>
+            <p className="text-sm text-gray-600 max-w-2xl mx-auto">
+              {browseBy === "ability" &&
+                "Complete all steps to find careers that align with your natural abilities. Our comprehensive matching system will show you personalized career recommendations based on what you do best."}
+              {browseBy === "skills" &&
+                "Identify careers that perfectly utilize your developed skills. Our comprehensive matching system will help you find roles where your expertise shines."}
+              {browseBy === "knowledge" &&
+                "Connect your areas of knowledge with rewarding career paths. We'll help you discover professions that value your educational background and expertise."}
+              {browseBy === "interest" &&
+                "Turn your passions into professions. Our system matches your personal interests with careers that will keep you engaged and motivated. Choose your interest to discover the professions that align with what you truly enjoy."}
+            </p>
+          </div>
+        </div>
+      ) : (
+        <main className="max-w-6xl mx-auto">
+          <TooltipProvider>
+            {error ? (
               <div className="text-center">
-                <p className="text-red-400 text-base sm:text-lg mb-4">
+                <p className="text-red-400 text-base sm:text-lg my-20">
                   {error}
                 </p>
               </div>
-            </div>
-          ) : Object.keys(filteredOccupations).length > 0 ? (
-            <div className="mb-24">
-              {Object.keys(filteredOccupations)
-                .sort()
-                .map((letter) => {
-                  const visibleCount = visibleCards[letter] || INITIAL_CARDS;
-                  const totalCards = filteredOccupations[letter].length;
-                  const displayedCards = filteredOccupations[letter].slice(
-                    0,
-                    visibleCount
-                  );
-
-                  return (
-                    <section
-                      key={letter}
-                      className={"mb-6"}
-                      id={`letter-${letter}`}
-                    >
-                      <h2
-                        className="text-2xl font-medium text-primary-green-600 mb-6 sticky bg-gray-50/90 py-3 border-b border-gray-200/20 z-10"
-                        style={{
-                          top: `${measurements.headerHeight + HEADER_OFFSET}px`,
-                        }}
+            ) : Object.keys(filteredOccupations).length > 0 ? (
+              <div className="mb-24">
+                {Object.keys(filteredOccupations)
+                  .sort()
+                  .map((letter) => {
+                    const visibleCount = visibleCards[letter] || INITIAL_CARDS;
+                    const totalCards = filteredOccupations[letter].length;
+                    const displayedCards = filteredOccupations[letter].slice(
+                      0,
+                      visibleCount
+                    );
+                    return (
+                      <section
+                        key={letter}
+                        className={"mb-6"}
+                        id={`letter-${letter}`}
                       >
-                        {letter}
-                      </h2>
+                        <h2
+                          className="text-2xl font-medium text-primary-green-600 mb-6 sticky bg-gray-50/90 py-3 border-b border-gray-200/20 z-10"
+                          style={{
+                            top: `${
+                              measurements.headerHeight + HEADER_OFFSET
+                            }px`,
+                          }}
+                        >
+                          {letter}
+                        </h2>
 
-                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                        {displayedCards.map((occupation) => (
-                          <div
-                            key={occupation.title}
-                            className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
-                            onClick={() =>
-                              router.push(
-                                `/explorer/${occupation.onetsoc_code}`
-                              )
-                            }
-                          >
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <h3 className="text-base font-medium text-[#3FA1D8] mb-2 line-clamp-1">
-                                  {occupation.title}
-                                </h3>
-                              </TooltipTrigger>
-                              {occupation.title.length > 30 && (
-                                <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                  <p className="text-base font-medium">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                          {displayedCards.map((occupation) => (
+                            <div
+                              key={occupation.title}
+                              className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
+                              onClick={() =>
+                                router.push(
+                                  `/explorer/${browseBy}/${occupation.onetsoc_code}`
+                                )
+                              }
+                            >
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <h3 className="text-base font-medium text-[#3FA1D8] mb-2 line-clamp-1">
                                     {occupation.title}
-                                  </p>
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                            <Tooltip>
-                              <TooltipTrigger asChild>
-                                <p className="text-sm text-gray-500 group-hover:text-gray-600 line-clamp-2">
-                                  {occupation.description}
-                                </p>
-                              </TooltipTrigger>
-                              {occupation.description.length > 100 && (
-                                <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
-                                  <p className="text-sm">
+                                  </h3>
+                                </TooltipTrigger>
+                                {occupation.title.length > 30 && (
+                                  <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
+                                    <p className="text-base font-medium">
+                                      {occupation.title}
+                                    </p>
+                                  </TooltipContent>
+                                )}
+                              </Tooltip>
+                              <Tooltip>
+                                <TooltipTrigger asChild>
+                                  <p className="text-sm text-gray-500 group-hover:text-gray-600 line-clamp-2">
                                     {occupation.description}
                                   </p>
-                                </TooltipContent>
-                              )}
-                            </Tooltip>
-                          </div>
-                        ))}
-                      </div>
-
-                      {visibleCount < totalCards && (
-                        <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
-                          <button
-                            onClick={() => loadMore(letter)}
-                            className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
-                          >
-                            Load More ({visibleCount}/{totalCards})
-                          </button>
+                                </TooltipTrigger>
+                                {occupation.description &&
+                                  occupation.description.length > 100 && (
+                                    <TooltipContent className="max-w-xs p-2 bg-gray-100 text-gray-800 rounded-md shadow-lg border border-gray-200 z-50">
+                                      <p className="text-sm">
+                                        {occupation.description}
+                                      </p>
+                                    </TooltipContent>
+                                  )}
+                              </Tooltip>
+                            </div>
+                          ))}
                         </div>
-                      )}
-                    </section>
-                  );
-                })}
-            </div>
-          ) : (
-            <p className="text-gray-500 text-center mt-8 text-lg">
-              No occupations found.
-            </p>
-          )}
-        </TooltipProvider>
-      </main>
+
+                        {visibleCount < totalCards && (
+                          <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
+                            <button
+                              onClick={() => loadMore(letter)}
+                              className="px-6 py-2 bg-[#00B24B]/80 text-white shadow-md hover:shadow-lg transition-all duration-200 ease-out border-none text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#00B24B]/20 rounded-xl"
+                            >
+                              Load More ({visibleCount}/{totalCards})
+                            </button>
+                          </div>
+                        )}
+                      </section>
+                    );
+                  })}
+              </div>
+            ) : (
+              <p className="text-gray-500 text-center mt-8 text-lg">
+                No occupations found.
+              </p>
+            )}
+          </TooltipProvider>
+        </main>
+      )}
     </div>
   );
 }

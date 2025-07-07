@@ -99,6 +99,13 @@ export const REVIEWS = [
         review: "The coaching sessions I had with Akarsh helped me a lot. I felt truly heard and understood. There were specific breathing exercises and activities we did that allowed me to gain a better understanding of my situation. I also think that Akarsh’s ability to reach out consistently showing an effort helped me make more of an effort from my side as well. In a particular activity, we set up some images according to how I view life and the goals that I have. This activity helped me understand what I was missing in my present, and how that was affecting me."
     },
     {
+        name: "Vishwaja M",
+        position: "Software Developer",
+        avatar: "https://randomuser.me/api/portraits/men/2.jpg",
+        rating: 5,
+        review: "Working with Akarsh has been a truly transformative experience. Each session began with guided meditation and breathwork, helping me stay grounded and manage stress with clarity and calm. His blend of mindfulness, strategy, and emotional insight helped me gain direction in both my career and personal life. Despite being in the U.S., our sessions were seamless and deeply impactful. I now feel more aligned, disciplined, and ready to pursue a path that reflects who I truly am."
+    },
+    {
         name: "Arun S",
         position: "Student, B.Tech(4th year)",
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",

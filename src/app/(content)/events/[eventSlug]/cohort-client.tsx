@@ -18,6 +18,7 @@ import {
   Search,
   ChevronLeft,
   Timer,
+  MonitorCheck,
 } from "lucide-react";
 import {
   Drawer,
@@ -132,6 +133,7 @@ type Event = {
   testimonials?: EventTestimonial[];
   registrationUrl?: string;
   offers?: EventOffer[];
+  prerequisite?: EventOffer[];
   facilitates?: EventOffer[];
   achieves?: EventOffer[];
 };
@@ -164,28 +166,42 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
 
   // Open dialog automatically on page load
   const timerIdRef = useRef<number | null>(null);
+  const prevWidthRef = useRef<number>(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
+  const isFirstRun = useRef(true);
+  // console.log("from function:",isFirstRun.current)
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 640) {
+      const currentWidth = window.innerWidth;
+      // only skip if not first-time run and width hasnt changed
+      if (!isFirstRun.current && prevWidthRef.current === currentWidth) return;
+
+      prevWidthRef.current = currentWidth; // update ref
+
+      if (currentWidth >= 640) {
         setShowMobileDialog(false);
         setIframeLoaded(false);
-        // clear any pending timeout when switching to desktop
         if (timerIdRef.current) {
           clearTimeout(timerIdRef.current);
           timerIdRef.current = null;
         }
       } else {
-        // clear previous timeout if exists
         if (timerIdRef.current) clearTimeout(timerIdRef.current);
         timerIdRef.current = window.setTimeout(() => {
-          console.log("in setTimeout");
+          // console.log("running in setTimeout")
           setShowMobileDialog(true);
         }, 3000);
+        // console.log(timerIdRef.current);
+        // console.log("before running :",isFirstRun.current)
+        isFirstRun.current = false; // After first run, set to false
+        // console.log("after running :",isFirstRun.current)
       }
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // <-- call once on mount
+    handleResize(); // call once on mount
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -196,7 +212,7 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
   function handleDrawerChange(isOpen: boolean) {
     setShowMobileDialog(isOpen);
     if (!isOpen) {
-      setIframeLoaded(false); // Reset when closing
+      setIframeLoaded(false); // reset when closing
     }
   }
 
@@ -384,6 +400,14 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                 >
                   Pricing
                 </TabsTrigger> */}
+                  {event.prerequisite && (
+                    <TabsTrigger
+                      value="prerequisite"
+                      className="sm:px-4 py-3 px-2 text-sm md:text-base font-semibold whitespace-nowrap data-[state=active]:text-primary-green-600 data-[state=active]:border-b-2 data-[state=active]:border-primary-green-600 border-b-2 border-transparent "
+                    >
+                      Let&apos;s Get Ready
+                    </TabsTrigger>
+                  )}
 
                   {/* right now not here so nothing rendered form this block */}
                   {(event.schedule || event.agenda) && (
@@ -625,6 +649,35 @@ const CohortClient: React.FC<EventsClientProps> = ({ event }) => {
                     </CardContent>
                   </Card>
                 </TabsContent>
+
+                {event.prerequisite && (
+                  <TabsContent value="prerequisite">
+                    <div>
+                      {/* <h3 className="mb-4 text-xl font-semibold">
+                            What&apos;s Inside?
+                        </h3> */}
+                      <Card className="transition-shadow border border-gray-200 hover:shadow-md rounded-xl">
+                        <CardContent className="p-6">
+                          <ul className="space-y-3">
+                            {event.prerequisite.map((offer, index) => (
+                              <li key={index} className="flex items-start">
+                                <MonitorCheck className="h-5 w-5 text-primary-green-600 mr-3 flex-shrink-0 mt-0.5" />
+                                <div>
+                                  <h4 className="mb-1 font-medium text-primary-green-600">
+                                    {offer.heading}
+                                  </h4>
+                                  <p className="text-gray-600">
+                                    {offer.description}
+                                  </p>
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </TabsContent>
+                )}
 
                 {(event.schedule || event.agenda) && (
                   <TabsContent value="schedule">

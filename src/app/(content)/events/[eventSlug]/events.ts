@@ -22,7 +22,7 @@ export const availableEvents =  {
     "instructor": {
       "name": "Akarsh Sriramoju",
       "title": "Education Psychologist",
-      "bio": "Akarsh has 4 years of experience as an educational psychologist and academic researcher. A gold medalist from University of Hyderabad in Neural and Cognitive Sciences, he is proficient in coaching psychology, shaping careers and well-being.",
+      "bio": "Akarsh Sriramoju is an Educational Psychologist with 4 years of experience in both research and industry. A gold medalist in MSc Neural & Cognitive Sciences from the University of Hyderabad, he specialises in improving teaching methodologies, assessments, and coaching psychology. His work focuses on helping young people realise their capabilities by guiding them in their careers, well-being, and leadership. Driven by a vision to transform India, Akarsh is dedicated to empowering young people in educational and professional pathways.",
       "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1750896000&v=beta&t=S5A1yBDvU-XCZkU_-dx4n-XhnZx_1LpAVhS18QHxc9s"
     },
     // "schedule": [
@@ -134,6 +134,28 @@ export const availableEvents =  {
       },
     ],
     "testimonials": [...REVIEWS],
+    "prerequisite": [
+      {
+        "heading": "Quiet Environment",
+        "description": "Sit in a quiet, isolated room to avoid distractions."
+      },
+      {
+        "heading": "⁠Video On",
+        "description": "Keep your video on throughout the session."
+      },
+      {
+        "heading": "⁠Use a Laptop",
+        "description": "Prefer joining via laptop or desktop for a stable experience."
+      },
+      {
+        "heading": "⁠Stable Internet",
+        "description": "Ensure a reliable internet connection."
+      },
+      {
+        "heading": "⁠Be Fully Present",
+        "description": "Stay engaged and open to the process."
+      },
+    ]
     // "registrationUrl": "https://example.com/events/career-transformation-cohort-spring-2025"
   },
   seminar: {

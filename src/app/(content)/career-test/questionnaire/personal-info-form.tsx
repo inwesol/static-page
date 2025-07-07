@@ -2,7 +2,7 @@
 import { useFormContextData } from "@/context/personal-info-context/FormContext";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -25,6 +25,8 @@ import {
   categoryMap,
   Category,
 } from "./questionsData";
+import { Loader2 } from "lucide-react";
+import confetti from "canvas-confetti";
 
 type Results = Record<Category, number>;
 
@@ -32,6 +34,7 @@ export default function PersonalInfoForm() {
   const { form, setSubmittedData, allAnswers, setTestScore } =
     useFormContextData();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [buttonStatus, setButtonStatus] = useState("Generating...");
   const router = useRouter();
 
   function calculateScore(): Results {
@@ -82,15 +85,34 @@ export default function PersonalInfoForm() {
 
       if (res.ok) {
         setSubmittedData(formData);
-        router.push("/career-test/result");
+        setButtonStatus("Woohoo! Done!");
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: [
+            "#ff0000",
+            "#00ff00",
+            "#0000ff",
+            "#ffff00",
+            "#00ffff",
+            "#ff00ff",
+          ],
+          shapes: ["star", "circle"],
+        });
+        setTimeout(() => {
+          setIsSubmitting(false);
+          setButtonStatus("Generating...");
+          router.push("/career-test/result");
+        }, 2000);
       } else {
+        setIsSubmitting (false);
         console.error("API returned error:", data.message);
       }
     } catch (error) {
-      console.error("Error submitting form", error);
-    } finally {
       setIsSubmitting(false);
-    }
+      console.error("Error submitting form", error);
+    } 
   };
 
   return (
@@ -239,17 +261,34 @@ export default function PersonalInfoForm() {
 
             {/* Submit */}
             <div className="flex justify-center pt-2">
-              <Button
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`text-lg px-8 py-6 md:px-4 md:py-6 bg-gradient-to-r from-primary-blue-600 to-primary-green-600 hover:from-primary-blue-700 hover:to-primary-green-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
-                  isSubmitting
-                    ? "opacity-50 cursor-not-allowed"
-                    : "hover:from-primary-blue-700 hover:to-primary-green-700"
-                }`}
+                className={`text-base px-4 py-2
+    font-semibold rounded-full shadow-lg hover:shadow-xl
+    transition-all duration-300 transform hover:-translate-y-1 flex gap-2 justify-center items-center ${
+      isSubmitting
+        ? buttonStatus === "Woohoo! Done!"
+          ? "bg-primary-green-600 text-white disabled:cursor-not-allowed disabled:opacity-100"
+          : "bg-primary-blue-600 text-white disabled:opacity-60 disabled:cursor-not-allowed"
+        : "bg-gradient-to-r from-primary-blue-600 to-primary-green-600 text-white hover:from-primary-blue-700 hover:to-primary-green-700"
+    }
+  `}
               >
-                {isSubmitting ? "Generating..." : "Generate Report"}
-              </Button>
+                {isSubmitting && buttonStatus === "Woohoo! Done!" ? (
+                  <>
+                    <Check color="yellow" strokeWidth={3}/>
+                    {buttonStatus}
+                  </>
+                ) : isSubmitting ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {buttonStatus}
+                  </>
+                ) : (
+                  "Generate Report"
+                )}
+              </button>
             </div>
           </form>
         </Form>

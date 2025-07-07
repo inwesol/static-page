@@ -29,7 +29,7 @@ import { Icons } from "../global/icons";
 const Navbar = () => {
   // const { user } = useClerk();
   const [scroll, setScroll] = useState(false);
-  
+
   const handleScroll = () => {
     if (window.scrollY > 8) {
       setScroll(true);
@@ -37,7 +37,7 @@ const Navbar = () => {
       setScroll(false);
     }
   };
-  
+
   useEffect(() => {
     //checks if page is already scrolled or not on page refresh
     if (window.scrollY > 0) {
@@ -52,16 +52,16 @@ const Navbar = () => {
   const loginOptions = [
     {
       label: "Login as Admin",
-      href: "https://admin-inwesol-main.vercel.app"
+      href: "https://admin-inwesol-main.vercel.app",
     },
     {
-      label: "Login as Coach", 
-      href: "https://coach-inwesol-main.vercel.app"
+      label: "Login as Coach",
+      href: "https://coach-inwesol-main.vercel.app",
     },
     {
       label: "Login as Partner",
-      href: "https://partner-portal-gray.vercel.app"
-    }
+      href: "https://partner-portal-gray.vercel.app",
+    },
   ];
 
   return (
@@ -95,24 +95,30 @@ const Navbar = () => {
           </div>
           <div className="hidden lg:flex items-center h-full">
             {/* Login Button Group */}
-            <div className="flex items-center bg-green-600 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group">
+            <div className="flex items-center bg-primary-green-600 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group">
               {/* Main Login Button */}
-              <Link
-                href="https://client-inwesol-main.vercel.app"
-                className={cn(
-                  "px-4 py-2 text-white font-medium transition-all duration-200",
-                  "hover:bg-green-700 flex items-center gap-2 h-9 text-sm",
-                  "focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-transparent"
-                )}
+              <Button
+                onClick={() =>
+                  window.open(
+                    "https://app.inwesol.com",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                className="w-full rounded-xl px-4 py-2 text-white font-semibold transition-all duration-200"
+                variant="primary"
+                size="default"
+                type="button"
+                aria-label="Sign in here"
               >
-                <span>Login</span>
-              </Link>
-              
+                <span>Sign in here</span>
+              </Button>
+
               {/* Divider */}
-              <div className="w-px h-5 bg-green-500/30" />
-              
+              {/* <div className="w-px h-5 bg-green-500/30" /> */}
+
               {/* Dropdown Trigger */}
-              <DropdownMenu>
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     size="sm"
@@ -153,7 +159,7 @@ const Navbar = () => {
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
             </div>
           </div>
           <MobileNavbar />

@@ -95,7 +95,7 @@ const HeroSection = () => {
           <span className="hidden sm:block">
             Coaching individuals to thrive in their careers through the{" "}
             <span className="whitespace-nowrap">self-discovery</span> of their{" "}
-            <span className="font-bold text-accent">&quot;why&quot;</span>
+            <span className="font-bold text-accent">&quot;why&quot;.</span>
             <br />
             Knowing your purpose brings clarity, builds confidence, and reduces
             stress, leading to a more purposeful career.

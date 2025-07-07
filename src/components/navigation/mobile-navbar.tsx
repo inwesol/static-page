@@ -82,6 +82,24 @@ const MobileNavbar = () => {
                 </>
               )}
             </div> */}
+            <div className="flex items-center justify-evenly w-full space-x-2 mb-4">
+              <Button
+                onClick={() =>
+                  window.open(
+                    "https://app.inwesol.com",
+                    "_blank",
+                    "noopener,noreferrer"
+                  )
+                }
+                className="w-full rounded-xl"
+                variant="primary"
+                size="default"
+                type="button"
+                aria-label="Sign in here"
+              >
+                <span>Sign in here</span>
+              </Button>
+            </div>
             <ul className="flex flex-col items-start w-full mt-6">
               <Accordion type="single" collapsible className="!w-full">
                 {NAV_LINKS.map((link) => (

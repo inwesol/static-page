@@ -114,7 +114,7 @@ export const REVIEWS = [
     },
     {
         name: "Anjali H",
-        position: "Student, Class 10th Standard",
+        position: "Student, Class 12th Standard",
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",
         rating: 5,
         review: "The coaching sessions were incredibly valuable. I feel heard, supported, and motivated. My journey with Inwesol helped me explore aspects of myself I hadn’t paid attention to. During the coaching journey, I gained clarity about my strengths, interests, and future direction. Thank you to my coach and Inwesol team for the constant guidance and encouragement. I feel more confident and inspired to take the next steps toward my goals."

@@ -111,5 +111,12 @@ export const REVIEWS = [
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",
         rating: 4,
         review: "Before I started career coaching with Akarsh, I had no idea what I was going to do after college. I felt lost and overwhelmed thinking about the future. But through the sessions, he helped me gain clarity and direction. Together, we mapped out a realistic plan, figured out which jobs suited my interests and strengths, and created a roadmap I could actually follow. Now, I have a clear vision of where I'm headed, and I feel confident about my career. I’m really grateful for the support and would highly recommend this to anyone who’s feeling uncertain after college."
+    },
+    {
+        name: "Anjali H",
+        position: "Student, Class 10th Standard",
+        avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+        rating: 5,
+        review: "The coaching sessions were incredibly valuable. I feel heard, supported, and motivated. My journey with Inwesol helped me explore aspects of myself I hadn’t paid attention to. During the coaching journey, I gained clarity about my strengths, interests, and future direction. Thank you to my coach and Inwesol team for the constant guidance and encouragement. I feel more confident and inspired to take the next steps toward my goals."
     }
 ] as const;

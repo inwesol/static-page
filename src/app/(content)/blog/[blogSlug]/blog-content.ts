@@ -9,7 +9,7 @@ export const availableBlogs = {
     createdBy: "",
     readingTime: "5 min read",
     imageFit:"contain",
-    bannerUrl: "https://github.com/user-attachments/assets/7cffebfb-cf0c-4a0f-ade2-9f216b908be6",
+    bannerUrl: "/career-guidance.png",
     content: `# Career Guidance: Your Path to Clarity, Confidence, and Informed Decisions
 
 Choosing a career path is one of the most important decisions we make in life, and that&apos;s exactly why it can feel overwhelming. Whether you&apos;re a student exploring career options, a young professional seeking growth, or someone considering a career transition, the path ahead can be full of uncertainty.
@@ -79,7 +79,7 @@ Looking for support in your career journey? Start by exploring our career explor
     createdBy: "",
     readingTime: "5 min read",
     imageFit:"cover",
-    bannerUrl: "https://github.com/user-attachments/assets/0d280d15-f9c1-4e1d-b1b8-17fee7287ec0",
+    bannerUrl: "/coaching-vs-counselling.png",
     content: `
 # Career Coaching vs Career Counselling:
 
@@ -396,6 +396,156 @@ But by asking the right questions, you’re already on the right path.
 ### 👣 **Ready to begin your journey?**
 
 Explore our free career resources, book a discovery session with our coaches, or attend an Inwesol workshop near you.
+
+[Take Career Readiness Test Now](https://inwesol.com/career-test/)
+
+[Book your free session here](https://www.inwesol.com/events/cohort/)
+`,
+  },
+    "career-motivation-psychology": {
+    heading: "The psychology of Career Motivation",
+    oneLiner: "Career motivation refers to the drive that influences a person’s behaviour within the professional work environment. Think of career motivation like the GPS in a car.",
+    slug: "career-motivation-psychology",
+    createdOn: "July 15th, 2025",
+    createdBy: "",
+    readingTime: "5 min read",
+    imageFit:"cover",
+    bannerUrl: "/career-motivation-psychology.jpg",
+    content: `**Career Motivation** refers to the drive that influences a person’s behaviour within the professional work environment. Think of career motivation like the GPS in a car. You might have the car (your skills), the road (opportunities) and the engine (your effort), but without the GPS, it’s easy to get lost. Your motivation sets the direction, keeps you focused when the road gets tough. Career motivation is what propels us toward specific occupations, strives for us to work diligently and seeks significance in our careers. This motivation is never purely about needing a salary check, it's rooted in our psychology and influences how we perceive ourselves and our position in the world.
+
+![Career Motivation Dimension](/career-motivation-dim.jpg)
+
+When you become seriously motivated in your career, you have higher job satisfaction, in the sense that you will enjoy the work rather than dreading Sunday nights and Monday mornings. This motivation translates into better productivity, as motivated individuals work harder at their projects and be more creative at solving problems (Westbrook et al., 2020). Most significantly, career motivation has a tremendous impact on our overall health and mental well-being.
+
+When we are career motivated, our brains release chemicals like dopamine and serotonin that make us feel good and energize us. This is a healthy feedback loop in which achievement creates more motivation that then creates even more achievement (Bromberg-Martin et al., 2010; Fischer & Ullsperger, 2017). On the other hand, when we are not career motivated, we experience symptoms of depression like fatigue, cynicism and despair about the future (Bianchi et al., 2023).
+
+Studies again and again identify that motivated workers are not only happier but also more creative, collaborative and better able to bounce back from failures. They're apt to do more than expected of them, accept learning experiences, and be a positive influence in their work environment. For adolescents anticipating their future, it's essential to study career motivation because it can help you make better choices regarding education, internships and future career choice. For parents, it can help you direct how you talk with your child regarding career choice, not only about what they will earn, but what will bring them happiness in the long term. Now let’s understand the types of motivation.
+
+![Career Motivation Rewards](/career-motivation-rewards.jpg)
+
+**Self-Determination Theory**, which was developed by psychologists Edward Deci and Richard Ryan, teaches us about two main types of motivation.
+
+- **Intrinsic motivation** is from the inside out. It's the enjoyment you get from doing something because it's something you really enjoy doing, find interesting, or feel it's worth doing. An example would be a teenager who likes writing computer programs for video games. He or she is intrinsically motivated by computer programming.
+- **Extrinsic motivation** is from external rewards or pressures, such as working for a lot of money, approval, or to escape punishment.
+
+In Self-Determination Theory, three basic psychological needs motivate us:
+1. Autonomy (being in charge of our choices)
+2. Competence (feeling effective and able)
+3. Relatedness (being connected to others)
+
+When these needs are met in our work environment, we are more intrinsically motivated. For instance, a job where you get to choose how you will work (autonomy), stretches you just enough so you can build your skills (competence), and has healthy relationships with others (relatedness) will simply be more motivating.
+
+Extrinsic rewards are vital and can serve as a motivator, but they work best as a complement to intrinsic satisfaction and not as the only source. With this knowledge, you can look beyond surface level career characteristics and study how different paths can meet your inner psychological needs.
+
+## The Contribution of Intrinsic Motivation to Sustained Career Satisfaction
+
+Intrinsic motivation is a sustainable fuel source for your career; it will not burn out like external rewards tend to. When you're intrinsically motivated, you're motivated by internal values, interest and the intrinsic satisfaction of the work itself. This is a highly stable basis for long term career excellence and satisfaction because you're not waiting around for someone else to get you pumped up with praise, promotions or raises.
+
+A teenager who has an interest in the preservation of the environment may be deeply satisfied with a career in researching renewable energy, irrespective of pay prospects, because the profession is associated with their fundamental values. A person with innate talent for teaching and an interest in helping others is likely to be satisfied with teaching careers because the profession itself is satisfying.
+
+The autonomy and competence aspects of Self Determination Theory come into play most here. When you have some control over how you do your work and feel confident in your ability to grow and learn, you are more likely to stay motivated even when things get challenging. Your intrinsic motivation grows strong too when you fail or encounter setbacks, your intrinsic motivation propels you forward instead of making you quit.
+
+Intrinsic motivation becomes self reinforcing as well. If you enjoy what you are doing, you work harder at it naturally, which leads to better performance and greater competence. This competence creates new challenges and opportunities, which further engage your interest and participation. For parents and teenagers planning ahead, this translates to considering not only "What pays the most?" but "What would I truly be interested in and like to do for many years?" The goal is finding careers that energize rather than drain you in the long term.
+
+## Balancing Extrinsic Rewards with Personal Purpose
+
+Though intrinsic motivation is most important for long term happiness, eliminating extrinsic rewards altogether is unrealistic. We all need to pay bills, put food on the table and achieve financial security. The trick is finding the right balance and understanding how outside rewards can motivate or destroy our inner motivation. Research shows that when extrinsic rewards like money are the priority, they can actually suppress intrinsic motivation, a process known as the "overjustification effect” (Deci, 1971).
+
+For example, if one picks an occupation solely for money without considering their values or interests, they might be initially motivated by the money. However, after some time, this motivation will wear off, leading to burnout, job dissatisfaction and a sense of emptiness. The money that was the central importance might not be sufficient to counteract the feeling of getting eight hours a day doing something that is nonsensical or against their values.
+
+The best approach to sustainability is to use extrinsic rewards as secondary elements rather than the central foundation of career motivation. Look for careers with equitable pay and career opportunity as well as for value and interest alignment. For example, someone with an interest in helping other individuals might choose healthcare, social work, or nonprofit management careers that offer both meaningful work and equitable career prospects.
+
+![Career Motivation Portfolio](/career-motivation-portfolio.jpg)
+
+Think about creating a personal "motivation portfolio" with both intrinsic and extrinsic elements. Maybe 70% of job satisfaction comes from doing valuable work that you enjoy and 30% from extrinsic rewards like pay, benefits and perks. This proportion will also vary for different individuals and at different stages of life, but having knowledge of both kinds of motivation enables you to make wiser career decisions.
+
+When parents and adolescents discuss career options, they should be asking questions like: "How can we seek out employment that is satisfying and well rewarding?". This two way answer ensures rewards from external sources are supplemented rather than replaced by intrinsic motivations and careers are realistically attainable and genuinely fulfilling.
+
+Harnessing the power of both intrinsic and extrinsic motivation can transform not just your career,  your confidence. Are you driven by inner passion or external rewards? Maybe it’s both? It’s time to reflect, realign and rise. Tap into what fuels you from within, curiosity, growth or purpose and let external recognition or advancement be the wind in your sails. Take action now: set a goal that speaks to your values and back it with steps that move you toward personal and professional fulfillment. Your motivation, in all its forms, is your most valuable asset. Use it.
+
+### So, **what’s your next move?**  Whether it’s gaining clarity, building confidence, or aligning with your purpose, **START NOW**
+
+Explore our free career resources, book a discovery session with our coaches, or attend an Inwesol workshop near you.
+
+Not sure where you stand? [Check your career readiness in minutes](https://inwesol.com/career-test/)
+
+Ready to take the first step? [Book a free session with career coach](https://www.inwesol.com/events/cohort/)
+
+**References:**   
+• Westbrook, A., van den Bosch, R., Määttä, J. I., Hofmans, L., Papadopetraki, D., Cools, R., & Frank, M. J. (2020). Dopamine promotes cognitive effort by biasing the benefits versus costs of cognitive work. Science, 367(6484), 1362–1366. https://doi.org/10.1126/science.aaz5891
+
+• Bromberg-Martin, E. S., Matsumoto, M., & Hikosaka, O. (2010). Dopamine in motivational control: Rewarding, aversive, and alerting. Neuron, 68(5), 815–834. https://doi.org/10.1016/j.neuron.2010.11.022
+
+• Fischer, A. G., & Ullsperger, M. (2017). An update on the role of serotonin and its interplay with dopamine for reward. Frontiers in Human Neuroscience, 11, 484. https://doi.org/10.3389/fnhum.2017.00484
+
+• Bianchi, R., Verkuilen, J., Sowden, R. N., & Schonfeld, I. S. (2023). Towards a new approach to job-related distress: A three-sample study of the Occupational Depression Inventory. Stress and Health, 39(1), 134–150. https://doi.org/10.1002/smi.3177
+
+• Deci, E. L. (1971). Effects of externally mediated rewards on intrinsic motivation. Journal of Personality and Social Psychology, 18(1), 105–115. https://doi.org/10.1037/h0030644
+
+`,
+  },
+    "career-readiness": {
+    heading: "Career Readiness: Start of your career foundation",
+    oneLiner: "We call that as being career ready. So, what does it mean to be “career ready” and thrive in today’s job market?",
+    slug: "career-readiness",
+    createdOn: "July 20th, 2025",
+    createdBy: "",
+    readingTime: "3 min read",
+    imageFit:"contain",
+    bannerUrl: "/career-readiness.jpg",
+    content: `# What is Career Readiness?
+If you’re a teenager planning for your future or a parent looking to guide your child toward the working world, you might be curious about what it takes to be prepared for a career. We call that as being career ready. So, what does it mean to be “career ready” and thrive in today’s job market?
+
+Career readiness is defined as “a foundation from which to demonstrate requisite core competencies that broadly prepare the college educated for success in the workplace and lifelong career management” (NACE).These aren't just the specific skills you need for one particular job (like knowing how to code if you want to be a programmer), but the everyday skills that help you work well with others, solve problems and keep learning new things.
+
+Think of career readiness as a bridge between school and the real world. In school, you learn facts and take tests. At work, you need to use what you've learned to solve real problems, work with different types of people and adapt when things change. Career readiness helps you make that jump effectively.
+
+This is especially important for teenagers because the job market is changing faster than ever before. The jobs available when you graduate might be completely different from the ones that exist today. Preparing for multiple job types prepares you to explore different options and choose what is best for you by making informed decisions. It can result in growth, leading to a better financial future no matter what career path you choose.
+
+![Career Readiness Skills](/career-readiness-skills.jpg)
+
+#  Here’s How You Can Be Career Ready:
+
+## 1. Building the Skills You'll Need
+
+So what skills do you actually need to be career ready? Let's understand this in detail:
+- **Communication Skills :** This might sound obvious, but being able to communicate well is important in any career. We're talking about being able to explain your ideas clearly, listen to others, write professional emails and even give presentations with more confidence. Whether you're talking to your boss, working with a team or helping a customer, good communication skills will make you stand out.
+- **Problem-Solving and Critical Thinking :** Every job involves solving problems (it's part of working life). Maybe you need to organise an event, or a customer has a complaint, or your team needs to figure out how to finish a project on time. Being able to think through problems step by step, consider different solutions and make good decisions is incredibly valuable.
+- **Technical Skills :** You don't need to be a computer genius, but you do need to be comfortable with technology. This means being able to learn new software quickly, understanding how to use digital tools to get your work done and staying up-to-date with new technology.
+
+These assessments don’t give you a final answer, but they act like a mirror, reflecting your own interests and what feels natural and energising to you.
+
+## 2. Getting Real-World Experience
+
+Reading about work and actually doing it are two very different things. That's why getting some real-world experience while you're still in school is so valuable. You can read more about it in one of our blogs titled ["How to Choose A Career"](https://inwesol.com/blog/how-to-choose-a-career/) for some ways to do that.
+
+## 3. Taking Care of Your Well-Being
+Here's something that doesn't get talked about enough: taking care of your well being is a crucial part of being career ready. The working world can be stressful and learning how to manage that stress while you're young will help you throughout your career.
+
+- **Managing Stress :** Whether it's dealing with difficult people, tight deadlines or just the general pressure of work, stress is part of having a job. Learning healthy ways to cope with stress like exercise, going to therapy, eating healthy, talking to friends, or taking breaks when you need them will help you stay productive and happy at work.
+- **Finding Balance :** Work is important, but it's not everything. Learning how to balance work with the other things that matter to you (family, friends, hobbies) is a skill that will serve you well throughout your life.
+- **Asking for Help :** Nobody expects you to figure everything out on your own. Being able to ask for help when you need it (whether it's from a coworker, your boss or an expert) is actually a sign of strength, not weakness.
+
+![Career Readiness Challenges](/career-readiness-challenges.jpg)
+
+## 4. Dealing with Challenges and Setbacks
+Let's be honest: your career journey won't always be smooth. You might not get the first job you apply for, or you might realize that a career you thought you wanted isn't actually right for you. That's completely normal! The following things will help you be career ready:
+
+- **Learning from Rejection :** Getting rejected for a job or internship stings, but it's also a learning opportunity. Ask for feedback, figure out what you can improve and keep trying. Every "no" gets you closer to a "yes."
+- **Staying Motivated :** There will be times when you feel discouraged or unsure about your future. This is normal! Talk to people you trust, remember why you're working toward your goals and celebrate small victories along the way.
+- **Keep Learning :** The most eminent people never stop learning. Whether it's taking a class, reading about your industry or just being curious about how things work, maintaining a learning mindset will help you stay relevant and engaged throughout your career.
+- **Embracing Change :** The job market will continue to change throughout your career. Instead of being scared of change, try to see it as an opportunity to grow and try new things. The people who embrace change rather than resist it tend to excel.
+- **Adaptability :** The ability to adapt with changes, learn new things quickly and stay positive when things don't go as planned will serve you well throughout your career. Jobs change, companies change and entire industries can transform. People who can adapt will always be in demand.
+
+# Your Next Steps: Preparing for a Dynamic Future
+
+Being career ready isn't about having everything figured out right now (it's about developing the skills and mindset that will help you excel no matter what path you choose). For parents, the best thing you can do is support your teenager's exploration of different career paths while helping them develop these fundamental skills. Encourage them to try new things, ask questions and learn from their experiences.
+
+Remember, career readiness is a journey, not a destination. You don't need to have complete certainty. What matters is that you're taking steps to prepare yourself for whatever opportunities come your way.
+
+**Ready to discover the extent of your career readiness in the domains of confidence , concern, curiosity and consultation?**
+
+**Take our career readiness assessment and begin your journey toward professional excellence.**
 
 [Take Career Readiness Test Now](https://inwesol.com/career-test/)
 

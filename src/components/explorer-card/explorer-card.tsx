@@ -17,6 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Button } from "../ui/button";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -75,13 +76,13 @@ const ExplorerCard = () => {
 
         <AnimationContainer delay={0.4}>
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 max-w-screen-lg leading-snug">
-            The AI Career Coach is launching soon! <br />
-            Get access as an early bird user.
+            The AI Career Coach is launched! <br />
+            Freely access CoCo as an early user.
           </h3>
         </AnimationContainer>
 
         <AnimationContainer delay={0.5}>
-          <Form {...form}>
+          {/* <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="mt-4 flex h-fit items-center justify-center gap-2"
@@ -91,25 +92,6 @@ const ExplorerCard = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    {/* <div className="flex h-fit items-center justify-center gap-2">
-                      <FormLabel className="sr-only">Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          className="md:w-64"
-                          placeholder="Your email address"
-                          {...field}
-                        />
-                      </FormControl>
-                      <button
-                        className="relative px-6 py-3 border-[1px] border-[#00B24B] bg-[#00B24B] text-white font-semibold rounded-[10px] hover:bg-[#00A143] transition-colors duration-200 text-base sm:text-lg focus:outline-none focus:ring-2 focus:ring-[#00B24B] focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto before:absolute before:inset-0 before:rounded-[10px] before:border-[2px] before:border-[#3FA1D8] before:opacity-0 before:transition-opacity before:duration-300 before:animate-border-glow"
-                        type="submit"
-                        disabled={form.formState.isSubmitting}
-                      >
-                        {form.formState.isSubmitting
-                          ? "Submitting..."
-                          : "Notify Me!"}
-                      </button>
-                    </div> */}
 
                     <div className="w-full max-w-xl mx-auto mt-6">
                       <div className="relative">
@@ -143,14 +125,21 @@ const ExplorerCard = () => {
                 )}
               />
             </form>
-          </Form>
+          </Form> */}
 
-          {/* <button
-            className="inline-block px-8 sm:px-10 py-3 sm:py-3.5 bg-[#00B24B] text-white font-semibold text-sm sm:text-base rounded-full hover:bg-[#00A143] focus:outline-none focus:ring-2 focus:ring-[#00B24B] focus:ring-offset-2 transition duration-200"
-            aria-label="Join the waitlist"
+          <button
+            onClick={() =>
+              window.open(
+                "https://app.inwesol.com",
+                "_blank",
+                "noopener,noreferrer"
+              )
+            }
+            className="inline-block px-8 sm:px-10 py-2 sm:py-3 bg-primary-green-600 text-white font-semibold text-sm sm:text-base rounded-full hover:bg-primary-green-500 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:ring-offset-2 transition duration-200"
+            aria-label="Access CoCo from here"
           >
-            Join Waitlist
-          </button> */}
+            Access CoCo from here
+          </button>
         </AnimationContainer>
       </section>
 

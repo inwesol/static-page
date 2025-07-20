@@ -12,8 +12,7 @@ const featuredBlogs = [
     title: "Career Guidance",
     description:
       "A process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions.",
-    image:
-      "https://github.com/user-attachments/assets/7cffebfb-cf0c-4a0f-ade2-9f216b908be6",
+    image: "/career-guidance.png",
     link: "/blog/career-guidance",
     date: "27th Feb 2025",
     tags: [],
@@ -23,8 +22,7 @@ const featuredBlogs = [
     title: "Career Coaching vs Career Counselling",
     description:
       "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future.",
-    image:
-      "https://github.com/user-attachments/assets/0d280d15-f9c1-4e1d-b1b8-17fee7287ec0",
+    image: "/coaching-vs-counselling.png",
 
     link: "/blog/coaching-vs-counselling",
     date: "27th Feb 2025",

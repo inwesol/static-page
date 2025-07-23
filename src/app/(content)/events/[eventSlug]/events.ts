@@ -1,9 +1,9 @@
 import { REVIEWS } from "@/utils/constants/misc";
 
 export const availableEvents =  {
-  cohort: {
+  coaching: {
     "id": "cc-2025-cohort-01",
-    "slug": "cohort",
+    "slug": "coaching",
     "type": "cohort_based",
     // "bannerImageUrl": "https://github.com/user-attachments/assets/8b5f3870-93e9-4361-9257-9881de359bd1",
     "bannerImageUrl": "/imaaa.webp",

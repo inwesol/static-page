@@ -21,7 +21,8 @@ const FeaturedBlogs = () => {
       readingTime: blog.readingTime,
       tags: [],
     }))
-    .slice(0, 4);
+    .slice(-4)
+    .reverse();
 
   useEffect(() => {
     const updateCardsToShow = () => {

@@ -121,7 +121,7 @@ const Footer = () => {
                 <li className="mt-2">
                   <Link
                     href="/explorer/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
                     Explorer
                   </Link>
@@ -129,15 +129,15 @@ const Footer = () => {
                 <li className="mt-2">
                   <Link
                     href="/coco/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
                     CoCo
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/events/cohort/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    href="/events/coaching/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
                     Coaching Session
                   </Link>
@@ -161,7 +161,7 @@ const Footer = () => {
                 <li className="">
                   <Link
                     href="/story/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
                     Our Story
                   </Link>
@@ -169,7 +169,7 @@ const Footer = () => {
                 <li className="mt-2">
                   <Link
                     href="/privacy/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
                     Privacy Policy
                   </Link>
@@ -177,7 +177,7 @@ const Footer = () => {
                 <li className="mt-2">
                   <Link
                     href="/terms/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
                     Terms & Conditions
                   </Link>

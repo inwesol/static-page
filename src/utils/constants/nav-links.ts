@@ -56,7 +56,7 @@ export const NAV_LINKS = [
   // },
   {
     title: "Career Coaching",
-    href: "/events/cohort/",
+    href: "/events/coaching/",
   },
   {
     title: "Blogs",

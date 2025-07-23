@@ -31,8 +31,7 @@ const people = [
     name: "Goutham Toondla",
     designation: "COO",
     link: "https://www.linkedin.com/in/goutham-toondla-2a2112123/",
-    image:
-      "https://media.licdn.com/dms/image/v2/C4D03AQEj7oGVSpHxkg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1598375667648?e=1755734400&v=beta&t=1Vc6BO_nvvA4d8E4kqojF894K4cyGaCqec6BR0YfKRM",
+    image: "/goutham.jpg",
   },
 ];
 

@@ -33,6 +33,12 @@ const nextConfig = {
         port: "",
         pathname: "/**", // Allow all images from this domain
       },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        port: "",
+        pathname: "/**", // Allow all images from this domain
+      },
     ],
   },
 };

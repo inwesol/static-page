@@ -1,5 +1,6 @@
 import { Sparkles } from "lucide-react";
-import CocoCTAButton from './CocoCTAButon';
+import CocoCTAButton from "./CocoCTAButon";
+import Image from "next/image";
 
 export default function Companion() {
   return (
@@ -23,6 +24,17 @@ export default function Companion() {
               </span>
             </h1>
 
+            {/* image below badge */}
+            <div className="flex justify-center">
+              <Image
+                src="/assets/llm-coco-diff.jpg"
+                alt="Coco Diff Illustration"
+                width={800}
+                height={533}
+                className="my-4 max-w-full h-auto rounded-xl shadow-md"
+              />
+            </div>
+
             <p className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Ready to reflect and grow? Your personal AI ally is here to guide
               you through meaningful conversations and insights.
@@ -31,7 +43,7 @@ export default function Companion() {
 
           {/* button section*/}
           <div>
-           <CocoCTAButton/>
+            <CocoCTAButton />
           </div>
         </div>
       </>

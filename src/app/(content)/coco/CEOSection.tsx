@@ -52,7 +52,7 @@ export default function CEOSection() {
               <div className="prose prose-slate max-w-none">
                 <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6">
                   We created{" "}
-                  <span className="font-semibold text-primary-blue-600">
+                  <span className="font-semibold bg-gradient-to-r from-primary-blue-600 to-primary-green-600 bg-clip-text text-transparent">
                     CoCo
                   </span>{" "}
                   with a simple but powerful intention: to provide young people
@@ -64,7 +64,7 @@ export default function CEOSection() {
 
                 <p className="text-slate-700 text-sm sm:text-base leading-relaxed mb-6">
                   That&apos;s where{" "}
-                  <span className="font-semibold text-primary-green-600">
+                  <span className="font-semibold bg-gradient-to-r from-primary-blue-600 to-primary-green-600 bg-clip-text text-transparent">
                     CoCo
                   </span>{" "}
                   comes in. As your first line of support, this conversational
@@ -108,5 +108,4 @@ export default function CEOSection() {
       </Card>
     </>
   );
-};
-
+}

@@ -11,15 +11,15 @@ import ClientLink from "./ClientLink";
 const accordionItems = [
   {
     id: "item-1",
-    ques: "What is CoCo and how can it help me?",
-    ans: "CoCo is an ally that helps you reflect, think clearly, and make meaningful career decisions. It's like having a supportive coach in your pocket - always ready to listen, coach, and empower.",
-    icon: HelpCircle,
-  },
-  {
-    id: "item-2",
     ques: "Is my conversation with CoCo private and safe?",
     ans: "Absolutely. CoCo is built with privacy in mind. It's designed to listen and respond with empathy, without judgment. You can chat freely, knowing your reflections are respected. Learn more about our privacy policy here.",
     icon: Shield,
+  },
+  {
+    id: "item-2",
+    ques: "What is CoCo and how can it help me?",
+    ans: "CoCo is an ally that helps you reflect, think clearly, and make meaningful career decisions. It's like having a supportive coach in your pocket - always ready to listen, coach, and empower.",
+    icon: HelpCircle,
   },
   {
     id: "item-3",
@@ -82,7 +82,7 @@ export default function FAQAccordion({
         type="single"
         collapsible
         className="w-full space-y-4"
-        defaultValue="item-2"
+        defaultValue="item-1"
       >
         {items.map((accordionItem, i) => {
           const IconComponent = accordionItem.icon;

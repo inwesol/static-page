@@ -17,9 +17,9 @@ export default function SimpleSlider() {
   const testimonials: Testimonial[] = [
     {
       quote:
-        "Coco was like a companion in gaining clarity about the next steps in my career journey. Coco encouraged reflection while also providing practical insights. It is very empathetic and supportive.",
+        "CoCo was like a companion in gaining clarity about the next steps in my career journey. Coco encouraged reflection while also providing practical insights. It is very empathetic and supportive.",
       name: "Nagesh M",
-      title: "College Student",
+      title: "Clinical Psycologist",
       company: "Stanford University",
       avatar:
         "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -27,9 +27,9 @@ export default function SimpleSlider() {
     },
     {
       quote:
-        "CoCo helped in self-reflection exploring my own thoughts, rather than offering advice. It’s ideal for those who already have something in mind and want to deepen their thinking.",
+        "CoCo helped in self-reflection, exploring my own thoughts, rather than offering advice. It’s ideal for those who already have something in mind and want to deepen their thinking.",
       name: "Manaswini",
-      title: "Recent Graduate",
+      title: "Associate Analyst",
       company: "Tech Startup",
       avatar:
         "https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -37,9 +37,9 @@ export default function SimpleSlider() {
     },
     {
       quote:
-        "The stress management techniques CoCo suggested during my final exams were life-saving. The personalized approach made me feel understood and supported throughout my academic journey.",
-      name: "Emily Rodriguez",
-      title: "Medical Student",
+        "CoCo asked some really good questions that made me reflect on what I enjoy and what I’m naturally drawn to. It was a helpful experience overall.",
+      name: "Sri Varsha",
+      title: "Product Design Graduate",
       company: "Johns Hopkins",
       avatar:
         "https://images.pexels.com/photos/3763152/pexels-photo-3763152.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -47,9 +47,9 @@ export default function SimpleSlider() {
     },
     {
       quote:
-        "CoCo helped me process my thoughts about switching careers. The non-judgmental space it provided allowed me to explore my feelings and make a decision I'm truly happy with.",
-      name: "David Kim",
-      title: "Career Changer",
+        "I am at a career crossroads, and CoCo was a game-changer; it helped me reflect deeply on my goals and motivations. What stood out to me was the personalized questions that sparked introspection. It gave me clarity and confidence I didn’t know I had.",
+      name: "Tarun P",
+      title: "Data Scientist",
       company: "Marketing Professional",
       avatar:
         "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400",
@@ -57,24 +57,24 @@ export default function SimpleSlider() {
     },
     {
       quote:
-        "The daily check-ins and mindfulness reminders from CoCo have become an essential part of my routine. It's amazing how AI can feel so personal and caring.",
-      name: "Aisha Patel",
+        "CoCo helped me reflect on my strengths and past experiences in a clear and supportive manner. The thoughtful questions encouraged me to dig deeper into my goals and what I truly want from my career. After our conversation, I felt seen, understood, and more confident about the path ahead.",
+      name: "Viraja M",
       title: "Graduate Student",
       company: "MIT",
       avatar:
         "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400",
       rating: 5,
     },
-    {
-      quote:
-        "CoCo's ability to help me reflect on my goals and values has been transformative. It guided me through a difficult period and helped me emerge stronger and more self-aware.",
-      name: "James Wilson",
-      title: "Young Professional",
-      company: "Consulting Firm",
-      avatar:
-        "https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
+    // {
+    //   quote:
+    //     "CoCo's ability to help me reflect on my goals and values has been transformative. It guided me through a difficult period and helped me emerge stronger and more self-aware.",
+    //   name: "James Wilson",
+    //   title: "Young Professional",
+    //   company: "Consulting Firm",
+    //   avatar:
+    //     "https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400",
+    //   rating: 5,
+    // },
   ];
   var settings = {
     dots: true,
@@ -152,14 +152,14 @@ export default function SimpleSlider() {
                 <div className="flex items-center space-x-4 pt-4 border-t border-slate-200/60">
                   <div className="relative group/avatar">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-blue-500 to-primary-green-500 rounded-full blur-sm opacity-20 group-hover/avatar:opacity-40 transition-opacity duration-300"></div>
-                    <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg group-hover/avatar:scale-110 transition-transform duration-300">
+                    {/* <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-lg group-hover/avatar:scale-110 transition-transform duration-300">
                       <Image
                         src={testimonial.avatar}
                         alt={testimonial.name}
                         fill
                         className="w-full h-full object-cover"
                       />
-                    </div>
+                    </div> */}
                   </div>
                   <div className="flex-1">
                     <h4 className="font-semibold text-slate-800 text-sm sm:text-base">
@@ -168,9 +168,9 @@ export default function SimpleSlider() {
                     <p className="text-primary-blue-600 text-xs sm:text-sm font-medium">
                       {testimonial.title}
                     </p>
-                    <p className="text-slate-500 text-xs">
+                    {/* <p className="text-slate-500 text-xs">
                       {testimonial.company}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>

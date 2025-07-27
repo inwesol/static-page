@@ -58,13 +58,13 @@ const HeroSection = () => {
   }
 
   return (
-    <section className="flex flex-col items-center justify-center pb-16 px-4 space-y-6 lg:space-y-12 h-screen max-h-[800px]">
+    <section className="flex flex-col items-center justify-center pb-16 px-4 space-y-6 lg:space-y-12 pt-16">
       <AnimationContainer delay={0.3} reverse viewport>
         <div className="relative group">
           <a
-            href="https://app.inwesol.com/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/coco"
+            // target="_blank"
+            // rel="noopener noreferrer"
             className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-br from-primary-green-400 via-primary-green-600 to-primary-blue-600 text-slate-800 font-semibold text-xs sm:text-sm shadow-lg hover:shadow-2xl transform transition-all duration-300 hover:scale-105 max-w-[90vw] sm:max-w-none relative overflow-hidden backdrop-blur-sm border border-white/10 before:absolute before:inset-0 before:bg-gradient-to-br before:from-white/20 before:via-white/5 before:to-transparent before:rounded-full after:absolute after:inset-[1px] after:rounded-full after:bg-gradient-to-br after:from-transparent after:via-white/10 after:to-white/5"
           >
             <span className="text-2xl animate-bounce shrink-0">🪄</span>
@@ -143,6 +143,20 @@ const HeroSection = () => {
               />
             </svg>
           </a>
+        </div>
+      </AnimationContainer>
+
+      <AnimationContainer delay={0.6} reverse viewport>
+        <div className="w-full flex justify-center">
+          <video
+            src="/assets/coco-video.mp4"
+            className="rounded-xl shadow-lg max-w-full h-auto max-h-[600px] border border-gray-200"
+            autoPlay
+            loop
+            muted
+            playsInline
+            // controls
+          />
         </div>
       </AnimationContainer>
     </section>

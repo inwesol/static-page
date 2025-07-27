@@ -32,9 +32,9 @@ const infoCardItems = [
   },
   {
     icon: Activity,
-    title: "Supports your well-being",
+    title: "Supports Your Wellbeing",
     description:
-      "CoCo supports you in managing your priorities and well-being. Because your well-being matters just as much as your next big step.",
+      "CoCo supports you in managing your priorities and wellbeing. Because your wellbeing matters just as much as your next big step.",
   },
   {
     icon: BrainCog,
@@ -59,24 +59,19 @@ export default function CocoPage() {
                 CoCo is your ally, here to listen, coach, and empower. Helping
                 you think through important career decisions and prioritise your
                 well-being.
-
               </p>
-              {/* <Button
-                className="rounded-full bg-gradient-to-r from-primary-green-600 to-primary-blue-600 text-white gap-2 transition-translate duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 sm:px-10 sm:py-7 sm:font-semibold sm:text-lg mt-6"
-                variant="primary"
-                // onclick={}
-              >
-                Say Hi to CoCo
-                <div>
-                  <Smile className="size-4 sm:size-5" />
-                </div>
-              </Button> */}
-              <CocoCTAButton/>
+              <CocoCTAButton />
             </div>
-            <div className="w-full">
-              <video src="/assets/chatbot.mp4" loop autoPlay muted className="rounded-[6px] sm:rounded-xl">
-                Your browser does not support the video tag.
-              </video>
+            <div className="w-full flex justify-center">
+              <video
+                src="/assets/coco-video.mp4"
+                className="rounded-xl shadow-lg max-w-full h-auto max-h-[800px] border border-gray-200"
+                autoPlay
+                loop
+                muted
+                playsInline
+                // controls
+              />
             </div>
           </div>
         </section>
@@ -95,7 +90,7 @@ export default function CocoPage() {
                 <div className="relative inline-flex h-8 overflow-hidden rounded-full p-[2.5px] focus:outline-none select-none">
                   <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#00B24B_0%,#3FA1D8_50%,#00B24B_100%)]" />
                   <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white px-4 py-1 text-sm font-medium backdrop-blur-3xl gap-2 text-slate-900">
-                    <Sparkles className="size-4" /> Coco Insights
+                    <Sparkles className="size-4" /> CoCo Insights
                   </span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-primary-green-600">

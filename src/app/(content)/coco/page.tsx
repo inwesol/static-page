@@ -101,7 +101,7 @@ export default function CocoPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex justify-center">
+            <div className="flex justify-center pb-2">
               <Image
                 src="/assets/llm-coco-diff.jpg"
                 alt="Coco Diff Illustration"

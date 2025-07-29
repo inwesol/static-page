@@ -17,8 +17,8 @@ export default function CocoHeroHeading() {
 
   return (
     <>
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold md:leading-snug text-slate-900 leading-tight ">
-        An Ally for <br/><span >your Career</span>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold  text-slate-900">
+        An Ally for <br/><span className="text-nowrap">your Career</span><br />
         <span
           className="relative inline-flex overflow-hidden"
           style={{

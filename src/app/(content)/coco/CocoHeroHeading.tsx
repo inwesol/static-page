@@ -17,14 +17,15 @@ export default function CocoHeroHeading() {
 
   return (
     <>
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold md:leading-snug text-slate-900 leading-tight pd-2">
-        An Ally <br />
-        <span>For your </span>
+      <h1 className="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold text-slate-900">
+        <p className="lg:hidden">An Ally For Your</p>
+        <p className="hidden lg:block">An Ally</p>
+        <p className="hidden lg:block">For Your</p>
         <span
-          className="relative inline-flex overflow-hidden pt-2"
+          className="relative inline-flex overflow-hidden"
           style={{
             width: `5.2em`,
-            height: "1.2em",
+            height: "1.3em",
             clipPath: "inset(0 0 0 0)",
           }}
         >

@@ -50,11 +50,11 @@ export default function CocoPage() {
       {/* hero section  */}
       <AnimationContainer delay={0.3} reverse viewport>
         <section
-          className="flex max-w-5xl mx-auto justify-center items-center"
+          className="flex max-w-6xl mx-auto justify-center items-center"
           style={{ minHeight: "calc(100vh - 70px)" }}
         >
-          <div className="flex-col flex gap-10 md:gap-4 md:items-center md:flex-row">
-            <div className="w-full">
+          <div className="flex-col flex gap-10 lg:gap-4 lg:items-center lg:flex-row">
+            <div className="">
               <CocoHeroHeading />
               <p className="text-slate-600 text-sm sm:text-base mt-2 mb-6">
                 CoCo is your ally, here to listen, coach, and empower. Helping
@@ -63,7 +63,7 @@ export default function CocoPage() {
               </p>
               <CocoCTAButton />
             </div>
-            <div className="w-full flex justify-center">
+            <div className="">
               <video
                 src="/assets/coco-video.mp4"
                 className="rounded-xl shadow-lg max-w-full h-auto max-h-[800px] border border-gray-200"
@@ -78,7 +78,7 @@ export default function CocoPage() {
         </section>
       </AnimationContainer>
       {/* Component 2 */}
-      <section className="max-w-5xl mx-auto">
+      <section className="max-w-5xl mx-auto mt-14 sm:mt-20">
         {/* <Card className="border-none"> */}
         <Card className="bg-gradient-to-br from-white via-primary-blue-50/30 to-primary-green-50/30 shadow-lg border-slate-200 rounded-[6px] sm:rounded-xl">
           <CardHeader>

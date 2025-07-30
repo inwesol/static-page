@@ -16,6 +16,7 @@ import CEOSection from "./CEOSection";
 import TestimonialsSection from "./TestimonialsSection";
 import CocoHeroHeading from "./CocoHeroHeading";
 import CocoCTAButton from "./CocoCTAButon";
+import Image from "next/image";
 
 const infoCardItems = [
   {
@@ -70,7 +71,7 @@ export default function CocoPage() {
                 loop
                 muted
                 playsInline
-                // controls
+                controls
               />
             </div>
           </div>
@@ -100,6 +101,15 @@ export default function CocoPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
+            <div className="flex justify-center pb-2">
+              <Image
+                src="/assets/llm-coco-diff.jpg"
+                alt="Coco Diff Illustration"
+                width={800}
+                height={533}
+                className="my-4 max-w-full h-auto rounded-xl shadow-md"
+              />
+            </div>
             <div className="grid-cols-1 sm:grid-cols-2 grid gap-2 sm:gap-6">
               {infoCardItems.map(({ icon: Icon, title, description }) => (
                 <InfoCardItem

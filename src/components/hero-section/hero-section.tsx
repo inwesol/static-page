@@ -149,7 +149,7 @@ const HeroSection = () => {
       <AnimationContainer delay={0.6} reverse viewport>
         <div className="w-full flex justify-center">
           <video
-            src="/assets/coco-video.mp4"
+            src="/assets/coco.mp4"
             className="rounded-xl shadow-lg max-w-full h-auto max-h-[600px] border border-gray-200"
             autoPlay
             loop

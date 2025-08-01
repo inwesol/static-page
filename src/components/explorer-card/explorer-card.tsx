@@ -76,7 +76,7 @@ const ExplorerCard = () => {
 
         <AnimationContainer delay={0.4}>
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 max-w-screen-lg leading-snug">
-            The AI Career Coach is launched! <br />
+            The AI Mindset Coach is launched! <br />
             Freely access CoCo as an early user.
           </h3>
         </AnimationContainer>

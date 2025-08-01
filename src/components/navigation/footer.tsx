@@ -44,7 +44,7 @@ const Footer = () => {
               <Icons.logoWithText />
             </div>
             <p className="mt-2 text-sm text-muted-foreground text-start">
-              Beyond careers, towards wellbeing.
+              Ally for Young Minds to Excel.
             </p>
           </div>
         </AnimationContainer>

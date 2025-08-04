@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export const useIsDesktop = (breakpoint = 768) => {
+export const useIsDesktop = ({ breakpoint = 768 }: { breakpoint: number }) => {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {

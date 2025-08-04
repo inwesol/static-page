@@ -9,91 +9,30 @@ interface Testimonial {
   quote: string;
   name: string;
   title: string;
-  company: string;
+  company?: string;
   avatar: string;
   rating: number;
 }
-export default function SimpleSlider() {
-  const testimonials: Testimonial[] = [
-    {
-      quote:
-        "CoCo was like a companion in gaining clarity about the next steps in my career journey. Coco encouraged reflection while also providing practical insights. It is very empathetic and supportive.",
-      name: "Nagesh M",
-      title: "Psycologist",
-      company: "Stanford University",
-      avatar:
-        "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
-    {
-      quote:
-        "CoCo helped in self-reflection, exploring my own thoughts, rather than offering advice. It’s ideal for those who already have something in mind and want to deepen their thinking.",
-      name: "Manaswini",
-      title: "Associate Analyst",
-      company: "Tech Startup",
-      avatar:
-        "https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
-    {
-      quote:
-        "CoCo asked some really good questions that made me reflect on what I enjoy and what I’m naturally drawn to. It was a helpful experience overall.",
-      name: "Sri Varsha",
-      title: "Product Design Graduate",
-      company: "Johns Hopkins",
-      avatar:
-        "https://images.pexels.com/photos/3763152/pexels-photo-3763152.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
-    {
-      quote:
-        "I am at a career crossroads, and CoCo was a game-changer; it helped me reflect deeply on my goals and motivations. What stood out to me was the personalized questions that sparked introspection. It gave me clarity and confidence I didn’t know I had.",
-      name: "Tarun P",
-      title: "Data Science Associate",
-      company: "Marketing Professional",
-      avatar:
-        "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
-    {
-      quote:
-        "CoCo helped me reflect on my strengths and past experiences in a clear and supportive manner. The thoughtful questions encouraged me to dig deeper into my goals and what I truly want from my career. After our conversation, I felt seen, understood, and more confident about the path ahead.",
-      name: "Viraja M",
-      title: "Graduate Student",
-      company: "MIT",
-      avatar:
-        "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
-    {
-      quote:
-        "CoCo helped me in uncovering my strengths, which are related with the profession I aspire to. CoCo broke down big steps into manageable actions. I felt truly seen and validated.",
-      name: "Koyena D",
-      title: "Counselling Psychologist",
-      company: "Consulting Firm",
-      avatar:
-        "https://images.pexels.com/photos/3777946/pexels-photo-3777946.jpeg?auto=compress&cs=tinysrgb&w=400",
-      rating: 5,
-    },
-  ];
+interface SimpleSliderProps {
+  testimonials: Testimonial[];
+  slidesToShow: number;
+  isNavigation:boolean;
+}
+export default function SimpleSlider({
+  testimonials,
+  slidesToShow,
+  isNavigation
+}: SimpleSliderProps) {
   var settings = {
     dots: true,
+    arrows:isNavigation,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
     responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: true,
-        },
-      },
       {
         breakpoint: 768,
         settings: {
@@ -119,10 +58,10 @@ export default function SimpleSlider() {
   };
 
   return (
-    <div className="slider-container px-4 sm:px-0">
+    <div className="slider-container ">
       <Slider {...settings}>
         {testimonials.map((testimonial, index) => (
-          <div key={index} className="px-3">
+          <div key={index} className="md:px-3">
             <div className="group relative h-[380px]">
               {/* Background with gradient and blur effects */}
               <div className="absolute inset-0 bg-gradient-to-br from-white via-primary-blue-50 to-primary-green-50 rounded-2xl border border-slate-200 backdrop-blur-sm transition-all duration-500"></div>

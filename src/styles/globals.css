@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@property --border-angle{
-  syntax:"<angle>";
+@property --border-angle {
+  syntax: "<angle>";
   inherits: false;
   initial-value: 0deg;
 }
@@ -173,7 +173,11 @@ body {
   color: #33cf77 !important;
   font-size: 24px !important;
 }
-
+@media (max-width:768px) {
+  .slick-slider {
+    margin-inline: 20px;
+  }
+}
 
 /* 
 Primary:- #00B24B
@@ -200,14 +204,12 @@ Accent:- #3FA1D8
   animation: border-glow 2s infinite ease-in-out;
 }
 
-
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(63, 161, 216, 0.7); /* #3FA1D8 with 70% opacity */
 }
 .custom-scrollbar {
   scrollbar-color: rgba(63, 161, 216, 0.7) #f3f4f6;
 }
-
 
 /* 
   Primary - #00B24B

@@ -123,7 +123,7 @@ const HeroSection = () => {
             </div>
           </a>
           <a
-            href="/events/cohort"
+            href="/events/coaching"
             className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary-green-600 to-primary-blue-500 text-white font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 max-w-[90vw] sm:max-w-none"
           >
             <span className="text-xl animate-bounce shrink-0">🚀</span>

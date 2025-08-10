@@ -168,18 +168,10 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/privacy/"
+                    href="/contact-us/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li className="mt-2">
-                  <Link
-                    href="/terms/"
-                    className="transition-all duration-300 hover:text-primary-green-600"
-                  >
-                    Terms & Conditions
+                    Contact Us
                   </Link>
                 </li>
               </ul>
@@ -193,7 +185,20 @@ const Footer = () => {
         <div className="flex flex-col-reverse justify-between flex-1 w-full md:flex-row">
           <p className="mt-4 text-sm text-center text-muted-foreground md:mt-0 md:text-left">
             &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
-            reserved.
+            reserved.{" "}
+            <Link
+              href="/privacy/"
+              className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
+            >
+              Privacy Policy
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="/terms/"
+              className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
+            >
+              Terms & Conditions
+            </Link>
           </p>
 
           <div className="flex items-center justify-center gap-4 md:justify-end">

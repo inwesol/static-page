@@ -552,4 +552,56 @@ Remember, career readiness is a journey, not a destination. You don't need to ha
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
+    "coco-ai-mindset-coach": {
+    heading: "The AI Mindset Coach That Makes You More Human",
+    oneLiner: "In the race to make machines more human, are we forgetting what it means to be human? This question highlights a paradox in modern technology.Curiosity has always driven human progress from ancient Greece to today's AI era.",
+    slug: "coco-ai-mindset-coach",
+    createdOn: "August 01th, 2025",
+    createdBy: "",
+    readingTime: "3 min read",
+    imageFit:"contain",
+    bannerUrl: "/coco-ai-mindset-coach.jpg",
+      content: `# CoCo: The AI Mindset Coach That Makes You More Human
+    
+## In the race to make machines more human, are we forgetting what it means to be human?
+
+This question highlights a paradox in modern technology. Curiosity has always driven human progress from ancient Greece to today's AI era, we've consistently worked to replicate our physical and mental abilities through machines. We've achieved remarkable milestones in just 200 years of major technological revolutions and in the past 20 years alone, we've shifted entirely from analogue to digital. Now, we stand on the brink of Artificial General Intelligence (AGI), marking perhaps the most significant milestone in human progress.
+
+As we strive to duplicate our abilities, more and more of us have started to rely completely on these machines. What began as reducing physical strain has evolved into something far more profound. Today, with large language models and AI agents, even our thinking is being assigned to them. From calculators to computers to AI tools, machines have slowly taken over both physical and mental tasks.
+
+The most concerning possibility? In trying to make AI more human, we may be turning humans into machines. People risk becoming less reflective and more reactive, losing the very essence of what makes us uniquely human.
+
+At  Inwesol,  a team of psychologists, technologists & dreamers, we are focused on solving this. Rather than building another AI that replaces human abilities, we’re creating something revolutionary: an AI that helps you realize your own capabilities.
+
+## Meet CoCo: AI Mindset Coach
+
+In an era where technology often races to provide instant solutions, there’s a growing need for tools that nurture our ability to think deeply and grow as individuals. Enter Coco, an innovative AI mindset coach designed to do just that. Built in India with a mission to empower young minds worldwide, [CoCo](https://inwesol.com/coco/) redefines what artificial intelligence can be. It’s not here to replace your thinking but to enhance it, guiding you toward greater self-awareness and personal growth. With CoCo, you have an ally that helps you navigate career challenges while staying true to your authentic self.
+
+CoCo represents a fundamentally different approach to artificial intelligence. Instead of providing quick answers that shut down thinking, CoCo is designed to spark deeper thinking and increase self-awareness.
+
+## What makes CoCo different from other AI assistants?
+
+CoCo is a blend of the science of psychology with the power of AI. This isn't just another chatbot that provides information; CoCo doesn't just tell you what to do, it helps you understand why you think the way you do. It takes a coaching approach addressing both practical challenges and the emotional barriers that often hold us back. Whether you're dealing with career anxiety, imposter syndrome, or simply trying to figure out where to start, CoCo provides guidance that accounts for both your career and wellbeing management.
+
+![CoCo Diff Illustration](/assets/llm-coco-diff.jpg)
+
+As an everyday ally, Coco is there to support you through life’s big and small moments, helping you navigate career decisions with clarity and confidence. From tackling self-doubt to exploring your passions, Coco empowers you to grow into your best self while staying true to who you are.
+
+CoCo represents a new paradigm: AI that preserves and enhances the human thought process rather than replacing it. In a world increasingly dominated by machines that think for us, CoCo reminds us how to think for ourselves.
+
+Because the future shouldn't be about choosing between human intelligence and artificial intelligence, it should be about using AI to become more authentically human.
+
+## Ready to start your journey with CoCo?
+
+**Try CoCo today and discover how it can be your everyday ally.**
+
+**[Chat with CoCo now](https://inwesol.com/coco/) and take the first step toward a more secure and self-aware you!**
+
+**Also take our career readiness assessment and begin your journey toward professional excellence.**
+
+[Take Career Readiness Test Now](https://inwesol.com/career-test/)
+
+[Book your free session here](https://www.inwesol.com/events/cohort/)
+`,
+  },
 };

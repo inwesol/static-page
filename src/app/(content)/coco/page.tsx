@@ -104,7 +104,7 @@ export default function CocoPage() {
             <div className="flex justify-center pb-2">
               <Image
                 src="/assets/llm-coco-diff.jpg"
-                alt="Coco Diff Illustration"
+                alt="CoCo Diff Illustration"
                 width={800}
                 height={533}
                 className="my-4 max-w-full h-auto rounded-xl shadow-md"

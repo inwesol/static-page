@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Handshake, Smile } from "lucide-react";
-import { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 
 interface CoachCTAButtonProps {
   buttonText: string;
-  icon: React.ElementType;
+  icon: React.ElementType<{ className?: string }>;
 }
 export default function CoachCTAButton({
   buttonText,

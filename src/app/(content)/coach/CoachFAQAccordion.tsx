@@ -46,13 +46,13 @@ interface AccordionItem {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-interface AccordionDemoProps {
+interface CoachFAQAccordionProps {
   accordionItems?: AccordionItem[];
 }
 
 export default function CoachFAQAccordion({
   accordionItems: items = accordionItems,
-}: AccordionDemoProps) {
+}: CoachFAQAccordionProps) {
   return (
     <>
       {/* accordion */}

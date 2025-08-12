@@ -12,10 +12,10 @@ export default function InfoCardItem({
   description,
 }: InfoCardItemProps) {
   return (
-    <div className="bg-white flex gap-4 rounded-[6px] sm:rounded-xl p-4 border border-slate-200 shadow-md">
+    <div className="group bg-white/50 flex gap-4 rounded-[6px] sm:rounded-xl p-4 border border-slate-200 shadow-sm hover:bg-white/80 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
       <div>
-        <div className="text-white font-bold bg-gradient-to-r from-primary-green-600 to-primary-blue-600 p-2 rounded-[6px]">
-          <Icon className="size-5" />
+        <div className="text-white font-bold bg-gradient-to-br from-primary-green-100 to-blue-100 p-2 sm:p-3 rounded-[6px] sm:rounded-xl group-hover:scale-110 transition-transform duration-300">
+          <Icon className="size-5 sm:size-6 text-primary-green-600" />
         </div>
       </div>
       <div>

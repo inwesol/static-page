@@ -223,11 +223,19 @@ const config = {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.04)' },
         },
-        'border-rotate':{
-          to:{
-            '--border-angle':"360deg",
-          }
-        }
+        "border-rotate": {
+          to: {
+            "--border-angle": "360deg",
+          },
+        },
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -244,9 +252,9 @@ const config = {
         rotate: "rotate 3s linear infinite both",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
         loading: "loading 0.5s linear infinite",
-        'pulse-subtle': 'pulse-subtle 3s infinite',
-        '--animate-rotate-border':'border-rotate 3s infinite linear',
-
+        "pulse-subtle": "pulse-subtle 3s infinite",
+        "--animate-rotate-border": "border-rotate 3s infinite linear",
+        float: "float 3s ease-in-out infinite",
       },
     },
   },

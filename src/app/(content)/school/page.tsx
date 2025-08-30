@@ -118,7 +118,7 @@ export default function SchoolsPage() {
                   <p className="text-base sm:text-xl text-white leading-snug sm:leading-relaxed font-light">
                     Empowering schools and educational institutions with
                     innovative solutions, data-driven insights, and personalized
-                    support to unlock every student's potential.
+                    support to unlock every student&apos;s potential.
                   </p>
                 </div>
                 <ScrollToEnquiryButton />
@@ -607,7 +607,7 @@ export default function SchoolsPage() {
                     Ready to Transform?
                   </div>
                   <h2 className="text-3xl lg:text-5xl font-bold sm:leading-tight">
-                    Let's Build the Future of{" "}
+                    Let&apos;s Build the Future of{" "}
                     <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
                       Education
                     </span>{" "}
@@ -615,9 +615,9 @@ export default function SchoolsPage() {
                   </h2>
                   <p className="text-base sm:text-xl text-white/90 sm:leading-relaxed">
                     Join hundreds of educational institutions that have already
-                    transformed their learning environments with Inwesol. Let's
-                    discuss how we can help you achieve your educational goals
-                    and unlock every student's potential.
+                    transformed their learning environments with Inwesol.
+                    Let&apos;s discuss how we can help you achieve your
+                    educational goals and unlock every student&apos;s potential.
                   </p>
                 </div>
 

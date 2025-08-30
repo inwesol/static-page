@@ -22,7 +22,7 @@ const features = [
   },
   {
     step: "Step 2",
-    title: "Evaluate through Coco",
+    title: "Evaluate through CoCo",
     content:
       "Coco assists in evaluating each choice by revealing its consequences. It supports you in understanding and identifying suitable courses, colleges, jobs, work contexts, and environments.",
     image: "/coco.svg",

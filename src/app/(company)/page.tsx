@@ -23,7 +23,6 @@ const HomePage1 = async () => {
       <ExplorerCard />
       <Testimonials />
       <FeaturedBlogs />
-      {/* <ExplorerCard /> */}
     </div>
   );
 };

@@ -39,7 +39,7 @@ export const NAV_LINKS = [
   //     // ],
   // },
 {
-    title: "Check Career Readiness",
+    title: "Be Future Ready",
     href: "/career-test/",
   },
   {

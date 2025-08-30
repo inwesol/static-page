@@ -30,6 +30,7 @@ import {
 import { Footer, Navbar } from "@/components";
 import CoachCTAButton from "./CoachCTAButton";
 import CoachFAQAccordion from "./CoachFAQAccordion";
+import Image from "next/image";
 
 const infoCardItems = [
   {
@@ -103,7 +104,18 @@ export default function CoachingPage() {
                 icon={Handshake}
               />
             </div>
-            <div className="">
+            <div className="relative">
+              <Image
+                src="/coach-view.svg"
+                alt="Think Different"
+                width={1200}
+                height={800}
+                // fill
+                className="object-cover"
+                priority
+              />
+            </div>
+            {/* <div className="">
               <video
                 src="/assets/coco.mp4"
                 className="rounded-xl shadow-lg max-w-full h-auto max-h-[800px] border border-gray-200"
@@ -113,7 +125,7 @@ export default function CoachingPage() {
                 playsInline
                 controls
               />
-            </div>
+            </div> */}
           </div>
         </section>
         {/* features section */}

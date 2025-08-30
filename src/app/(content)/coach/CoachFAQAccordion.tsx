@@ -9,33 +9,27 @@ import { HelpCircle, Shield, Clock, MessageCircle, Users } from "lucide-react";
 const accordionItems = [
   {
     id: "item-1",
-    ques: "Is my conversation with CoCo private and safe?",
-    ans: "Absolutely. CoCo is built with privacy in mind. It's designed to listen and respond with empathy, without judgment. You can chat freely, knowing your reflections are respected. Learn more about our privacy policy here.",
-    icon: Shield,
+    ques: "Who can apply to be a coach at Inwesol?",
+    ans: "We welcome individuals who have completed a Master’s in Psychology (any specialization).",
+    icon: HelpCircle,
   },
   {
     id: "item-2",
-    ques: "What is CoCo and how can it help me?",
-    ans: "CoCo is an ally that helps you reflect, think clearly, and make meaningful career decisions. It's like having a supportive coach in your pocket - always ready to listen, coach, and empower.",
+    ques: "Do I need prior coaching experience?",
+    ans: "Not necessarily. Our training equips you with psychology-based coaching tools and platform usage to get started.",
     icon: HelpCircle,
   },
   {
     id: "item-3",
-    ques: "Is CoCo available 24/7?",
-    ans: "Yes! CoCo is always available anytime, anywhere. Whether it's a late-night worry or a quick decision during your day, CoCo is here whenever you need a moment to think and reflect.",
-    icon: Clock,
+    ques: "How does Inwesol support coaches?",
+    ans: "We provide training, digital tools, AI-powered insights, and continuous support, so you can focus on making an impact.",
+    icon: HelpCircle,
   },
   {
     id: "item-4",
-    ques: "Why does CoCo ask me questions?",
-    ans: "CoCo's style is to ask you questions in order to help you reflect, so you can think clearly and deeply. In this way, CoCo can help you with career guidance, skills development, and thinking through important career decisions.",
-    icon: MessageCircle,
-  },
-  {
-    id: "item-5",
-    ques: "Can I make decisions based on conversations with CoCo?",
-    ans: "While CoCo can assist with career guidance, skill development, and helping you think clearly and deeply about your career, important career decisions are best made with support from a human coach at Inwesol. CoCo will guide you, but will also redirect you to a human coach for support with important career decisions.",
-    icon: Users,
+    ques: "What kind of clients will I work with?",
+    ans: "You’ll work with students and individuals navigating crucial career and life transitions.",
+    icon: HelpCircle,
   },
 ];
 
@@ -84,7 +78,7 @@ export default function CoachFAQAccordion({
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 w-10" />{" "}
                   <div className="flex-1">
-                    <p className="text-slate-700 leading-relaxed sm:text-base text-sm">
+                    <p className="text-slate-700 leading-relaxed sm:text-base text-base font-semibold">
                       {accordionItem.ans}
                     </p>
                   </div>

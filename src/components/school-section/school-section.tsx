@@ -62,7 +62,7 @@ const SchoolSection = () => {
                 Our Motto: self-discovery leads to excellence
               </p>
               <div className="flex items-center justify-center w-full pt-10 sm:pt-8">
-                <Link href="/story">
+                <Link href="/school">
                   <Button className="px-8 sm:px-10 py-3 sm:py-3.5 bg-[#00B24B] text-white text-sm sm:text-base rounded-full font-semibold shadow-lg hover:bg-[#00A143] focus:outline-none focus:ring-2 focus:ring-[#00B24B] focus:ring-offset-2 transition duration-200">
                     Know More
                   </Button>
@@ -71,10 +71,10 @@ const SchoolSection = () => {
             </div>
             <div className="">
               <Image
-                src={"/school.png"}
+                src={"/school-sol.png"}
                 alt="Think Different"
                 width={1200}
-                height={600}
+                height={1200}
                 className="object-cover"
               />
             </div>

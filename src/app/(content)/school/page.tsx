@@ -29,19 +29,22 @@ import {
   Brain,
   Rocket,
   DownloadCloudIcon,
+  FormInput,
+  FileBadge,
 } from "lucide-react";
 import { Footer, Navbar } from "@/components";
 import ScrollToEnquiryButton from "./ScrollToEnquiryButton";
 import EnquireyForm from "./EnquiryForm";
+import Image from "next/image";
 
 export default function SchoolsPage() {
   const processCards = [
     {
       id: 1,
       icon: <Search className="size-8" />,
-      title: "Discover",
+      title: "Identify",
       description:
-        "Identify learning gaps and opportunities through comprehensive assessment of your educational ecosystem.",
+        "Assess student needs, strengths, and challenges along with school-level gaps to map opportunities for building a learning mindset ecosystem.",
       color: "from-primary-blue-500 to-primary-blue-600",
       bgColor: "bg-primary-blue-50",
       glowColor: "shadow-primary-blue-500/25",
@@ -49,9 +52,9 @@ export default function SchoolsPage() {
     {
       id: 2,
       icon: <Eye className="size-8" />,
-      title: "Explore",
+      title: "Empower",
       description:
-        "Deep dive into data-driven insights and explore tailored solutions that fit your institution's unique needs.",
+        "Build awareness and skills in students, teachers, and parents to foster confidence and a learning mindset.",
       color: "from-primary-green-500 to-primary-green-600",
       bgColor: "bg-primary-green-50",
       glowColor: "shadow-primary-green-500/25",
@@ -59,9 +62,9 @@ export default function SchoolsPage() {
     {
       id: 3,
       icon: <Activity className="size-8" />,
-      title: "Act",
+      title: "Intervene",
       description:
-        "Implement strategic initiatives and educational programs with our expert guidance and support.",
+        "Introduce personalised programs, coaching, and action plans to address gaps and drive positive behaviour change.",
       color: "from-primary-blue-500 to-primary-blue-600",
       bgColor: "bg-primary-blue-50",
       glowColor: "shadow-primary-blue-500/25",
@@ -69,12 +72,22 @@ export default function SchoolsPage() {
     {
       id: 4,
       icon: <BarChart3 className="size-8" />,
-      title: "Measure",
+      title: "Sustain",
       description:
-        "Track progress, analyze outcomes, and continuously optimize your educational impact for sustained growth.",
+        "Embed learning mindset practices into daily routines, classrooms, and school culture for long-term impact.",
       color: "from-primary-green-500 to-primary-green-600",
       bgColor: "bg-primary-green-50",
       glowColor: "shadow-primary-green-500/25",
+    },
+    {
+      id: 5,
+      icon: <FileBadge className="size-8" />,
+      title: "Evaluate",
+      description:
+        "Use data-driven insights to measure progress, refine strategies, and ensure continuous improvement.",
+      color: "from-primary-blue-500 to-primary-blue-600",
+      bgColor: "bg-primary-blue-50",
+      glowColor: "shadow-primary-blue-500/25",
     },
   ];
 
@@ -88,7 +101,7 @@ export default function SchoolsPage() {
           style={{ minHeight: "calc(100vh - 56px)" }}
         >
           {/* background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue-600 via-primary-green-500 to-primary-blue-700">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary-blue-700 via-primary-blue-500 to-primary-green-400">
             <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
 
             {/* floating elements */}
@@ -98,38 +111,53 @@ export default function SchoolsPage() {
           </div>
 
           <div className="relative container mx-auto p-4 pb-10 lg:p-8 z-10">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div
                 className={`space-y-8 
                 }`}
               >
                 <div className="space-y-6">
-                  <div className="inline-flex items-center px-2 py-1 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium">
+                  {/* <div className="inline-flex items-center px-2 py-1 sm:px-4 sm:py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium">
                     <Sparkles className="size-4 mr-2" />
                     Transforming Education Since 2020
-                  </div>
+                  </div> */}
                   <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.15] sm:leading-tight text-white">
-                    Transform Your{" "}
+                    Build a <br />
                     <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                      Educational
+                      Learning Mindset
                     </span>{" "}
-                    Journey with Inwesol
+                    Ecosystem in Your School
                   </h1>
                   <p className="text-base sm:text-xl text-white leading-snug sm:leading-relaxed font-light">
-                    Empowering schools and educational institutions with
-                    innovative solutions, data-driven insights, and personalized
-                    support to unlock every student&apos;s potential.
+                    We combine psychology, technology, and community to nurture
+                    adolescents to be future-ready. With our personalised &
+                    holistic approach, students develop a learning mindset to
+                    manage stress, gain career clarity, and take confident
+                    actions. This leads to stronger academic, personal and
+                    social growth.
                   </p>
                 </div>
                 <ScrollToEnquiryButton />
               </div>
 
-              <div
+              <div className="relative">
+                <Image
+                  src="/school-campus.svg"
+                  alt="Think Different"
+                  width={1200}
+                  height={800}
+                  // fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+
+              {/* <div
                 className={`relative transform transition-all duration-1000 delay-300`}
               >
                 <div className="relative">
                   <div className="aspect-video bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-sm rounded-3xl shadow-2xl flex items-center justify-center border border-white/20 overflow-hidden">
-                    {/* <div className="text-center space-y-6">
+                    <div className="text-center space-y-6">
                       <div className="relative">
                         <GraduationCap className="size-16 sm:size-32 text-white mx-auto drop-shadow-lg" />
                       </div>
@@ -139,7 +167,7 @@ export default function SchoolsPage() {
                         </p>
                         <p className="text-white/80">Powered by Innovation</p>
                       </div>
-                    </div> */}
+                    </div>
                     <video
                       src="/assets/coco.mp4"
                       autoPlay
@@ -150,7 +178,7 @@ export default function SchoolsPage() {
                     />
                   </div>
 
-                  {/* Floating Cards */}
+                  Floating Cards
                   <div className="absolute -left-2 -top-8 lg:-left-8 bg-white/90 backdrop-blur-sm rounded-[10px] p-2 shadow-xl animate-float">
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-r from-primary-green-500 to-primary-green-600 rounded-[10px] flex items-center justify-center">
@@ -177,7 +205,7 @@ export default function SchoolsPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -201,16 +229,15 @@ export default function SchoolsPage() {
                 What We Offer
               </div>
               <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Comprehensive{" "}
                 <span className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 bg-clip-text text-transparent">
-                  Educational Solutions
-                </span>
+                  Personalised & Holistic
+                </span>{" "}
+                Solution
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                We provide end-to-end educational transformation services
-                designed to enhance learning outcomes, streamline operations,
-                and drive institutional growth through innovation and
-                excellence.
+                Our science-backed, integrated approach empowers students,
+                parents, and schools to create a learning mindset ecosystem that
+                drives lasting impact.
               </p>
             </div>
 
@@ -218,33 +245,33 @@ export default function SchoolsPage() {
               {[
                 {
                   icon: <BookOpen className="size-5 sm:size-8" />,
-                  title: "Curriculum Development",
+                  title: "Student Self-Discovery Journey",
                   description:
-                    "Tailored curriculum design aligned with modern educational standards and industry requirements.",
+                    "Guided program that helps students understand their strengths and abilities, bring behaviour change and create an action plan to achieve their goals.",
                   color: "from-primary-blue-500 to-primary-blue-600",
                   bgColor: "bg-primary-blue-50",
                 },
                 {
                   icon: <Users className="size-5 sm:size-8" />,
-                  title: "Teacher Training",
+                  title: "Teacher & Parents Training",
                   description:
-                    "Comprehensive professional development programs to enhance teaching methodologies and skills.",
+                    "Workshops and resources that strengthen the role of educators and parents in nurturing students to be future-ready.",
                   color: "from-primary-green-500 to-primary-green-600",
                   bgColor: "bg-primary-green-50",
                 },
                 {
                   icon: <Brain className="size-5 sm:size-8" />,
-                  title: "Learning Analytics",
+                  title: "Data-Driven Student Insights",
                   description:
-                    "Data-driven insights to track student progress and optimize educational outcomes.",
+                    "Powerful insights that track progress, highlight concerns, and ensure holistic student development.",
                   color: "from-purple-500 to-purple-600",
                   bgColor: "bg-purple-50",
                 },
                 {
                   icon: <Award className="size-5 sm:size-8" />,
-                  title: "Achievement Programs",
+                  title: "School-wide Ecosystem Development",
                   description:
-                    "Recognition and reward systems to motivate students and celebrate academic excellence.",
+                    "Structured frameworks and best practices that enable a culture of learning mindset in the school to transform student outcomes.",
                   color: "from-orange-500 to-orange-600",
                   bgColor: "bg-orange-50",
                 },
@@ -273,8 +300,8 @@ export default function SchoolsPage() {
         </section>
 
         {/* guide download section */}
-        <section className="py-10 bg-gradient-to-r from-primary-green-600 via-primary-green-500 to-primary-blue-600 relative overflow-hidden">
-          {/* Background Elements */}
+        {/* <section className="py-10 bg-gradient-to-r from-primary-green-600 via-primary-green-500 to-primary-blue-600 relative overflow-hidden">
+
           <div className="absolute inset-0">
             <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-blue-400/20 rounded-full blur-3xl"></div>
@@ -373,7 +400,6 @@ export default function SchoolsPage() {
                         </div>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
 
-                        {/*shine effect */}
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
                       </Button>
                     </div>
@@ -382,7 +408,7 @@ export default function SchoolsPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* process section */}
         <section className="py-10 bg-gradient-to-b from-white to-gray-50 relative">
@@ -393,14 +419,15 @@ export default function SchoolsPage() {
                 Our Process
               </div>
               <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Your Journey to{" "}
+                Pathway to{" "}
                 <span className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 bg-clip-text text-transparent">
-                  Excellence
+                  Transform Student Outcomes
                 </span>
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                A systematic, proven approach to educational transformation that
-                delivers measurable results and sustainable growth.
+                Enabling a school with learning mindset ecosystem based on a
+                scientific approach that drives measurable academic, personal,
+                and social growth of students.
               </p>
             </div>
 
@@ -522,8 +549,8 @@ export default function SchoolsPage() {
                 </span>
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Find answers to common questions about our educational solutions
-                and transformation process.
+                Find answers to common questions about our solutions and
+                transformation process.
               </p>
             </div>
 
@@ -532,33 +559,20 @@ export default function SchoolsPage() {
                 {[
                   {
                     question:
-                      "How long does it take to see results from your educational programs?",
+                      "How is this different from traditional programs offered in schools?",
                     answer:
-                      "Most institutions begin seeing measurable improvements within 3-6 months of implementation. However, sustainable transformation typically occurs over 12-18 months as new methodologies become embedded in the institutional culture. We provide regular progress reports and adjust strategies based on real-time data to ensure optimal outcomes.",
+                      "Beyond exam preparation and one-time workshops, this is a science-backed ecosystem approach. It focuses on self-discovery, mindset development, and overall growth of students, ensuring long-term impact beyond academics.",
+                  },
+                  {
+                    question: "What measurable outcomes can schools expect?",
+                    answer:
+                      "Schools see improvements in student well-being, better career clarity, and confident decision making. Over time, this leads to higher student performance and a stronger academic edge for the school.",
                   },
                   {
                     question:
-                      "Do you provide ongoing support after program implementation?",
+                      "How much effort is required from our teachers and staff?",
                     answer:
-                      "Absolutely! We believe in long-term partnerships. Our comprehensive support includes regular check-ins, performance monitoring, additional training sessions, access to our resource library, and a dedicated support team. We offer flexible support packages tailored to each institution's specific needs and budget.",
-                  },
-                  {
-                    question:
-                      "Can your solutions be customized for different educational levels?",
-                    answer:
-                      "Yes, our solutions are designed to be flexible and scalable. We work effectively across primary, secondary, and higher education institutions. Each program is customized based on the specific needs, size, student demographics, and goals of your institution. Our team conducts thorough assessments to ensure perfect alignment.",
-                  },
-                  {
-                    question:
-                      "What kind of training do you provide for teachers and staff?",
-                    answer:
-                      "We offer comprehensive, multi-modal training programs including interactive workshops, online modules, peer mentoring, and hands-on practice sessions. Our training covers modern pedagogy, technology integration, assessment techniques, student engagement strategies, and data-driven instruction. All training is certified and includes ongoing professional development opportunities.",
-                  },
-                  {
-                    question:
-                      "How do you measure the success of your educational interventions?",
-                    answer:
-                      "We use a comprehensive measurement framework that includes quantitative metrics (student performance data, engagement levels, retention rates) and qualitative assessments (teacher satisfaction, student feedback, parent surveys). We provide detailed analytics dashboards, regular progress reports, and conduct quarterly reviews to ensure continuous improvement and ROI demonstration.",
+                      "We provide structured frameworks, training, and ready-to-use tools so teachers and staff can easily adopt the program without adding extra workload. Our model is designed to support schools, not burden them.",
                   },
                 ].map((faq, index) => (
                   <AccordionItem
@@ -573,7 +587,7 @@ export default function SchoolsPage() {
                         </span>
                       </div>
                     </AccordionTrigger>
-                    <AccordionContent className="px-4 pb-3 sm:px-8 sm:pb-6 text-gray-600 text-sm leading-snug">
+                    <AccordionContent className="px-4 py-3 sm:px-8 sm:py-6 text-gray-600 font-semibold text-base leading-snug">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -607,17 +621,15 @@ export default function SchoolsPage() {
                     Ready to Transform?
                   </div>
                   <h2 className="text-3xl lg:text-5xl font-bold sm:leading-tight">
-                    Let&apos;s Build the Future of{" "}
+                    Together, Let&apos;s Make Students{" "}
                     <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
-                      Education
-                    </span>{" "}
-                    Together
+                      Future-Ready
+                    </span>
                   </h2>
                   <p className="text-base sm:text-xl text-white/90 sm:leading-relaxed">
-                    Join hundreds of educational institutions that have already
-                    transformed their learning environments with Inwesol.
-                    Let&apos;s discuss how we can help you achieve your
-                    educational goals and unlock every student&apos;s potential.
+                    Join us in cultivating a learning mindset in students.
+                    Together, we can create an ecosystem where every student
+                    aspires for excellence.
                   </p>
                 </div>
 
@@ -632,7 +644,7 @@ export default function SchoolsPage() {
                           Call us directly
                         </p>
                         <p className="text-white font-semibold">
-                          +1 (555) 123-4567
+                          (+91) 8374315189
                         </p>
                       </div>
                     </div>
@@ -643,13 +655,13 @@ export default function SchoolsPage() {
                       <div>
                         <p className="text-white/70 text-sm">Email us</p>
                         <p className="text-white font-semibold">
-                          schools@inwesol.com
+                          contact@inwesol.com
                         </p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  {/* <div className="space-y-4">
                     {[
                       { number: "500+", label: "Schools Transformed" },
                       { number: "95%", label: "Success Rate" },
@@ -665,7 +677,7 @@ export default function SchoolsPage() {
                         <p className="text-white/70 text-sm">{stat.label}</p>
                       </div>
                     ))}
-                  </div>
+                  </div> */}
                 </div>
               </div>
 

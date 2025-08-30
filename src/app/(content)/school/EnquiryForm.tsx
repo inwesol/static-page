@@ -41,7 +41,7 @@ export default function EnquireyForm() {
     <Card className="shadow-2xl bg-white/95 backdrop-blur-sm border-0 rounded-xl ">
       <CardHeader className="pb-4">
         <CardTitle className="text-2xl sm:text-3xl text-gray-900 text-center">
-          Get Started Today
+          Partner with Inwesol
         </CardTitle>
         <p className="text-gray-600 text-center text-sm sm:text-base ">
           Fill out the form below and we&apos;ll get back to you within 24 hours

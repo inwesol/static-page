@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Smile } from "lucide-react";
@@ -13,8 +13,8 @@ export default function ScrollToEnquiryButton() {
       onClick={scrollToEnquiry}
     >
       <div className="flex items-center gap-2">
-        <Play className="size-4 sm:size-5 " />
-        <span>Start Your Journey</span>
+        {/* <Play className="size-4 sm:size-5 " /> */}
+        <span>Partner with Us</span>
       </div>
       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
 

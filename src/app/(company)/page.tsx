@@ -9,20 +9,21 @@ import ExplorerCard from "@/components/explorer-card/explorer-card";
 import FeaturesSection from "@/components/features-section/features-section";
 import FeaturedBlogs from "@/components/featured-blogs/featured-blogs";
 import Testimonials from "@/components/testimonials/testimonials";
+import SchoolSection from "@/components/school-section/school-section";
 
 const HomePage1 = async () => {
   // const user = await currentUser();
 
   return (
     <div className="h-full">
-      
       <HeroSection />
+      <SchoolSection />
       <FeaturesSection />
       <StickyScrollRevealDemo />
-      <FeaturedBlogs />
-      <Testimonials />
       <ExplorerCard />
-      
+      <Testimonials />
+      <FeaturedBlogs />
+      {/* <ExplorerCard /> */}
     </div>
   );
 };

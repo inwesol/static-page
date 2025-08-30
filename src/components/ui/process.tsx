@@ -17,13 +17,13 @@ function StickyScrollRevealDemo() {
           </h2>
 
           <p className="text-center text-base sm:text-md md:text-lg leading-relaxed max-w-2xl mt-4 text-neutral-700">
-            A guided self-discovery journey designed to help individuals gain
+            A guided self-discovery journey designed to help students gain
             clarity, build confidence, and reduce stress in their career paths,
             ultimately leading to purpose-driven lives.
           </p>
         </div>
       </AnimationContainer>
-      
+
       <FeatureSteps />
     </div>
   );

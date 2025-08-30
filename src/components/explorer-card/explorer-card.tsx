@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { AnimationContainer } from "@/components";
+import MagicBadge from "../ui/magic-badge";
 
 import {
   Form,
@@ -66,18 +67,19 @@ const ExplorerCard = () => {
     <>
       <section className="w-full bg-[#F8F4EB] py-10 md:py-14 text-center flex flex-col items-center gap-5 px-6">
         <AnimationContainer delay={0.3}>
-          <span
+          {/* <span
             className="text-base sm:text-lg font-semibold text-[#00B24B]"
             aria-label="Create your own success story"
           >
-            Take a step towards self-discovery.
-          </span>
+            CoCo : AI Mindset Coach is launched!
+          </span> */}
+          <MagicBadge title="CoCo : AI Mindset Coach" color="#3fa1d8" />
         </AnimationContainer>
 
         <AnimationContainer delay={0.4}>
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 max-w-screen-lg leading-snug">
-            The AI Mindset Coach is launched! <br />
-            Freely access CoCo as an early user.
+            CoCo : AI Mindset Coach is launched! <br />
+            An Ally For Your Career, Wellbeing & Journey
           </h3>
         </AnimationContainer>
 
@@ -135,11 +137,25 @@ const ExplorerCard = () => {
                 "noopener,noreferrer"
               )
             }
-            className="inline-block px-8 sm:px-10 py-2 sm:py-3 bg-primary-green-600 text-white font-semibold text-sm sm:text-base rounded-full hover:bg-primary-green-500 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:ring-offset-2 transition duration-200"
-            aria-label="Access CoCo from here"
+            className="inline-block px-6 sm:px-8 py-1 sm:py-2 bg-primary-green-600 text-white font-semibold text-sm sm:text-base rounded-full hover:bg-primary-green-500 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:ring-offset-2 transition duration-200"
+            aria-label="Say Hi to CoCo"
           >
-            Access CoCo from here
+            Say Hi to CoCo 👋
           </button>
+        </AnimationContainer>
+
+        <AnimationContainer delay={0.6} reverse viewport>
+          <div className="w-full flex justify-center">
+            <video
+              src="/assets/coco.mp4"
+              className="rounded-xl shadow-lg max-w-full h-auto max-h-[600px] border border-gray-200"
+              autoPlay
+              loop
+              muted
+              playsInline
+              // controls
+            />
+          </div>
         </AnimationContainer>
       </section>
 

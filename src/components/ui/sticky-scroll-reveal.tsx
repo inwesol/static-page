@@ -7,6 +7,13 @@ import { cn } from "@/utils";
 
 const features = [
   {
+    step: "Step 0",
+    title: "Start with Future Readiness",
+    content:
+      "Future Readiness introduces self-assessment tools, resources, and activities that build awareness of strengths, interests, and values, forming the foundation for clarity.",
+    image: "/future-readiness.svg",
+  },
+  {
     step: "Step 1",
     title: "Venture into Explorer",
     content:
@@ -33,6 +40,13 @@ const features = [
     content:
       "Through Behavioural Tools, you can bring positive change within yourself while effectively managing wellbeing, sustaining new habits, and achieving your goals.",
     image: "/b-tools.svg",
+  },
+  {
+    step: "Step 5",
+    title: "Grow with Community",
+    content:
+      "Community connects students with peers, mentors, and educators, fostering shared learning, collaboration, and belonging while offering continuous support for growth.",
+    image: "/community.svg",
   },
 ];
 
@@ -120,7 +134,7 @@ function FeatureSteps({
                   )}
                 >
                   <span className="text-base md:text-lg font-semibold">
-                    {index + 1}
+                    {index}
                   </span>
                 </motion.div>
 

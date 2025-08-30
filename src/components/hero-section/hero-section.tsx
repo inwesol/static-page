@@ -69,10 +69,10 @@ const HeroSection = () => {
           >
             <span className="text-2xl animate-bounce shrink-0">🪄</span>
             {/* <span className="truncate"></span> */}
-            <span className="hidden sm:block">
-              Ally for young minds to excel :{" "}
+            {/* <span className="hidden sm:block">Access your Mindset Coach, </span> */}
+            <span className="sm:inline">
+              CoCo : AI Mindset Coach is Launched!
             </span>
-            <span className="sm:inline">CoCo is Launched!</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-3 h-3 sm:h-4 sm:w-4 shrink-0"
@@ -97,7 +97,14 @@ const HeroSection = () => {
 
       <AnimationContainer delay={0.5} reverse viewport>
         <p className="w-full text-base sm:text-lg md:text-xl text-center text-gray-700 max-w-xs sm:max-w-[1200px] px-4 sm:px-8 md:px-0 leading-relaxed">
-          <span className="hidden sm:block">
+          By cultivating a{" "}
+          <span className="font-bold text-accent">
+            &quot;Learning Mindset&quot;
+          </span>
+          , we nurture students to be future-ready. <br /> We help them achieve
+          a stress-free mind, gain career clarity, and take confident actions
+          for overall growth.
+          {/* <span className="hidden sm:block">
             Coaching individuals to thrive in their careers through the{" "}
             <span className="whitespace-nowrap">self-discovery</span> of their{" "}
             <span className="font-bold text-accent">&quot;why&quot;.</span>
@@ -108,20 +115,20 @@ const HeroSection = () => {
           </span>
           <span className="font-bold text-accent">
             Our Motto: self-discovery leads to excellence
-          </span>
+          </span> */}
         </p>
       </AnimationContainer>
 
       <AnimationContainer delay={0.3} reverse viewport>
         <div className="relative group flex sm:gap-4 flex-col sm:flex-row items-center sm:items-stretch gap-6">
-          <a
+          {/* <a
             className="bg-[conic-gradient(from_var(--border-angle),#00b24b,#3FA1D8,yellow,#00b24b)] rounded-full p-[2px] -animate--animate-rotate-border hover:scale-105 transform transition-all hover:shadow-xl flex cursor-pointer overflow-hidden items-center box-border"
             href="/career-test"
           >
             <div className="bg-white text-black font-semibold rounded-full flex items-center px-2 sm:px-4 self-stretch w-full py-2 justify-center sm:text-sm text-xs">
               Check Career Readiness
             </div>
-          </a>
+          </a> */}
           <a
             href="/events/coaching"
             className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary-green-600 to-primary-blue-500 text-white font-semibold text-xs sm:text-sm shadow-lg hover:shadow-xl transform transition-all duration-300 hover:scale-105 max-w-[90vw] sm:max-w-none"
@@ -146,7 +153,7 @@ const HeroSection = () => {
         </div>
       </AnimationContainer>
 
-      <AnimationContainer delay={0.6} reverse viewport>
+      {/* <AnimationContainer delay={0.6} reverse viewport>
         <div className="w-full flex justify-center">
           <video
             src="/assets/coco.mp4"
@@ -158,7 +165,7 @@ const HeroSection = () => {
             // controls
           />
         </div>
-      </AnimationContainer>
+      </AnimationContainer> */}
     </section>
   );
 };

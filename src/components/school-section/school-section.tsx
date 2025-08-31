@@ -46,7 +46,7 @@ const SchoolSection = () => {
         <AnimationContainer delay={0.4}>
           <div className="flex-col flex gap-10 lg:gap-4 lg:items-center lg:flex-row">
             <div className="">
-              <h1 className="pb-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900">
+              <h1 className="pb-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-snug">
                 <p className="">Enabling Schools With </p>
                 <p className="py-2 text-transparent bg-clip-text bg-gradient-to-r from-primary-green-600 to-primary-blue-600">
                   Learning Mindset

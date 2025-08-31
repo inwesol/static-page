@@ -92,10 +92,10 @@ const FeaturesSection = () => {
   return (
     <div className="bg-[#f5fafd] pb-12">
       <AnimationContainer delay={0.2}>
-        <div className="flex flex-col items-center justify-center w-full py-12 max-w-3xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-center w-full py-12 max-w-6xl mx-auto px-2 sm:px-6 lg:px-8">
           <MagicBadge title="Features" />
 
-          <h2 className="text-center text-2xl sm:text-3xl md:text-2xl font-semibold font-heading leading-snug mt-6">
+          <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold font-heading leading-snug mt-6">
             Transforming Student Outcomes Through <br />
             <span className="text-transparent bg-gradient-to-r from-primary1 to-accent bg-clip-text inline-bloc">
               Psychology | Technology | Community

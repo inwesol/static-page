@@ -108,40 +108,40 @@ const MobileNavbar = () => {
                     value={link.title}
                     className="last:border-none"
                   >
-                    <Link
+                    {/* <Link
                       href={link.href}
                       onClick={handleClose}
                       className="flex items-center w-full py-4 font-medium text-muted-foreground hover:text-foreground"
                     >
                       <span>{link.title}</span>
-                    </Link>
-                    {/* {link.menu ? (
-                        <>
-                          <AccordionTrigger>{link.title}</AccordionTrigger>
-                          <AccordionContent>
-                            <ul onClick={handleClose} className={cn("w-full")}>
-                              {link.menu.map((menuItem) => (
-                                <ListItem
-                                  key={menuItem.title}
-                                  title={menuItem.title}
-                                  href={menuItem.href}
-                                  icon={menuItem.icon}
-                                >
-                                  {menuItem.tagline}
-                                </ListItem>
-                              ))}
-                            </ul>
-                          </AccordionContent>
-                        </>
-                      ) : (
-                        <Link
-                          href={link.href}
-                          onClick={handleClose}
-                          className="flex items-center w-full py-4 font-medium text-muted-foreground hover:text-foreground"
-                        >
-                          <span>{link.title}</span>
-                        </Link>
-                      )} */}
+                    </Link> */}
+                    {link.menu ? (
+                      <>
+                        <AccordionTrigger>{link.title}</AccordionTrigger>
+                        <AccordionContent>
+                          <ul onClick={handleClose} className={cn("w-full")}>
+                            {link.menu.map((menuItem) => (
+                              <ListItem
+                                key={menuItem.title}
+                                title={menuItem.title}
+                                href={menuItem.href}
+                                icon={menuItem.icon}
+                              >
+                                {menuItem.tagline}
+                              </ListItem>
+                            ))}
+                          </ul>
+                        </AccordionContent>
+                      </>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        onClick={handleClose}
+                        className="flex items-center w-full py-4 font-medium text-muted-foreground hover:text-foreground"
+                      >
+                        <span>{link.title}</span>
+                      </Link>
+                    )}
                   </AccordionItem>
                 ))}
               </Accordion>
@@ -163,14 +163,14 @@ const ListItem = React.forwardRef<
         href={href!}
         ref={ref}
         className={cn(
-          "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-primary-green-200 hover:text-primary-green-200-foreground focus:bg-primary-green-200 focus:text-primary-green-200-foreground",
           className
         )}
         {...props}
       >
-        <div className="flex items-center space-x-2 text-foreground">
+        <div className="flex items-center space-x-2 text-black">
           <Icon className="h-4 w-4" />
-          <h6 className="text-sm !leading-none">{title}</h6>
+          <h6 className="text-sm font-semibold !leading-none">{title}</h6>
         </div>
         <p
           title={children! as string}

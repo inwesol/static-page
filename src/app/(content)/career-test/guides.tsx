@@ -1,4 +1,17 @@
-import { Award, BookOpen, Brain, FileDown, Users, Zap } from "lucide-react";
+import {
+  AlertTriangle,
+  Award,
+  BookOpen,
+  Brain,
+  Crown,
+  FileDown,
+  Heart,
+  Lightbulb,
+  MessageSquare,
+  User,
+  Users,
+  Zap,
+} from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const Guides: React.FC = () => {
@@ -27,7 +40,7 @@ const Guides: React.FC = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 ">
         {[
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <Heart className="size-5 sm:size-8" />,
             title: "A Gentle Guide to Understanding Behaviours",
             description:
               "Understand your behaviours to grow, and protect what’s matters to you.",
@@ -35,7 +48,7 @@ const Guides: React.FC = () => {
             bgColor: "bg-primary-blue-50",
           },
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <User className="size-5 sm:size-8" />,
             title: "Knowing Yourself Is the First Step",
             description:
               "A self-awareness guide for understanding your emotions.",
@@ -43,14 +56,14 @@ const Guides: React.FC = () => {
             bgColor: "bg-primary-blue-50",
           },
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <Brain className="size-5 sm:size-8" />,
             title: "Let’s Talk: What’s Going On In Your Mind?",
             description: "A gentle guide to noticing & growing your thoughts.",
             color: "from-primary-blue-500 to-primary-blue-600",
             bgColor: "bg-primary-blue-50",
           },
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <AlertTriangle className="size-5 sm:size-8" />,
             title: "Concern & Future Readiness",
             description:
               "A guide to understand how your choices now impact your career path.",
@@ -58,7 +71,7 @@ const Guides: React.FC = () => {
             bgColor: "bg-orange-50",
           },
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <MessageSquare className="size-5 sm:size-8" />,
             title: "Consultation & Future Readiness",
             description:
               "A guide to seek support to choose what’s right for you.",
@@ -66,7 +79,7 @@ const Guides: React.FC = () => {
             bgColor: "bg-orange-50",
           },
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <Lightbulb className="size-5 sm:size-8" />,
             title: "Curiosity & Future Readiness",
             description:
               "A guide to being open to new possibilities & continuously seek knowledge.",
@@ -74,7 +87,7 @@ const Guides: React.FC = () => {
             bgColor: "bg-orange-50",
           },
           {
-            icon: <FileDown className="size-5 sm:size-8" />,
+            icon: <Crown className="size-5 sm:size-8" />,
             title: "Confidence & Future Readiness",
             description:
               "A guide to say  “I can handle this,” even when something feels tough.",

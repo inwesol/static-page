@@ -50,45 +50,53 @@ const Footer = () => {
         </AnimationContainer>
 
         <div className="md:grid md:grid-cols-3 md:gap-8">
-          {/* <AnimationContainer delay={0.2}>
+          <AnimationContainer delay={0.2}>
             <div className="">
-              <h3 className="font-medium text-primary1">Product</h3>
+              <h3 className="font-medium text-primary1">Features</h3>
               <ul className="mt-4 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
+                    href="/explorer/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Features
+                    Explorer
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
+                    href="/coco/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Pricing
+                    CoCo
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
+                    href="/coaching/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Testimonials
+                    Coaching
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
+                    href="/behavioural-tools/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Integration
+                    Behavioural Tools
+                  </Link>
+                </li>
+                <li className="mt-2">
+                  <Link
+                    href="/community/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
+                  >
+                    Community
                   </Link>
                 </li>
               </ul>
             </div>
-          </AnimationContainer> */}
+          </AnimationContainer>
 
           {/* <AnimationContainer delay={0.4}>
             <div className="">
@@ -114,32 +122,32 @@ const Footer = () => {
             </div>
           </AnimationContainer> */}
 
-          <AnimationContainer delay={0.4}>
+          <AnimationContainer delay={0.3}>
             <div className="">
-              <h3 className="font-medium text-primary1">Products</h3>
+              <h3 className="font-medium text-primary1">Company</h3>
               <ul className="mt-4 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
-                    href="/explorer/"
+                    href="/blog/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Explorer
+                    Blogs
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/coco/"
+                    href="/story/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    CoCo
+                    Our Story
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/events/coaching/"
+                    href="/contact-us/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Coaching Session
+                    Contact Us
                   </Link>
                 </li>
                 {/* <li className="mt-2">
@@ -154,24 +162,24 @@ const Footer = () => {
             </div>
           </AnimationContainer>
 
-          <AnimationContainer delay={0.5}>
+          <AnimationContainer delay={0.4}>
             <div className="flex flex-col mt-10 md:mt-0">
-              <h3 className="font-medium text-primary1">Company</h3>
+              <h3 className="font-medium text-primary1">Partners</h3>
               <ul className="mt-4 text-sm text-muted-foreground">
                 <li className="">
                   <Link
-                    href="/story/"
+                    href="/school/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Our Story
+                    Schools
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/contact-us/"
+                    href="/coach/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Contact Us
+                    Coaches
                   </Link>
                 </li>
               </ul>

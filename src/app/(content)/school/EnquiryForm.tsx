@@ -1,4 +1,5 @@
 "use client";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,33 +9,90 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Building2 } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
-export default function EnquireyForm() {
-  const enquirySchema = z.object({
-    name: z.string().min(2, "Name must be at least 2 characters"),
-    email: z.string().email("Please enter a valid email address"),
-    phone: z.string().min(10, "Phone number must be at least 10 digits"),
-    instituteName: z
-      .string()
-      .min(2, "Institute name must be at least 2 characters"),
-    message: z.string().min(10, "Message must be at least 10 characters"),
-  });
+const enquirySchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  instituteName: z
+    .string()
+    .min(2, "Institute name must be at least 2 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
 
-  type EnquiryForm = z.infer<typeof enquirySchema>;
+type EnquiryForm = z.infer<typeof enquirySchema>;
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<EnquiryForm>({
+const EnquireyForm = () => {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors, isSubmitting },
+  //   reset,
+  // } = useForm<EnquiryForm>({
+  //   resolver: zodResolver(enquirySchema),
+  // });
+
+  const form = useForm<EnquiryForm>({
     resolver: zodResolver(enquirySchema),
   });
+
+  // const onSubmit = async (data: EnquiryForm) => {
+  //   console.log("Form submitted:", data);
+  //   // await new Promise((resolve) => setTimeout(resolve, 1000));
+  //   alert("Thank you for your enquiry! We will get back to you soon.");
+  //   reset();
+  // };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   const onSubmit = async (data: EnquiryForm) => {
-    console.log("Form submitted:", data);
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-    alert("Thank you for your enquiry! We will get back to you soon.");
-    reset();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/submit-form?for=school-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      console.log("Form submitted successfully");
+
+      // Reset form with explicit default values
+      form.reset({
+        name: "",
+        email: "",
+        phone: "",
+        instituteName: "",
+        message: "",
+      });
+      setIsSubmitted(true);
+
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      // You could add error handling UI here
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -48,111 +106,152 @@ export default function EnquireyForm() {
         </p>
       </CardHeader>
       <CardContent className="p-4 pt-0 sm:p-8 sm:pt-4 ">
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-gray-700 font-medium">
-                Name <span className="text-red-600">*</span>
-              </Label>
-              <Input
-                id="name"
-                {...register("name")}
-                className="border-gray-300 rounded-[10px] bg-white placeholder:text-slate-400"
-                placeholder="Your full name"
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid sm:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-700 font-medium">
+                      Name
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Your full name"
+                        className="border-gray-300 bg-white focus:border-primary1 focus:ring-primary1 rounded-xl"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500" />
+                  </FormItem>
+                )}
               />
-              {errors.name && (
-                <p className="text-sm text-red-600">{errors.name.message}</p>
-              )}
+
+              <div className="space-y-2">
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-gray-700 font-medium">
+                        Phone number
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          type="tel"
+                          placeholder="Your phone number"
+                          className="border-gray-300 bg-white focus:border-primary1 focus:ring-primary1 rounded-xl"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-500" />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="phone" className="text-gray-700 font-medium">
-                Phone <span className="text-red-600">*</span>
-              </Label>
-              <Input
-                id="phone"
-                {...register("phone")}
-                className="border-gray-300 rounded-[10px] bg-white placeholder:text-slate-400"
-                placeholder="Your phone number"
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-700 font-medium">
+                      Email
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="Enter your email address"
+                        className="border-gray-300 bg-white focus:border-primary1 focus:ring-primary1 rounded-xl"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500" />
+                  </FormItem>
+                )}
               />
-              {errors.phone && (
-                <p className="text-sm text-red-600">{errors.phone.message}</p>
-              )}
             </div>
-          </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="email" className="text-gray-700 font-medium">
-              Email <span className="text-red-600">*</span>
-            </Label>
-            <Input
-              id="email"
-              type="email"
-              {...register("email")}
-              className="border-gray-300 rounded-[10px] bg-white placeholder:text-slate-400"
-              placeholder="your.email@example.com"
-            />
-            {errors.email && (
-              <p className="text-sm text-red-600">{errors.email.message}</p>
+            <div className="space-y-2">
+              <FormField
+                control={form.control}
+                name="instituteName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-700 font-medium">
+                      Institute Name
+                    </FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="Name of your institution"
+                        className="border-gray-300 bg-white focus:border-primary1 focus:ring-primary1 rounded-xl"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500" />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <FormField
+                control={form.control}
+                name="message"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="text-gray-700 font-medium">
+                      Message
+                    </FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us about your educational goals and how we can help transform your institution..."
+                        rows={5}
+                        className="border-gray-300 bg-white focus:border-primary1 focus:ring-primary1 rounded-xl resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-red-500" />
+                  </FormItem>
+                )}
+              />
+            </div>
+
+            <div className="flex justify-center">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-green-500 to-primary-blue-500 hover:from-primary-green-600 hover:to-primary-blue-600 text-white sm:font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out text-sm sm:text-lg sm:px-10 sm:py-7 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
+                    Submitting...
+                  </div>
+                ) : (
+                  <>
+                    Send Enquiry
+                    <Building2 className="ml-2 w-5 h-5" />
+                  </>
+                )}
+              </Button>
+            </div>
+            {isSubmitted && (
+              <Alert variant="default" className="bg-green-50 border-green-200">
+                <AlertDescription className="text-green-700">
+                  Thank you for your message! We&apos;ll get back to you soon.
+                </AlertDescription>
+              </Alert>
             )}
-          </div>
-
-          <div className="space-y-2">
-            <Label
-              htmlFor="instituteName"
-              className="text-gray-700 font-medium"
-            >
-              Institute Name <span className="text-red-600">*</span>
-            </Label>
-            <Input
-              id="instituteName"
-              {...register("instituteName")}
-              className="border-gray-300 rounded-[10px] bg-white placeholder:text-slate-400"
-              placeholder="Name of your institution"
-            />
-            {errors.instituteName && (
-              <p className="text-sm text-red-600">
-                {errors.instituteName.message}
-              </p>
-            )}
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="message" className="text-gray-700 font-medium">
-              Message <span className="text-red-600">*</span>
-            </Label>
-            <Textarea
-              id="message"
-              {...register("message")}
-              className="border-gray-300 min-h-[120px] rounded-[10px] bg-white placeholder:text-slate-400"
-              placeholder="Tell us about your educational goals and how we can help transform your institution..."
-            />
-            {errors.message && (
-              <p className="text-sm text-red-600">{errors.message.message}</p>
-            )}
-          </div>
-
-          <div className="flex justify-center">
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-green-500 to-primary-blue-500 hover:from-primary-green-600 hover:to-primary-blue-600 text-white sm:font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out text-sm sm:text-lg sm:px-10 sm:py-7 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {isSubmitting ? (
-                <div className="flex items-center justify-center">
-                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2"></div>
-                  Submitting...
-                </div>
-              ) : (
-                <>
-                  Send Enquiry
-                  <Building2 className="ml-2 w-5 h-5" />
-                </>
-              )}
-            </Button>
-          </div>
-        </form>
+          </form>
+        </Form>
       </CardContent>
     </Card>
   );
-}
+};
+
+export default EnquireyForm;

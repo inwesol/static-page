@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
@@ -7,30 +6,20 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  BookOpen,
-  Users,
-  Target,
   BarChart3,
-  Download,
   GraduationCap,
   Lightbulb,
-  Trophy,
   TrendingUp,
   Search,
-  Eye,
-  Activity,
-  CheckCircle,
   Phone,
   Mail,
-  ArrowRight,
-  Sparkles,
   Zap,
-  Award,
-  Brain,
   Rocket,
-  DownloadCloudIcon,
-  FormInput,
-  FileBadge,
+  Compass,
+  Network,
+  HandHeart,
+  Repeat,
+  ClipboardCheck,
 } from "lucide-react";
 import { Footer, Navbar } from "@/components";
 import ScrollToEnquiryButton from "./ScrollToEnquiryButton";
@@ -51,7 +40,7 @@ export default function SchoolsPage() {
     },
     {
       id: 2,
-      icon: <Eye className="size-8" />,
+      icon: <TrendingUp className="size-8" />,
       title: "Empower",
       description:
         "Build awareness and skills in students, teachers, and parents to foster confidence and a learning mindset.",
@@ -61,7 +50,7 @@ export default function SchoolsPage() {
     },
     {
       id: 3,
-      icon: <Activity className="size-8" />,
+      icon: <HandHeart className="size-8" />,
       title: "Intervene",
       description:
         "Introduce personalised programs, coaching, and action plans to address gaps and drive positive behaviour change.",
@@ -71,7 +60,7 @@ export default function SchoolsPage() {
     },
     {
       id: 4,
-      icon: <BarChart3 className="size-8" />,
+      icon: <Repeat className="size-8" />,
       title: "Sustain",
       description:
         "Embed learning mindset practices into daily routines, classrooms, and school culture for long-term impact.",
@@ -81,7 +70,7 @@ export default function SchoolsPage() {
     },
     {
       id: 5,
-      icon: <FileBadge className="size-8" />,
+      icon: <ClipboardCheck className="size-8" />,
       title: "Evaluate",
       description:
         "Use data-driven insights to measure progress, refine strategies, and ensure continuous improvement.",
@@ -244,7 +233,7 @@ export default function SchoolsPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
               {[
                 {
-                  icon: <BookOpen className="size-5 sm:size-8" />,
+                  icon: <Compass className="size-5 sm:size-8" />,
                   title: "Student Self-Discovery Journey",
                   description:
                     "Guided program that helps students understand their strengths and abilities, bring behaviour change and create an action plan to achieve their goals.",
@@ -252,7 +241,7 @@ export default function SchoolsPage() {
                   bgColor: "bg-primary-blue-50",
                 },
                 {
-                  icon: <Users className="size-5 sm:size-8" />,
+                  icon: <GraduationCap className="size-5 sm:size-8" />,
                   title: "Teacher & Parents Training",
                   description:
                     "Workshops and resources that strengthen the role of educators and parents in nurturing students to be future-ready.",
@@ -260,7 +249,7 @@ export default function SchoolsPage() {
                   bgColor: "bg-primary-green-50",
                 },
                 {
-                  icon: <Brain className="size-5 sm:size-8" />,
+                  icon: <BarChart3 className="size-5 sm:size-8" />,
                   title: "Data-Driven Student Insights",
                   description:
                     "Powerful insights that track progress, highlight concerns, and ensure holistic student development.",
@@ -268,7 +257,7 @@ export default function SchoolsPage() {
                   bgColor: "bg-purple-50",
                 },
                 {
-                  icon: <Award className="size-5 sm:size-8" />,
+                  icon: <Network className="size-5 sm:size-8" />,
                   title: "School-wide Ecosystem Development",
                   description:
                     "Structured frameworks and best practices that enable a culture of learning mindset in the school to transform student outcomes.",

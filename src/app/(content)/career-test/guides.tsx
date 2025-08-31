@@ -24,7 +24,7 @@ const Guides: React.FC = () => {
         </p> */}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8 ">
         {[
           {
             icon: <FileDown className="size-5 sm:size-8" />,
@@ -39,13 +39,6 @@ const Guides: React.FC = () => {
             title: "Knowing Yourself Is the First Step",
             description:
               "A self-awareness guide for understanding your emotions.",
-            color: "from-primary-blue-500 to-primary-blue-600",
-            bgColor: "bg-primary-blue-50",
-          },
-          {
-            icon: <FileDown className="size-5 sm:size-8" />,
-            title: "Let’s Talk: What’s Going On In Your Mind?",
-            description: "A gentle guide to noticing & growing your thoughts.",
             color: "from-primary-blue-500 to-primary-blue-600",
             bgColor: "bg-primary-blue-50",
           },

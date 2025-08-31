@@ -146,6 +146,37 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+  } else if (formType === "school-form") {
+    const { name, email, phone, instituteName, message } = body;
+
+    const sheetId = process.env.GOOGLE_SHEET_ID as string;
+    const range = "School-Form!A:F"; // Add a row number
+    const timestamp = new Date().toISOString();
+
+    const values = [
+      timestamp,
+      email,
+      name,
+      phone,
+      instituteName,
+      message
+    ];
+
+    // console.log("Appending values:", values);
+
+    try {
+      await appendToSheet(sheetId, range, values);
+      return NextResponse.json(
+        { message: "School Enquiry data saved successfully" },
+        { status: 200 }
+      );
+    } catch (error) {
+      console.error("Error saving School Enquiry data:", error);
+      return NextResponse.json(
+        { message: "Error saving School Enquiry data: " + (error instanceof Error ? error.message : 'Unknown error') },
+        { status: 500 }
+      );
+    }
   } else {
     // Original email-only form logic
     const { email } = body;

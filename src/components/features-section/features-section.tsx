@@ -80,12 +80,12 @@ const FeaturesSection = () => {
     {
       heading: "Community",
       description:
-        "Community connects students with peers, mentors, and educators, providing support, guidance, and inspiration throughout their journey.",
+        "Community connects students with a supportive network of peers, mentors, and educators, creating a space to share experiences, ask questions, and learn from each other. It offers encouragement, guidance, and real-world perspectives that help students feel understood and motivated. Whether seeking inspiration, advice, or a sense of belonging, Community ensures that no student has to navigate their journey alone.",
       redirectUrl: "",
       oneLiner:
         "Community connects students with peers, mentors, and educators, providing support, guidance, and inspiration throughout their journey.",
       icon: <Handshake className={featureCardIconClassName} />,
-      slug: "story",
+      slug: "community",
     },
   ];
 

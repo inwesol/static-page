@@ -109,9 +109,9 @@ const Navbar = () => {
                 variant="primary"
                 size="default"
                 type="button"
-                aria-label="Sign in here"
+                aria-label="Sign In"
               >
-                <span>Sign in here</span>
+                <span>Sign In</span>
               </Button>
 
               {/* Divider */}

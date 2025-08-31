@@ -137,6 +137,7 @@ const ExplorerPage = () => {
           })}
         </div>
 
+        {/* Career Map Banner */}
         <div className="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-16 px-8 mt-10 rounded-3xl">
           <div className="max-w-4xl mx-auto text-center">
             {/* Icon */}

@@ -4,6 +4,7 @@ import React from "react";
 import MagicBadge from "@/components/ui/magic-badge";
 import {
   ClipboardCheck,
+  Code,
   Handshake,
   Search,
   Sparkles,
@@ -60,7 +61,7 @@ const FeaturesSection = () => {
       icon: (
         <div className="flex flex-row items-center justify-center text-5xl text-accent">
           <User className={`${featureCardIconClassName} h-10 w-10`} />
-          :
+          <Code className={`${featureCardIconClassName} h-6 w-6`} />
           <User className={`${featureCardIconClassName} h-10 w-10`} />
         </div>
       ),

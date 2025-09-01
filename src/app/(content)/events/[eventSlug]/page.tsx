@@ -7,7 +7,33 @@ import CohortClient from "./cohort-client";
 import WebinarClient from "./webinar-client";
 
 // This makes the page dynamic so it re-evaluates for each request
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
+
+
+// export const revalidate = false; // To make the page fully static
+
+export const dynamicParams = false;
+
+// static site generation
+export function generateStaticParams() {
+  return [
+    {
+      eventSlug: "coaching",
+    },
+    {
+      eventSlug: "seminar",
+    },
+    {
+      eventSlug: "webinar-1",
+    },
+    {
+      eventSlug: "webinar-2",
+    },
+    {
+      eventSlug: "webinar-3",
+    },
+  ];
+}
 
 // Define the props for the page component
 interface EventPageProps {
@@ -18,6 +44,7 @@ interface EventPageProps {
 
 const EventPage = ({ params }: EventPageProps) => {
   const { eventSlug } = params;
+  console.log("rendering on server");
 
   // Get the event data based on the slug
   const event = availableEvents[eventSlug as keyof typeof availableEvents];

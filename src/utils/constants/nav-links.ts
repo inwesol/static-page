@@ -20,31 +20,31 @@ export const NAV_LINKS = [
       menu: [
           {
               title: "Explorer",
-              tagline: "Explore your next steps",
+              tagline: "Be curious. Seek Information.",
               href: "/explorer/",
               icon: MapIcon,
         },
           {
               title: "Behavioural Tools",
-              tagline: "Help individuals become better",
+              tagline: "Simple Tools. Everyday Impact.",
               href: "/behavioural-tools/",
               icon: SettingsIcon,
         },
           {
               title: "CoCo : AI Mindset Coach",
-              tagline: "Ally for career decisions",
+              tagline: "Everyday ally for your journey.",
               href: "/coco/",
               icon: WandSparklesIcon,
         },
           {
               title: "Community",
-              tagline: "Connects with supportive network",
+              tagline: "Connect with mentors & peers.",
               href: "/community/",
               icon: UsersIcon,
           },
           {
               title: "Coaching",
-              tagline: "Cultivate a Learning Mindset",
+              tagline: "Personalized & holistic support.",
               href: "/coaching/",
               icon: LightbulbIcon,
           },
@@ -74,10 +74,10 @@ export const NAV_LINKS = [
       },
     ],
   },
-  {
-    title: "Career Coaching",
-    href: "/events/coaching/",
-  },
+  // {
+  //   title: "Career Coaching",
+  //   href: "/events/coaching/",
+  // },
   {
     title: "Schools",
     href: "/school/",

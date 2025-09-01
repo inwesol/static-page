@@ -41,7 +41,7 @@ const Guides: React.FC = () => {
         {[
           {
             icon: <Heart className="size-5 sm:size-8" />,
-            title: "A Gentle Guide to Understanding Behaviours",
+            title: "Growth Starts with Understanding Your Behaviour",
             description:
               "Understand your behaviours to grow, and protect what’s matters to you.",
             color: "from-primary-blue-500 to-primary-blue-600",
@@ -49,7 +49,7 @@ const Guides: React.FC = () => {
           },
           {
             icon: <User className="size-5 sm:size-8" />,
-            title: "Knowing Yourself Is the First Step",
+            title: "To Know Yourself, Know Your Feelings",
             description:
               "A self-awareness guide for understanding your emotions.",
             color: "from-primary-blue-500 to-primary-blue-600",
@@ -57,7 +57,7 @@ const Guides: React.FC = () => {
           },
           {
             icon: <Brain className="size-5 sm:size-8" />,
-            title: "Let’s Talk: What’s Going On In Your Mind?",
+            title: "Clarity Starts with Your Thoughts",
             description: "A gentle guide to noticing & growing your thoughts.",
             color: "from-primary-blue-500 to-primary-blue-600",
             bgColor: "bg-primary-blue-50",

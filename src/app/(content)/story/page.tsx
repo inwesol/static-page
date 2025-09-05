@@ -23,8 +23,7 @@ const people = [
     name: "Akarsh Sriramoju",
     designation: "CEO",
     link: "https://www.linkedin.com/in/akarshedpsy/",
-    image:
-      "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1755734400&v=beta&t=kxsWziyEh7Se9zFCGZOIcNeP4hh0fTXQaji5nq0yH8Y",
+    image: "/akarsh.jpeg",
   },
   {
     id: 2,

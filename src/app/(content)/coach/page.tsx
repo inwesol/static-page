@@ -80,7 +80,7 @@ export default function CoachingPage() {
   return (
     <>
       <Navbar />
-      <div className="bg-gradient-to-r from-primary-green-50 to primary-blue-50 p-3 sm:p-5">
+      <div className="bg-gradient-to-r from-primary-green-50 to-primary-blue-50 p-3 sm:p-5">
         {/* hero section */}
         <section
           className="flex max-w-6xl mx-auto justify-center items-center"

@@ -51,9 +51,9 @@ const Footer = () => {
 
         <div className="md:grid md:grid-cols-3 md:gap-8">
           <AnimationContainer delay={0.2}>
-            <div className="">
+            <div className="flex flex-col mt-4 md:mt-0">
               <h3 className="font-medium text-primary1">Features</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
+              <ul className="mt-2 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
                     href="/explorer/"
@@ -98,34 +98,10 @@ const Footer = () => {
             </div>
           </AnimationContainer>
 
-          {/* <AnimationContainer delay={0.4}>
-            <div className="">
-              <h3 className="font-medium text-primary1">Resources</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
-                <li className="mt-2">
-                  <Link
-                    href="/resources/blog"
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li className="mt-2">
-                  <Link
-                    href="/resources/help"
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </AnimationContainer> */}
-
           <AnimationContainer delay={0.3}>
-            <div className="">
+            <div className="flex flex-col mt-6 md:mt-0">
               <h3 className="font-medium text-primary1">Company</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
+              <ul className="mt-2 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
                     href="/blog/"
@@ -150,23 +126,15 @@ const Footer = () => {
                     Contact Us
                   </Link>
                 </li>
-                {/* <li className="mt-2">
-                  <Link
-                    href="/events/webinar-know-your-why/"
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Free Workshop
-                  </Link>
-                </li> */}
               </ul>
             </div>
           </AnimationContainer>
 
           <AnimationContainer delay={0.4}>
-            <div className="flex flex-col mt-10 md:mt-0">
+            <div className="flex flex-col mt-6 md:mt-0">
               <h3 className="font-medium text-primary1">Partners</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
-                <li className="">
+              <ul className="mt-2 text-sm text-muted-foreground">
+                <li className="mt-2">
                   <Link
                     href="/school/"
                     className="transition-all duration-300 hover:text-primary-green-600"

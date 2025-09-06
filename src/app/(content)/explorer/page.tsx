@@ -29,16 +29,16 @@ export const metadata = generateMetadata({
 
 const ExplorerPage = () => {
   const browseOptions = [
-    // {
-    //   title: "Browse by Interests",
-    //   description:
-    //     "Explore based on your interest. Whether it’s writing, coding, or helping others, discover the careers that excite you and see how your interests can shape your future.",
-    //   path: "/explorer/interest",
-    //   color: "border-blue-500 hover:border-blue-600",
-    //   bgHover: "hover:bg-blue-50/80",
-    //   iconColor: "text-blue-600",
-    //   icon: Book,
-    // },
+    {
+      title: "Browse by Interests",
+      description:
+        "Explore based on your interest. Whether it’s writing, coding, or helping others, discover the careers that excite you and see how your interests can shape your future.",
+      path: "/explorer/interest",
+      color: "border-blue-500 hover:border-blue-600",
+      bgHover: "hover:bg-blue-50/80",
+      iconColor: "text-blue-600",
+      icon: Book,
+    },
     {
       title: "Browse by Abilities",
       description:
@@ -105,7 +105,7 @@ const ExplorerPage = () => {
               <Link
                 href={option.path}
                 key={index}
-                className="block group w-full max-w-xs"
+                className="block group w-full max-w-lg"
               >
                 <Card
                   className={`transition-all duration-300 ${option.color} border-2 rounded-xl ${option.bgHover} 

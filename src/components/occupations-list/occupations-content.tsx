@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { OccupationsListSearch } from "./occupations-list-search";
 import { Occupation } from "./types";
+import { interestsList } from "./interests-list";
 import { InterestFilter } from "./interest-filter";
 import { AbilityFilter } from "./ability-filter";
 import { abilityCategories } from "./ability-category-constant";
@@ -187,13 +188,14 @@ export function OccupationsContent({
   }, [filteredOccupations, activeLetter, measurements]);
 
   // Handle interest search
-  // Handle interest search with AND logic
   const handleInterestSearch = (interests: string[]) => {
-    // Filter occupations with code > 3 AND containing ALL selected interests
-    const filtered = occupations.filter(
-      (occupation) =>
-        occupation.code > 3 &&
-        interests.every((interest) => occupation.interest.includes(interest))
+    const result: string = interests.sort().join("");
+    const interestsPart = interestsList[result as keyof typeof interestsList];
+    const interestsPartSet = new Set(
+      interestsPart.map((item) => item.onetsoc_code)
+    );
+    const filtered = occupations.filter((item) =>
+      interestsPartSet.has(item.onetsoc_code)
     );
 
     // Group filtered occupations by first letter of the title

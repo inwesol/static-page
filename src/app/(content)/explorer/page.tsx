@@ -84,8 +84,8 @@ const ExplorerPage = () => {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto px-4 sm:py-12 py-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-center sm:mb-8 text-primary-green-600 mb-2">
+      <main className="container mx-auto px-4 sm:py-10 py-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center sm:mb-4 text-primary-green-600 mb-2">
           Explore Possibilities
         </h1>
         <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">

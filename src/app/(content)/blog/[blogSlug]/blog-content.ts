@@ -604,4 +604,88 @@ Because the future shouldn't be about choosing between human intelligence and ar
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
+    "schools-must-go-beyond-grades": {
+    heading: "Why Schools Must Go Beyond Grades",
+    oneLiner: "In a small high school, a student named Arnav always earned top grades. His teachers praised his perfect test scores, and his report card was full of A’s",
+    slug: "schools-must-go-beyond-grades",
+    createdOn: "September 15th, 2025",
+    createdBy: "",
+    readingTime: "5 mins read",
+    imageFit:"contain",
+    bannerUrl: "/schools-must-go-beyond-grades.jpg",
+      content: `# Why Schools Must Go Beyond Grades
+    
+In a small high school, a student named Arnav always earned top grades. His teachers praised his perfect test scores, and his report card was full of A grades. Yet, outside the classroom, Arnav struggled. Group projects made him nervous, criticism hurt deeply and stress often overwhelmed him. His story, far from rare, reveals a key truth that grades alone don’t prepare students for life. Schools should teach and promote emotional intelligence, social skills, taking care of mental health, and creativity alongside academics to better prepare students for the future.
+
+## The Limitations of Grades
+
+Grades show only a small part of what a student can do. They measure how well someone memorizes facts or solves test problems, but they miss bigger skills. Researchers say that students’ focus on performing well to obtain good grades may then undermine their interest and 'love of learning' (Butler, 1987; Butler & Nisan, 1986; Jones, 2007; Pulfrey, Darnon, & Butera, 2013). This pressure can also increase anxiety and we see many teens feel stressed due to school demands. In real life, jobs value teamwork, adaptability and staying calm which typical school examinations don’t cover. Schools need to look beyond grades to help students succeed in the world.
+
+![Factors support students-wellbeing](/blog-why-schools.jpg)
+
+# Factors support Student Wellbeing
+
+Let’s explore some factors that support students in real-world situations:
+
+### **A. Emotional Intelligence:**
+
+Emotional intelligence (EQ) means being aware, understanding and managing one’s emotions while connecting well with others. **Psychologist Daniel Goleman argues that EQ often matters more than IQ for success in life and work.** His theory emphasises that succeeding in both personal and professional spheres requires more than just cognitive abilities; it involves a deep understanding of one's own emotions and the skilful management of interpersonal relationships. A student who can handle stress or relate to friends is better equipped than one who’s only good at academics.
+
+Schools can play a role in nurturing the EQ of children from a young age, in simple ways. Mindfulness activities help students notice their feelings, while group discussions build empathy.
+
+### **B. Social Skills:**
+
+Jobs today rely on teamwork. Whether in tech or healthcare, people need to communicate and collaborate. **Psychologist Lev Vygotsky’s social learning theory says we learn best when working with others.** Yet, many schools focus on solo tasks like tests instead of group skills. Schools can change this with group projects or peer mentoring, where students support each other.
+
+### **C. Mental Health and Strength:**
+
+More students face mental health challenges today. **Psychologist Ann Masten’s work on resilience shows that supportive places, like caring teachers and welcoming classrooms, help students recover from tough times. Carol Dweck’s growth mindset idea says teaching kids to see challenges as chances to grow makes them stronger.**
+
+Schools can teach coping skills, like deep breathing or journaling. By supporting mental health, schools help students handle life’s ups and downs.
+
+### **D. Creativity and Problem-Solving:**
+
+The world changes fast, and creativity is crucial. **Psychologist Mihaly Csikszentmihalyi’s work demonstrates that the most creative breakthroughs often happen when people are in a state of flow, fully immersed in their work, driven by curiosity and joy rather than external rewards.** But many schools skip arts or open-ended projects for test prep. Adding music, drama, or problem-solving activities can spark students’ imaginations.
+
+# Practical 7 Steps for Schools
+
+Schools can move beyond focusing only on grades by introducing life skills classes such as managing emotions or budgeting. Teachers should be trained to nurture students’ emotional and social development and build a classroom culture rooted in a Learning Mindset. Tests can also include group projects, while parents should also be educated on the value of these skills to help support and reinforce the change.
+
+### **1. Integrate Life Skills into the Curriculum:**
+
+Schools should embed lessons on emotional regulation, communication, and practical life skills within existing subjects. For instance, literature classes can explore characters’ emotions to teach empathy, while mathematics can include budgeting exercises to promote financial literacy.
+
+### **2. Train Teachers to Support Holistic Growth:**
+
+Educators require professional development to address students’ emotional and social needs effectively. Workshops on recognizing signs of stress or fostering a growth mindset, as outlined by psychologist Carol Dweck, can empower teachers to create supportive classrooms. Schools can access online training modules from organizations like the Yale Center for Emotional Intelligence
+
+### **3. Reform Assessment Systems:**
+
+Traditional grading often prioritizes test performance over broader skills. Schools should incorporate alternative assessments, such as reflective journals, group project evaluations, or portfolios showcasing creative work. Schools can pilot these systems in one subject before scaling up, minimizing disruption.
+
+### **4. Create Safe Spaces for Mental Health:**
+
+Schools must provide environments where students feel safe to express emotions. This can include designated “calm corners” for mindfulness exercises or access to school counselors trained in resilience strategies. Schools can partner with local mental health organizations to offer free workshops and resources.
+
+### **5. Foster Collaborative Learning:**
+
+Group projects and peer mentoring programs build social skills, which highlight learning through interaction. Schools can implement structured group activities, such as community service projects, to teach teamwork. For example, a school might organize a student-led recycling initiative, fostering leadership and collaboration. 
+
+### **6. Engage Parents and the Community:**
+
+Parents must understand the value of non-academic skills to reinforce them at home. Schools can host workshops or send newsletters explaining how emotional intelligence and resilience benefit students. Community partnerships, such as with local arts organizations for creative programs, can expand resources. 
+
+### **7. Promote Extracurricular Opportunities:**
+
+Clubs, sports, and arts programs provide natural settings for developing creativity and social skills. Schools can offer low-cost options, like after-school drama or debate clubs, to ensure accessibility.
+
+# Conclusion
+
+When schools teach beyond grades, students like Arnav thrive. They gain tools to navigate life’s challenges, from job interviews to personal setbacks. Schools that act now create adults who are not just smart but adaptable, kind, and creative.
+
+Schools, educators, parents, and policymakers must come together to redefine educational excellence. They should advocate for curricula that nurture the whole student, implement teacher training, and embrace alternative assessments. Together, they can build an education system that empowers every student with a Learning Mindset to face the future with confidence and capability.
+
+👉  [Build a Learning Mindset Ecosystem in Your School](https://inwesol.com/school/)
+`,
+  },
 };

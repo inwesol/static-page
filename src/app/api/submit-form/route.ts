@@ -101,20 +101,10 @@ export async function POST(request: Request) {
       );
     }
   } else if (formType === "career-test") {
-    // const { email, fullName, gender, age, phoneNumber, categoryScores } = body;
-    const { email, fullName, gender, age, phoneNumber, Concern,Curiosity,Consultation,Confidence } = body;
-
-    // console.log("Received data:", {
-    //   email,
-    //   fullName,
-    //   gender,
-    //   age,
-    //   phoneNumber,
-    //   Concern,
-    // });
+    const { email, fullName, gender, age, phoneNumber, Concern, Curiosity, Consultation, Confidence } = body;
 
     const sheetId = process.env.GOOGLE_SHEET_ID as string;
-    const range = "Career-Test-Results!A:J"; // Add a row number
+    const range = "Career-Test-Results!A:J";
     const timestamp = new Date().toISOString();
 
     const values = [
@@ -124,14 +114,11 @@ export async function POST(request: Request) {
       gender,
       age?.toString() || "",
       phoneNumber || "",
-      // JSON.stringify(categoryScores),
       Concern,
       Curiosity,
       Consultation,
       Confidence
     ];
-
-    // console.log("Appending values:", values);
 
     try {
       await appendToSheet(sheetId, range, values);
@@ -146,11 +133,60 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+  } else if (formType === "pydi-test") {
+    // PYDI Test - 6 C's scores
+    const { 
+      email, 
+      fullName, 
+      gender, 
+      age, 
+      phoneNumber, 
+      Competence, 
+      Character, 
+      Caring, 
+      Connection, 
+      Confidence, 
+      Contribution 
+    } = body;
+
+    const sheetId = process.env.GOOGLE_SHEET_ID as string;
+    const range = "PYDI-Test-Results!A:L"; // Columns A through L (12 columns)
+    const timestamp = new Date().toISOString();
+
+    // Convert scores from 0-4 scale to percentage (0-100) by multiplying by 25
+    const values = [
+      timestamp,                          // Column A
+      email,                             // Column B
+      fullName,                          // Column C
+      gender,                            // Column D
+      age?.toString() || "",             // Column E
+      phoneNumber || "",                 // Column F
+      (Competence * 25).toFixed(2),      // Column G - as percentage
+      (Character * 25).toFixed(2),       // Column H - as percentage
+      (Caring * 25).toFixed(2),          // Column I - as percentage
+      (Connection * 25).toFixed(2),      // Column J - as percentage
+      (Confidence * 25).toFixed(2),      // Column K - as percentage
+      (Contribution * 25).toFixed(2)     // Column L - as percentage
+    ];
+
+    try {
+      await appendToSheet(sheetId, range, values);
+      return NextResponse.json(
+        { message: "PYDI test data saved successfully" },
+        { status: 200 }
+      );
+    } catch (error) {
+      console.error("Error saving PYDI test data:", error);
+      return NextResponse.json(
+        { message: "Error saving PYDI test data: " + (error instanceof Error ? error.message : 'Unknown error') },
+        { status: 500 }
+      );
+    }
   } else if (formType === "school-form") {
     const { name, email, phone, instituteName, message } = body;
 
     const sheetId = process.env.GOOGLE_SHEET_ID as string;
-    const range = "School-Form!A:F"; // Add a row number
+    const range = "School-Form!A:F";
     const timestamp = new Date().toISOString();
 
     const values = [
@@ -161,8 +197,6 @@ export async function POST(request: Request) {
       instituteName,
       message
     ];
-
-    // console.log("Appending values:", values);
 
     try {
       await appendToSheet(sheetId, range, values);

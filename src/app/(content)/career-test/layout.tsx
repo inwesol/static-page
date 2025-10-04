@@ -1,6 +1,7 @@
 import React from "react";
 import { Footer, Navbar } from "@/components";
-import { FormProvider } from "@/context/personal-info-context/FormContext";
+import { FormProvider as PersonalInfoFormProvider } from "@/context/personal-info-context/FormContext";
+import { FormProvider as PydiFormProvider } from "@/context/pydi/FormContext";
 import { Toaster } from "@/components/ui/sonner";
 
 interface Props {
@@ -12,7 +13,11 @@ const Layout: React.FC<Props> = ({ children }) => {
     <>
       <Navbar />
       <main className="h-full">
-        <FormProvider>{children}</FormProvider>
+        <PersonalInfoFormProvider>
+          <PydiFormProvider>
+            {children}
+          </PydiFormProvider>
+        </PersonalInfoFormProvider>
       </main>
       {/* <Toaster position="top-right" expand /> */}
       <Footer />

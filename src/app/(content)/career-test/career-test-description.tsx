@@ -21,6 +21,10 @@ const CareerTestDescription: React.FC = () => {
     router.push("/career-test/questionnaire");
   };
 
+  const handleStartAssessment2 = (): void => {
+    router.push("/career-test/PYDI");
+  };
+
   return (
     <motion.div
       className="px-4 py-4 mx-auto sm:py-8"
@@ -28,10 +32,10 @@ const CareerTestDescription: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="flex justify-center items-center">
-        <Card className=" w-[720px] overflow-hidden bg-white border border-gray-200 shadow-xl rounded-2xl">
+      <div className="flex flex-col gap-4 items-center lg:flex-row lg:justify-center lg:items-start">
+        <Card className="w-full max-w-[720px] overflow-hidden bg-white border border-gray-200 shadow-xl rounded-2xl">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold sm:text-3xl text-primary-green-600 md:text-4xl">
+            <CardTitle className="text-2xl font-bold text-primary-green-600">
               Check Future Readiness
             </CardTitle>
             <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
@@ -126,6 +130,107 @@ const CareerTestDescription: React.FC = () => {
               size="lg"
               className="px-8 py-4 text-lg font-semibold text-white transition-all transform rounded-full shadow-lg bg-gradient-to-r from-primary-blue-600 to-primary-green-600 hover:from-primary-blue-700 hover:to-primary-green-700 hover:shadow-xl hover:-translate-y-1"
               onClick={handleStartAssessment}
+            >
+              Start Assessment
+            </Button>
+          </CardFooter>
+        </Card>
+        <Card className="w-full max-w-[720px] overflow-hidden bg-white border border-gray-200 shadow-xl rounded-2xl">
+          <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold text-primary-green-600">
+              Check Strengths & Difficulties
+            </CardTitle>
+            <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
+              Understand your strengths and difficulties with our PYDI Test.{" "}
+              <br />
+              Measure changes in levels of your positive youth development
+              (PYD).
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="grid gap-6 px-6 pb-0 text-sm text-gray-700 md:text-base">
+            <div className="p-4">
+              <h3 className="mb-1 text-lg font-semibold text-primary-green-600">
+                What is Positive Youth Development (PYD)?
+              </h3>
+              <p>
+                Positive Youth Development (PYD) is an outcome of youth
+                programs, designed for broad use by practitioners, evaluators,
+                and researchers. For valid results, users must follow the
+                outlined criteria carefully.
+              </p>
+            </div>
+            <div className="p-4 pt-0">
+              <h3 className="mb-1 text-lg font-semibold text-primary-green-600">
+                What does this test assess?
+              </h3>
+              <p className="mb-4">
+                Positive Youth Development is based on the “Five Cs,” which lead
+                to a Sixth C—Contribution to self, family, community, and
+                society (Lerner et al., 2005).
+              </p>
+              <p>
+                This test measures six key components:{" "}
+                <strong className="text-primary-green-600">Competence,</strong>{" "}
+                <strong className="text-primary-green-600">Confidence,</strong>{" "}
+                <strong className="text-primary-green-600">Character,</strong>{" "}
+                <strong className="text-primary-green-600">Connection,</strong>{" "}
+                <strong className="text-primary-green-600">Caring,</strong> and{" "}
+                <strong className="text-primary-green-600">Contribution</strong>
+                .
+              </p>
+            </div>
+            <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-3">
+              <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
+                <h4 className="mb-2 font-semibold text-primary-green-600">
+                  55 Simple Questions
+                </h4>
+                <p>
+                  Agree and disagree with statements about how you develop your
+                  career.
+                </p>
+              </div>
+              <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
+                <h4 className="mb-2 font-semibold text-primary-green-600">
+                  Instant Feedback
+                </h4>
+                <p>Receive your PYD results right after you finish the test.</p>
+              </div>
+              <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
+                <h4 className="mb-2 font-semibold text-primary-green-600">
+                  Download Report
+                </h4>
+                <p>
+                  Save your results to see how you are developing and plan your
+                  next steps.
+                </p>
+              </div>
+            </div>
+            <div className="inline-block px-4 py-3 bg-blue-50 rounded-xl">
+              <p className="flex items-center justify-center font-medium text-center text-gray-700">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-5 h-5 mr-2 text-blue-500"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                Completing this test takes approximately 10-15 minutes.
+              </p>
+            </div>
+          </CardContent>
+          <CardFooter className="flex justify-center py-6">
+            <Button
+              variant="primary"
+              size="lg"
+              className="px-8 py-4 text-lg font-semibold text-white transition-all transform rounded-full shadow-lg bg-gradient-to-r from-primary-blue-600 to-primary-green-600 hover:from-primary-blue-700 hover:to-primary-green-700 hover:shadow-xl hover:-translate-y-1"
+              onClick={handleStartAssessment2}
             >
               Start Assessment
             </Button>

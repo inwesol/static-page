@@ -39,7 +39,7 @@ const CareerTestDescription: React.FC = () => {
               Check Future Readiness
             </CardTitle>
             <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
-              Understand your future readiness with our Career Maturity Test.{" "}
+              Understand your future readiness with the Career Maturity Test.{" "}
               <br />
               See how prepared you are for career decisions.
             </CardDescription>
@@ -138,25 +138,24 @@ const CareerTestDescription: React.FC = () => {
         <Card className="w-full max-w-[720px] overflow-hidden bg-white border border-gray-200 shadow-xl rounded-2xl">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold text-primary-green-600">
-              Check Strengths & Difficulties
+              Know Your Strengths
             </CardTitle>
+
             <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
-              Understand your strengths and difficulties with our PYDI Test.{" "}
+              Discover your strengths with the Positive Youth Development Test.{" "}
               <br />
-              Measure changes in levels of your positive youth development
-              (PYD).
+              Identify your key areas of strengths.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6 px-6 pb-0 text-sm text-gray-700 md:text-base">
             <div className="p-4">
               <h3 className="mb-1 text-lg font-semibold text-primary-green-600">
-                What is Positive Youth Development (PYD)?
+                What is Positive Youth Development (PYD) Test?
               </h3>
               <p>
-                Positive Youth Development (PYD) is an outcome of youth
-                programs, designed for broad use by practitioners, evaluators,
-                and researchers. For valid results, users must follow the
-                outlined criteria carefully.
+                Positive Youth Development highlights your growth in confidence,
+                skills, caring for others, and building strong relationships. It
+                reflects your readiness to grow and make good choices.
               </p>
             </div>
             <div className="p-4 pt-0">
@@ -164,9 +163,9 @@ const CareerTestDescription: React.FC = () => {
                 What does this test assess?
               </h3>
               <p className="mb-4">
-                Positive Youth Development is based on the “Five Cs,” which lead
-                to a Sixth C—Contribution to self, family, community, and
-                society (Lerner et al., 2005).
+                The PYD test, developed by Arnold, Nott & Meinhold, helps you
+                discover your strengths and understand how you are growing in
+                different areas of your life.
               </p>
               <p>
                 This test measures six key components:{" "}
@@ -184,10 +183,7 @@ const CareerTestDescription: React.FC = () => {
                 <h4 className="mb-2 font-semibold text-primary-green-600">
                   55 Simple Questions
                 </h4>
-                <p>
-                  Agree and disagree with statements about how you develop your
-                  career.
-                </p>
+                <p>Agree and disagree with statements.</p>
               </div>
               <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
                 <h4 className="mb-2 font-semibold text-primary-green-600">
@@ -200,8 +196,7 @@ const CareerTestDescription: React.FC = () => {
                   Download Report
                 </h4>
                 <p>
-                  Save your results to see how you are developing and plan your
-                  next steps.
+                  Save your results to understand your strengths and growth.
                 </p>
               </div>
             </div>

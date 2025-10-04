@@ -291,6 +291,7 @@ const OccupationDetails: React.FC = () => {
               {titleState.error}
             </p>
             <button
+              type="button"
               onClick={() => fetchInitialData(params.id as any)}
               className="px-4 sm:px-6 py-2 bg-[#3FA1D8] text-white rounded-full font-medium hover:bg-[#2F8BCF] transition-all duration-200"
             >
@@ -302,12 +303,13 @@ const OccupationDetails: React.FC = () => {
 
       {!titleState.loading && !titleState.error && (
         <>
-          <div className="w-full max-w-6xl mx-auto">
+          <div className="w-full mx-auto">
             <a
-              href="/explorer"
-              className="inline-flex justify-center items-center px-4 py-2 text-primary1 rounded-md text-base font-bold"
+              href={`/explorer/${params.browserBy}`}
+              type="button"
+              className="inline-flex justify-center items-center px-4 py-2 mt-3 text-primary1 bg-primary-green-50 hover:bg-primary-green-100 rounded-xl text-base font-bold"
             >
-              ← Back to Explorer
+              ← Back
             </a>
           </div>
 
@@ -437,8 +439,8 @@ const OccupationDetails: React.FC = () => {
                           >
                             <span className="w-2 h-2 bg-[#3FA1D8] rounded-full mr-3 flex-shrink-0" />
                             <span className="text-sm text-gray-800 flex-1 font-bold">
-                              {(item as Interest).element_name} -{" "}
-                              {(item as Interest).data_value}
+                              {(item as Interest).element_name}
+                              {/* -{" "} {(item as Interest).data_value} */}
                             </span>
                             <svg
                               className={`w-4 h-4 transform transition-transform duration-200 ${
@@ -480,7 +482,7 @@ const OccupationDetails: React.FC = () => {
                         className="flex items-center p-2 bg-gray-50 rounded-md hover:bg-gray-100 transition-all duration-200"
                       >
                         <a
-                          href={`/explorer/${
+                          href={`/explorer/${params.browserBy}/${
                             (item as RelatedOccupations).related_onetsoc_code
                           }`}
                           className="decoration-"

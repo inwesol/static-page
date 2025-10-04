@@ -445,6 +445,15 @@ export function OccupationsContent({
   };
   return (
     <div className="w-full sm:px-8 px-4">
+      <div className="w-full mx-auto">
+        <a
+          href={`/explorer/`}
+          type="button"
+          className="inline-flex justify-center items-center px-4 py-2 mt-3 text-primary1 bg-primary-green-50 hover:bg-primary-green-100 rounded-xl text-base font-bold"
+        >
+          ← Back
+        </a>
+      </div>
       {renderHeader()}
       {/* placeholder-content*/}
       {showPlaceholder && browseBy !== "all" ? (

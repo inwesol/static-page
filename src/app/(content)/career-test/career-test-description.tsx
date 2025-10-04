@@ -183,7 +183,10 @@ const CareerTestDescription: React.FC = () => {
                 <h4 className="mb-2 font-semibold text-primary-green-600">
                   55 Simple Questions
                 </h4>
-                <p>Agree and disagree with statements.</p>
+                <p>
+                  Strongly agree, Agree, Disagree, and Strongly disagree with
+                  statements.
+                </p>
               </div>
               <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
                 <h4 className="mb-2 font-semibold text-primary-green-600">

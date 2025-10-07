@@ -1,10 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useFormContextData } from "@/context/pydi/FormContext";
 import { Category, categoryDescriptions } from "../PYDI/questionsData";
 import { Icons } from "@/components";
 import { FileDown } from "lucide-react";
+import ModalCTA from "@/components/ui/modal-cta";
 
 type Results = Record<Category, number>;
 
@@ -62,7 +63,7 @@ export default function Result() {
     setAllAnswers,
     form,
   } = useFormContextData();
-
+   const [showModal, setShowModal] = useState(true); // Show modal by default on result page
   useEffect(() => {
     if (
       !submittedData ||
@@ -111,6 +112,7 @@ export default function Result() {
 
   return (
     <div className="min-h-screen bg-white py-10 px-4">
+      <ModalCTA isTestResult isOpen={showModal} setIsOpen={setShowModal} delay={3000}/>
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col gap-4">
         <header className="bg-gradient-to-r from-green-600 to-blue-600 text-white md:p-8 p-4">
           <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold">

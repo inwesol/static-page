@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -20,9 +20,7 @@ import { KnowledgeFilter } from "./knowledge-filter";
 import { knowledgeCategories } from "./knowledge-category-constant";
 import { content } from "googleapis/build/src/apis/content";
 import { TargetIcon } from "lucide-react";
-import { DialogContent } from "@/components/ui/dialog";
-import Modal from "@/components/ui/modal";
-import { ArrowRight, Sparkles } from "lucide-react";
+import ModalCTA from "@/components/modal-cta";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -30,86 +28,41 @@ function debounce<T extends (...args: any[]) => any>(
   wait: number
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null;
+
   return function (...args: Parameters<T>) {
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => func(...args), wait);
   };
 }
 
-const INITIAL_CARDS = 6;
-const LOAD_INCREMENT = 6;
-const HEADER_OFFSET = 56;
-const DEBOUNCE_DELAY = 100;
+const INITIAL_CARDS = 6; // Initial number of cards to show per section
+const LOAD_INCREMENT = 6; // Number of cards to load each time "Load More" is clicked
 
+// Create a constant for consistent offset
+const HEADER_OFFSET = 56;
+const DEBOUNCE_DELAY = 100; // 100ms debounce for scroll events
+
+// Add this utility function
 const getElementVisibleHeight = (element: HTMLElement): number => {
   const rect = element.getBoundingClientRect();
   const viewportHeight = window.innerHeight;
+
+  // If element is not visible at all
   if (rect.bottom < 0 || rect.top > viewportHeight) {
     return 0;
   }
+
+  // If element is partially visible
   if (rect.top < 0) {
     return Math.min(rect.height + rect.top, viewportHeight);
   }
+
   if (rect.bottom > viewportHeight) {
     return Math.min(viewportHeight - rect.top, rect.height);
   }
-  return rect.height;
-};
 
-// Custom Modal Component - only Coco
-const CustomModalCTA: React.FC<{
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ isOpen, setIsOpen }) => {
-  return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      <DialogContent className="sm:max-w-[450px] p-0 overflow-hidden !rounded-2xl">
-        <div className="bg-gradient-to-br from-primary-blue-50 to-primary-green-50 p-8 ">
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            Continue Your Journey
-          </h2>
-          <p className="text-gray-600 text-sm">
-            Explore these tools to help you grow and succeed
-          </p>
-        </div>
-        
-        <div className="p-6 flex flex-col gap-3">
-          <a
-            href="https://coco.inwesol.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative overflow-hidden rounded-xl border border-gray-200 bg-white hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="flex items-start gap-4 p-5">
-              <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white shadow-md group-hover:scale-110 transition-transform duration-300">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <h3 className="font-semibold text-gray-900 text-lg group-hover:text-primary-blue-600 transition-colors">
-                    Coco Mindset Coach
-                  </h3>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-blue-600 group-hover:translate-x-1 transition-all flex-shrink-0" />
-                </div>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Visit Coco AI Mindset Coach for personalized guidance.
-                </p>
-              </div>
-            </div>
-            
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300" />
-          </a>
-        </div>
-        
-        <div className="px-6 pb-6 pt-2">
-          <p className="text-xs text-center text-gray-500">
-            Choose an option to continue exploring your potential
-          </p>
-        </div>
-      </DialogContent>
-    </Modal>
-  );
+  // Element is fully visible
+  return rect.height;
 };
 
 export function OccupationsContent({
@@ -126,15 +79,19 @@ export function OccupationsContent({
   const [activeLetter, setActiveLetter] = useState<string>("A");
   const [visibleCards, setVisibleCards] = useState<Record<string, number>>({});
   const [error, setError] = useState<string | null>(null);
+  // Add new responsive measurements state
   const [measurements, setMeasurements] = useState({
     headerHeight: 0,
     windowWidth: 0,
     windowHeight: 0,
   });
+  // placeholder-content
   const [showPlaceholder, setShowPlaceholder] = useState<boolean>(true);
-  const isMounted = useRef(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Ref to track if component is mounted
+  const isMounted = useRef(false);
+
+  // Initialize filtered occupations on mount
   useEffect(() => {
     const grouped = occupations.reduce((acc, occupation) => {
       const firstLetter = occupation.title[0].toUpperCase();
@@ -142,30 +99,36 @@ export function OccupationsContent({
       acc[firstLetter].push(occupation);
       return acc;
     }, {} as Record<string, Occupation[]>);
+
     setFilteredOccupations(grouped);
-    
-    const timer = setTimeout(() => {
-      setIsModalOpen(true);
-    }, 4000);
-    
-    return () => clearTimeout(timer);
   }, [occupations]);
 
+  // New effect to measure layout elements and handle resize
   useEffect(() => {
     isMounted.current = true;
+
     const updateMeasurements = () => {
       if (!isMounted.current) return;
+
       const header = document.getElementById("sticky-header");
       const headerHeight = header ? header.offsetHeight : 0;
+
       setMeasurements({
         headerHeight,
         windowWidth: window.innerWidth,
         windowHeight: window.innerHeight,
       });
     };
+
+    // Initialize measurements
     updateMeasurements();
+
+    // Create debounced resize handler
     const debouncedResize = debounce(updateMeasurements, DEBOUNCE_DELAY);
+
+    // Listen for window resize events
     window.addEventListener("resize", debouncedResize);
+
     return () => {
       isMounted.current = false;
       window.removeEventListener("resize", debouncedResize);
@@ -174,41 +137,58 @@ export function OccupationsContent({
 
   useEffect(() => {
     const debouncedHandleScroll = debounce(() => {
+      // Use measurements for calculations instead of recalculating every time
       const { headerHeight, windowHeight } = measurements;
       const viewportOffset = headerHeight + HEADER_OFFSET;
       const scrollPosition = window.scrollY;
       const viewportMidpoint =
         scrollPosition + viewportOffset + windowHeight / 4;
+
+      // Get all letter section elements
       const letterSections = Object.keys(filteredOccupations)
         .sort()
         .map((letter) => ({
           letter,
           element: document.getElementById(`letter-${letter}`),
         }))
-        .filter((item) => item.element);
+        .filter((item) => item.element); // Filter out any null elements
+
       if (letterSections.length === 0) return;
+
+      // Find the first section that extends beyond the midpoint
       let activeSection = letterSections[0].letter;
+
       for (const { letter, element } of letterSections) {
         if (!element) continue;
+
         const rect = element.getBoundingClientRect();
         const absoluteTop = rect.top + scrollPosition;
+
+        // If this section's top is above the midpoint, it's our new candidate
         if (absoluteTop <= viewportMidpoint) {
           activeSection = letter;
         } else {
+          // We've gone past the viewport midpoint, so stop checking
           break;
         }
       }
+
       if (activeSection !== activeLetter) {
         setActiveLetter(activeSection);
       }
     }, DEBOUNCE_DELAY);
+
     window.addEventListener("scroll", debouncedHandleScroll);
+
+    // Call once when measurements change
     if (measurements.headerHeight > 0) {
       debouncedHandleScroll();
     }
+
     return () => window.removeEventListener("scroll", debouncedHandleScroll);
   }, [filteredOccupations, activeLetter, measurements]);
 
+  // Handle interest search
   const handleInterestSearch = (interests: string[]) => {
     const result: string = interests.sort().join("");
     const interestsPart = interestsList[result as keyof typeof interestsList];
@@ -218,12 +198,15 @@ export function OccupationsContent({
     const filtered = occupations.filter((item) =>
       interestsPartSet.has(item.onetsoc_code)
     );
+
+    // Group filtered occupations by first letter of the title
     const grouped = filtered.reduce((acc, occupation) => {
       const firstLetter = occupation.title[0].toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
       acc[firstLetter].push(occupation);
       return acc;
     }, {} as Record<string, Occupation[]>);
+
     setFilteredOccupations(grouped);
     setVisibleCards({});
     setError(
@@ -233,8 +216,10 @@ export function OccupationsContent({
     );
   };
 
+  // Hadle ability search
   const handleAbilitySearch = (selectedSubsubId: string | null) => {
     if (!selectedSubsubId) {
+      // No filter, show all occupations grouped by first letter
       const grouped = occupations.reduce((acc, occupation) => {
         const firstLetter = occupation.title[0].toUpperCase();
         if (!acc[firstLetter]) acc[firstLetter] = [];
@@ -243,8 +228,11 @@ export function OccupationsContent({
       }, {} as Record<string, Occupation[]>);
       setFilteredOccupations(grouped);
       setError(null);
+      // console.log("running with empty selectedId")
       return;
     }
+
+    // Find the selected subsub-ability in abilities data
     let occupationIds: string[] = [];
     abilityCategories.forEach((ability) =>
       ability.subAbilities.forEach((sub) =>
@@ -255,15 +243,20 @@ export function OccupationsContent({
         })
       )
     );
+
+    // Filter occupations that match any occupationId in the subsub-ability
     const filtered = occupations.filter((occ) =>
       occupationIds.includes(occ.onetsoc_code)
     );
+
+    // Group filtered occupations by first letter of the title
     const grouped = filtered.reduce((acc, occupation) => {
       const firstLetter = occupation.title[0].toUpperCase();
       if (!acc[firstLetter]) acc[firstLetter] = [];
       acc[firstLetter].push(occupation);
       return { ...acc };
     }, {} as Record<string, Occupation[]>);
+    // console.log("Grouped: ", grouped);
     setFilteredOccupations(grouped);
     setError(
       filtered.length === 0
@@ -271,10 +264,12 @@ export function OccupationsContent({
         : null
     );
   };
-
+  // Hadle skill search
   const handleSkillSearch = useCallback(
     (selectedId: string | null) => {
+      // console.log("running")
       if (!selectedId) {
+        // No filter, show all occupations grouped by first letter
         const grouped = occupations.reduce((acc, occupation) => {
           const firstLetter = occupation.title[0].toUpperCase();
           if (!acc[firstLetter]) acc[firstLetter] = [];
@@ -285,6 +280,8 @@ export function OccupationsContent({
         setError(null);
         return;
       }
+
+      // Find selected subskill
       let occupationIds: string[] = [];
       skillCategories.forEach((category) =>
         category.subSkills.forEach((subSkill) => {
@@ -293,15 +290,20 @@ export function OccupationsContent({
           }
         })
       );
+
+      // Filter occupations that match any occupationId in the subsub-ability
       const filtered = occupations.filter((occ) =>
         occupationIds.includes(occ.onetsoc_code)
       );
+
+      // Group filtered occupations by first letter of the title
       const grouped = filtered.reduce((acc, occupation) => {
         const firstLetter = occupation.title[0].toUpperCase();
         if (!acc[firstLetter]) acc[firstLetter] = [];
         acc[firstLetter].push(occupation);
         return acc;
       }, {} as Record<string, Occupation[]>);
+
       setFilteredOccupations(grouped);
       setError(
         filtered.length === 0
@@ -311,10 +313,12 @@ export function OccupationsContent({
     },
     [occupations]
   );
-
+  // Handle knowledge search
   const handleKnowldegSearch = useCallback(
     (selectedId: string | null) => {
+      // console.log("running")
       if (!selectedId) {
+        // No filter, show all occupations grouped by first letter
         const grouped = occupations.reduce((acc, occupation) => {
           const firstLetter = occupation.title[0].toUpperCase();
           if (!acc[firstLetter]) acc[firstLetter] = [];
@@ -325,6 +329,8 @@ export function OccupationsContent({
         setError(null);
         return;
       }
+
+      // Find selected subskill
       let occupationIds: string[] = [];
       knowledgeCategories.forEach((category) =>
         category.subKnowledges.forEach((subKnowledge) => {
@@ -333,15 +339,20 @@ export function OccupationsContent({
           }
         })
       );
+
+      // Filter occupations that match any occupationId in the subsub-ability
       const filtered = occupations.filter((occ) =>
         occupationIds.includes(occ.onetsoc_code)
       );
+
+      // Group filtered occupations by first letter of the title
       const grouped = filtered.reduce((acc, occupation) => {
         const firstLetter = occupation.title[0].toUpperCase();
         if (!acc[firstLetter]) acc[firstLetter] = [];
         acc[firstLetter].push(occupation);
         return acc;
       }, {} as Record<string, Occupation[]>);
+
       setFilteredOccupations(grouped);
       setError(
         filtered.length === 0
@@ -352,6 +363,7 @@ export function OccupationsContent({
     [occupations]
   );
 
+  // Update loadMore function to recalculate positions after loading more content
   const loadMore = (letter: string) => {
     setVisibleCards((prev) => ({
       ...prev,
@@ -359,6 +371,7 @@ export function OccupationsContent({
     }));
   };
 
+  // Render the appropriate header based on browseBy prop
   const renderHeader = () => {
     if (browseBy === "interest") {
       return (
@@ -369,7 +382,9 @@ export function OccupationsContent({
           />
         </div>
       );
-    } else if (browseBy === "ability") {
+    }
+    // render the ability header if browseBy is ability
+    else if (browseBy === "ability") {
       return (
         <>
           <div className="flex-shrink-0 w-full">
@@ -380,7 +395,9 @@ export function OccupationsContent({
           </div>
         </>
       );
-    } else if (browseBy === "skills") {
+    }
+    // render the ability header if browseBy is skills
+    else if (browseBy === "skills") {
       return (
         <>
           <div className="flex-shrink-0 w-full">
@@ -391,7 +408,9 @@ export function OccupationsContent({
           </div>
         </>
       );
-    } else if (browseBy === "knowledge") {
+    }
+    // render the knowledge header if browseBy is knowledge
+    else if (browseBy === "knowledge") {
       return (
         <>
           <div className="flex-shrink-0 w-full">
@@ -403,6 +422,7 @@ export function OccupationsContent({
         </>
       );
     }
+    // Default header (browseBy === "all")
     return (
       <>
         <div className="max-w-6xl mx-auto flex gap-3 py-4 flex-col lg:flex-row">
@@ -425,6 +445,7 @@ export function OccupationsContent({
     );
   };
 
+  const [showModal, setShowModal] = useState(true);
   return (
     <div className="w-full sm:px-8 px-4">
       <div className="w-full mx-auto">
@@ -437,9 +458,12 @@ export function OccupationsContent({
         </a>
       </div>
       {renderHeader()}
-      <CustomModalCTA 
-        isOpen={isModalOpen} 
-        setIsOpen={setIsModalOpen}
+      {/* placeholder-content*/}
+      <ModalCTA
+        isOccupationsList
+        isOpen={showModal}
+        setIsOpen={setShowModal}
+        delay={4000}
       />
       {showPlaceholder && browseBy !== "all" ? (
         <div className="max-w-4xl mx-auto p-6">
@@ -504,6 +528,7 @@ export function OccupationsContent({
                         >
                           {letter}
                         </h2>
+
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
                           {displayedCards.map((occupation) => (
                             <div
@@ -547,6 +572,7 @@ export function OccupationsContent({
                             </div>
                           ))}
                         </div>
+
                         {visibleCount < totalCards && (
                           <div className="col-span-full flex justify-center md:col-span-2 lg:col-span-4 mt-6">
                             <button

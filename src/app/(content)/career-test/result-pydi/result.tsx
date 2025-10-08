@@ -5,7 +5,7 @@ import { useFormContextData } from "@/context/pydi/FormContext";
 import { Category, categoryDescriptions } from "../PYDI/questionsData";
 import { Icons } from "@/components";
 import { FileDown } from "lucide-react";
-import ModalCTA from "@/components/ui/modal-cta";
+import ModalCTA from "@/components/modal-cta";
 
 type Results = Record<Category, number>;
 
@@ -24,31 +24,34 @@ const scoreToPercentage = (score: number): number => {
 };
 
 // PYDI Scoring Scale Interpretation (using percentages) - Uniform colors
-const getScoreInterpretation = (percentage: number): { level: string; description: string } => {
+const getScoreInterpretation = (
+  percentage: number
+): { level: string; description: string } => {
   if (percentage >= 0 && percentage <= 37) {
     return {
       level: "Low",
-      description: "Youth would benefit greatly from intervention"
+      description: "Youth would benefit greatly from intervention",
     };
   } else if (percentage >= 38 && percentage <= 62) {
     return {
       level: "Low to Average",
-      description: "Would benefit from intervention"
+      description: "Would benefit from intervention",
     };
   } else if (percentage >= 63 && percentage <= 75) {
     return {
       level: "Average to Medium",
-      description: "Consider the levels of the other Cs to determine need for intervention"
+      description:
+        "Consider the levels of the other Cs to determine need for intervention",
     };
   } else if (percentage >= 76 && percentage <= 87) {
     return {
       level: "Medium",
-      description: "Most likely youth is comfortable in this area"
+      description: "Most likely youth is comfortable in this area",
     };
   } else {
     return {
       level: "High",
-      description: "Youth excels in this area"
+      description: "Youth excels in this area",
     };
   }
 };
@@ -63,7 +66,7 @@ export default function Result() {
     setAllAnswers,
     form,
   } = useFormContextData();
-   const [showModal, setShowModal] = useState(true); // Show modal by default on result page
+  const [showModal, setShowModal] = useState(true); // Show modal by default on result page
   useEffect(() => {
     if (
       !submittedData ||
@@ -112,7 +115,12 @@ export default function Result() {
 
   return (
     <div className="min-h-screen bg-white py-10 px-4">
-      <ModalCTA isTestResult isOpen={showModal} setIsOpen={setShowModal} delay={3000}/>
+      <ModalCTA
+        isTestResult
+        isOpen={showModal}
+        setIsOpen={setShowModal}
+        delay={3000}
+      />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col gap-4">
         <header className="bg-gradient-to-r from-green-600 to-blue-600 text-white md:p-8 p-4">
           <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold">
@@ -277,7 +285,8 @@ export default function Result() {
             {/* PDF-only footer (hidden on screen) */}
             <div id="pdf-footer" className="hidden mt-2">
               <h1 className="text-[12px] font-semibold text-center mb-2 text-gray-300">
-                Positive Youth Development Inventory (PYDI) - Based on the 5 C&apos;s Model
+                Positive Youth Development Inventory (PYDI) - Based on the 5
+                C&apos;s Model
               </h1>
               <hr />
             </div>

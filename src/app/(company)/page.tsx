@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { Footer } from "@/components";
 import StickyScrollRevealDemo from "@/components/ui/process";
-import ModalCTA from "@/components/ui/modal-cta";
+import ModalCTA from "@/components/modal-cta";
 
 import HeroSection from "@/components/hero-section/hero-section";
 import ExplorerCard from "@/components/explorer-card/explorer-card";
@@ -20,7 +20,7 @@ const HomePage1 = () => {
     <div className="h-full">
       {/* Global Modal with 4 second delay */}
       <ModalCTA isOpen={showModal} setIsOpen={setShowModal} delay={4000} />
-      
+
       <HeroSection />
       <SchoolSection />
       <FeaturesSection />

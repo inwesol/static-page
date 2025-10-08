@@ -5,7 +5,7 @@ import { useFormContextData } from "@/context/personal-info-context/FormContext"
 import { Category, categoryDescriptions } from "../questionnaire/questionsData";
 import { Icons } from "@/components";
 import { FileDownIcon } from "lucide-react";
-import ModalCTA from "@/components/ui/modal-cta";
+import ModalCTA from "@/components/modal-cta";
 
 type Results = Record<Category, number>;
 
@@ -77,7 +77,12 @@ export default function Result() {
   return (
     <div className="min-h-screen bg-white py-10 px-4">
       {/* Modal CTA for result page */}
-      <ModalCTA isTestResult isOpen={showModal} setIsOpen={setShowModal} delay={3000}/>
+      <ModalCTA
+        isTestResult
+        isOpen={showModal}
+        setIsOpen={setShowModal}
+        delay={3000}
+      />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col gap-4">
         <header className="bg-gradient-to-r from-green-600 to-blue-600 text-white md:p-8 p-4">
           <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold ">

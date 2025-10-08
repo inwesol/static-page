@@ -20,6 +20,7 @@ import { KnowledgeFilter } from "./knowledge-filter";
 import { knowledgeCategories } from "./knowledge-category-constant";
 import { content } from "googleapis/build/src/apis/content";
 import { TargetIcon } from "lucide-react";
+import ModalCTA from "@/components/modal-cta";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -443,6 +444,8 @@ export function OccupationsContent({
       </>
     );
   };
+
+  const [showModal, setShowModal] = useState(true);
   return (
     <div className="w-full sm:px-8 px-4">
       <div className="w-full mx-auto">
@@ -456,6 +459,12 @@ export function OccupationsContent({
       </div>
       {renderHeader()}
       {/* placeholder-content*/}
+      <ModalCTA
+        isOccupationsList
+        isOpen={showModal}
+        setIsOpen={setShowModal}
+        delay={4000}
+      />
       {showPlaceholder && browseBy !== "all" ? (
         <div className="max-w-4xl mx-auto p-6">
           <div className="text-center mb-12">

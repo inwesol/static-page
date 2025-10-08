@@ -35,11 +35,11 @@ const CareerTestDescription: React.FC = () => {
       <div className="flex flex-col gap-4 items-center lg:flex-row lg:justify-center lg:items-start">
         <Card className="w-full max-w-[720px] overflow-hidden bg-white border border-gray-200 shadow-xl rounded-2xl">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold sm:text-3xl text-primary-green-600 md:text-4xl">
+            <CardTitle className="text-2xl font-bold text-primary-green-600">
               Check Future Readiness
             </CardTitle>
             <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
-              Understand your future readiness with our Career Maturity Test.{" "}
+              Understand your future readiness with the Career Maturity Test.{" "}
               <br />
               See how prepared you are for career decisions.
             </CardDescription>
@@ -137,25 +137,25 @@ const CareerTestDescription: React.FC = () => {
         </Card>
         <Card className="w-full max-w-[720px] overflow-hidden bg-white border border-gray-200 shadow-xl rounded-2xl">
           <CardHeader className="text-center">
-            <CardTitle className="text-2xl font-bold sm:text-3xl text-primary-green-600 md:text-4xl">
-              Check Strengths & Difficulties
+            <CardTitle className="text-2xl font-bold text-primary-green-600">
+              Know Your Strengths
             </CardTitle>
+
             <CardDescription className="mt-2 text-sm text-gray-600 md:text-base">
-              Understand your strengths and difficulties with our Career Maturity Test.{" "}
+              Discover your strengths with the Positive Youth Development Test.{" "}
               <br />
-              See how prepared you are for career decisions.
+              Identify your key areas of strengths.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-6 px-6 pb-0 text-sm text-gray-700 md:text-base">
             <div className="p-4">
               <h3 className="mb-1 text-lg font-semibold text-primary-green-600">
-                What is Career Maturity?
+                What is Positive Youth Development (PYD) Test?
               </h3>
               <p>
-                Career maturity is your ability to make informed, confident, and
-                well-prepared decisions about your future career. It reflects
-                how ready you are to explore options, plan ahead, seek guidance,
-                and take ownership of your career path.
+                Positive Youth Development highlights your growth in confidence,
+                skills, caring for others, and building strong relationships. It
+                reflects your readiness to grow and make good choices.
               </p>
             </div>
             <div className="p-4 pt-0">
@@ -163,46 +163,43 @@ const CareerTestDescription: React.FC = () => {
                 What does this test assess?
               </h3>
               <p className="mb-4">
-                Career maturity test is developed by Mark L. Savickas, explores
-                how individuals develop readiness to make informed and
-                appropriate career decisions.
+                The PYD test, developed by Arnold, Nott & Meinhold, helps you
+                discover your strengths and understand how you are growing in
+                different areas of your life.
               </p>
               <p>
-                This test measures four key components:{" "}
-                <strong className="text-primary-green-600">Concern,</strong>{" "}
-                <strong className="text-primary-green-600">Curiosity,</strong>{" "}
+                This test measures six key components:{" "}
+                <strong className="text-primary-green-600">Competence,</strong>{" "}
                 <strong className="text-primary-green-600">Confidence,</strong>{" "}
-                and{" "}
-                <strong className="text-primary-green-600">Consultation</strong>
+                <strong className="text-primary-green-600">Character,</strong>{" "}
+                <strong className="text-primary-green-600">Connection,</strong>{" "}
+                <strong className="text-primary-green-600">Caring,</strong> and{" "}
+                <strong className="text-primary-green-600">Contribution</strong>
                 .
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4 text-center md:grid-cols-3">
               <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
                 <h4 className="mb-2 font-semibold text-primary-green-600">
-                  24 Simple Questions
+                  55 Simple Questions
                 </h4>
                 <p>
-                  Agree and disagree with statements about how you plan your
-                  career.
+                  Strongly agree, Agree, Disagree, and Strongly disagree with
+                  statements.
                 </p>
               </div>
               <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
                 <h4 className="mb-2 font-semibold text-primary-green-600">
                   Instant Feedback
                 </h4>
-                <p>
-                  Receive your career maturity results right after you finish
-                  the test.
-                </p>
+                <p>Receive your PYD results right after you finish the test.</p>
               </div>
               <div className="p-4 border border-gray-100 shadow-sm bg-gray-50 rounded-xl">
                 <h4 className="mb-2 font-semibold text-primary-green-600">
                   Download Report
                 </h4>
                 <p>
-                  Save your results to see where you are now and plan your next
-                  steps.
+                  Save your results to understand your strengths and growth.
                 </p>
               </div>
             </div>
@@ -222,7 +219,7 @@ const CareerTestDescription: React.FC = () => {
                     d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                Completing this test takes approximately 5-10 minutes.
+                Completing this test takes approximately 10-15 minutes.
               </p>
             </div>
           </CardContent>

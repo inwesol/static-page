@@ -40,7 +40,7 @@ export default function Question({
           <button
             key={choice.value}
             onClick={() => handleAnswerClick(choice.value)}
-            className={`px-4 py-2 rounded-lg border transition text-sm ${
+            className={`px-4 py-2 rounded-xl border transition text-sm ${
               selectedChoice === choice.value
                 ? "bg-primary-blue-600 text-white border-primary-blue-600"
                 : "text-primary-blue-600 border-primary-blue-600 hover:bg-primary-blue-50"

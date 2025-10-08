@@ -72,7 +72,7 @@ const ModalCTA: React.FC<Props> = ({
   return (
     <Modal isOpen={isOpen && shouldShow} setIsOpen={setIsOpen}>
       <DialogContent className="sm:max-w-[450px] p-0 overflow-hidden !rounded-2xl bg-gradient-to-br from-primary-blue-50 to-primary-green-50">
-        <div className="bg-gradient-to-br from-primary-blue-50 to-primary-green-50 p-6 ">
+        <div className=" p-6 ">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
             Continue Your Journey
           </h2>

@@ -23,7 +23,7 @@ export const availableEvents =  {
       "name": "Akarsh Sriramoju",
       "title": "Education Psychologist",
       "bio": "Akarsh Sriramoju is an Educational Psychologist with 4 years of experience in both research and industry. A gold medalist in MSc Neural & Cognitive Sciences from the University of Hyderabad, he specialises in improving teaching methodologies, assessments, and coaching psychology. His work focuses on helping young people realise their capabilities by guiding them in their careers, well-being, and leadership. Driven by a vision to transform India, Akarsh is dedicated to empowering young people in educational and professional pathways.",
-      "imageUrl": "https://media.licdn.com/dms/image/v2/D4E03AQGN-jy_w3V1Xg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1719295230949?e=1755734400&v=beta&t=kxsWziyEh7Se9zFCGZOIcNeP4hh0fTXQaji5nq0yH8Y"
+      "imageUrl": "/akarsh.jpeg"
     },
     // "schedule": [
     //   {

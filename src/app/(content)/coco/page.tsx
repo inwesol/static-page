@@ -65,7 +65,7 @@ export default function CocoPage() {
             </div>
             <div className="">
               <video
-                src="/assets/coco-video.mp4"
+                src="/assets/coco.mp4"
                 className="rounded-xl shadow-lg max-w-full h-auto max-h-[800px] border border-gray-200"
                 autoPlay
                 loop
@@ -104,7 +104,7 @@ export default function CocoPage() {
             <div className="flex justify-center pb-2">
               <Image
                 src="/assets/llm-coco-diff.jpg"
-                alt="Coco Diff Illustration"
+                alt="CoCo Diff Illustration"
                 width={800}
                 height={533}
                 className="my-4 max-w-full h-auto rounded-xl shadow-md"

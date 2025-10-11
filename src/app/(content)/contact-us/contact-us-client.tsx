@@ -32,7 +32,7 @@ const contactFormSchema = z.object({
   lastName: z.string().min(1, "Last name is required"),
   email: z.string().email("Please enter a valid email address"),
   subject: z.enum(
-    ["General Inquiry", "Support", "Feedback", "Partnership", "Other"],
+    ["General Inquiry", "Support", "Join us as Coach", "Partnership", "Other"],
     {
       errorMap: () => ({ message: "Please select a subject" }),
     }
@@ -273,10 +273,10 @@ const ContactUsClient = () => {
                               Support
                             </SelectItem>
                             <SelectItem
-                              value="Feedback"
+                              value="Join us as Coach"
                               className="data-[highlighted]:bg-primary1 data-[highlighted]:text-white"
                             >
-                              Feedback
+                              Join us as Coach
                             </SelectItem>
                             <SelectItem
                               value="Partnership"

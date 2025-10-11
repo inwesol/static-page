@@ -1,9 +1,7 @@
 import CareerTest from "./career-test";
 
 const CareerTestPage: React.FC = () => {
-  return (
-      <CareerTest />
-  );
+  return <CareerTest />;
 };
 
 export default CareerTestPage;

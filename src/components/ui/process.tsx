@@ -31,7 +31,7 @@ function StickyScrollRevealDemo() {
           </p>
         </div>
       </AnimationContainer>
-      
+
       <FeatureSteps />
     </div>
   );

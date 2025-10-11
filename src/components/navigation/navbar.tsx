@@ -9,16 +9,9 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { cn, NAV_LINKS } from "@/utils";
-// import { useClerk } from "@clerk/nextjs";
-import { LucideIcon, ZapIcon, ChevronDownIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MaxWidthWrapper from "../global/max-width-wrapper";
@@ -27,7 +20,6 @@ import AnimationContainer from "../global/animation-container";
 import { Icons } from "../global/icons";
 
 const Navbar = () => {
-  // const { user } = useClerk();
   const [scroll, setScroll] = useState(false);
 
   const handleScroll = () => {
@@ -81,13 +73,39 @@ const Navbar = () => {
               <NavigationMenuList>
                 {NAV_LINKS.map((link) => (
                   <NavigationMenuItem key={link.title}>
-                    <Link href={link.href} legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className={navigationMenuTriggerStyle()}
-                      >
-                        {link.title}
-                      </NavigationMenuLink>
-                    </Link>
+                    {link.menu ? (
+                      <>
+                        <NavigationMenuTrigger>
+                          {link.title}
+                        </NavigationMenuTrigger>
+                        <NavigationMenuContent>
+                          <ul
+                            className={cn(
+                              "grid bg-white gap-1 p-4 md:w-[400px] lg:w-[600px] rounded-xl lg:grid-cols-2"
+                            )}
+                          >
+                            {link.menu.map((menuItem) => (
+                              <ListItem
+                                key={menuItem.title}
+                                title={menuItem.title}
+                                href={menuItem.href}
+                                icon={menuItem.icon}
+                              >
+                                {menuItem.tagline}
+                              </ListItem>
+                            ))}
+                          </ul>
+                        </NavigationMenuContent>
+                      </>
+                    ) : (
+                      <Link href={link.href} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          {link.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    )}
                   </NavigationMenuItem>
                 ))}
               </NavigationMenuList>
@@ -109,9 +127,9 @@ const Navbar = () => {
                 variant="primary"
                 size="default"
                 type="button"
-                aria-label="Sign in here"
+                aria-label="Sign In"
               >
-                <span>Sign in here</span>
+                <span>Sign In</span>
               </Button>
 
               {/* Divider */}
@@ -180,14 +198,14 @@ const ListItem = React.forwardRef<
           href={href!}
           ref={ref}
           className={cn(
-            "block select-none space-y-1 rounded-lg p-3 leading-none no-underline outline-none transition-all duration-100 ease-out hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            "block select-none space-y-1 rounded-2xl p-3 leading-none no-underline outline-none transition-all duration-100 ease-out hover:bg-primary-green-200 hover:text-primary-green-200-foreground focus:bg-primary-green-200 focus:text-primary-green-200-foreground",
             className
           )}
           {...props}
         >
-          <div className="flex items-center space-x-2 text-neutral-300">
+          <div className="flex items-center space-x-2 text-black">
             <Icon className="h-4 w-4" />
-            <h6 className="text-sm font-medium !leading-none">{title}</h6>
+            <h6 className="text-sm font-semibold !leading-none">{title}</h6>
           </div>
           <p
             title={children! as string}

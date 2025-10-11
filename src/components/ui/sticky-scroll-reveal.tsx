@@ -8,6 +8,13 @@ import { Play, Pause, CheckCircle, Circle } from "lucide-react";
 
 const features = [
   {
+    step: "Step 0",
+    title: "Start with Future Readiness",
+    content:
+      "Future Readiness introduces self-assessment tools, resources, and activities that build awareness of strengths, interests, and values, forming the foundation for clarity.",
+    image: "/future-readiness.svg",
+  },
+  {
     step: "Step 1",
     title: "Venture into Explorer",
     content:
@@ -18,7 +25,7 @@ const features = [
   },
   {
     step: "Step 2",
-    title: "Evaluate through Coco",
+    title: "Evaluate through CoCo",
     content:
       "Coco assists in evaluating each choice by revealing its consequences. It supports you in understanding and identifying suitable courses, colleges, jobs, work contexts, and environments.",
     image: "/coco.svg",

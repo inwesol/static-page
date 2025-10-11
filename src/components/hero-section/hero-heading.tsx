@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["Coaching", "Guidance"];
+const words = ["Academic", "Personal", "Social"];
 
 export default function HeroHeading() {
   const [index, setIndex] = useState(0);
@@ -18,7 +18,11 @@ export default function HeroHeading() {
     <div className="w-full px-4 sm:px-6 md:px-8">
       <h1 className="w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-gray-900 leading-snug md:leading-tight lg:leading-[1.15] max-w-[880px] mx-auto">
         <span className="inline-block sm:whitespace-nowrap">
-          Where Career
+          Transforming Student
+          {/* <br className="block sm:hidden" />{" "} */}
+        </span>
+        <br className="block sm:hidden" />{" "}
+        <span className="relative">
           <span
             className="relative inline-flex items-center justify-center overflow-hidden"
             style={{
@@ -40,12 +44,8 @@ export default function HeroHeading() {
               </motion.span>
             </AnimatePresence>
           </span>
-        </span>
-        <br className="block sm:hidden" />
-        Meets{" "}
-        <span className="relative text-[#00B24B]">
-          Wellbeing
-          <svg
+          Outcomes
+          {/* <svg
             className="absolute -bottom-2 left-0 w-full h-[10px] sm:h-[16px]"
             viewBox="0 0 180 15"
             fill="none"
@@ -57,7 +57,7 @@ export default function HeroHeading() {
               strokeWidth="2"
               fill="none"
             />
-          </svg>
+          </svg> */}
         </span>
       </h1>
     </div>

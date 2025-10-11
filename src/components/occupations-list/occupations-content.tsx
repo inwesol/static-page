@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip";
 import { OccupationsListSearch } from "./occupations-list-search";
 import { Occupation } from "./types";
+import { interestsList } from "./interests-list";
 import { InterestFilter } from "./interest-filter";
 import { AbilityFilter } from "./ability-filter";
 import { abilityCategories } from "./ability-category-constant";
@@ -19,6 +20,7 @@ import { KnowledgeFilter } from "./knowledge-filter";
 import { knowledgeCategories } from "./knowledge-category-constant";
 import { content } from "googleapis/build/src/apis/content";
 import { TargetIcon } from "lucide-react";
+import ModalCTA from "@/components/modal-cta";
 
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
@@ -187,13 +189,14 @@ export function OccupationsContent({
   }, [filteredOccupations, activeLetter, measurements]);
 
   // Handle interest search
-  // Handle interest search with AND logic
   const handleInterestSearch = (interests: string[]) => {
-    // Filter occupations with code > 3 AND containing ALL selected interests
-    const filtered = occupations.filter(
-      (occupation) =>
-        occupation.code > 3 &&
-        interests.every((interest) => occupation.interest.includes(interest))
+    const result: string = interests.sort().join("");
+    const interestsPart = interestsList[result as keyof typeof interestsList];
+    const interestsPartSet = new Set(
+      interestsPart.map((item) => item.onetsoc_code)
+    );
+    const filtered = occupations.filter((item) =>
+      interestsPartSet.has(item.onetsoc_code)
     );
 
     // Group filtered occupations by first letter of the title
@@ -441,10 +444,27 @@ export function OccupationsContent({
       </>
     );
   };
+
+  const [showModal, setShowModal] = useState(true);
   return (
     <div className="w-full sm:px-8 px-4">
+      <div className="w-full mx-auto">
+        <a
+          href={`/explorer/`}
+          type="button"
+          className="inline-flex justify-center items-center px-4 py-2 mt-3 text-primary1 bg-primary-green-50 hover:bg-primary-green-100 rounded-xl text-base font-bold"
+        >
+          ← Back
+        </a>
+      </div>
       {renderHeader()}
       {/* placeholder-content*/}
+      <ModalCTA
+        isOccupationsList
+        isOpen={showModal}
+        setIsOpen={setShowModal}
+        delay={4000}
+      />
       {showPlaceholder && browseBy !== "all" ? (
         <div className="max-w-4xl mx-auto p-6">
           <div className="text-center mb-12">

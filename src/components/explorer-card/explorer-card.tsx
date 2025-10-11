@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { AnimationContainer } from "@/components";
+import MagicBadge from "../ui/magic-badge";
 
 import {
   Form,
@@ -18,6 +19,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
+import { ArrowRight, School, Smile } from "lucide-react";
+import Link from "next/link";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -66,18 +69,19 @@ const ExplorerCard = () => {
     <>
       <section className="w-full bg-[#F8F4EB] py-10 md:py-14 text-center flex flex-col items-center gap-5 px-6">
         <AnimationContainer delay={0.3}>
-          <span
+          {/* <span
             className="text-base sm:text-lg font-semibold text-[#00B24B]"
             aria-label="Create your own success story"
           >
-            Take a step towards self-discovery.
-          </span>
+            CoCo : AI Mindset Coach is launched!
+          </span> */}
+          <MagicBadge title="CoCo : AI Mindset Coach" color="#3fa1d8" />
         </AnimationContainer>
 
         <AnimationContainer delay={0.4}>
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 max-w-screen-lg leading-snug">
-            The AI Career Coach is launched! <br />
-            Freely access CoCo as an early user.
+            CoCo : AI Mindset Coach is launched! <br /> An Ally For Your Career,
+            Wellbeing & Journey
           </h3>
         </AnimationContainer>
 
@@ -127,7 +131,26 @@ const ExplorerCard = () => {
             </form>
           </Form> */}
 
-          <button
+          <div className="flex justify-center sm:py-2 py-0">
+            <Link
+              href="https://app.inwesol.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className=" mt-4 group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-green-500 to-primary-blue-500 hover:from-primary-green-600 hover:to-primary-blue-600 text-white sm:font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out text-sm sm:text-lg sm:px-10 sm:py-7">
+                <div className="flex items-center gap-2">
+                  <Smile className="size-4 sm:size-5 " />
+                  <span>Say Hi to CoCo 👋</span>
+                </div>
+                {/* <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" /> */}
+
+                {/*shine effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
+              </Button>
+            </Link>
+          </div>
+
+          {/* <button
             onClick={() =>
               window.open(
                 "https://app.inwesol.com",
@@ -135,11 +158,25 @@ const ExplorerCard = () => {
                 "noopener,noreferrer"
               )
             }
-            className="inline-block px-8 sm:px-10 py-2 sm:py-3 bg-primary-green-600 text-white font-semibold text-sm sm:text-base rounded-full hover:bg-primary-green-500 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:ring-offset-2 transition duration-200"
-            aria-label="Access CoCo from here"
+            className="inline-block px-6 sm:px-8 py-1 sm:py-2 bg-primary-green-600 text-white font-semibold text-sm sm:text-base rounded-full hover:bg-primary-green-500 focus:outline-none focus:ring-2 focus:ring-primary-green-600 focus:ring-offset-2 transition duration-200"
+            aria-label="Say Hi to CoCo"
           >
-            Access CoCo from here
-          </button>
+            Say Hi to CoCo 👋
+          </button> */}
+        </AnimationContainer>
+
+        <AnimationContainer delay={0.6} reverse viewport>
+          <div className="w-full flex justify-center">
+            <video
+              src="/assets/coco.mp4"
+              className="rounded-xl shadow-lg max-w-full h-auto max-h-[600px] border border-gray-200"
+              autoPlay
+              loop
+              muted
+              playsInline
+              // controls
+            />
+          </div>
         </AnimationContainer>
       </section>
 

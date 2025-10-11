@@ -44,80 +44,16 @@ const Footer = () => {
               <Icons.logoWithText />
             </div>
             <p className="mt-2 text-sm text-muted-foreground text-start">
-              Beyond careers, towards wellbeing.
+              Ally for Young Minds to Excel.
             </p>
           </div>
         </AnimationContainer>
 
         <div className="md:grid md:grid-cols-3 md:gap-8">
-          {/* <AnimationContainer delay={0.2}>
-            <div className="">
-              <h3 className="font-medium text-primary1">Product</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
-                <li className="mt-2">
-                  <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Features
-                  </Link>
-                </li>
-                <li className="mt-2">
-                  <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Pricing
-                  </Link>
-                </li>
-                <li className="mt-2">
-                  <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Testimonials
-                  </Link>
-                </li>
-                <li className="mt-2">
-                  <Link
-                    href=""
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Integration
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </AnimationContainer> */}
-
-          {/* <AnimationContainer delay={0.4}>
-            <div className="">
-              <h3 className="font-medium text-primary1">Resources</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
-                <li className="mt-2">
-                  <Link
-                    href="/resources/blog"
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Blog
-                  </Link>
-                </li>
-                <li className="mt-2">
-                  <Link
-                    href="/resources/help"
-                    className="transition-all duration-300 hover:text-foreground"
-                  >
-                    Support
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </AnimationContainer> */}
-
-          <AnimationContainer delay={0.4}>
-            <div className="">
-              <h3 className="font-medium text-primary1">Products</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
+          <AnimationContainer delay={0.2}>
+            <div className="flex flex-col mt-4 md:mt-0">
+              <h3 className="font-medium text-primary1">Features</h3>
+              <ul className="mt-2 text-sm text-muted-foreground">
                 <li className="mt-2">
                   <Link
                     href="/explorer/"
@@ -136,29 +72,45 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/events/coaching/"
+                    href="/coaching/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Coaching Session
+                    Coaching
                   </Link>
                 </li>
-                {/* <li className="mt-2">
+                <li className="mt-2">
                   <Link
-                    href="/events/webinar-know-your-why/"
-                    className="transition-all duration-300 hover:text-foreground"
+                    href="/behavioural-tools/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Free Workshop
+                    Behavioural Tools
                   </Link>
-                </li> */}
+                </li>
+                <li className="mt-2">
+                  <Link
+                    href="/community/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
+                  >
+                    Community
+                  </Link>
+                </li>
               </ul>
             </div>
           </AnimationContainer>
 
-          <AnimationContainer delay={0.5}>
-            <div className="flex flex-col mt-10 md:mt-0">
+          <AnimationContainer delay={0.3}>
+            <div className="flex flex-col mt-6 md:mt-0">
               <h3 className="font-medium text-primary1">Company</h3>
-              <ul className="mt-4 text-sm text-muted-foreground">
-                <li className="">
+              <ul className="mt-2 text-sm text-muted-foreground">
+                <li className="mt-2">
+                  <Link
+                    href="/blog/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
+                  >
+                    Blogs
+                  </Link>
+                </li>
+                <li className="mt-2">
                   <Link
                     href="/story/"
                     className="transition-all duration-300 hover:text-primary-green-600"
@@ -168,18 +120,34 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/privacy/"
+                    href="/contact-us/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Privacy Policy
+                    Contact Us
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </AnimationContainer>
+
+          <AnimationContainer delay={0.4}>
+            <div className="flex flex-col mt-6 md:mt-0">
+              <h3 className="font-medium text-primary1">Partners</h3>
+              <ul className="mt-2 text-sm text-muted-foreground">
+                <li className="mt-2">
+                  <Link
+                    href="/school/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
+                  >
+                    Schools
                   </Link>
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/terms/"
+                    href="/coach/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Terms & Conditions
+                    Coaches
                   </Link>
                 </li>
               </ul>
@@ -193,7 +161,20 @@ const Footer = () => {
         <div className="flex flex-col-reverse justify-between flex-1 w-full md:flex-row">
           <p className="mt-4 text-sm text-center text-muted-foreground md:mt-0 md:text-left">
             &copy; {new Date().getFullYear()} Inwesol Global Pvt.Ltd All rights
-            reserved.
+            reserved.{" "}
+            <Link
+              href="/privacy/"
+              className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
+            >
+              Privacy Policy
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="/terms/"
+              className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
+            >
+              Terms & Conditions
+            </Link>
           </p>
 
           <div className="flex items-center justify-center gap-4 md:justify-end">

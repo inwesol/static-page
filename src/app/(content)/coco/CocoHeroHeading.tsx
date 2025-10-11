@@ -17,11 +17,11 @@ export default function CocoHeroHeading() {
 
   return (
     <>
-      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold md:leading-snug text-slate-900 leading-tight pd-2">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold md:leading-snug text-slate-900 leading-tight">
         An Ally <br />
         <span>For your </span>
         <span
-          className="relative inline-flex overflow-hidden pt-2"
+          className="relative inline-flex overflow-hidden"
           style={{
             width: `5.2em`,
             height: "1.2em",

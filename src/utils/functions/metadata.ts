@@ -2,11 +2,11 @@ import { Metadata } from "next";
 
 export const generateMetadata = ({
   title = {
-    default: `Inwesol - Beyond careers, towards wellbeing`,
+    default: `Inwesol - Ally for Young Minds to Excel`,
     template: `%s | Inwesol`,
   },
   description = `${process.env.NEXT_PUBLIC_APP_NAME} is the career guidance platform. It brings clarity, builds confidence, and reduces stress, leading to a more purposeful career. Get expert career guidance to make informed decisions and achieve your goals with evidence-based support.`,
-  image = "/thumbnail.png",  
+  image = "/ally-1.jpg",  
   icons = [
     {
       rel: "apple-touch-icon",

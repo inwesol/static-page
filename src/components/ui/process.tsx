@@ -4,6 +4,8 @@ import FeatureSteps from "@/components/ui/sticky-scroll-reveal";
 import AnimationContainer from "@/components/global/animation-container";
 import MagicBadge from "./magic-badge";
 
+
+
 function StickyScrollRevealDemo() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-green-50 via-white to-primary-blue-50 relative overflow-hidden">

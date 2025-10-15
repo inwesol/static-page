@@ -22,22 +22,23 @@ interface Props {
 
 const links: ModalLink[] = [
   {
-    title: "Career Test",
-    description: "Take the career maturity test to discover your strengths.",
+    title: "Future Readiness",
+    description:
+      "Tests for students to discover their strengths and readiness for the future",
     href: "/career-test",
     icon: <Target className="w-6 h-6" />,
     gradient: "from-blue-500 to-cyan-500",
   },
   {
     title: "Explorer",
-    description: "Explore career options and resources.",
+    description: "One stop solution for students' career info research",
     href: "/explorer",
     icon: <Compass className="w-6 h-6" />,
     gradient: "from-purple-500 to-pink-500",
   },
   {
-    title: "Coco Mindset Coach",
-    description: "Visit Coco AI Mindset Coach for personalized guidance.",
+    title: "CoCo Mindset Coach",
+    description: "Everyday ally for students to listen, coach, and empower",
     href: "https://app.inwesol.com/chat",
     external: true,
     icon: <Sparkles className="w-6 h-6" />,
@@ -74,10 +75,10 @@ const ModalCTA: React.FC<Props> = ({
       <DialogContent className="sm:max-w-[450px] p-0 overflow-hidden !rounded-2xl bg-gradient-to-br from-primary-blue-50 to-primary-green-50">
         <div className=" p-6 ">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            Continue Your Journey
+            Begin The Journey
           </h2>
           <p className="text-gray-600 text-sm">
-            Explore these tools to help you grow and succeed
+            Tools for students to progress and grow
           </p>
         </div>
 

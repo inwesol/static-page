@@ -49,6 +49,15 @@ const features = [
     color: "primary-blue",
     accent: "accent-coral",
   },
+  {
+    step: "Step 5",
+    title: "Grow with Community",
+    content:
+      "Community connects students with peers, mentors, and educators, fostering shared learning, collaboration, and belonging while offering continuous support for growth.",
+    image: "/community.svg",
+    color: "primary-blue",
+    accent: "accent-coral",
+  },
 ];
 
 interface FeatureStepsProps {
@@ -84,10 +93,12 @@ function FeatureSteps({
     setProgress(0);
   };
 
-  // Get visible cards (current and next)
+  // Get visible cards (previous, current, next)
   const getVisibleCards = () => {
+    const prevIndex =
+      currentFeature === 0 ? features.length - 1 : currentFeature - 1;
     const nextIndex = (currentFeature + 1) % features.length;
-    return [currentFeature, nextIndex];
+    return [prevIndex, currentFeature, nextIndex];
   };
 
   const visibleIndices = getVisibleCards();
@@ -99,14 +110,14 @@ function FeatureSteps({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with controls */}
         <div className="flex flex-col sm:flex-row justify-between items-center mb-8 lg:mb-12">
-          <div className="text-center sm:text-left mb-6 sm:mb-0">
+          {/* <div className="text-center sm:text-left mb-6 sm:mb-0">
             <h2 className="text-2xl lg:text-3xl font-bold mb-2 bg-gradient-to-r from-primary-green-600 via-primary-blue-600 to-primary-green-600 bg-clip-text text-transparent">
               Your Journey in 4 Steps
             </h2>
             <p className="text-lg text-gray-600">
               Follow our guided process to unlock your potential
             </p>
-          </div>
+          </div> */}
 
           {/* <div className="flex items-center gap-4">
             <button
@@ -126,9 +137,9 @@ function FeatureSteps({
         </div>
 
         {/* Main content */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-4 md:gap-12 lg:gap-16 items-center">
           {/* Left side - Steps */}
-          <div className="relative h-[500px] overflow-hidden">
+          <div className="relative h-[300px] lg:h-[700px] overflow-hidden">
             <AnimatePresence initial={false}>
               {visibleIndices.map((index, position) => {
                 const feature = features[index];
@@ -137,23 +148,36 @@ function FeatureSteps({
                 const stepColor = feature.color;
                 const stepAccent = feature.accent;
 
+                // Position cards: previous (0), current (1), next (2)
+                const getCardPosition = () => {
+                  if (position === 0) return 0; // Previous card at top
+                  if (position === 1) return 200; // Current card in middle (with gap)
+                  return 400; // Next card at bottom (with gap)
+                };
+
                 return (
                   <motion.div
                     key={`card-${index}-${currentFeature}`}
-                    className="absolute w-full cursor-pointer group"
-                    style={{ top: position === 0 ? 0 : 260 }}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ 
-                      opacity: 1,
-                      scale: 1
-                    }}
-                    exit={{ 
+                    className="absolute w-full cursor-pointer group hidden lg:block"
+                    style={{ top: getCardPosition() }}
+                    initial={{
                       opacity: 0,
-                      scale: 0.95
+                      y: 20,
+                      scale: 0.85,
                     }}
-                    transition={{ 
-                      duration: 0.4,
-                      ease: "easeInOut"
+                    animate={{
+                      opacity: isActive ? 1 : 0.6,
+                      y: 0,
+                      scale: isActive ? 1 : 0.85,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 20,
+                      scale: 0.85,
+                    }}
+                    transition={{
+                      duration: 0.85,
+                      ease: "easeInOut",
                     }}
                     onClick={() => handleStepClick(index)}
                   >
@@ -216,7 +240,7 @@ function FeatureSteps({
                           </h3>
 
                           <p
-                            className={`text-sm sm:text-base  transition-colors duration-300 ${
+                            className={`text-sm sm:text-base transition-colors duration-300 ${
                               isActive
                                 ? "text-gray-700"
                                 : "text-gray-600 group-hover:text-gray-700"
@@ -231,12 +255,41 @@ function FeatureSteps({
                 );
               })}
             </AnimatePresence>
+
+            {/* Mobile version - Single card */}
+            <div className="lg:hidden">
+              <motion.div
+                key={`mobile-card-${currentFeature}`}
+                className="w-full cursor-pointer group"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                onClick={() => handleStepClick(currentFeature)}
+              >
+                <div className="relative p-6 rounded-2xl border-2 border-primary-green-400 bg-gradient-to-br from-primary-green-50 to-white shadow-xl shadow-primary-green-100">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-sm font-semibold px-2 py-1 rounded-full bg-primary-green-100 text-primary-green-700">
+                          {features[currentFeature].step}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-3 text-primary-green-900">
+                        {features[currentFeature].title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        {features[currentFeature].content}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
 
           <div className="relative">
-            <div
-              className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-primary-green-200 transition-all duration-700"
-            >
+            <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-primary-green-200 transition-all duration-700">
               <div className="absolute inset-0 bg-gradient-to-br from-primary-green-100 via-primary-green-50 to-accent-amber-50 transition-all duration-700"></div>
 
               <div className="absolute top-4 right-4 w-20 h-20 rounded-full bg-primary-green-300 opacity-20 transition-all duration-700"></div>

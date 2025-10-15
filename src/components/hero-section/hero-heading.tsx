@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const words = ["Academic", "Personal", "Social"];
 
+// Word width mapping for proper spacing
+const wordWidths: Record<string, string> = {
+  Academic: "5.2em",
+  Personal: "4.6em",
+  Social: "3.4em",
+};
+
 export default function HeroHeading() {
   const [index, setIndex] = useState(0);
 
@@ -15,7 +22,7 @@ export default function HeroHeading() {
   }, []);
 
   return (
-    <div className="w-full px-4 sm:px-6 md:px-8">
+    <div className="w-full px-2 sm:px-6 md:px-8">
       <h1 className="w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-gray-900 leading-snug md:leading-tight lg:leading-[1.15] max-w-[880px] mx-auto">
         <span className="inline-block sm:whitespace-nowrap">
           Transforming Student
@@ -23,12 +30,18 @@ export default function HeroHeading() {
         </span>
         <br className="block sm:hidden" />{" "}
         <span className="relative">
-          <span
+          <motion.span
             className="relative inline-flex items-center justify-center overflow-hidden"
             style={{
-              width: `5.2em`,
               height: "1.2em",
               clipPath: "inset(0 0 0 0)",
+            }}
+            animate={{
+              width: wordWidths[words[index]] || "5.2em",
+            }}
+            transition={{
+              duration: 0.4,
+              ease: "easeInOut",
             }}
           >
             <AnimatePresence mode="wait">
@@ -43,7 +56,7 @@ export default function HeroHeading() {
                 {words[index]}
               </motion.span>
             </AnimatePresence>
-          </span>
+          </motion.span>
           Outcomes
           {/* <svg
             className="absolute -bottom-2 left-0 w-full h-[10px] sm:h-[16px]"

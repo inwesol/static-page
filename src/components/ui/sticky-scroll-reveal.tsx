@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/utils";
+import { Play, Pause, CheckCircle, Circle } from "lucide-react";
 
 const features = [
   {
@@ -19,6 +20,8 @@ const features = [
     content:
       "Explore a wide range of career options and become aware of the knowledge, skills, and abilities required for any occupation.",
     image: "/explorer.svg",
+    color: "primary-green",
+    accent: "accent-amber",
   },
   {
     step: "Step 2",
@@ -26,13 +29,16 @@ const features = [
     content:
       "Coco assists in evaluating each choice by revealing its consequences. It supports you in understanding and identifying suitable courses, colleges, jobs, work contexts, and environments.",
     image: "/coco.svg",
+    color: "primary-blue",
+    accent: "accent-coral",
   },
   {
     step: "Step 3",
     title: "Resolve by Coaching",
-    content:
-      "Career Coaching guides you in finding your “why,” setting goals, resolving dilemmas, rewriting your story, making decisions, and crafting a clear road map.",
+    content: `Career Coaching guides you in finding your "why," setting goals, resolving dilemmas, rewriting your story, making decisions, and crafting a clear road map.`,
     image: "/coaching.svg",
+    color: "primary-green",
+    accent: "accent-amber",
   },
   {
     step: "Step 4",
@@ -40,6 +46,8 @@ const features = [
     content:
       "Through Behavioural Tools, you can bring positive change within yourself while effectively managing wellbeing, sustaining new habits, and achieving your goals.",
     image: "/b-tools.svg",
+    color: "primary-blue",
+    accent: "accent-coral",
   },
   {
     step: "Step 5",
@@ -47,15 +55,10 @@ const features = [
     content:
       "Community connects students with peers, mentors, and educators, fostering shared learning, collaboration, and belonging while offering continuous support for growth.",
     image: "/community.svg",
+    color: "primary-blue",
+    accent: "accent-coral",
   },
 ];
-
-interface Feature {
-  step: string;
-  title?: string;
-  content: string;
-  image: string;
-}
 
 interface FeatureStepsProps {
   className?: string;
@@ -68,8 +71,11 @@ function FeatureSteps({
 }: FeatureStepsProps) {
   const [currentFeature, setCurrentFeature] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   useEffect(() => {
+    if (!isPlaying) return;
+
     const timer = setInterval(() => {
       if (progress < 100) {
         setProgress((prev) => prev + 100 / (autoPlayInterval / 100));
@@ -80,74 +86,257 @@ function FeatureSteps({
     }, 100);
 
     return () => clearInterval(timer);
-  }, [progress, features.length, autoPlayInterval]);
+  }, [progress, autoPlayInterval, isPlaying]);
+
+  const handleStepClick = (index: number) => {
+    setCurrentFeature(index);
+    setProgress(0);
+  };
+
+  // Get visible cards (previous, current, next)
+  const getVisibleCards = () => {
+    const prevIndex =
+      currentFeature === 0 ? features.length - 1 : currentFeature - 1;
+    const nextIndex = (currentFeature + 1) % features.length;
+    return [prevIndex, currentFeature, nextIndex];
+  };
+
+  const visibleIndices = getVisibleCards();
+  const currentColor = features[currentFeature].color;
+  const currentAccent = features[currentFeature].accent;
 
   return (
-    <div className={cn("p-8 md:p-12 lg:py-16", className)}>
-      <div className="max-w-5xl mx-auto w-full">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12">
-          <div
-            className={cn(
-              "order-1 md:order-2 relative rounded-lg flex items-center justify-center h-[300px] sm:h-[350px] md:h-auto"
-            )}
-          >
-            <AnimatePresence mode="wait">
-              {features.map(
-                (feature, index) =>
-                  index === currentFeature && (
-                    <motion.div
-                      key={index}
-                      className="w-full h-full flex items-center justify-center rounded-lg overflow-hidden"
-                      initial={{ y: 100, opacity: 0, rotateX: -20 }}
-                      animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                      exit={{ y: -100, opacity: 0, rotateX: 20 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
+    <div className={cn("relative py-4 lg:py-8", className)}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header with controls */}
+        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 lg:mb-12">
+          {/* <div className="text-center sm:text-left mb-6 sm:mb-0">
+            <h2 className="text-2xl lg:text-3xl font-bold mb-2 bg-gradient-to-r from-primary-green-600 via-primary-blue-600 to-primary-green-600 bg-clip-text text-transparent">
+              Your Journey in 4 Steps
+            </h2>
+            <p className="text-lg text-gray-600">
+              Follow our guided process to unlock your potential
+            </p>
+          </div> */}
+
+          {/* <div className="flex items-center gap-4">
+            <button
+              onClick={togglePlayPause}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full border-2 transition-all duration-300 ${
+                currentColor === "primary-green"
+                  ? "border-primary-green-500 text-primary-green-700 hover:bg-primary-green-50"
+                  : "border-primary-blue-500 text-primary-blue-700 hover:bg-primary-blue-50"
+              }`}
+            >
+              {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+              <span className="text-sm font-medium">
+                {isPlaying ? "Pause" : "Play"}
+              </span>
+            </button>
+          </div> */}
+        </div>
+
+        {/* Main content */}
+        <div className="grid lg:grid-cols-2 gap-4 md:gap-12 lg:gap-16 items-center">
+          {/* Left side - Steps */}
+          <div className="relative h-[300px] lg:h-[700px] overflow-hidden">
+            <AnimatePresence initial={false}>
+              {visibleIndices.map((index, position) => {
+                const feature = features[index];
+                const isActive = index === currentFeature;
+                const isCompleted = index < currentFeature;
+                const stepColor = feature.color;
+                const stepAccent = feature.accent;
+
+                // Position cards: previous (0), current (1), next (2)
+                const getCardPosition = () => {
+                  if (position === 0) return 0; // Previous card at top
+                  if (position === 1) return 200; // Current card in middle (with gap)
+                  return 400; // Next card at bottom (with gap)
+                };
+
+                return (
+                  <motion.div
+                    key={`card-${index}-${currentFeature}`}
+                    className="absolute w-full cursor-pointer group hidden lg:block"
+                    style={{ top: getCardPosition() }}
+                    initial={{
+                      opacity: 0,
+                      y: 20,
+                      scale: 0.85,
+                    }}
+                    animate={{
+                      opacity: isActive ? 1 : 0.6,
+                      y: 0,
+                      scale: isActive ? 1 : 0.85,
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: 20,
+                      scale: 0.85,
+                    }}
+                    transition={{
+                      duration: 0.85,
+                      ease: "easeInOut",
+                    }}
+                    onClick={() => handleStepClick(index)}
+                  >
+                    {/* for tailwind to include shades of blue in the final bundle */}
+                    <div
+                      className="hidden 
+    bg-primary-blue-25 
+    text-primary-blue-200 
+    border-primary-blue-400 
+    shadow-primary-blue-100 
+  "
+                    ></div>
+                    <div
+                      className="hidden 
+    bg-primary-blue-25 
+    text-accent-amber-400 sm:text-accent-coral-400 accent-amber-400
+    border-primary-blue-200 
+    shadow-primary-blue-100 
+  "
+                    ></div>
+                    <div
+                      className="hidden 
+    bg-primary-green-25 
+    text-primary-green-200 
+    border-primary-green-400 
+    shadow-primary-green-100 
+  "
+                    ></div>
+                    <div
+                      className={`relative p-6 rounded-2xl border-2 transition-all duration-500 ${
+                        isActive
+                          ? "border-primary-green-400 bg-gradient-to-br from-primary-green-50 to-white shadow-xl shadow-primary-green-100"
+                          : isCompleted
+                          ? "border-primary-green-200 bg-primary-green-25"
+                          : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg"
+                      }`}
                     >
-                      <Image
-                        src={feature.image}
-                        alt={feature.step}
-                        className="object-contain object-center"
-                        fill
-                        priority
-                      />
-                    </motion.div>
-                  )
-              )}
+                      <div className="flex items-start gap-4">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span
+                              className={`text-sm font-semibold px-2 py-1 rounded-full ${
+                                isActive
+                                  ? "bg-primary-green-100 text-primary-green-700"
+                                  : "text-gray-500"
+                              }`}
+                            >
+                              {feature.step}
+                            </span>
+                          </div>
+
+                          <h3
+                            className={`text-xl font-bold mb-3 transition-colors duration-300 ${
+                              isActive
+                                ? "text-primary-green-900"
+                                : "text-gray-800 group-hover:text-gray-900"
+                            }`}
+                          >
+                            {feature.title}
+                          </h3>
+
+                          <p
+                            className={`text-sm sm:text-base transition-colors duration-300 ${
+                              isActive
+                                ? "text-gray-700"
+                                : "text-gray-600 group-hover:text-gray-700"
+                            }`}
+                          >
+                            {feature.content}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
-          </div>
 
-          <div className="order-2 md:order-1 space-y-6 md:space-y-8">
-            {features.map((feature, index) => (
+            {/* Mobile version - Single card */}
+            <div className="lg:hidden">
               <motion.div
-                key={index}
-                className="flex items-start gap-4 md:gap-6"
-                initial={{ opacity: 0.3 }}
-                animate={{ opacity: index === currentFeature ? 1 : 0.3 }}
-                transition={{ duration: 0.5 }}
+                key={`mobile-card-${currentFeature}`}
+                className="w-full cursor-pointer group"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                onClick={() => handleStepClick(currentFeature)}
               >
-                <motion.div
-                  className={cn(
-                    "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2",
-                    index === currentFeature
-                      ? "bg-primary border-primary text-primary-foreground scale-110"
-                      : "bg-muted border-muted-foreground"
-                  )}
-                >
-                  <span className="text-base md:text-lg font-semibold">
-                    {index}
-                  </span>
-                </motion.div>
-
-                <div className="flex-1 space-y-2">
-                  <h3 className="text-lg md:text-xl font-semibold leading-snug">
-                    {feature.title || feature.step}
-                  </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    {feature.content}
-                  </p>
+                <div className="relative p-6 rounded-2xl border-2 border-primary-green-400 bg-gradient-to-br from-primary-green-50 to-white shadow-xl shadow-primary-green-100">
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-sm font-semibold px-2 py-1 rounded-full bg-primary-green-100 text-primary-green-700">
+                          {features[currentFeature].step}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-3 text-primary-green-900">
+                        {features[currentFeature].title}
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-700">
+                        {features[currentFeature].content}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
-            ))}
+            </div>
+          </div>
+
+          <div className="relative">
+            <div className="relative h-[400px] lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-primary-green-200 transition-all duration-700">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-green-100 via-primary-green-50 to-accent-amber-50 transition-all duration-700"></div>
+
+              <div className="absolute top-4 right-4 w-20 h-20 rounded-full bg-primary-green-300 opacity-20 transition-all duration-700"></div>
+              <div
+                className={`absolute bottom-4 left-4 w-16 h-16 rounded-full opacity-20 transition-all duration-700 ${
+                  currentAccent === "accent-amber"
+                    ? "bg-accent-amber-300"
+                    : "bg-accent-coral-300"
+                }`}
+              ></div>
+
+              <AnimatePresence mode="wait">
+                <motion.div
+                  layout
+                  key={currentFeature}
+                  className="absolute inset-0 flex items-center justify-center p-8"
+                  initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, rotateY: 15 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={features[currentFeature].image}
+                      alt={features[currentFeature].title}
+                      fill
+                      className="object-contain drop-shadow-2xl"
+                      priority
+                    />
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="flex justify-center mt-6 gap-3">
+              {features.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleStepClick(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentFeature
+                      ? "bg-primary-green-500 scale-125"
+                      : "bg-gray-300 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>

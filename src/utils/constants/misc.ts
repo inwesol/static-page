@@ -118,5 +118,19 @@ export const REVIEWS = [
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",
         rating: 5,
         review: "The coaching sessions were incredibly valuable. I feel heard, supported, and motivated. My journey with Inwesol helped me explore aspects of myself I hadn’t paid attention to. During the coaching journey, I gained clarity about my strengths, interests, and future direction. Thank you to my coach and Inwesol team for the constant guidance and encouragement. I feel more confident and inspired to take the next steps toward my goals."
+    },
+    {
+        name: "Mamidi Sriram",
+        position: "Student, Class 12th Standard",
+        avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+        rating: 5,
+        review: "Really thankful to Akarsh who helped me to start thinking, identify options, evaluate options and be able to take a decision. I was thinking of getting an answer for my questions and suggestion for my career choice but he proved me wrong and the way he gave inputs and made me think was remarkable. I have chosen my career path now and started working towards it. Thanks to Akarsh and Inwesol for all the help."
+    },
+    {
+        name: "Riya Pandey",
+        position: "Student, Class 11th Standard",
+        avatar: "https://randomuser.me/api/portraits/women/2.jpg",
+        rating: 5,
+        review: "I got to know about Inwesol from one of my friends. Not only with my career choices but they also helped me with my life and my problems, like how to deal with them. Before joining Inwesol, I was a nerdy girl with low confidence, an introvert with a depressed mind, full of negativity and overthinking. After joining, my personality changed, and my confidence started to grow day by day. Inwesol made me a better person, helping me live a better life with a positive mindset."
     }
 ] as const;

@@ -1,5 +1,4 @@
 "use client";
-import { buttonVariants } from "@/components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,15 +8,15 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { Button } from "@/components/ui/button";
 import { cn, NAV_LINKS } from "@/utils";
-import { LucideIcon } from "lucide-react";
+import { LucideIcon, LogInIcon, UserIcon, ShieldCheckIcon } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import MaxWidthWrapper from "../global/max-width-wrapper";
 import MobileNavbar from "./mobile-navbar";
 import AnimationContainer from "../global/animation-container";
 import { Icons } from "../global/icons";
+import { Button } from "../ui/button";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
@@ -43,17 +42,23 @@ const Navbar = () => {
 
   const loginOptions = [
     {
-      label: "Login as Admin",
-      href: "https://admin-inwesol-main.vercel.app",
+      title: "Sign In as Coach",
+      tagline: "Access coach dashboard",
+      href: "https://coach.inwesol.com/sign-in",
+      icon: UserIcon,
     },
     {
-      label: "Login as Coach",
-      href: "https://coach-inwesol-main.vercel.app",
+      title: "Sign In as Admin",
+      tagline: "Access admin panel",
+      href: "https://admin.inwesol.com/sign-in",
+      icon: ShieldCheckIcon,
     },
-    {
-      label: "Login as Partner",
-      href: "https://partner-portal-gray.vercel.app",
-    },
+    // {
+    //   title: "Sign In as Partner",
+    //   tagline: "Access partner portal",
+    //   href: "https://partner.inwesol.com/sign-in",
+    //   icon: UserIcon,
+    // },
   ];
 
   return (
@@ -111,74 +116,65 @@ const Navbar = () => {
               </NavigationMenuList>
             </NavigationMenu>
           </div>
+
           <div className="hidden lg:flex items-center h-full">
-            {/* Login Button Group */}
-            <div className="flex items-center bg-primary-green-600 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group">
-              {/* Main Login Button */}
+            {/* Sign In Button (Desktop) */}
+            <Link
+              href="https://app.inwesol.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
-                onClick={() =>
-                  window.open(
-                    "https://app.inwesol.com",
-                    "_blank",
-                    "noopener,noreferrer"
-                  )
-                }
-                className="w-full rounded-xl px-4 py-2 text-white font-semibold transition-all duration-200"
                 variant="primary"
                 size="default"
                 type="button"
                 aria-label="Sign In"
+                className="rounded-l-xl bg-primary-green-600 text-white font-semibold hover:bg-primary-green-700 transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                <span>Sign In</span>
+                Sign In
               </Button>
+            </Link>
 
-              {/* Divider */}
-              {/* <div className="w-px h-5 bg-green-500/30" /> */}
+            {/* Divider */}
+            <div className="w-px h-9 bg-white" />
 
-              {/* Dropdown Trigger */}
-              {/* <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    size="sm"
+            {/* Login Options (Desktop) */}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
                     className={cn(
-                      "bg-transparent hover:bg-green-700 text-white px-2.5 py-2 h-9",
-                      "border-0 shadow-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-transparent",
-                      "transition-all duration-200"
+                      "group inline-flex h-9 items-center justify-center rounded-r-xl",
+                      "bg-primary-green-600 text-white font-semibold",
+                      "text-base px-1",
+                      "hover:bg-primary-green-700",
+                      "transition-all duration-200",
+                      "data-[state=open]:bg-primary-green-700",
+                      "shadow-sm hover:shadow-md",
+                      "[&>svg:last-child]:text-white [&>svg:last-child]:mr-2 [&>svg:last-child]:mt-1"
                     )}
-                  >
-                    <ChevronDownIcon className="h-3.5 w-3.5 transition-transform duration-200 group-data-[state=open]:rotate-180" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent 
-                  align="end" 
-                  className={cn(
-                    "w-52 mt-2 rounded-xl border-0 shadow-xl",
-                    "bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl",
-                    "animate-in fade-in-0 zoom-in-95 slide-in-from-top-2 duration-200",
-                    "data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
-                    "data-[state=closed]:zoom-out-95 data-[state=closed]:slide-out-to-top-2",
-                    "p-1.5"
-                  )}
-                >
-                  {loginOptions.map((option, index) => (
-                    <DropdownMenuItem key={index} asChild>
-                      <Link
-                        href={option.href}
-                        className={cn(
-                          "w-full cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium",
-                          "hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50",
-                          "hover:text-green-700 dark:hover:from-green-900/20 dark:hover:to-emerald-900/20",
-                          "dark:hover:text-green-300 transition-all duration-200",
-                          "flex items-center"
-                        )}
-                      >
-                        {option.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu> */}
-            </div>
+                  ></NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul
+                      className={cn(
+                        "grid bg-white gap-1 p-4 w-[320px] rounded-xl shadow-lg border border-gray-100"
+                      )}
+                    >
+                      {loginOptions.map((option) => (
+                        <ListItem
+                          key={option.title}
+                          title={option.title}
+                          href={option.href}
+                          icon={option.icon}
+                        >
+                          {option.tagline}
+                        </ListItem>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
           <MobileNavbar />
         </MaxWidthWrapper>
@@ -191,12 +187,16 @@ const ListItem = React.forwardRef<
   React.ElementRef<"a">,
   React.ComponentPropsWithoutRef<"a"> & { title: string; icon: LucideIcon }
 >(({ className, title, href, icon: Icon, children, ...props }, ref) => {
+  const isExternal = href?.startsWith("http");
+
   return (
     <li>
       <NavigationMenuLink asChild>
         <Link
           href={href!}
           ref={ref}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
           className={cn(
             "block select-none space-y-1 rounded-2xl p-3 leading-none no-underline outline-none transition-all duration-100 ease-out hover:bg-primary-green-200 hover:text-primary-green-200-foreground focus:bg-primary-green-200 focus:text-primary-green-200-foreground",
             className

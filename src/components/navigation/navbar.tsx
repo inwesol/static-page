@@ -17,9 +17,11 @@ import MobileNavbar from "./mobile-navbar";
 import AnimationContainer from "../global/animation-container";
 import { Icons } from "../global/icons";
 import { Button } from "../ui/button";
+import { useStickyBanner } from "@/context/sticky-banner-context";
 
 const Navbar = () => {
   const [scroll, setScroll] = useState(false);
+  const { isBannerOpen } = useStickyBanner();
 
   const handleScroll = () => {
     if (window.scrollY > 8) {
@@ -47,12 +49,12 @@ const Navbar = () => {
       href: "https://coach.inwesol.com/sign-in",
       icon: UserIcon,
     },
-    {
-      title: "Sign In as Admin",
-      tagline: "Access admin panel",
-      href: "https://admin.inwesol.com/sign-in",
-      icon: ShieldCheckIcon,
-    },
+    // {
+    //   title: "Sign In as Admin",
+    //   tagline: "Access admin panel",
+    //   href: "https://admin.inwesol.com/sign-in",
+    //   icon: ShieldCheckIcon,
+    // },
     // {
     //   title: "Sign In as Partner",
     //   tagline: "Access partner portal",
@@ -64,7 +66,8 @@ const Navbar = () => {
   return (
     <header
       className={cn(
-        "sticky top-0 inset-x-0 h-14 w-full border-b border-transparent z-50 select-none",
+        "sticky inset-x-0 h-14 w-full border-b border-transparent z-50 select-none transition-all duration-300",
+        isBannerOpen ? "top-12" : "top-0",
         scroll && "border-background/80 bg-background/40 backdrop-blur-md"
       )}
     >

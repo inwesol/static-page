@@ -1,19 +1,19 @@
 "use client";
-import { StarIcon } from "lucide-react";
 import { AnimationContainer, MaxWidthWrapper } from "@/components";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
 import MagicBadge from "../ui/magic-badge";
-import MagicCard from "../ui/magic-card";
+import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
 import { REVIEWS } from "@/utils/constants/misc";
 
 const Testimonials = () => {
+  // Transform REVIEWS data to match InfiniteMovingCards format
+  const testimonials = REVIEWS.map((review) => ({
+    quote: "review" in review ? (review as any).review : undefined,
+    name: review.name,
+    title: review.position,
+    rating: review.rating,
+    videoUrl: "videoUrl" in review ? (review as any).videoUrl : undefined, // YouTube URL or direct video file URL
+  }));
+
   return (
     <MaxWidthWrapper className="py-10 max-w-7xl">
       <AnimationContainer delay={0.1}>
@@ -28,121 +28,14 @@ const Testimonials = () => {
         </div>
       </AnimationContainer>
 
-      {/* Infinite Scrollable Container */}
+      {/* Infinite Moving Cards */}
       <div className="py-10">
-        <div className="overflow-hidden">
-          <div className="flex animate-scroll gap-6">
-            {/* First set of reviews */}
-            {REVIEWS.map((review, index) => (
-              <AnimationContainer
-                className="flex-shrink-0 w-80"
-                delay={0.2 * index}
-                key={`first-${index}`}
-              >
-                <MagicCard className="md:p-0 h-full">
-                  <Card className="flex flex-col w-full border-none h-full">
-                    <CardHeader className="space-y-0">
-                      <CardTitle className="text-lg font-medium text-muted-foreground">
-                        {review.name}
-                      </CardTitle>
-                      <CardDescription>{review.position}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4 pb-4 flex-1">
-                      <p className="text-muted-foreground">{review.review}</p>
-                    </CardContent>
-                    <CardFooter className="w-full space-x-1 mt-auto">
-                      {Array.from({ length: review.rating }, (_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                        />
-                      ))}
-                    </CardFooter>
-                  </Card>
-                </MagicCard>
-              </AnimationContainer>
-            ))}
-
-            {REVIEWS.map((review, index) => (
-              <AnimationContainer
-                className="flex-shrink-0 w-80"
-                delay={0.2 * index}
-                key={`dup-${index}`}
-              >
-                <MagicCard className="md:p-0 h-full">
-                  <Card className="flex flex-col w-full border-none h-full">
-                    <CardHeader className="space-y-0">
-                      <CardTitle className="text-lg font-medium text-muted-foreground">
-                        {review.name}
-                      </CardTitle>
-                      <CardDescription>{review.position}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-4 pb-4 flex-1">
-                      <p className="text-muted-foreground">{review.review}</p>
-                    </CardContent>
-                    <CardFooter className="w-full space-x-1 mt-auto">
-                      {Array.from({ length: review.rating }, (_, i) => (
-                        <StarIcon
-                          key={i}
-                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                        />
-                      ))}
-                    </CardFooter>
-                  </Card>
-                </MagicCard>
-              </AnimationContainer>
-            ))}
-          </div>
-        </div>
-
-        <style jsx>{`
-          .scroll-container {
-            overflow: hidden;
-            white-space: nowrap;
-          }
-
-          .animate-scroll {
-            display: inline-flex;
-            animation: scroll ${REVIEWS.length * 8}s linear infinite;
-          }
-
-          @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(
-                -50%
-              ); /* Only move half since content is duplicated */
-            }
-          }
-
-          .animate-scroll:hover {
-            animation-play-state: paused;
-          }
-        `}</style>
-
-        {/* Pause on Hover Styles */}
-        {/* <style jsx>{`
-          @keyframes scroll {
-            0% {
-              transform: translateX(0);
-            }
-            100% {
-              transform: translateX(
-                calc(-320px * ${REVIEWS.length} - 24px * ${REVIEWS.length})
-              );
-            }
-          }
-
-          .animate-scroll {
-            animation: scroll ${REVIEWS.length * 8}s linear infinite;
-          }
-
-          .animate-scroll:hover {
-            animation-play-state: paused;
-          }
-        `}</style> */}
+        <InfiniteMovingCards
+          items={testimonials}
+          direction="left"
+          speed="normal"
+          pauseOnHover={true}
+        />
       </div>
     </MaxWidthWrapper>
   );

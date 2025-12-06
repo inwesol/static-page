@@ -12,6 +12,10 @@ import Providers from "./providers/providers";
 // pricing
 import PricingCards from "./pricing-cards";
 
+// ui
+import { StickyBanner } from "./ui/sticky-banner";
+import { StickyBannerContent } from "./sticky-banner-content";
+
 export {
   Icons,
   MaxWidthWrapper,
@@ -20,4 +24,6 @@ export {
   Footer,
   Providers,
   PricingCards,
+  StickyBanner,
+  StickyBannerContent,
 };

@@ -10,6 +10,8 @@ import {
   MicrosoftClarity,
   FacebookPixel,
 } from "@/utils";
+import { StickyBannerProvider } from "@/context/sticky-banner-context";
+import { StickyBanner, StickyBannerContent } from "@/components";
 
 export const metadata = generateMetadata();
 
@@ -27,15 +29,24 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        {/* <Providers>
+        <StickyBannerProvider>
+          <StickyBanner className="bg-gradient-to-b from-blue-500 to-blue-600">
+            <StickyBannerContent
+              content="🎉 Get 25% Discount on Mindset20 Program."
+              pdfSrc="/pdfs/Announcement.pdf"
+              pdfTitle="25% discount announcement"
+            />
+          </StickyBanner>
+          {/* <Providers>
+            <Toaster richColors theme="light" position="top-right" />
+            {children}
+          </Providers> */}
           <Toaster richColors theme="light" position="top-right" />
           {children}
-        </Providers> */}
-        <Toaster richColors theme="light" position="top-right" />
-        {children}
-        <GoogleAnalytics />
-        <MicrosoftClarity />
-        <FacebookPixel />
+          <GoogleAnalytics />
+          <MicrosoftClarity />
+          <FacebookPixel />
+        </StickyBannerProvider>
       </body>
     </html>
   );

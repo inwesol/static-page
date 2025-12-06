@@ -32,65 +32,73 @@ const formSchema = z.object({
 const SchoolSection = () => {
   return (
     <>
-      <section className="w-full bg-[#F8F4EB] py-10 md:py-14 text-center flex flex-col items-center gap-5 px-6">
-        <AnimationContainer delay={0.3}>
-          {/* <span
+      <section className="w-full bg-gradient-to-br from-primary-green-50 via-white to-primary-blue-50 py-10 md:py-14 text-center flex flex-col items-center gap-5 px-6 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+          <div className="absolute top-40 left-40 w-80 h-80 bg-accent-amber-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        </div>
+
+        <div className="relative z-10 w-full">
+          <AnimationContainer delay={0.3}>
+            {/* <span
             className="text-base sm:text-lg font-semibold text-[#00B24B]"
             aria-label="Create your own success story"
           >
             CoCo : AI Mindset Coach is launched!
           </span> */}
-          <MagicBadge title="Reimagine Schools" color="#3fa1d8" />
-        </AnimationContainer>
+            <MagicBadge title="Reimagine Schools" color="#3fa1d8" />
+          </AnimationContainer>
 
-        <AnimationContainer delay={0.4}>
-          <div className="flex-col flex gap-10 lg:gap-4 lg:items-center lg:flex-row">
-            <div className="">
-              <h1 className="pb-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-snug">
-                <p className="leading-tight">Enabling Schools With </p>
-                <p className="py-2 text-transparent bg-clip-text bg-gradient-to-r from-primary-green-600 to-primary-blue-600">
-                  Learning Mindset
+          <AnimationContainer delay={0.4}>
+            <div className="flex-col flex gap-10 lg:gap-4 lg:items-center lg:flex-row">
+              <div className="">
+                <h1 className="pb-4 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 leading-snug">
+                  <p className="leading-tight">Enabling Schools With </p>
+                  <p className="py-2 text-transparent bg-clip-text bg-gradient-to-r from-primary-green-600 to-primary-blue-600">
+                    Learning Mindset
+                  </p>
+                </h1>
+                <p className="text-slate-900 text-lg mt-2 mb-6 sm:text-xl font-light">
+                  We believe adolescence is a time for self-discovery. Thus, we
+                  enable schools <br /> with a learning mindset ecosystem that
+                  supports students to become their best selves, shape their
+                  future, and aspire towards excellence.
                 </p>
-              </h1>
-              <p className="text-slate-900 text-lg mt-2 mb-6 sm:text-xl font-light">
-                We believe adolescence is a time for self-discovery. Thus, we
-                enable schools <br /> with a learning mindset ecosystem that
-                supports students to become their best selves, shape their
-                future, and aspire towards excellence.
-              </p>
-              <p className="text-2xl font-bold text-accent">
-                Our Motto: self-discovery leads to excellence
-              </p>
-              <div className="flex justify-center pt-4">
-                <Link href="/school">
-                  <Button className=" mt-4 group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-green-500 to-primary-blue-500 hover:from-primary-green-600 hover:to-primary-blue-600 text-white sm:font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out text-sm sm:text-lg sm:px-10 sm:py-7">
-                    <div className="flex items-center gap-2">
-                      <School className="size-4 sm:size-5 " />
-                      <span>Know More about Schools</span>
-                    </div>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                <p className="text-2xl font-bold text-accent">
+                  Our Motto: self-discovery leads to excellence
+                </p>
+                <div className="flex justify-center pt-4">
+                  <Link href="/school">
+                    <Button className=" mt-4 group relative inline-flex items-center gap-3 bg-gradient-to-r from-primary-green-500 to-primary-blue-500 hover:from-primary-green-600 hover:to-primary-blue-600 text-white sm:font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 ease-out text-sm sm:text-lg sm:px-10 sm:py-7">
+                      <div className="flex items-center gap-2">
+                        <School className="size-4 sm:size-5 " />
+                        <span>Know More about Schools</span>
+                      </div>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
 
-                    {/*shine effect */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
-                  </Button>
-                </Link>
+                      {/*shine effect */}
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+              <div className="relative">
+                <Image
+                  src="/school-view.svg"
+                  alt="Think Different"
+                  width={1200}
+                  height={800}
+                  // fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
-            <div className="relative">
-              <Image
-                src="/school-view.svg"
-                alt="Think Different"
-                width={1200}
-                height={800}
-                // fill
-                className="object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </AnimationContainer>
+          </AnimationContainer>
 
-        {/* <AnimationContainer delay={0.5}>
+          {/* <AnimationContainer delay={0.5}>
           <button
             onClick={() =>
               window.open(
@@ -106,7 +114,7 @@ const SchoolSection = () => {
           </button>
         </AnimationContainer> */}
 
-        {/* <AnimationContainer delay={0.6} reverse viewport>
+          {/* <AnimationContainer delay={0.6} reverse viewport>
           <div className="w-full flex justify-center">
             <video
               src="/assets/coco.mp4"
@@ -119,6 +127,7 @@ const SchoolSection = () => {
             />
           </div>
         </AnimationContainer> */}
+        </div>
       </section>
     </>
   );

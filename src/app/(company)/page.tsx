@@ -23,10 +23,10 @@ const HomePage1 = () => {
 
       <HeroSection />
       <SchoolSection />
+      <Testimonials />
       <FeaturesSection />
       <StickyScrollRevealDemo />
       <ExplorerCard />
-      <Testimonials />
       <FeaturedBlogs />
     </div>
   );

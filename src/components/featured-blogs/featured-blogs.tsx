@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import BlogCard from "./blog-card";
 import { availableBlogs } from "@/app/(content)/blog/[blogSlug]/blog-content";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 const FeaturedBlogs = () => {
   const [current, setCurrent] = useState(0);
@@ -51,9 +52,18 @@ const FeaturedBlogs = () => {
   return (
     <section className="w-full bg-[#f5fafd] py-14">
       <div className="max-w-screen-lg px-6 mx-auto">
-        <h2 className="mb-8 text-3xl font-bold text-center text-gray-900 sm:text-4xl">
-          Featured Blogs
-        </h2>
+        <div className="relative mb-8">
+          <h2 className="text-3xl font-bold text-center text-gray-900 sm:text-4xl">
+            Featured Blogs
+          </h2>
+          <Link
+            href="/blog"
+            className="absolute right-0 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-2 text-primary-green-600 hover:text-primary-green-700 font-medium transition-colors duration-200 group"
+          >
+            <span>View All Blogs</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </div>
 
         <div className="relative">
           <div

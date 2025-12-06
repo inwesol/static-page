@@ -14,9 +14,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Navbar />
       <main className="h-full">
         <PersonalInfoFormProvider>
-          <PydiFormProvider>
-            {children}
-          </PydiFormProvider>
+          <PydiFormProvider>{children}</PydiFormProvider>
         </PersonalInfoFormProvider>
       </main>
       {/* <Toaster position="top-right" expand /> */}

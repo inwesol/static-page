@@ -236,6 +236,11 @@ const config = {
             transform: "translateY(-10px)",
           },
         },
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -255,6 +260,7 @@ const config = {
         "pulse-subtle": "pulse-subtle 3s infinite",
         "--animate-rotate-border": "border-rotate 3s infinite linear",
         float: "float 3s ease-in-out infinite",
+        scroll: "scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards)",
       },
     },
   },

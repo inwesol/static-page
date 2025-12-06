@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { AnimationContainer } from "@/components";
 import HeroHeading from "./hero-heading";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
 
 import {
   Form,

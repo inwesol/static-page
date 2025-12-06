@@ -131,6 +131,7 @@ export const REVIEWS = [
         position: "Student, Class 11th Standard",
         avatar: "https://randomuser.me/api/portraits/women/2.jpg",
         rating: 5,
-        review: "I got to know about Inwesol from one of my friends. Not only with my career choices but they also helped me with my life and my problems, like how to deal with them. Before joining Inwesol, I was a nerdy girl with low confidence, an introvert with a depressed mind, full of negativity and overthinking. After joining, my personality changed, and my confidence started to grow day by day. Inwesol made me a better person, helping me live a better life with a positive mindset."
-    }
+        review: "I got to know about Inwesol from one of my friends. Not only with my career choices but they also helped me with my life and my problems, like how to deal with them. Before joining Inwesol, I was a nerdy girl with low confidence, an introvert with a depressed mind, full of negativity and overthinking. After joining, my personality changed, and my confidence started to grow day by day. Inwesol made me a better person, helping me live a better life with a positive mindset.",
+        videoUrl: "https://www.youtube.com/watch?v=JISu1ykvKy0"
+    },
 ] as const;

@@ -56,7 +56,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <AlertTriangle className="size-5 sm:size-8" />,
-      title: "Concern & Future Readiness",
+      title: "Future Readiness: Concern",
       description:
         "A guide to understand how your choices now impact your career path.",
       color: "from-orange-500 to-orange-600",
@@ -66,7 +66,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <MessageSquare className="size-5 sm:size-8" />,
-      title: "Consultation & Future Readiness",
+      title: "Future Readiness: Consultation",
       description: "A guide to seek support to choose what's right for you.",
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50",
@@ -75,7 +75,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <Lightbulb className="size-5 sm:size-8" />,
-      title: "Curiosity & Future Readiness",
+      title: "Future Readiness: Curiosity",
       description:
         "A guide to being open to new possibilities & continuously seek knowledge.",
       color: "from-orange-500 to-orange-600",
@@ -85,7 +85,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <Crown className="size-5 sm:size-8" />,
-      title: "Confidence & Future Readiness",
+      title: "Future Readiness: Confidence",
       description:
         'A guide to say "I can handle this," even when something feels tough.',
       color: "from-orange-500 to-orange-600",
@@ -115,9 +115,9 @@ const Guides: React.FC = () => {
 
   // const sections = ["Guides", "EBT", "4C"];
   const sections = {
-    Guides: "Your Guides To Be Future Ready!",
-    EBT: "Understanding Your Behaviour To Be Future Ready!",
-    "4C": "Understanding Your Future Readiness To Be Future Ready!",
+    Guides: "Guide to Shaping Your Mindset & Future",
+    EBT: "Guide to Knowing Yourself Better",
+    "4C": "Guide to Understanding Your Future Readiness",
   };
 
   return (

@@ -690,7 +690,7 @@ Schools, educators, parents, and policymakers must come together to redefine edu
   },
     "guide-teen-career-paths": {
     heading: "How To Guide Your Teen Through Non-Traditional Career Paths",
-    oneLiner: "In a small high school, a student named Arnav always earned top grades. His teachers praised his perfect test scores, and his report card was full of A’s",
+    oneLiner: "The landscape of career opportunities has undergone a dramatic transformation in recent decades. While previous generations often followed predictable, mainstream and stable paths, today's teenagers face a world where",
     slug: "guide-teen-career-paths",
     createdOn: "October 08th, 2025",
     createdBy: "",

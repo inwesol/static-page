@@ -11,6 +11,7 @@ const Testimonials = () => {
     name: review.name,
     title: review.position,
     rating: review.rating,
+    highlight: "highlight" in review ? (review as any).highlight : undefined,
     videoUrl: "videoUrl" in review ? (review as any).videoUrl : undefined, // YouTube URL or direct video file URL
   }));
 

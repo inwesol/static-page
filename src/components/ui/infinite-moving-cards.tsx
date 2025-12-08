@@ -43,6 +43,7 @@ export const InfiniteMovingCards = ({
 }: {
   items: {
     quote?: string;
+    highlight?: string;
     name: string;
     title: string;
     rating?: number;
@@ -132,9 +133,9 @@ export const InfiniteMovingCards = ({
           return (
             <li
               className={cn(
-                "relative shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#fafafa,#f5f5f5)] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#27272a,#18181b)]",
+                "relative shrink-0 rounded-2xl border border-b-0 border-zinc-200 bg-[linear-gradient(180deg,#f0f9f4,#e8f5ed)] dark:border-zinc-700 dark:bg-[linear-gradient(180deg,#1a2e1f,#0f1a12)]",
                 hasVideo
-                  ? "w-[350px] max-w-full md:w-[450px] p-0 overflow-hidden"
+                  ? "w-[350px] max-w-full md:w-[450px] p-0 overflow-hidden h-[400px] md:h-[500px]"
                   : "w-[350px] max-w-full px-8 py-6 md:w-[450px]"
               )}
               key={`${item.name}-${idx}`}
@@ -146,8 +147,8 @@ export const InfiniteMovingCards = ({
 
               {hasVideo ? (
                 // Video testimonial card
-                <div className="relative z-20">
-                  <div className="relative w-full aspect-video bg-black">
+                <div className="relative z-20 flex flex-col h-full">
+                  <div className="relative w-full h-[80%] bg-black">
                     {isYouTube && youtubeEmbedUrl ? (
                       <iframe
                         src={youtubeEmbedUrl}
@@ -166,8 +167,8 @@ export const InfiniteMovingCards = ({
                       />
                     ) : null}
                   </div>
-                  <div className="px-6 py-4">
-                    {item.rating && (
+                  <div className="px-6 py-4 h-[20%] flex flex-col justify-center">
+                    {/* {item.rating && (
                       <div className="flex space-x-1 mb-3">
                         {Array.from({ length: item.rating }, (_, i) => (
                           <StarIcon
@@ -176,7 +177,7 @@ export const InfiniteMovingCards = ({
                           />
                         ))}
                       </div>
-                    )}
+                    )} */}
                     <div className="flex flex-col gap-1">
                       <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-100">
                         {item.name}
@@ -185,21 +186,28 @@ export const InfiniteMovingCards = ({
                         {item.title}
                       </span>
                     </div>
-                    {item.quote && (
+                    {/* {item.quote && (
                       <p className="text-sm leading-[1.6] font-normal text-neutral-700 dark:text-gray-300 mt-3 line-clamp-2">
                         {item.quote}
                       </p>
-                    )}
+                    )} */}
                   </div>
                 </div>
               ) : (
                 // Text testimonial card
                 <blockquote>
+                  {item.highlight && (
+                    <div className="relative z-20 mb-4">
+                      <span className="text-lg md:text-xl font-bold italic text-neutral-800 dark:text-gray-100">
+                        &ldquo;{item.highlight}&rdquo;
+                      </span>
+                    </div>
+                  )}
                   <span className="relative z-20 text-sm leading-[1.6] font-normal text-neutral-800 dark:text-gray-100">
                     {item.quote}
                   </span>
                   <div className="relative z-20 mt-6 flex flex-col gap-2">
-                    {item.rating && (
+                    {/* {item.rating && (
                       <div className="flex space-x-1">
                         {Array.from({ length: item.rating }, (_, i) => (
                           <StarIcon
@@ -208,7 +216,7 @@ export const InfiniteMovingCards = ({
                           />
                         ))}
                       </div>
-                    )}
+                    )} */}
                     <div className="flex flex-col gap-1">
                       <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
                         {item.name}

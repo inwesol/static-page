@@ -174,6 +174,20 @@ const Footer = () => {
               className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
             >
               Terms & Conditions
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="/refund-policy/"
+              className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
+            >
+              Refund Policy
+            </Link>{" "}
+            |{" "}
+            <Link
+              href="/cancellation-policy/"
+              className="text-primary-green-600 hover:text-primary-green-700 underline transition-colors duration-200"
+            >
+              Cancellation Policy
             </Link>
           </p>
 

@@ -124,12 +124,12 @@ const ContactUsClient = () => {
                     </div>
                   </div>
 
-                  {/* <div className="flex items-center">
+                  <div className="flex items-center">
                     <Phone className="h-6 w-6 text-primary1" />
                     <div className="ml-4">
-                      <p className="text-gray-700">+91 87128 88132</p>
+                      <p className="text-gray-700">+91 8374315189</p>
                     </div>
-                  </div> */}
+                  </div>
 
                   <div className="flex items-center">
                     <Mail className="h-6 w-6 text-primary1" />

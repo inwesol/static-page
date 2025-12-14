@@ -179,10 +179,10 @@ export const InfiniteMovingCards = ({
                       </div>
                     )} */}
                     <div className="flex flex-col gap-1">
-                      <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-100">
+                      <span className="text-sm leading-[1.5] font-semibold text-neutral-900 dark:text-gray-100">
                         {item.name}
                       </span>
-                      <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                      <span className="text-sm leading-[1.5] font-semibold text-neutral-900 dark:text-gray-400">
                         {item.title}
                       </span>
                     </div>
@@ -218,10 +218,10 @@ export const InfiniteMovingCards = ({
                       </div>
                     )} */}
                     <div className="flex flex-col gap-1">
-                      <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                      <span className="text-sm leading-[1.5] font-semibold text-neutral-900 dark:text-gray-400">
                         {item.name}
                       </span>
-                      <span className="text-sm leading-[1.6] font-normal text-neutral-500 dark:text-gray-400">
+                      <span className="text-sm leading-[1.5] font-semibold text-neutral-900 dark:text-gray-400">
                         {item.title}
                       </span>
                     </div>

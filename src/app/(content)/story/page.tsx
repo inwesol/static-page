@@ -22,7 +22,7 @@ const people = [
     id: 1,
     name: "Akarsh Sriramoju",
     designation: "CEO",
-    link: "https://www.linkedin.com/in/akarshedpsy/",
+    link: "https://www.linkedin.com/in/akarshsriramoju/",
     image: "/akarsh.jpeg",
   },
   {

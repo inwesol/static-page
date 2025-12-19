@@ -119,8 +119,12 @@ const ContactUsClient = () => {
                       <Building className="h-6 w-6 text-primary1" />
                     </div>
                     <div className="ml-4">
-                      <p className="text-gray-700">Hyderabad</p>
-                      <p className="text-gray-700">Telangana, IN 500081</p>
+                      <p className="text-gray-700">
+                        2nd Floor, Plot No 180, Vasavi Nagar
+                      </p>
+                      <p className="text-gray-700">Karkhana, Kakaguda</p>
+                      <p className="text-gray-700">Secunderabad, Hyderabad</p>
+                      <p className="text-gray-700">Telangana, IN 500015</p>
                     </div>
                   </div>
 

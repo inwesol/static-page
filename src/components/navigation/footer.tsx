@@ -112,6 +112,14 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
+                    href="/coaches/"
+                    className="transition-all duration-300 hover:text-primary-green-600"
+                  >
+                    Coaches
+                  </Link>
+                </li>
+                <li className="mt-2">
+                  <Link
                     href="/story/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
@@ -144,10 +152,10 @@ const Footer = () => {
                 </li>
                 <li className="mt-2">
                   <Link
-                    href="/coach/"
+                    href="/parents/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Coaches
+                    Parents
                   </Link>
                 </li>
               </ul>

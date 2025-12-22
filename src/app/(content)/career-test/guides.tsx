@@ -23,7 +23,7 @@ const Guides: React.FC = () => {
         "Understand your behaviours to grow, and protect what's matters to you.",
       color: "from-pink-500 to-pink-600",
       bgColor: "bg-pink-50",
-      pdfUrl: "/pdfs/growth-starts-with-understanding-your-behaviour.pdf",
+      pdfUrl: "/pdfs/teen-guide.pdf",
       section: "Guides",
     },
     {

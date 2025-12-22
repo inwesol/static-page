@@ -12,6 +12,7 @@ import FeaturesSection from "@/components/features-section/features-section";
 import FeaturedBlogs from "@/components/featured-blogs/featured-blogs";
 import Testimonials from "@/components/testimonials/testimonials";
 import SchoolSection from "@/components/school-section/school-section";
+import PricingSection from "@/components/pricing-section/pricing-section";
 
 const HomePage1 = () => {
   const [showModal, setShowModal] = useState(true);
@@ -26,6 +27,7 @@ const HomePage1 = () => {
       <Testimonials />
       <FeaturesSection />
       <StickyScrollRevealDemo />
+      <PricingSection />
       <ExplorerCard />
       <FeaturedBlogs />
     </div>

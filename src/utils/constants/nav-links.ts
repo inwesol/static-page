@@ -56,7 +56,7 @@ export const NAV_LINKS = [
     menu: [
       {
         title: "Blogs",
-        tagline: "Read articles on Coaching",
+        tagline: "Read articles on coaching",
         href: "/blog/",
         icon: NewspaperIcon,
       },
@@ -72,6 +72,12 @@ export const NAV_LINKS = [
         href: "/story/",
         icon: BookOpenIcon,
       },
+      {
+        title: "Coaches",
+        tagline: "Join our team of coaches",
+        href: "/coach/",
+        icon: UsersIcon,
+      },
     ],
   },
   // {
@@ -79,12 +85,12 @@ export const NAV_LINKS = [
   //   href: "/events/coaching/",
   // },
   {
-    title: "Schools",
+    title: "For Schools",
     href: "/school/",
   },
   {
-    title: "Coaches",
-    href: "/coach/",
+    title: "For Parents",
+    href: "/parents/",
   },
   
 ];

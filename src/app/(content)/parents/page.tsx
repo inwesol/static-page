@@ -40,6 +40,7 @@ import ScrollToEnquiryButton from "../school/ScrollToEnquiryButton";
 import EnquireyForm from "../school/EnquiryForm";
 import { ZoomSessionSkeletonCard } from "../events/[eventSlug]/zoom-session-skeleton-card";
 import { useState } from "react";
+import Image from "next/image";
 export default function CommunityPage() {
   const [desktopIframeLoaded, setDesktopIframeLoaded] =
     useState<boolean>(false);
@@ -142,23 +143,23 @@ export default function CommunityPage() {
   const testimonials = [
     {
       quote:
-        "This community changed my perspective on learning. I'm no longer afraid to ask questions or share my struggles.",
-      author: "Priya S.",
-      role: "Grade 11 Student",
+        "My son now has clarity about the future and feels much more confident. I can see a positive change in his behaviour, how he is thinking, planning and taking care of himself.",
+      author: "Anita S",
+      role: "Academic Coordinator",
       avatar: "bg-primary-blue-500",
     },
     {
       quote:
-        "The mentors here provide practical advice that actually works. I found my career direction through their guidance.",
-      author: "Rahul M.",
-      role: "Grade 12 Student",
+        "My daughter has found direction for her next steps after 12th. She has gained confidence through the self-discovery journey. Thanks to Inwesol for this thoughtful program, our family is now optimistic about our daughter’s path ahead.",
+      author: "Ramesh CH",
+      role: "Bank Employee",
       avatar: "bg-primary-green-500",
     },
     {
       quote:
-        "I found my study group here and we motivate each other daily. It's like having a second family.",
-      author: "Anjali K.",
-      role: "Grade 10 Student",
+        "The coaching sessions and the complete self-discovery program helped my daughter understand herself better, maintain a positive mindset and plan the next steps for her future. I would highly recommend this to every teenager.",
+      author: "Neeraja",
+      role: "Homemaker",
       avatar: "bg-purple-500",
     },
   ];
@@ -274,7 +275,16 @@ export default function CommunityPage() {
               </div>
 
               {/* Right Visual */}
-              <div className="relative">
+              <Image
+                src="/parents-page-hero.png"
+                alt="Parents Visual"
+                width={1000}
+                height={1000}
+                className="w-full h-full object-contain rounded-xl md:rounded-2xl"
+              />
+
+              {/*Different Visual Elements here */}
+              {/* <div className="relative">
                 <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 shadow-2xl">
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4 bg-white/20 backdrop-blur-sm rounded-2xl p-4">
@@ -321,7 +331,7 @@ export default function CommunityPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>
@@ -400,7 +410,7 @@ export default function CommunityPage() {
                       <Calendar className="w-6 h-6 text-primary-blue-600 flex-shrink-0 mt-1" />
                       <div>
                         <p className="text-base sm:text-lg text-gray-800 font-medium leading-relaxed">
-                          Book a free 30-minute session with one of our experts.
+                          Book a free 60-minute session with one of our experts.
                           You will receive meeting link via mail.
                         </p>
                       </div>
@@ -763,7 +773,7 @@ export default function CommunityPage() {
                 {[
                   {
                     icon: <Users className="size-6" />,
-                    label: "10,000+ Active Members",
+                    label: "100+ Active Members",
                   },
                   {
                     icon: <MessageCircle className="size-6" />,

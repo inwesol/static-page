@@ -35,16 +35,16 @@ const PricingSection = () => {
         href: "/career-test",
         variant: "outline" as const,
       },
-      popular: false,
+      forWhom: "Parents",
     },
     {
       name: "Mindset Emergence",
       info: "For parents looking for structured guidance for their teenager",
       price: "₹18,880",
-      priceDescription: "Annual Subscription",
+      priceDescription: "1 Year platform access",
       features: [
         "Everything in Mindset Essentials",
-        "8 one to one Coaching Sessions",
+        "8 one-to-one Coaching Sessions for your Teenager",
         "Advanced Behavioural Tools",
         "Progress Tracking Dashboard",
         "Comprehensive Report",
@@ -53,15 +53,15 @@ const PricingSection = () => {
         "Internal Community Access",
       ],
       btn: {
-        text: "Choose Mindset Emergence",
+        text: "Begin Transformation",
         href: "https://app.inwesol.com",
         variant: "primary" as const,
       },
-      popular: true,
+      forWhom: "Parents",
     },
     {
       name: "Mindset Ecosystem",
-      info: "For schools building a culture mindset among students",
+      info: "For schools building a culture of learning mindset among students",
       price: "Custom",
       priceDescription: "Tailored for your school",
       features: [
@@ -78,7 +78,7 @@ const PricingSection = () => {
         href: "/school",
         variant: "outline" as const,
       },
-      popular: false,
+      forWhom: "Schools",
     },
   ];
 
@@ -102,22 +102,33 @@ const PricingSection = () => {
         </div>
       </AnimationContainer>
 
-      <div className="w-full flex justify-center items-center px-4 md:px-6 lg:px-10">
+      <div className="w-full flex justify-center items-center mt-8 px-4 md:px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
           {plans.map((plan, index) => (
             <AnimationContainer key={plan.name} delay={(index + 1) * 0.2}>
               <Card
                 className={cn(
                   "h-full flex flex-col border-2 transition-all duration-300 hover:shadow-xl",
-                  plan.popular
+                  plan.forWhom === "Parents"
                     ? "border-primary-green-500 shadow-lg scale-105 relative"
+                    : plan.forWhom === "Schools"
+                    ? "border-primary-blue-500 shadow-lg scale-105 relative"
                     : "border-border hover:border-primary-blue-300"
                 )}
               >
-                {plan.popular && (
+                {plan.forWhom && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-primary-green-500 to-primary-blue-500 text-white text-xs font-semibold px-4 py-1 rounded-full">
-                      Most Popular
+                    <span
+                      className={cn(
+                        "text-white text-xs font-semibold px-4 py-1 rounded-full",
+                        plan.forWhom === "Parents"
+                          ? "bg-gradient-to-r from-primary-green-500 to-primary-blue-500"
+                          : plan.forWhom === "Schools"
+                          ? "bg-gradient-to-r from-primary-blue-500 to-purple-500"
+                          : "bg-gradient-to-r from-primary-green-500 to-primary-blue-500"
+                      )}
+                    >
+                      For {plan.forWhom}
                     </span>
                   </div>
                 )}
@@ -125,8 +136,10 @@ const PricingSection = () => {
                 <CardHeader
                   className={cn(
                     "border-b rounded-t-2xl",
-                    plan.popular
+                    plan.forWhom === "Parents"
                       ? "bg-gradient-to-br from-primary-green-50 to-primary-blue-50"
+                      : plan.forWhom === "Schools"
+                      ? "bg-gradient-to-br from-primary-blue-50 to-purple-50"
                       : "bg-white"
                   )}
                 >
@@ -142,7 +155,9 @@ const PricingSection = () => {
                         {plan.price}
                       </span>
                       {plan.price !== "Free" && plan.price !== "Custom" && (
-                        <span className="text-lg text-gray-600">/year</span>
+                        <span className="text-lg text-gray-600">
+                          (Inclusive of GST)
+                        </span>
                       )}
                     </div>
                     {plan.priceDescription && (
@@ -160,8 +175,10 @@ const PricingSection = () => {
                         <CheckCircle2
                           className={cn(
                             "w-5 h-5 mt-0.5 flex-shrink-0",
-                            plan.popular
+                            plan.forWhom === "Parents"
                               ? "text-primary-green-600"
+                              : plan.forWhom === "Schools"
+                              ? "text-primary-blue-600"
                               : "text-primary-blue-600"
                           )}
                         />
@@ -177,8 +194,10 @@ const PricingSection = () => {
                       variant={plan.btn.variant}
                       className={cn(
                         "w-full group rounded-xl",
-                        plan.popular &&
-                          "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white"
+                        plan.forWhom === "Parents" &&
+                          "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
+                        plan.forWhom === "Schools" &&
+                          "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white"
                       )}
                       size="lg"
                     >

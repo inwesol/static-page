@@ -21,16 +21,37 @@ const people = [
   {
     id: 1,
     name: "Akarsh Sriramoju",
-    designation: "CEO",
+    designation: "Co-Founder, CEO",
     link: "https://www.linkedin.com/in/akarshsriramoju/",
     image: "/akarsh.jpeg",
   },
   {
     id: 2,
     name: "Goutham Toondla",
-    designation: "COO",
+    designation: "Co-Founder, COO",
     link: "https://www.linkedin.com/in/goutham-toondla-2a2112123/",
     image: "/goutham.jpg",
+  },
+  {
+    id: 3,
+    name: "Esther Anwuzia",
+    designation: "Advisor",
+    link: "https://www.linkedin.com/in/esther-anwuzia/",
+    image: "/esther.jpeg",
+  },
+  {
+    id: 4,
+    name: "Kalyani Joshi",
+    designation: "Coaching Psychologist",
+    link: "https://www.linkedin.com/in/kalyani-joshi1110/",
+    image: "/kalyani.jpeg",
+  },
+  {
+    id: 5,
+    name: "Koyena Das",
+    designation: "Coaching Psychologist",
+    link: "https://www.linkedin.com/in/koyena-das-3b76b3341/",
+    image: "",
   },
 ];
 
@@ -222,43 +243,65 @@ const OurStory = () => {
             </div>
           </section>
 
-          <section className="max-w-4xl mx-auto mt-32">
-            <div className="w-full flex flex-col items-center my-12 space-y-8">
+          <section className="max-w-5xl mx-auto mt-32">
+            <div className="w-full flex flex-col items-center my-12 space-y-12">
               <h2 className="text-4xl font-extrabold text-gray-900 tracking-tight">
-                Meet Our Leaders
+                Meet Our Team
               </h2>
 
-              <div className="flex gap-6 px-4 sm:grid sm:grid-cols-2 lg:grid-cols-2">
+              {/* Team Images */}
+              <div className="w-full flex flex-wrap justify-center gap-8 px-4">
                 {people.map((person, index) => (
-                  <div
-                    key={person.id}
-                    className="relative w-36 sm:w-48 md:w-56 h-auto group flex-shrink-0"
-                  >
-                    <Link href={person.link} target="_blank">
-                      <AnimationContainer delay={(index + 1) * 0.2}>
-                        <div className="w-full aspect-square rounded-full overflow-hidden transition-all duration-300 ease-in-out group-hover:brightness-110 group-hover:shadow-[0_0_20px_rgba(0,255,255,0.3)]">
+                  <AnimationContainer key={person.id} delay={(index + 1) * 0.1}>
+                    <Link
+                      href={person.link}
+                      target="_blank"
+                      className="group block"
+                    >
+                      <div className="flex flex-col items-center p-8 bg-white rounded-2xl border-1 border-gray-200 shadow-lg hover:shadow-xl hover:border-primary-green-300 transition-all duration-300 hover:-translate-y-1">
+                        <div className="relative w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 m-4 rounded-full overflow-hidden ring-2 ring-gray-100 group-hover:ring-primary-green-200 transition-all duration-300">
                           <Image
-                            src={person.image}
+                            src={person.image || "/default-avatar.jpg"}
                             alt={person.name}
-                            layout="fill"
-                            objectFit="cover"
-                            className="rounded-full transition-transform duration-500 group-hover:scale-105"
+                            fill
+                            className="object-cover rounded-full transition-transform duration-500 group-hover:scale-110"
+                            sizes="(max-width: 640px) 160px, (max-width: 768px) 176px, 192px"
                           />
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary-green-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
                         </div>
-                      </AnimationContainer>
 
-                      <div className="absolute top-full mt-2 text-center w-full">
-                        <div className="">
-                          <p className="text-lg font-semibold text-gray-900">
+                        <div className="text-center space-y-2 w-full">
+                          <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-green-600 transition-colors duration-300">
                             {person.name}
-                          </p>
-                          <p className="text-base font-extrabold text-accent drop-shadow-sm">
+                          </h3>
+                          <p className="text-base font-semibold text-accent group-hover:text-primary-blue-600 transition-colors duration-300">
                             {person.designation}
                           </p>
                         </div>
+
+                        <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="flex items-center justify-center gap-1 text-primary-green-600">
+                            <span className="text-sm font-medium">
+                              View Profile
+                            </span>
+                            <svg
+                              className="w-4 h-4"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                              />
+                            </svg>
+                          </div>
+                        </div>
                       </div>
                     </Link>
-                  </div>
+                  </AnimationContainer>
                 ))}
               </div>
             </div>

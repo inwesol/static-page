@@ -51,7 +51,7 @@ const people = [
     name: "Koyena Das",
     designation: "Coaching Psychologist",
     link: "https://www.linkedin.com/in/koyena-das-3b76b3341/",
-    image: "",
+    image: "/koyena.jpeg",
   },
 ];
 

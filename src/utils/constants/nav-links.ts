@@ -55,18 +55,6 @@ export const NAV_LINKS = [
     href: "#",
     menu: [
       {
-        title: "Blogs",
-        tagline: "Read articles on coaching",
-        href: "/blog/",
-        icon: NewspaperIcon,
-      },
-      {
-        title: "Contact Us",
-        tagline: "How we can help you",
-        href: "/contact-us/",
-        icon: MailIcon,
-      },
-      {
         title: "Our Story",
         tagline: "Know Inwesol story",
         href: "/story/",
@@ -77,6 +65,18 @@ export const NAV_LINKS = [
         tagline: "Join our team of coaches",
         href: "/coach/",
         icon: UsersIcon,
+      },
+      {
+        title: "Blogs",
+        tagline: "Read articles on coaching",
+        href: "/blog/",
+        icon: NewspaperIcon,
+      },
+      {
+        title: "Contact Us",
+        tagline: "How we can help you",
+        href: "/contact-us/",
+        icon: MailIcon,
       },
     ],
   },

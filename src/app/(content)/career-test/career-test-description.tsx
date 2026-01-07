@@ -43,8 +43,8 @@ const CareerTestDescription: React.FC = () => {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
-            Discover how ready you are for life after school. Understand your
-            strengths and readiness for the future.
+            Discover how ready you are for life after school. Understand
+            yourself better through our assessments and guides.
           </p>
         </div>
       </AnimationContainer>
@@ -102,7 +102,7 @@ const CareerTestDescription: React.FC = () => {
                 </PopoverContent>
               </Popover>
               <CardTitle className="text-2xl md:text-3xl font-bold text-primary-green-600 mb-3">
-                Check Future Readiness
+                Check Career Maturity
               </CardTitle>
               <CardDescription className="text-sm text-gray-600 md:text-base leading-relaxed">
                 Understand your future readiness with the Career Maturity Test.{" "}

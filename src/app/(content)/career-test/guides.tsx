@@ -17,16 +17,6 @@ import { Card, CardContent } from "@/components/ui/card";
 const Guides: React.FC = () => {
   const allGuides = [
     {
-      icon: <Zap className="size-5 sm:size-8" />,
-      title: "Teenagers Ultimate Guide",
-      description:
-        "Understand your behaviours to grow, and protect what's matters to you.",
-      color: "from-pink-500 to-pink-600",
-      bgColor: "bg-pink-50",
-      pdfUrl: "/pdfs/teen-guide.pdf",
-      section: "Guides",
-    },
-    {
       icon: <Heart className="size-5 sm:size-8" />,
       title: "Growth Starts with Understanding Your Behaviour",
       description:
@@ -56,7 +46,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <AlertTriangle className="size-5 sm:size-8" />,
-      title: "Future Readiness: Concern",
+      title: "Concern",
       description:
         "A guide to understand how your choices now impact your career path.",
       color: "from-orange-500 to-orange-600",
@@ -66,7 +56,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <MessageSquare className="size-5 sm:size-8" />,
-      title: "Future Readiness: Consultation",
+      title: "Consultation",
       description: "A guide to seek support to choose what's right for you.",
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50",
@@ -75,7 +65,7 @@ const Guides: React.FC = () => {
     },
     {
       icon: <Lightbulb className="size-5 sm:size-8" />,
-      title: "Future Readiness: Curiosity",
+      title: "Curiosity",
       description:
         "A guide to being open to new possibilities & continuously seek knowledge.",
       color: "from-orange-500 to-orange-600",
@@ -85,13 +75,23 @@ const Guides: React.FC = () => {
     },
     {
       icon: <Crown className="size-5 sm:size-8" />,
-      title: "Future Readiness: Confidence",
+      title: "Confidence",
       description:
         'A guide to say "I can handle this," even when something feels tough.',
       color: "from-orange-500 to-orange-600",
       bgColor: "bg-orange-50",
       pdfUrl: "/pdfs/confidence.pdf",
       section: "4C",
+    },
+    {
+      icon: <Zap className="size-5 sm:size-8" />,
+      title: "Teenagers Ultimate Guide",
+      description:
+        "Understand your behaviours to grow, and protect what's matters to you.",
+      color: "from-pink-500 to-pink-600",
+      bgColor: "bg-pink-50",
+      pdfUrl: "/pdfs/teen-guide.pdf",
+      section: "Guides",
     },
   ];
 
@@ -115,9 +115,9 @@ const Guides: React.FC = () => {
 
   // const sections = ["Guides", "EBT", "4C"];
   const sections = {
-    Guides: "Guide to Shaping Your Mindset & Future",
-    EBT: "Guide to Knowing Yourself Better",
-    "4C": "Guide to Understanding Your Future Readiness",
+    EBT: "Inside Your Mind: Thoughts, Feelings, Emotions",
+    "4C": "Improve Your Career Maturity",
+    Guides: "Shape Your Mindset. Shape Your Life",
   };
 
   return (
@@ -125,14 +125,13 @@ const Guides: React.FC = () => {
       {/* Header Section */}
       <div className="text-center">
         <h2 className="text-2xl lg:text-4xl font-bold text-gray-900 mb-4">
-          Your Guides To Be {/* <br />{" "} */}
+          Guides For {/* <br />{" "} */}
           <span className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 bg-clip-text text-transparent">
-            Future Ready
+            Your Future
           </span>
         </h2>
-        <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Explore our comprehensive collection of guides designed to help you
-          understand yourself better and prepare for your future.
+        <p className="text-base sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          Everything teenagers need to understand themselves and plan ahead.
         </p>
       </div>
 
@@ -147,30 +146,83 @@ const Guides: React.FC = () => {
               </h3>
               <div className="flex-1 h-px bg-gray-300"></div>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            <div
+              className={
+                sectionName === "Guides"
+                  ? "grid grid-cols-1 gap-4 sm:gap-8 max-w-4xl mx-auto"
+                  : "grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8"
+              }
+            >
               {guidesBySection[sectionName]?.map((offering, index) => (
                 <Card
                   key={index}
-                  className="group hover:shadow-2xl transition-all duration-500 border border-gray-200 shadow-lg hover:-translate-y-2 bg-white/80 backdrop-blur-sm rounded-xl cursor-pointer"
+                  className={
+                    sectionName === "Guides"
+                      ? "group hover:shadow-2xl transition-all duration-500 border-0 shadow-2xl hover:-translate-y-3 bg-gradient-to-br from-pink-500 via-purple-500 to-primary-blue-600 rounded-xl cursor-pointer overflow-hidden relative"
+                      : "group hover:shadow-2xl transition-all duration-500 border border-gray-200 shadow-lg hover:-translate-y-2 bg-gradient-to-br from-white/80 to-yellow-50/80 backdrop-blur-sm rounded-xl cursor-pointer"
+                  }
                   onClick={() =>
                     handleDownload(offering.pdfUrl, offering.title)
                   }
                 >
-                  <CardContent className="p-4 sm:p-6 sm:pt-8 sm:pb-8">
+                  <CardContent
+                    className={
+                      sectionName === "Guides"
+                        ? "p-6 sm:p-10 sm:pt-12 sm:pb-12 relative z-10"
+                        : "p-4 sm:p-6 sm:pt-8 sm:pb-8"
+                    }
+                  >
+                    {sectionName === "Guides" && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-pink-500/90 via-purple-500/90 to-primary-blue-600/90 opacity-95"></div>
+                    )}
                     <div
-                      className={`w-10 h-10 sm:w-16 sm:h-16 rounded-[6px] sm:rounded-xl bg-gradient-to-r ${offering.color} flex items-center justify-center text-white mb-2 sm:mb-4 group-hover:scale-110 transition-transform duration-300`}
+                      className={`${
+                        sectionName === "Guides"
+                          ? "w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 relative z-10"
+                          : "w-10 h-10 sm:w-16 sm:h-16 mb-2 sm:mb-4"
+                      } rounded-[6px] sm:rounded-xl ${
+                        sectionName === "Guides"
+                          ? "bg-white/20 backdrop-blur-sm"
+                          : `bg-gradient-to-r ${offering.color}`
+                      } flex items-center justify-center ${
+                        sectionName === "Guides" ? "text-white" : "text-white"
+                      } group-hover:scale-110 transition-transform duration-300`}
                     >
                       {offering.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-4 text-gray-900 group-hover:text-primary-green-600 transition-colors">
+                    <h3
+                      className={`${
+                        sectionName === "Guides"
+                          ? "text-2xl sm:text-3xl mb-3 sm:mb-5 text-white relative z-10"
+                          : "text-lg sm:text-xl mb-2 sm:mb-4 text-gray-900 group-hover:text-primary-green-600"
+                      } font-bold transition-colors`}
+                    >
                       {offering.title}
                     </h3>
-                    <p className="text-sm sm:text-base text-gray-600 sm:leading-relaxed">
+                    <p
+                      className={`${
+                        sectionName === "Guides"
+                          ? "text-base sm:text-lg text-white/90 relative z-10 sm:leading-relaxed"
+                          : "text-sm sm:text-base text-gray-600 sm:leading-relaxed"
+                      }`}
+                    >
                       {offering.description}
                     </p>
-                    <div className="mt-4 flex items-center text-primary-green-600 text-sm font-medium group-hover:text-primary-green-700 transition-colors">
-                      <FileDown className="size-4 mr-2" />
-                      Click to download PDF
+                    <div
+                      className={`mt-4 sm:mt-6 flex items-center ${
+                        sectionName === "Guides"
+                          ? "text-white font-semibold relative z-10"
+                          : "text-primary-green-600 text-sm font-medium group-hover:text-primary-green-700"
+                      } transition-colors`}
+                    >
+                      <FileDown className="size-4 sm:size-5 mr-2" />
+                      <span
+                        className={
+                          sectionName === "Guides" ? "text-base sm:text-lg" : ""
+                        }
+                      >
+                        Click to download PDF
+                      </span>
                     </div>
                   </CardContent>
                 </Card>

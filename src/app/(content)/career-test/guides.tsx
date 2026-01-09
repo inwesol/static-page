@@ -115,7 +115,7 @@ const Guides: React.FC = () => {
 
   // const sections = ["Guides", "EBT", "4C"];
   const sections = {
-    EBT: "Inside Your Mind: Thoughts, Feelings, Emotions",
+    EBT: "Inside Your Mind: Thoughts, Feelings, Behaviours",
     "4C": "Improve Your Career Maturity",
     Guides: "Shape Your Mindset. Shape Your Life",
   };

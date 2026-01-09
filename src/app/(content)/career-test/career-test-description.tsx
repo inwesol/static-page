@@ -37,9 +37,9 @@ const CareerTestDescription: React.FC = () => {
         {/* Header Section */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6 leading-tight">
-            Teenagers&apos; Guide to{" "}
+            Teenagers&apos; Space to Become{" "}
             <span className="bg-gradient-to-r from-primary-green-600 to-primary-blue-600 bg-clip-text text-transparent">
-              Future Readiness
+              Future-Ready
             </span>
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">

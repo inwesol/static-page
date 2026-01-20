@@ -32,7 +32,7 @@ const PricingSection = () => {
       ],
       btn: {
         text: "Get Started",
-        href: "/career-test",
+        href: "/be-future-ready",
         variant: "outline" as const,
       },
       forWhom: "Parents",

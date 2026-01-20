@@ -1,14 +1,14 @@
 import { content } from "googleapis/build/src/apis/content";
 
 export const availableBlogs = {
-    "career-guidance": {
+  "career-guidance": {
     heading: "Career Guidance",
     oneLiner: "Career guidance is a process where trained professionals help individuals identify their strengths and interests through self-assessments, enabling them to make informed career decisions. Explore Inwesol blogs for career guidance, practical tips, and industry insights to help you achieve professional excellence.",
     slug: "career-guidance",
     createdOn: "February 27th, 2025",
     createdBy: "",
     readingTime: "5 min read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/career-guidance.png",
     content: `# Career Guidance: Your Path to Clarity, Confidence, and Informed Decisions
 
@@ -70,15 +70,15 @@ While we are understanding Career Guidance in this blog, let&apos;s also clear s
 The journey to a fulfilling career starts with the right guidance. Whether you&apos;re a student, a professional, or someone seeking change, **career guidance** can provide clarity, confidence, and a roadmap for success.
 
 Looking for support in your career journey? Start by exploring our career explorer and initiating a conversation with CoCo, you personalized **career guidance assistant**. Your future is in your hands—make it one that excites and fulfils you!`
-    },
-    "coaching-vs-counselling": {
+  },
+  "coaching-vs-counselling": {
     heading: "Career Coaching vs Career Counselling",
     oneLiner: "Understanding the distinction between career counseling and career coaching helps you make informed decisions that shape your future. Get expert insights to choose the best approach for your personal growth.",
     slug: "coaching-vs-counselling",
     createdOn: "February 27th, 2025",
     createdBy: "",
     readingTime: "5 min read",
-    imageFit:"cover",
+    imageFit: "cover",
     bannerUrl: "/coaching-vs-counselling.png",
     content: `
 # Career Coaching vs Career Counselling:
@@ -137,14 +137,14 @@ References
 
 [https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/](https://www.naceweb.org/career-development/organizational-structure/primary-focus-career-coaching-vs-career-counseling/)`,
   },
-    "knowing-your-why": {
+  "knowing-your-why": {
     heading: "Knowing Your 'Why' Matters",
     oneLiner: "Purpose is an active commitment to accomplish an aim that is both meaningful to the self and of consequence to the world beyond the self. Discover your why to align your career with your purpose.",
     slug: "knowing-your-why",
     createdOn: "April 26th, 2025",
     createdBy: "",
     readingTime: "4 min read",
-    imageFit:"cover",
+    imageFit: "cover",
     bannerUrl: "/know-your-why.jpg",
     content: `# Why Knowing Your 'Why' Matters in Career Wellbeing
 
@@ -210,14 +210,14 @@ Many times, we get stuck because we haven’t paused to reflect. We chase jobs, 
 
 `,
   },
-    "meaningful-career-foundation": {
+  "meaningful-career-foundation": {
     heading: "The Foundation of a Meaningful Career",
     oneLiner: "Choosing careers based on status or security rather than genuine interests leads to dissatisfaction and burnout, while aligning work with our natural strengths creates engagement and fulfillment.",
     slug: "meaningful-career-foundation",
     createdOn: "May 14th, 2025",
     createdBy: "",
     readingTime: "3 min read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/meaningful-career-foundation.jpg",
     content: `# Self-Discovery: The Foundation of a Meaningful Career
 
@@ -263,14 +263,14 @@ At Inwesol, we believe every career journey should start from within. Our tools,
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
-    "how-to-choose-a-career": {
+  "how-to-choose-a-career": {
     heading: "How to Choose a Career: 6 Self-Reflective Activities for Intermediate Students",
     oneLiner: "Choosing a career is one of the most important decisions a person will ever make. For intermediate students, typically teenagers, this decision may seem overwhelming.",
     slug: "how-to-choose-a-career",
     createdOn: "June 13th, 2025",
     createdBy: "",
     readingTime: "5 min read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/how-to-choose-a-career.jpg",
     content: `# How to Choose a Career: 6 Self-Reflective Activities for Intermediate Students
 **Choosing a career is one of the most important decisions a person will ever make.**
@@ -397,19 +397,19 @@ But by asking the right questions, you’re already on the right path.
 
 Explore our free career resources, book a discovery session with our coaches, or attend an Inwesol workshop near you.
 
-[Take Career Readiness Test Now](https://inwesol.com/career-test/)
+[Take Career Readiness Test Now](https://inwesol.com/be-future-ready/)
 
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
-    "career-motivation-psychology": {
+  "career-motivation-psychology": {
     heading: "The psychology of Career Motivation",
     oneLiner: "Career motivation refers to the drive that influences a person’s behaviour within the professional work environment. Think of career motivation like the GPS in a car.",
     slug: "career-motivation-psychology",
     createdOn: "July 15th, 2025",
     createdBy: "",
     readingTime: "5 min read",
-    imageFit:"cover",
+    imageFit: "cover",
     bannerUrl: "/career-motivation-psychology.jpg",
     content: `**Career Motivation** refers to the drive that influences a person’s behaviour within the professional work environment. Think of career motivation like the GPS in a car. You might have the car (your skills), the road (opportunities) and the engine (your effort), but without the GPS, it’s easy to get lost. Your motivation sets the direction, keeps you focused when the road gets tough. Career motivation is what propels us toward specific occupations, strives for us to work diligently and seeks significance in our careers. This motivation is never purely about needing a salary check, it's rooted in our psychology and influences how we perceive ourselves and our position in the world.
 
@@ -467,7 +467,7 @@ Harnessing the power of both intrinsic and extrinsic motivation can transform no
 
 Explore our free career resources, book a discovery session with our coaches, or attend an Inwesol workshop near you.
 
-Not sure where you stand? [Check your career readiness in minutes](https://inwesol.com/career-test/)
+Not sure where you stand? [Check your career readiness in minutes](https://inwesol.com/be-future-ready/)
 
 Ready to take the first step? [Book a free session with career coach](https://www.inwesol.com/events/cohort/)
 
@@ -484,14 +484,14 @@ Ready to take the first step? [Book a free session with career coach](https://ww
 
 `,
   },
-    "career-readiness": {
+  "career-readiness": {
     heading: "Career Readiness: Start of your career foundation",
     oneLiner: "We call that as being career ready. So, what does it mean to be “career ready” and thrive in today’s job market?",
     slug: "career-readiness",
     createdOn: "July 20th, 2025",
     createdBy: "",
     readingTime: "3 min read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/career-readiness.jpg",
     content: `# What is Career Readiness?
 If you’re a teenager planning for your future or a parent looking to guide your child toward the working world, you might be curious about what it takes to be prepared for a career. We call that as being career ready. So, what does it mean to be “career ready” and thrive in today’s job market?
@@ -547,21 +547,21 @@ Remember, career readiness is a journey, not a destination. You don't need to ha
 
 **Take our career readiness assessment and begin your journey toward professional excellence.**
 
-[Take Career Readiness Test Now](https://inwesol.com/career-test/)
+[Take Career Readiness Test Now](https://inwesol.com/be-future-ready/)
 
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
-    "coco-ai-mindset-coach": {
+  "coco-ai-mindset-coach": {
     heading: "The AI Mindset Coach That Makes You More Human",
     oneLiner: "In the race to make machines more human, are we forgetting what it means to be human? This question highlights a paradox in modern technology.Curiosity has always driven human progress from ancient Greece to today's AI era.",
     slug: "coco-ai-mindset-coach",
     createdOn: "August 01th, 2025",
     createdBy: "",
     readingTime: "3 min read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/coco-ai-mindset-coach.jpg",
-      content: `# CoCo: The AI Mindset Coach That Makes You More Human
+    content: `# CoCo: The AI Mindset Coach That Makes You More Human
     
 ## In the race to make machines more human, are we forgetting what it means to be human?
 
@@ -599,21 +599,21 @@ Because the future shouldn't be about choosing between human intelligence and ar
 
 **Also take our career readiness assessment and begin your journey toward professional excellence.**
 
-[Take Career Readiness Test Now](https://inwesol.com/career-test/)
+[Take Career Readiness Test Now](https://inwesol.com/be-future-ready/)
 
 [Book your free session here](https://www.inwesol.com/events/cohort/)
 `,
   },
-    "schools-must-go-beyond-grades": {
+  "schools-must-go-beyond-grades": {
     heading: "Why Schools Must Go Beyond Grades",
     oneLiner: "In a small high school, a student named Arnav always earned top grades. His teachers praised his perfect test scores, and his report card was full of A’s",
     slug: "schools-must-go-beyond-grades",
     createdOn: "September 15th, 2025",
     createdBy: "",
     readingTime: "5 mins read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/schools-must-go-beyond-grades.jpg",
-      content: `# Why Schools Must Go Beyond Grades
+    content: `# Why Schools Must Go Beyond Grades
     
 In a small high school, a student named Arnav always earned top grades. His teachers praised his perfect test scores, and his report card was full of A grades. Yet, outside the classroom, Arnav struggled. Group projects made him nervous, criticism hurt deeply and stress often overwhelmed him. His story, far from rare, reveals a key truth that grades alone don’t prepare students for life. Schools should teach and promote emotional intelligence, social skills, taking care of mental health, and creativity alongside academics to better prepare students for the future.
 
@@ -688,16 +688,16 @@ Schools, educators, parents, and policymakers must come together to redefine edu
 👉  [Build a Learning Mindset Ecosystem in Your School](https://inwesol.com/school/)
 `,
   },
-    "guide-teen-career-paths": {
+  "guide-teen-career-paths": {
     heading: "How To Guide Your Teen Through Non-Traditional Career Paths",
     oneLiner: "The landscape of career opportunities has undergone a dramatic transformation in recent decades. While previous generations often followed predictable, mainstream and stable paths, today's teenagers face a world where",
     slug: "guide-teen-career-paths",
     createdOn: "October 08th, 2025",
     createdBy: "",
     readingTime: "8 mins read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/guide-teen-career-paths.jpg",
-      content: `# How To Guide Your Teen Through Non-Traditional Career Paths
+    content: `# How To Guide Your Teen Through Non-Traditional Career Paths
     
 The landscape of career opportunities has undergone a dramatic transformation in recent decades. While previous generations often followed predictable, mainstream and stable paths, today's teenagers face a world where non-traditional careers are not only viable but increasingly essential to economic growth and innovation. As parents, it’s important to stay open-minded and guide your child wisely through these choices.
 
@@ -774,16 +774,16 @@ Williams, K. S., Chen, L., & Rodriguez, P. (2022). Alternative pathways to caree
 
 `,
   },
-    "talk-to-parents-about-career-aspirations": {
+  "talk-to-parents-about-career-aspirations": {
     heading: "How to Talk to Your Parents About Your Career Aspirations",
     oneLiner: "Starting a conversation with your parents about your career aspirations can feel intimidating, especially when your plans and vision do not align with their expectations",
     slug: "talk-to-parents-about-career-aspirations",
     createdOn: "November 06th, 2025",
     createdBy: "",
     readingTime: "5 mins read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/talk-to-parents-about-career-aspirations.jpg",
-      content: `# How to Talk to Your Parents About Your Career Aspirations
+    content: `# How to Talk to Your Parents About Your Career Aspirations
     
 Starting a conversation with your parents about your career aspirations can feel intimidating, especially when your plans and vision do not align with their expectations. Whether you want to pursue art, music, entrepreneurship, or any field that seems unconventional to them, having this discussion is crucial for you to thrive in the future. The key lies in approaching the conversation with preparation, respect, and understanding.
 
@@ -864,16 +864,16 @@ Dik, B. J., & Duffy, R. D. (2012). Make your job a calling: How the psychology o
 Patton, W., & McMahon, M. (2014). Career development and systems theory: Connecting theory and practice (3rd ed.). Sense Publishers.
 `,
   },
-    "about-cognitive-biases-in-career-decision-making": {
+  "about-cognitive-biases-in-career-decision-making": {
     heading: "What Are Cognitive Biases? How Do They Shape Career Decisions",
     oneLiner: "Cognitive biases are patterns in thinking that divert people away from fully informed and logical decisions. For teenagers moving from school to work, these biases can strongly influence their career paths",
     slug: "about-cognitive-biases-in-career-decision-making",
     createdOn: "December 19th, 2025",
     createdBy: "",
     readingTime: "8 mins read",
-    imageFit:"contain",
+    imageFit: "contain",
     bannerUrl: "/about-cognitive-biases-in-career-decision-making.jpg",
-      content: `# What Are Cognitive Biases? How Do They Shape Career Decisions
+    content: `# What Are Cognitive Biases? How Do They Shape Career Decisions
     
 Choosing a career path is one of the biggest challenges teenagers and their families face. In theory, career decisions should be based on clear factors like job market demand, personal strengths, and long-term financial security.
 

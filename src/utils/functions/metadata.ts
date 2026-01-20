@@ -5,8 +5,8 @@ export const generateMetadata = ({
     default: `Inwesol - Ally for Young Minds to Excel`,
     template: `%s | Inwesol`,
   },
-  description = `${process.env.NEXT_PUBLIC_APP_NAME} is the career guidance platform. It brings clarity, builds confidence, and reduces stress, leading to a more purposeful career. Get expert career guidance to make informed decisions and achieve your goals with evidence-based support.`,
-  image = "/ally-1.jpg",  
+  description = `${process.env.NEXT_PUBLIC_APP_NAME} helps teenagers gain clarity, confidence and become future-ready through AI-powered career guidance, psychology-based coaching, and mindset development tools.`,
+  image = "/ally-1.jpg",
   icons = [
     {
       rel: "apple-touch-icon",
@@ -31,57 +31,57 @@ export const generateMetadata = ({
   description?: string;
   image?: string | null;
   icons?: Metadata["icons"];
-    noIndex?: boolean;
+  noIndex?: boolean;
   path?: string;
-  } = {}): Metadata => {
+} = {}): Metadata => {
   // Get base URL from environment or default
   const baseUrl = process.env.NEXT_PUBLIC_APP_DOMAIN || 'https://inwesol.com';
-  
+
   // Ensure baseUrl doesn't have trailing slash
   const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-  
+
   // Create full URL for current page
   const fullUrl = path ? `${normalizedBaseUrl}/${path.startsWith('/') ? path.slice(1) : path}` : normalizedBaseUrl;
 
   return {
     title,
-  description,
-  icons,
-  metadataBase: new URL(normalizedBaseUrl),
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: fullUrl,
-    siteName: process.env.NEXT_PUBLIC_APP_NAME || 'Inwesol',
     description,
-    ...(image && { images: [{ url: image, width: 1200, height: 630 }] }),
-  },
-  twitter: {
-    card: "summary_large_image",
-    description,
-    ...(image && { images: [image] }),
-    creator: "@inwesol",
-    site: '@inwesol',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
+    icons,
+    metadataBase: new URL(normalizedBaseUrl),
+    openGraph: {
+      type: 'website',
+      locale: 'en_US',
+      url: fullUrl,
+      siteName: process.env.NEXT_PUBLIC_APP_NAME || 'Inwesol',
+      description,
+      ...(image && { images: [{ url: image, width: 1200, height: 630 }] }),
+    },
+    twitter: {
+      card: "summary_large_image",
+      description,
+      ...(image && { images: [image] }),
+      creator: "@inwesol",
+      site: '@inwesol',
+    },
+    robots: {
       index: true,
       follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
-  },
-  alternates: {
-    canonical: fullUrl,
-  },
-  // verification: {
-  //   google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  // }
+    alternates: {
+      canonical: fullUrl,
+    },
+    // verification: {
+    //   google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    // }
   };
-  
+
 };

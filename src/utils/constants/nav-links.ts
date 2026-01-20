@@ -12,43 +12,43 @@ import {
 export const NAV_LINKS = [
   {
     title: "Be Future Ready",
-    href: "/career-test/",
+    href: "/be-future-ready/",
   },
   {
-      title: "Features",
-      href: "#",
-      menu: [
-          {
-              title: "Explorer",
-              tagline: "Be curious. Seek Information.",
-              href: "/explorer/",
-              icon: MapIcon,
-        },
-          {
-              title: "Behavioural Tools",
-              tagline: "Simple Tools. Everyday Impact.",
-              href: "/behavioural-tools/",
-              icon: SettingsIcon,
-        },
-          {
-              title: "CoCo : AI Mindset Coach",
-              tagline: "Everyday ally for your journey.",
-              href: "/coco/",
-              icon: WandSparklesIcon,
-        },
-          {
-              title: "Community",
-              tagline: "Connect with mentors & peers.",
-              href: "/community/",
-              icon: UsersIcon,
-          },
-          {
-              title: "Coaching",
-              tagline: "Personalized & holistic support.",
-              href: "/coaching/",
-              icon: LightbulbIcon,
-          },
-      ],
+    title: "Features",
+    href: "#",
+    menu: [
+      {
+        title: "Explorer",
+        tagline: "Be curious. Seek Information.",
+        href: "/explorer/",
+        icon: MapIcon,
+      },
+      {
+        title: "Behavioural Tools",
+        tagline: "Simple Tools. Everyday Impact.",
+        href: "/behavioural-tools/",
+        icon: SettingsIcon,
+      },
+      {
+        title: "CoCo : AI Mindset Coach",
+        tagline: "Everyday ally for your journey.",
+        href: "/coco/",
+        icon: WandSparklesIcon,
+      },
+      {
+        title: "Community",
+        tagline: "Connect with mentors & peers.",
+        href: "/community/",
+        icon: UsersIcon,
+      },
+      {
+        title: "Coaching",
+        tagline: "Personalized & holistic support.",
+        href: "/coaching/",
+        icon: LightbulbIcon,
+      },
+    ],
   },
   {
     title: "Company",
@@ -92,5 +92,5 @@ export const NAV_LINKS = [
     title: "For Parents",
     href: "/parents/",
   },
-  
+
 ];

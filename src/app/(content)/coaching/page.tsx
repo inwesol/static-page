@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -304,7 +306,17 @@ export default function SchoolsPage() {
               </p>
 
               {/* Download Button */}
-              <button className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 hover:scale-105">
+              <button
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/pdfs/self-discovery-journey.pdf";
+                  link.download = "self-discovery-journey.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-6 py-3 rounded-full font-medium transition-all duration-200 hover:scale-105"
+              >
                 Download Brochure
                 <svg
                   className="w-4 h-4"

@@ -25,7 +25,7 @@ const links: ModalLink[] = [
     title: "Future Readiness",
     description:
       "Tests for students to discover their strengths and readiness for the future",
-    href: "/career-test",
+    href: "/be-future-ready",
     icon: <Target className="w-6 h-6" />,
     gradient: "from-blue-500 to-cyan-500",
   },
@@ -65,7 +65,7 @@ const ModalCTA: React.FC<Props> = ({
   }, [delay]);
 
   const filteredLinks = isTestResult
-    ? links.filter((l) => l.href !== "/career-test")
+    ? links.filter((l) => l.href !== "/be-future-ready")
     : isOccupationsList
     ? links.filter((l) => l.external === true)
     : links;

@@ -29,6 +29,7 @@ import {
   GitFork,
   DownloadCloudIcon,
   Download,
+  FileDown,
   UserCog2,
   UserCog,
   Crown,
@@ -382,7 +383,7 @@ export default function CommunityPage() {
         </section> */}
 
         {/* Schedule Session Section */}
-        <section className="py-10 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
+        {/* <section className="py-10 sm:py-20 bg-gradient-to-b from-gray-50 to-white">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center mb-6 sm:mb-8">
               <div className="inline-flex items-center py-2 px-3 sm:py-3 sm:px-6 bg-gradient-to-r from-primary-green-100 to-primary-blue-100 rounded-full text-primary-green-700 font-semibold mb-6 text-sm sm:text-base">
@@ -455,7 +456,6 @@ export default function CommunityPage() {
             </div>
 
             <div className="max-w-7xl mx-auto">
-              {/* Shimmer effect instead of loader */}
               {!desktopIframeLoaded && (
                 <div className="border border-gray-200 hover:shadow-xl transition-shadow rounded-2xl h-[720px] overflow-hidden bg-white shadow-lg">
                   <ZoomSessionSkeletonCard />
@@ -478,7 +478,7 @@ export default function CommunityPage() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Community Features - Large Cards */}
         <section className="py-10 sm:py-20 bg-white">
@@ -545,41 +545,40 @@ export default function CommunityPage() {
         </section>
 
         {/* Parents Guide Download */}
-        <section className=" bg-white">
-          <div className="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-8 sm:py-10 px-6 sm:px-12 lg:px-16">
-            <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-5 sm:gap-6 flex-1">
-                <Download className="w-10 h-10 sm:w-12 sm:h-12 text-white flex-shrink-0" />
-                <div>
-                  <h2 className="text-2xl sm:text-3xl font-bold mb-2">
+        <section className="py-4 sm:py-8 bg-white">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid grid-cols-1 gap-4 sm:gap-8 max-w-4xl mx-auto">
+              <Card
+                className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-2xl hover:-translate-y-3 bg-gradient-to-br from-pink-500 via-purple-500 to-primary-blue-600 rounded-xl cursor-pointer overflow-hidden relative"
+                onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = "/pdfs/parents-guide.pdf";
+                  link.download = "parents-guide.pdf";
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+              >
+                <CardContent className="p-6 sm:p-10 sm:pt-12 sm:pb-12 relative z-10">
+                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/90 via-purple-500/90 to-primary-blue-600/90 opacity-95"></div>
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 relative z-10 rounded-[6px] sm:rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
+                    <Download className="size-5 sm:size-8" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-5 text-white relative z-10 font-bold transition-colors">
                     Parent as a Mentor
-                  </h2>
-                  <p className="text-base sm:text-lg text-purple-100">
+                  </h3>
+                  <p className="text-base sm:text-lg text-white/90 relative z-10 sm:leading-relaxed">
                     Learn to mentor your teenager and support them in
                     cultivating a learning mindset.
                   </p>
-                </div>
-              </div>
-              <a
-                href="/pdfs/parents-guide.pdf"
-                download
-                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-medium transition-all duration-200 hover:scale-105 flex-shrink-0 text-base sm:text-lg"
-              >
-                Download Guide
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </a>
+                  <div className="mt-4 sm:mt-6 flex items-center text-white font-semibold relative z-10 transition-colors">
+                    <FileDown className="size-4 sm:size-5 mr-2" />
+                    <span className="text-base sm:text-lg">
+                      Click to download PDF
+                    </span>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>

@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from "react";
 import { z } from "zod";
 import { useForm, UseFormReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type { Category } from "@/app/(content)/career-test/questionnaire/questionsData";
+import type { Category } from "@/app/(content)/be-future-ready/questionnaire/questionsData";
 
 export const formSchema = z.object({
   fullName: z.string().min(2, { message: "Full name is required" }),

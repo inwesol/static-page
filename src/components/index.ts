@@ -16,6 +16,9 @@ import PricingCards from "./pricing-cards";
 import { StickyBanner } from "./ui/sticky-banner";
 import { StickyBannerContent } from "./sticky-banner-content";
 
+// gradient download card
+import GradientDownloadCard from "./gradient-download-card/gradient-download-card";
+
 export {
   Icons,
   MaxWidthWrapper,
@@ -26,4 +29,5 @@ export {
   PricingCards,
   StickyBanner,
   StickyBannerContent,
+  GradientDownloadCard,
 };

@@ -36,7 +36,7 @@ import {
   Calendar,
   Book,
 } from "lucide-react";
-import { Footer, Navbar } from "@/components";
+import { Footer, GradientDownloadCard, Navbar } from "@/components";
 import ScrollToEnquiryButton from "../school/ScrollToEnquiryButton";
 import EnquireyForm from "../school/EnquiryForm";
 import { ZoomSessionSkeletonCard } from "../events/[eventSlug]/zoom-session-skeleton-card";
@@ -548,37 +548,14 @@ export default function CommunityPage() {
         <section className="py-4 sm:py-8 bg-white">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid grid-cols-1 gap-4 sm:gap-8 max-w-4xl mx-auto">
-              <Card
-                className="group hover:shadow-2xl transition-all duration-500 border-0 shadow-2xl hover:-translate-y-3 bg-gradient-to-br from-pink-500 via-purple-500 to-primary-blue-600 rounded-xl cursor-pointer overflow-hidden relative"
-                onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = "/pdfs/parents-guide.pdf";
-                  link.download = "parents-guide.pdf";
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
-              >
-                <CardContent className="p-6 sm:p-10 sm:pt-12 sm:pb-12 relative z-10">
-                  <div className="absolute inset-0 bg-gradient-to-br from-pink-500/90 via-purple-500/90 to-primary-blue-600/90 opacity-95"></div>
-                  <div className="w-16 h-16 sm:w-20 sm:h-20 mb-4 sm:mb-6 relative z-10 rounded-[6px] sm:rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                    <Download className="size-5 sm:size-8" />
-                  </div>
-                  <h3 className="text-2xl sm:text-3xl mb-3 sm:mb-5 text-white relative z-10 font-bold transition-colors">
-                    Parent as a Mentor
-                  </h3>
-                  <p className="text-base sm:text-lg text-white/90 relative z-10 sm:leading-relaxed">
-                    Learn to mentor your teenager and support them in
-                    cultivating a learning mindset.
-                  </p>
-                  <div className="mt-4 sm:mt-6 flex items-center text-white font-semibold relative z-10 transition-colors">
-                    <FileDown className="size-4 sm:size-5 mr-2" />
-                    <span className="text-base sm:text-lg">
-                      Click to download PDF
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
+              <GradientDownloadCard
+                icon={<Download className="size-5 sm:size-8" />}
+                title="Parents as a Mentor"
+                description="Learn to mentor your teenager and support them in cultivating a learning mindset."
+                imageUrl="/parents-mentor.png"
+                pdfUrl="/pdfs/parents-guide.pdf"
+                downloadFileName="parents-guide.pdf"
+              />
             </div>
           </div>
         </section>

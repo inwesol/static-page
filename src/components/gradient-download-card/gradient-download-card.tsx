@@ -39,7 +39,7 @@ export default function GradientDownloadCard({
     link.href = pdfUrl;
     link.download =
       downloadFileName ||
-      title.replace(/[^a-z0-9]/gi, "_").toLowerCase() + ".pdf";
+      title.replace(/[^a-z0-9]/gi, "-").toLowerCase() + ".pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

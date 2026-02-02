@@ -552,7 +552,7 @@ export default function CommunityPage() {
                 icon={<Download className="size-5 sm:size-8" />}
                 title="Parents as a Mentor"
                 description="Learn to mentor your teenager and support them in cultivating a learning mindset."
-                imageUrl="/parents-mentor.png"
+                imageUrl="/parents-as-mentor.png"
                 pdfUrl="/pdfs/parents-guide.pdf"
                 downloadFileName="parents-guide.pdf"
               />

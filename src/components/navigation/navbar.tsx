@@ -46,7 +46,7 @@ const Navbar = () => {
     {
       title: "Sign In as Coach",
       tagline: "Access coach dashboard",
-      href: "https://coach.inwesol.com/sign-in",
+      href: "https://coach.inwesol.com",
       icon: UserIcon,
     },
     // {

@@ -995,8 +995,6 @@ Research in educational psychology shows that when we see rejection as feedback 
 
 # Common Types of Career Rejection Teens Face
 
-![Type of Cognitive Biases](/cognitive-biases-type.jpg)
-
 ## Indecision-Based Rejections
 
 Sometimes rejection doesn’t happen because you’re not capable, but because you’re not ready yet. Many teens feel confused, unmotivated, or stuck because they don’t know what direction to take. Fixed beliefs like “I’m just bad at this” or a lack of clear information about your own strengths and career options can make it harder to spot the opportunities.

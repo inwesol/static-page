@@ -734,7 +734,7 @@ export default function CommunityPage() {
                 </div>
 
                 <a
-                  href="https://chat.whatsapp.com/CEaPEBQ3ehGB0hRKGL1zhf"
+                  href="https://chat.whatsapp.com/DHi6MoKYwLHIPDSBHhcEju"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-xl"

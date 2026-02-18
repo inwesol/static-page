@@ -20,7 +20,7 @@ const HomePage1 = () => {
   return (
     <div className="h-full">
       {/* Global Modal with 4 second delay */}
-      <ModalCTA isOpen={showModal} setIsOpen={setShowModal} delay={4000} />
+      <ModalCTA isOpen={showModal} setIsOpen={setShowModal} delay={10000} />
 
       <HeroSection />
       <SchoolSection />

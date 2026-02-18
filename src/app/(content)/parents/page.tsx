@@ -277,7 +277,7 @@ export default function CommunityPage() {
 
               {/* Right Visual */}
               <Image
-                src="/parents-page-hero.png"
+                src="/parent-hero-section.png"
                 alt="Parents Visual"
                 width={1000}
                 height={1000}
@@ -552,7 +552,7 @@ export default function CommunityPage() {
                 icon={<Download className="size-5 sm:size-8" />}
                 title="Parents as a Mentor"
                 description="Learn to mentor your teenager and support them in cultivating a learning mindset."
-                imageUrl="/parents-as-mentor.png"
+                imageUrl="/parent-guide-image.png"
                 pdfUrl="/pdfs/parents-guide.pdf"
                 downloadFileName="parents-guide.pdf"
               />

@@ -25,7 +25,7 @@ import ModalCTA from "@/components/modal-cta";
 // Add a debounce utility function
 function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout | null = null;
 
@@ -93,12 +93,15 @@ export function OccupationsContent({
 
   // Initialize filtered occupations on mount
   useEffect(() => {
-    const grouped = occupations.reduce((acc, occupation) => {
-      const firstLetter = occupation.title[0].toUpperCase();
-      if (!acc[firstLetter]) acc[firstLetter] = [];
-      acc[firstLetter].push(occupation);
-      return acc;
-    }, {} as Record<string, Occupation[]>);
+    const grouped = occupations.reduce(
+      (acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      },
+      {} as Record<string, Occupation[]>,
+    );
 
     setFilteredOccupations(grouped);
   }, [occupations]);
@@ -193,26 +196,29 @@ export function OccupationsContent({
     const result: string = interests.sort().join("");
     const interestsPart = interestsList[result as keyof typeof interestsList];
     const interestsPartSet = new Set(
-      interestsPart.map((item) => item.onetsoc_code)
+      interestsPart.map((item) => item.onetsoc_code),
     );
     const filtered = occupations.filter((item) =>
-      interestsPartSet.has(item.onetsoc_code)
+      interestsPartSet.has(item.onetsoc_code),
     );
 
     // Group filtered occupations by first letter of the title
-    const grouped = filtered.reduce((acc, occupation) => {
-      const firstLetter = occupation.title[0].toUpperCase();
-      if (!acc[firstLetter]) acc[firstLetter] = [];
-      acc[firstLetter].push(occupation);
-      return acc;
-    }, {} as Record<string, Occupation[]>);
+    const grouped = filtered.reduce(
+      (acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return acc;
+      },
+      {} as Record<string, Occupation[]>,
+    );
 
     setFilteredOccupations(grouped);
     setVisibleCards({});
     setError(
       filtered.length === 0
         ? "No occupations found matching all selected interests. Try different combinations."
-        : null
+        : null,
     );
   };
 
@@ -220,12 +226,15 @@ export function OccupationsContent({
   const handleAbilitySearch = (selectedSubsubId: string | null) => {
     if (!selectedSubsubId) {
       // No filter, show all occupations grouped by first letter
-      const grouped = occupations.reduce((acc, occupation) => {
-        const firstLetter = occupation.title[0].toUpperCase();
-        if (!acc[firstLetter]) acc[firstLetter] = [];
-        acc[firstLetter].push(occupation);
-        return acc;
-      }, {} as Record<string, Occupation[]>);
+      const grouped = occupations.reduce(
+        (acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        },
+        {} as Record<string, Occupation[]>,
+      );
       setFilteredOccupations(grouped);
       setError(null);
       // console.log("running with empty selectedId")
@@ -240,28 +249,31 @@ export function OccupationsContent({
           if (subsub.id === selectedSubsubId) {
             occupationIds = subsub.occupationIds;
           }
-        })
-      )
+        }),
+      ),
     );
 
     // Filter occupations that match any occupationId in the subsub-ability
     const filtered = occupations.filter((occ) =>
-      occupationIds.includes(occ.onetsoc_code)
+      occupationIds.includes(occ.onetsoc_code),
     );
 
     // Group filtered occupations by first letter of the title
-    const grouped = filtered.reduce((acc, occupation) => {
-      const firstLetter = occupation.title[0].toUpperCase();
-      if (!acc[firstLetter]) acc[firstLetter] = [];
-      acc[firstLetter].push(occupation);
-      return { ...acc };
-    }, {} as Record<string, Occupation[]>);
+    const grouped = filtered.reduce(
+      (acc, occupation) => {
+        const firstLetter = occupation.title[0].toUpperCase();
+        if (!acc[firstLetter]) acc[firstLetter] = [];
+        acc[firstLetter].push(occupation);
+        return { ...acc };
+      },
+      {} as Record<string, Occupation[]>,
+    );
     // console.log("Grouped: ", grouped);
     setFilteredOccupations(grouped);
     setError(
       filtered.length === 0
         ? "No occupations found matching the selected ability. Try a different one."
-        : null
+        : null,
     );
   };
   // Hadle skill search
@@ -270,12 +282,15 @@ export function OccupationsContent({
       // console.log("running")
       if (!selectedId) {
         // No filter, show all occupations grouped by first letter
-        const grouped = occupations.reduce((acc, occupation) => {
-          const firstLetter = occupation.title[0].toUpperCase();
-          if (!acc[firstLetter]) acc[firstLetter] = [];
-          acc[firstLetter].push(occupation);
-          return acc;
-        }, {} as Record<string, Occupation[]>);
+        const grouped = occupations.reduce(
+          (acc, occupation) => {
+            const firstLetter = occupation.title[0].toUpperCase();
+            if (!acc[firstLetter]) acc[firstLetter] = [];
+            acc[firstLetter].push(occupation);
+            return acc;
+          },
+          {} as Record<string, Occupation[]>,
+        );
         setFilteredOccupations(grouped);
         setError(null);
         return;
@@ -288,30 +303,33 @@ export function OccupationsContent({
           if (subSkill.id === selectedId) {
             occupationIds = subSkill.occupationIds;
           }
-        })
+        }),
       );
 
       // Filter occupations that match any occupationId in the subsub-ability
       const filtered = occupations.filter((occ) =>
-        occupationIds.includes(occ.onetsoc_code)
+        occupationIds.includes(occ.onetsoc_code),
       );
 
       // Group filtered occupations by first letter of the title
-      const grouped = filtered.reduce((acc, occupation) => {
-        const firstLetter = occupation.title[0].toUpperCase();
-        if (!acc[firstLetter]) acc[firstLetter] = [];
-        acc[firstLetter].push(occupation);
-        return acc;
-      }, {} as Record<string, Occupation[]>);
+      const grouped = filtered.reduce(
+        (acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        },
+        {} as Record<string, Occupation[]>,
+      );
 
       setFilteredOccupations(grouped);
       setError(
         filtered.length === 0
           ? "No occupations found matching the selected ability. Try a different one."
-          : null
+          : null,
       );
     },
-    [occupations]
+    [occupations],
   );
   // Handle knowledge search
   const handleKnowldegSearch = useCallback(
@@ -319,12 +337,15 @@ export function OccupationsContent({
       // console.log("running")
       if (!selectedId) {
         // No filter, show all occupations grouped by first letter
-        const grouped = occupations.reduce((acc, occupation) => {
-          const firstLetter = occupation.title[0].toUpperCase();
-          if (!acc[firstLetter]) acc[firstLetter] = [];
-          acc[firstLetter].push(occupation);
-          return acc;
-        }, {} as Record<string, Occupation[]>);
+        const grouped = occupations.reduce(
+          (acc, occupation) => {
+            const firstLetter = occupation.title[0].toUpperCase();
+            if (!acc[firstLetter]) acc[firstLetter] = [];
+            acc[firstLetter].push(occupation);
+            return acc;
+          },
+          {} as Record<string, Occupation[]>,
+        );
         setFilteredOccupations(grouped);
         setError(null);
         return;
@@ -337,30 +358,33 @@ export function OccupationsContent({
           if (subKnowledge.id === selectedId) {
             occupationIds = subKnowledge.occupationIds;
           }
-        })
+        }),
       );
 
       // Filter occupations that match any occupationId in the subsub-ability
       const filtered = occupations.filter((occ) =>
-        occupationIds.includes(occ.onetsoc_code)
+        occupationIds.includes(occ.onetsoc_code),
       );
 
       // Group filtered occupations by first letter of the title
-      const grouped = filtered.reduce((acc, occupation) => {
-        const firstLetter = occupation.title[0].toUpperCase();
-        if (!acc[firstLetter]) acc[firstLetter] = [];
-        acc[firstLetter].push(occupation);
-        return acc;
-      }, {} as Record<string, Occupation[]>);
+      const grouped = filtered.reduce(
+        (acc, occupation) => {
+          const firstLetter = occupation.title[0].toUpperCase();
+          if (!acc[firstLetter]) acc[firstLetter] = [];
+          acc[firstLetter].push(occupation);
+          return acc;
+        },
+        {} as Record<string, Occupation[]>,
+      );
 
       setFilteredOccupations(grouped);
       setError(
         filtered.length === 0
           ? "No occupations found matching the selected ability. Try a different one."
-          : null
+          : null,
       );
     },
-    [occupations]
+    [occupations],
   );
 
   // Update loadMore function to recalculate positions after loading more content
@@ -463,7 +487,7 @@ export function OccupationsContent({
         isOccupationsList
         isOpen={showModal}
         setIsOpen={setShowModal}
-        delay={4000}
+        delay={10000}
       />
       {showPlaceholder && browseBy !== "all" ? (
         <div className="max-w-4xl mx-auto p-6">
@@ -510,7 +534,7 @@ export function OccupationsContent({
                     const totalCards = filteredOccupations[letter].length;
                     const displayedCards = filteredOccupations[letter].slice(
                       0,
-                      visibleCount
+                      visibleCount,
                     );
                     return (
                       <section
@@ -536,7 +560,7 @@ export function OccupationsContent({
                               className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200 ease-out border-t border-[#3FA1D8]/30 cursor-pointer"
                               onClick={() =>
                                 router.push(
-                                  `/explorer/${browseBy}/${occupation.onetsoc_code}`
+                                  `/explorer/${browseBy}/${occupation.onetsoc_code}`,
                                 )
                               }
                             >

@@ -25,7 +25,7 @@ const scoreToPercentage = (score: number): number => {
 
 // PYDI Scoring Scale Interpretation (using percentages) - Uniform colors
 const getScoreInterpretation = (
-  percentage: number
+  percentage: number,
 ): { level: string; description: string } => {
   if (percentage >= 0 && percentage <= 37) {
     return {
@@ -119,7 +119,7 @@ export default function Result() {
         isTestResult
         isOpen={showModal}
         setIsOpen={setShowModal}
-        delay={3000}
+        delay={4000}
       />
       <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col gap-4">
         <header className="bg-gradient-to-r from-green-600 to-blue-600 text-white md:p-8 p-4">
@@ -278,7 +278,7 @@ export default function Result() {
                       </p>
                     </article>
                   );
-                }
+                },
               )}
             </section>
 

@@ -26,15 +26,15 @@ export default function RootLayout({
         className={cn(
           "min-h-screen antialiased !font-default overflow-x-hidden",
           aeonik.variable,
-          inter.variable
+          inter.variable,
         )}
       >
         <StickyBannerProvider>
           <StickyBanner className="bg-gradient-to-b from-blue-500 to-blue-600">
             <StickyBannerContent
-              content="🎉 Get 25% Discount on Mindset20 Program."
-              pdfSrc="/pdfs/Announcement.pdf"
-              pdfTitle="25% discount announcement"
+              content="🚀 Applications Now Open for Mindset20 Program - For students ( Age 13-17 )."
+              pdfSrc="/pdfs/Mindset20.pdf"
+              pdfTitle="Mindset20 Program"
             />
           </StickyBanner>
           {/* <Providers>

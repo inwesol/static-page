@@ -241,6 +241,10 @@ const config = {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
+        ticker: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -261,6 +265,7 @@ const config = {
         "--animate-rotate-border": "border-rotate 3s infinite linear",
         float: "float 3s ease-in-out infinite",
         scroll: "scroll var(--animation-duration, 40s) linear infinite var(--animation-direction, forwards)",
+        ticker: "ticker 28s linear infinite",
       },
     },
   },

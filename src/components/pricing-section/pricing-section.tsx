@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
 import { AnimationContainer } from "@/components";
 import MagicBadge from "@/components/ui/magic-badge";
 import {
@@ -16,7 +17,28 @@ import { CheckCircle2, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/utils";
 
+const CAL_LINK = "inwesol-q6q9rh/45mins";
+
+type PricingPlanButton =
+  | { text: string; variant: "primary" | "outline"; href: string }
+  | { text: string; variant: "primary" | "outline"; calPopup: true };
+
+function pricingPlanButtonHref(btn: PricingPlanButton): string {
+  return "href" in btn ? btn.href : "/";
+}
+
 const PricingSection = () => {
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi();
+      cal("ui", {
+        theme: "light",
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    })();
+  }, []);
+
   const plans = [
     {
       name: "Mindset Essentials",
@@ -33,7 +55,25 @@ const PricingSection = () => {
       btn: {
         text: "Get Started",
         href: "/be-future-ready",
-        variant: "outline" as const,
+        variant: "primary" as const,
+      },
+      forWhom: "Parents",
+    },
+    {
+      name: "Mindset Reflection",
+      info: "Understand your parenting style. Transform how you guide your child.",
+      price: "₹4,425",
+      priceDescription: "Get your personalized sessions",
+      features: [
+        "Everything in Mindset Essentials",
+        "3 Personalized 1:1 Coaching Sessions",
+        "Awareness of Your Parenting Strengths",
+        "Resolve Parenting Challenges",
+      ],
+      btn: {
+        text: "Begin Journey",
+        variant: "primary" as const,
+        calPopup: true as const,
       },
       forWhom: "Parents",
     },
@@ -75,17 +115,17 @@ const PricingSection = () => {
       ],
       btn: {
         text: "Contact Us",
-        href: "/school",
-        variant: "outline" as const,
+        href: "/school/#enquiry",
+        variant: "primary" as const,
       },
       forWhom: "Schools",
     },
   ];
 
   return (
-    <div className="bg-gradient-to-br from-primary-green-50 via-white to-primary-blue-50 py-16 md:py-20">
+    <div className="bg-gradient-to-br from-primary-green-50 via-white to-primary-blue-50 py-14 sm:py-16 md:py-20">
       <AnimationContainer delay={0.2}>
-        <div className="flex flex-col items-center justify-center w-full py-8 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col items-center justify-center w-full py-6 sm:py-8 max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
           <MagicBadge title="Pricing" />
 
           <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold font-heading leading-snug mt-6">
@@ -102,30 +142,37 @@ const PricingSection = () => {
         </div>
       </AnimationContainer>
 
-      <div className="w-full flex justify-center items-center mt-8 px-4 md:px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl w-full">
+      <div className="w-full flex justify-center items-center mt-6 sm:mt-8 px-5 sm:px-6 md:px-8 lg:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full max-w-6xl mx-auto gap-x-5 gap-y-8 sm:gap-y-9 md:gap-x-6 md:gap-y-10 lg:gap-y-12">
           {plans.map((plan, index) => (
-            <AnimationContainer key={plan.name} delay={(index + 1) * 0.2}>
+            <AnimationContainer
+              key={plan.name}
+              delay={(index + 1) * 0.1}
+              className={cn(
+                "w-full",
+                plan.name === "Mindset Ecosystem" && "lg:col-start-2",
+              )}
+            >
               <Card
                 className={cn(
-                  "h-full flex flex-col border-2 transition-all duration-300 hover:shadow-xl",
+                  "h-full flex flex-col transition-all duration-300 hover:shadow-md",
                   plan.forWhom === "Parents"
-                    ? "border-primary-green-500 shadow-lg scale-105 relative"
+                    ? "border-primary-green-500/35 shadow-sm hover:border-primary-green-500/55 relative"
                     : plan.forWhom === "Schools"
-                    ? "border-primary-blue-500 shadow-lg scale-105 relative"
-                    : "border-border hover:border-primary-blue-300"
+                      ? "border-primary-blue-500/35 shadow-sm hover:border-primary-blue-500/55 relative"
+                      : "border-border hover:border-primary-blue-300",
                 )}
               >
                 {plan.forWhom && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span
                       className={cn(
-                        "text-white text-xs font-semibold px-4 py-1 rounded-full",
+                        "text-white text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-0.5 sm:py-1 rounded-full",
                         plan.forWhom === "Parents"
                           ? "bg-gradient-to-r from-primary-green-500 to-primary-blue-500"
                           : plan.forWhom === "Schools"
-                          ? "bg-gradient-to-r from-primary-blue-500 to-purple-500"
-                          : "bg-gradient-to-r from-primary-green-500 to-primary-blue-500"
+                            ? "bg-gradient-to-r from-primary-blue-500 to-purple-500"
+                            : "bg-gradient-to-r from-primary-green-500 to-primary-blue-500",
                       )}
                     >
                       For {plan.forWhom}
@@ -135,27 +182,27 @@ const PricingSection = () => {
 
                 <CardHeader
                   className={cn(
-                    "border-b rounded-t-2xl",
+                    "border-b border-border/60 rounded-t-lg lg:rounded-t-2xl p-5 sm:p-6",
                     plan.forWhom === "Parents"
                       ? "bg-gradient-to-br from-primary-green-50 to-primary-blue-50"
                       : plan.forWhom === "Schools"
-                      ? "bg-gradient-to-br from-primary-blue-50 to-purple-50"
-                      : "bg-white"
+                        ? "bg-gradient-to-br from-primary-blue-50 to-purple-50"
+                        : "bg-white",
                   )}
                 >
-                  <CardTitle className="text-2xl font-bold text-gray-900">
+                  <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
                     {plan.name}
                   </CardTitle>
-                  <CardDescription className="text-base text-gray-600 mt-2">
+                  <CardDescription className="text-sm sm:text-base text-gray-600 mt-1.5 sm:mt-2 leading-relaxed">
                     {plan.info}
                   </CardDescription>
-                  <div className="mt-4">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-4xl font-bold text-gray-900">
+                  <div className="mt-3 sm:mt-4">
+                    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                      <span className="text-3xl sm:text-4xl font-bold text-gray-900 tabular-nums">
                         {plan.price}
                       </span>
                       {plan.price !== "Free" && plan.price !== "Custom" && (
-                        <span className="text-lg text-gray-600">
+                        <span className="text-sm sm:text-base text-gray-600">
                           (Inclusive of GST)
                         </span>
                       )}
@@ -168,8 +215,8 @@ const PricingSection = () => {
                   </div>
                 </CardHeader>
 
-                <CardContent className="pt-6 flex-grow">
-                  <ul className="space-y-3">
+                <CardContent className="flex-grow px-5 pb-0 pt-5 sm:px-6 sm:pt-6">
+                  <ul className="space-y-2.5 sm:space-y-3">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-3">
                         <CheckCircle2
@@ -178,8 +225,8 @@ const PricingSection = () => {
                             plan.forWhom === "Parents"
                               ? "text-primary-green-600"
                               : plan.forWhom === "Schools"
-                              ? "text-primary-blue-600"
-                              : "text-primary-blue-600"
+                                ? "text-primary-blue-600"
+                                : "text-primary-blue-600",
                           )}
                         />
                         <span className="text-sm text-gray-700">{feature}</span>
@@ -188,23 +235,52 @@ const PricingSection = () => {
                   </ul>
                 </CardContent>
 
-                <CardFooter className="pt-6">
-                  <Link href={plan.btn.href} className="w-full">
+                <CardFooter className="px-5 pb-6 pt-4 sm:px-6 sm:pt-6">
+                  {"calPopup" in plan.btn && plan.btn.calPopup ? (
                     <Button
+                      type="button"
                       variant={plan.btn.variant}
+                      data-cal-link={CAL_LINK}
+                      data-cal-config='{"layout":"month_view"}'
+                      onClick={() =>
+                        window.gtag?.("event", "pricing_cta_click", {
+                          plan: plan.name,
+                          cal_link: CAL_LINK,
+                        })
+                      }
                       className={cn(
                         "w-full group rounded-xl",
                         plan.forWhom === "Parents" &&
                           "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
                         plan.forWhom === "Schools" &&
-                          "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white"
+                          "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
                       )}
                       size="lg"
                     >
                       {plan.btn.text}
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                     </Button>
-                  </Link>
+                  ) : (
+                    <Link
+                      href={pricingPlanButtonHref(plan.btn)}
+                      className="w-full"
+                    >
+                      <Button
+                        variant={plan.btn.variant}
+                        className={cn(
+                          "w-full group rounded-xl",
+                          plan.forWhom === "Parents" &&
+                            "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
+                          plan.forWhom === "Schools" &&
+                            "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
+                        )}
+                        size="lg"
+                      >
+                        {plan.btn.text}
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </Button>
+                    </Link>
+                  )}
                 </CardFooter>
               </Card>
             </AnimationContainer>
@@ -212,8 +288,8 @@ const PricingSection = () => {
         </div>
       </div>
 
-      <AnimationContainer delay={0.8}>
-        <div className="flex flex-col items-center justify-center mt-12 px-4">
+      <AnimationContainer delay={0.4}>
+        <div className="flex flex-col items-center justify-center mt-10 sm:mt-12 md:mt-14 px-5 sm:px-6">
           <p className="text-center text-sm text-gray-600 max-w-2xl">
             Need help choosing the right plan?{" "}
             <a

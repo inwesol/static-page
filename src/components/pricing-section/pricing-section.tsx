@@ -13,7 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, Library } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/utils";
 
@@ -46,11 +46,12 @@ const PricingSection = () => {
       price: "Free",
       priceDescription: "Get started with basic features",
       features: [
-        "Future Readiness Assessment",
+        "Parent as Mentor ( Guide)",
         "Explorer - Occupations Library",
-        "CoCo - AI Mindset Coach",
-        "Preliminary session with a Psychologist",
-        'Workshops - "Know Your Why"',
+        "CoCo - AI Mindset Coach for your child",
+        "Future Readiness Resources for your child",
+        "Preliminary 1:1 session with a Psychologist",
+        'Workshops - "Know Your Why” for your child',
       ],
       btn: {
         text: "Get Started",
@@ -83,7 +84,7 @@ const PricingSection = () => {
       price: "₹18,880",
       priceDescription: "1 Year platform access",
       features: [
-        "Everything in Mindset Essentials",
+        "Everything in Mindset Reflection",
         "8 one-to-one Coaching Sessions for your Teenager",
         "Advanced Behavioural Tools",
         "Progress Tracking Dashboard",

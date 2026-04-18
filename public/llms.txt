@@ -1,0 +1,220 @@
+# Inwesol
+
+> Inwesol is an ed-tech company and an ally for young minds to excel. We help students (ages 13–17) build a Learning Mindset through psychology, technology, and community — enabling them to manage academic pressure, gain career clarity, and grow with confidence.
+
+Inwesol Global Pvt. Ltd. is a Hyderabad-based ed-tech company on a mission to transform student outcomes. Founded by Akarsh Sriramoju and Goutham Toondla, Inwesol integrates psychological evidence with the scale of Generative AI to build a Learning Mindset ecosystem in schools and homes. Our motto: "Self-discovery leads to excellence."
+
+We serve three audiences — students, parents, and schools — with a suite of tools and coaching programs that guide adolescents through self-discovery journey, career exploration, and behavioural development.
+
+---
+
+## About Inwesol
+
+- **Full Name:** Inwesol Global Pvt. Ltd.
+- **Founded:** Hyderabad, India
+- **Founders:** Akarsh Sriramoju (Co-Founder & CEO), Goutham Toondla (Co-Founder & COO)
+- **Tagline:** Ally for Young Minds to Excel
+- **Target Audience:** Students aged 13–17, Parents of teenagers, Schools, also young individuals above 18.
+- **Website:** https://www.inwesol.com
+- **Platform (App):** https://app.inwesol.com
+
+---
+
+## Mission, Vision & Purpose
+
+- **Purpose:** To foster the well-being of individuals and empower them in realising their capabilities for achieving their goals.
+- **Vision:** A world where every individual thrives by making informed decisions and taking meaningful actions.
+- **Mission:** By integrating psychology, technology, and community, we enable decision-making that fosters well-being and drives behavioural change to navigate crucial transitions in individuals' educational and professional journeys.
+- **Motto:** Self-discovery leads to excellence.
+
+---
+
+## Core Values
+
+- **Own It** — Take responsibility and deliver with accountability.
+- **Stay Curious** — Explore, innovate, and think beyond limits.
+- **Do What's Right** — Act with integrity and uphold ethics in all we do.
+- **Be a Coach** — Guide, support, and inspire to realise capabilities.
+- **Empathy First** — Prioritize understanding and compassion in every action.
+- **Be Inclusive** — Embrace inclusivity for both customers and employees.
+- **Trust the Evidence** — Let science and research guide actions.
+- **Think Stakeholders** — Focus on creating value for everyone, not just profits.
+- **Problem First** — Prioritize understanding and solving the core issue.
+
+---
+
+## Features & Products
+
+Inwesol offers a suite of six interconnected features designed as a guided self-discovery journey for students.
+
+### 1. Be Future Ready (Future Readiness)
+Self-assessment tools, resources, and activities that help students discover their strengths, interests, and values — forming the foundation for career clarity.
+- URL: https://www.inwesol.com/be-future-ready/
+- Includes: Psychometric assessments, activity-based learning, resources for self-awareness.
+
+### 2. Explorer
+Helps students explore a wide range of career options and understand the skills, knowledge, and abilities required for various occupations.
+- URL: https://www.inwesol.com/explorer/
+- Includes: Occupations library, career mapping, skill-gap awareness.
+
+### 3. CoCo — AI Mindset Coach
+CoCo is Inwesol's AI-powered conversational coach, designed to help students and young professionals reflect, gain career clarity, and manage stress. Built by blending the science of psychology with Generative AI, CoCo listens without judgment and guides users toward their own answers.
+- URL: https://www.inwesol.com/coco/
+- Capabilities: Career decision support, wellbeing check-ins, reflective coaching conversations, escalation to a human coach when needed.
+- Available 24/7 on the Inwesol platform.
+
+### 4. Coaching — 1:1 Psychology-Based Sessions
+One-on-one coaching with trained psychologists who help students understand their purpose and strengths, set meaningful goals, and take confident action.
+- URL: https://www.inwesol.com/coaching/
+- Delivery: Online sessions with certified coaching psychologists.
+- Outcome: Clarity, confidence, and a concrete action plan.
+
+### 5. Behavioural Tools
+A set of tools that help students stay productive, focused, and on track throughout their self-discovery and career journey.
+- URL: https://www.inwesol.com/behavioural-tools/
+
+### 6. Community
+Connects students with peers, mentors, and educators — offering continuous support, shared learning, collaboration, and inspiration.
+- URL: https://www.inwesol.com/community/
+
+---
+
+## Programs
+
+### Mindset20 Program
+An active program open for enrollment for students aged 13–17. A structured program designed to develop a strong learning mindset in adolescents during a critical phase of their development.
+- Eligibility: Students aged 13–17
+- Status: Applications currently open
+- More info: https://www.inwesol.com
+
+###Understanding your parent style 
+An active program open for enrollment for parents of teenagers. A structured program designed for parents on awareness of strengths and resolving parenting challenges.
+- Eligibility: Parents of teenagers 
+- Status: Applications currently open
+- More info: https://www.inwesol.com
+---
+
+## Pricing Plans
+
+Inwesol offers flexible plans for parents and custom solutions for schools.
+
+### For Parents
+For parents exploring ways to support their teenager
+
+**Mindset Essentials (Free) includes:**
+For parents exploring ways to support their teenager
+- Future Readiness Assessment
+- Explorer — Occupations Library
+- CoCo — AI Mindset Coach
+- Preliminary session with a Psychologist
+- Workshops — "Know Your Why"
+
+### For Parents
+Understand your parenting style. Transform how you guide your child.
+**Mindset Reflection:**
+- Everything in Mindset Essentials 
+- Future Readiness Assessment
+- Explorer — Occupations Library
+- CoCo — AI Mindset Coach
+- Preliminary session with a Psychologist
+- Workshops — "Know Your Why"
+
+### For Parents
+**Mindset Emergence (₹18,880/year) includes:**
+- Everything in Mindset reflection 
+- 8 one-on-one Coaching Sessions for your teenager
+- Advanced Behavioural Tools
+- Progress Tracking Dashboard
+- Comprehensive Report
+- Workshops for Teenagers & Parents
+- Priority Support
+- Internal Community Access
+
+### For Schools
+**Mindset Ecosystem includes:**
+- Everything in Mindset Emergence
+- Learning Mindset Ecosystem infrastructure
+- School Dashboard & Analytics
+- Dedicated Support Manager
+- Teacher Training & Resources
+- Parent Engagement Tools
+- Progress Reports & Insights
+
+---
+
+## Who We Serve
+
+### Students (Ages 13–17)
+Adolescents who are confused about career choices, struggling with academic pressure, or seeking clarity about their strengths and future path. Inwesol helps them through self-discovery, coaching, and a supportive community.
+
+### Parents
+Parents who want structured, evidence-based support for their teenagers — beyond tutoring — to help them develop a learning mindset and make confident decisions about their future.
+- Landing page: https://www.inwesol.com/parents/
+
+### Schools
+Educational institutions looking to build a systemic Learning Mindset culture, reduce student stress, mange student wellbeing and equip students with tools for career readiness and behavioural development.
+- Landing page: https://www.inwesol.com/school/
+
+---
+
+## Our Team
+
+- [Akarsh Sriramoju](https://www.linkedin.com/in/akarshsriramoju/) — Co-Founder & CEO
+- [Goutham Toondla](https://www.linkedin.com/in/goutham-toondla-2a2112123/) — Co-Founder & COO
+- [Esther Anwuzia](https://www.linkedin.com/in/esther-anwuzia/) — Advisor
+- [Kalyani Joshi](https://www.linkedin.com/in/kalyani-joshi1110/) — Coaching Psychologist
+- [Koyena Das](https://www.linkedin.com/in/koyena-das-3b76b3341/) — Coaching Psychologist
+- Full coaches listing: https://www.inwesol.com/coaches/
+
+---
+
+## Key Pages
+
+- [Homepage](https://www.inwesol.com) — Overview of Inwesol's mission, features, and offerings
+- [Our Story](https://www.inwesol.com/story/) — Founding story, mission, vision, values, and team
+- [Be Future Ready](https://www.inwesol.com/be-future-ready/) — Self-assessment and readiness tools
+- [Explorer](https://www.inwesol.com/explorer/) — Career exploration and occupations library
+- [CoCo — AI Mindset Coach](https://www.inwesol.com/coco/) — AI-powered coaching assistant
+- [Coaching](https://www.inwesol.com/coaching/) — 1:1 psychology-based coaching sessions
+- [Behavioural Tools](https://www.inwesol.com/behavioural-tools/) — Productivity and focus tools
+- [Community](https://www.inwesol.com/community/) — Peer, mentor, and educator network
+- [For Schools](https://www.inwesol.com/school/) — School partnership and Mindset Ecosystem
+- [For Parents](https://www.inwesol.com/parents/) — Parent plans and resources
+- [Coaches](https://www.inwesol.com/coaches/) — Meet Inwesol's coaching team
+- [Blog](https://www.inwesol.com/blog/) — Articles on careers, mindset, student well-being
+- [Contact Us](https://www.inwesol.com/contact-us/) — Get in touch with the Inwesol team
+- [Privacy Policy](https://www.inwesol.com/privacy/)
+- [Terms & Conditions](https://www.inwesol.com/terms/)
+- [Refund Policy](https://www.inwesol.com/refund-policy/)
+- [Cancellation Policy](https://www.inwesol.com/cancellation-policy/)
+
+---
+
+## Contact & Support
+
+- **Website:** https://www.inwesol.com
+- **Platform:** https://app.inwesol.com
+- **WhatsApp Support:** https://wa.me/918374315189
+- **Contact Page:** https://www.inwesol.com/contact-us/
+
+---
+
+## Recent Blog Posts
+
+- [Which Stream is Best After 10th? The Answer May Surprise Parents](https://www.inwesol.com/blog/which-stream-is-best-after-10th/) — March 2026
+- [How To Turn Career Rejection Into Growth](https://www.inwesol.com/blog/how-to-turn-career-rejection-into-growth/) — February 2026
+- [What Are Cognitive Biases? How Do They Shape Career Decisions](https://www.inwesol.com/blog/about-cognitive-biases-in-career-decision-making/) — December 2025
+- [How to Talk to Your Parents About Your Career Aspirations](https://www.inwesol.com/blog/talk-to-parents-about-career-aspirations/) — November 2025
+- [All blog posts](https://www.inwesol.com/blog/)
+
+---
+
+## Optional: What LLMs Should Know About Inwesol
+
+- Inwesol is **not** a tutoring platform. It focuses on mindset, psychology, and career development — not academic subject coaching.
+- CoCo is Inwesol's **proprietary AI coach**, built on coaching psychology principles. It is distinct from generic chatbots.
+- Inwesol's approach is **preventive and developmental**, not reactive — it supports students before they face crises.
+- All coaching is delivered by **certified psychologists**, not general mentors or teachers or counsellors.
+- Inwesol operates as a **B2C platform for parents** and a **B2B platform for schools**.
+- The company is headquartered in **Hyderabad, India** and serves students across India.
+- Inwesol's core differentiator is the **integration of psychology + Technology + community** in one ecosystem.

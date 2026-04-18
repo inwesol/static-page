@@ -1165,4 +1165,82 @@ So convert your beliefs into action by downloading first the pdf **‘parents as
 
 `,
   },
+  "how-role-models-quietly-shape-our-values": {
+    heading: "How Role Models Quietly Shape Our Values",
+    oneLiner: "Reading stories about role models and the challenges they’ve faced can really help teens build a stronger mindset. These stories show how role models deal with problems and make choices, giving teens ideas on how to handle tough situations in their own lives.",
+    slug: "how-role-models-quietly-shape-our-values",
+    createdOn: "April 18th, 2026",
+    createdBy: "",
+    readingTime: "5 mins read",
+    imageFit: "contain",
+    bannerUrl: "/how-role-models-quietly-shape-our-values.jpg",
+    content: `# Understanding the Concept of a Role Model for Teens
+  
+Have you ever stopped to think about who you admire the most? Maybe it’s a teacher who believes in you, a family member who never gives up, a friend, or any fictional character who always does the right thing, or even someone you follow online. Whoever it is, their actions probably inspire you and make you want to be better.
+
+That’s what a role model does. A role model shows us how to act, think, and make choices through the way they live their life. By leading through example, they help young people understand what’s possible and encourage them to grow into their better selves.
+
+Role models can be defined as “individuals who provide an example of the kind of success that one may achieve, and often also provide a template of the behaviors that are needed to achieve such success” (Lockwood, 2006)
+
+When we admire someone, we often start learning from them without even noticing. Research suggests that a role model doesn’t just inspire us; they help us think positively, feel more confident, and have a learning mindset by seeing how they handle problems, believe in themselves, and keep trying even when things are hard.
+
+# How a role model shapes the mindset and confidence
+
+Reading stories about role models and the challenges they’ve faced can really help teens build a stronger mindset. These stories show how role models deal with problems and make choices, giving teens ideas on how to handle tough situations in their own lives. ( Xu Du, 2021)
+
+We admire our role models and what they teach us, but sometimes we forget to put the lessons into our daily life practice (Hong et al., 2015).
+
+# Strategies for turning admiration into action
+
+So there are some strategies to consistently follow their aspects, which can shift our ideas from fixed to growth. By these three steps-
+
+![3 Steps to build your growth story](/3-steps-to-build-your-growth-story.jpg)
+
+## 1. **Look for Struggle Stories**
+
+Find when role models share their mistakes and how they bounced back. Reading or watching their stories helps you see that everyone faces challenges, and you can learn from them, too.
+
+**For example**, when you read about your role model failing an exam or not getting what they want, you realize everything wasn’t instant for them. Seeing how they learned from mistakes and kept going reminds you that your struggles are part of the process too, and that you can bounce back the same way.
+
+## 2. **Self-discovery**
+
+Pay attention to how they plan, practice, and try new ways to improve. Applying these habits in your own life shows that effort matters more than talent.
+
+**For example**, if your role model is a young athlete or content creator, notice how they practice every day, manage their time after school, and keep improving their skills. When you apply those habits, like practicing consistently or planning your day differently, you learn that their success came from effort, not just talent.
+
+## 3. **Self Reflection**
+
+Listen to what they say about learning and improving. When they say “you can get better with practice,” it can boost your confidence and push you to keep trying.
+
+**For example**, when your role model says, “I wasn’t born good at this, I got better by practicing every day,” it reminds you that skills are built, not gifted. Hearing messages like this strengthens your growth mindset and motivates you to keep learning, even when it feels hard.
+
+# Conclusion
+
+Role models are reminders of what you can become. When you look beyond their success and pay attention to their struggles, effort, and mindset, you begin to see your own potential more clearly. Every mistake you make, every challenge you face, is part of your growth story too. By turning admiration into action, you don’t just follow a role model; you build confidence, develop a growth mindset, and slowly become the better version of yourself.
+
+Research indicates that having role models is associated with more positive adolescent outcomes. (N. M. Hurd, 2010)
+
+Young people are more likely to be inspired by role models when they have growth mindsets, when they see themselves as active learners and achievers who accomplish goals through hard work and perseverance. With this type of mindset, youth strive to achieve their best selves. And they look toward adults to show them the way.
+
+Take a moment to reflect and try [CoCo](https://inwesol.com/coco/) for some reflective questions for yourself, such as which role model inspires you, and what you can start practicing from their story today, and many more.
+
+[Here’s How You Can Be Career Ready](https://inwesol.com/blog/career-readiness/)
+
+[Why Knowing Your 'Why' Matters in Career Wellbeing](https://inwesol.com/blog/knowing-your-why/)
+
+# References
+
+[A study with urban adolescents - NIH](https://pmc.ncbi.nlm.nih.gov/articles/PMC2752426/pdf/nihms-126258.pdf)
+
+[The Importance of Role Models for Teens - A Positive Influence - Teen Coach Academy](https://teencoachacademy.com/blog/the-importance-of-role-models-for-teens/)
+
+[How Role Models Influence Youth Strategies for Success](https://www.rootsofaction.com/role-models-youth-strategies-success/)
+
+[Frontiers | Reading Struggle Stories of Role Models Can Improve Students' Growth Mindsets](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2021.747039/full)
+
+[What makes a role model motivating for young girls? The effects of the role model’s growth versus fixed mindsets about ability and interest - ScienceDirect]()
+
+[The Perceived Influence of Role Models and Early Career Development in Native and Migrant Youth](https://static1.squarespace.com/static/559a865ae4b00d130d5f6e4f/t/5cc59dc91905f4d13a691f14/1556454858951/Valero-etal-2019_RoleModels.pdf)
+`,
+  },
 };

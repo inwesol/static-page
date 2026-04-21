@@ -85,7 +85,7 @@ export const NAV_LINKS = [
   //   href: "/events/coaching/",
   // },
   {
-    title: "For Schools",
+    title: "For Institutions",
     href: "/school/",
   },
   {

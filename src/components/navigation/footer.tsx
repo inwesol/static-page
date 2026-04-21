@@ -147,7 +147,7 @@ const Footer = () => {
                     href="/school/"
                     className="transition-all duration-300 hover:text-primary-green-600"
                   >
-                    Schools
+                    Institutions
                   </Link>
                 </li>
                 <li className="mt-2">

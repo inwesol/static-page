@@ -80,8 +80,28 @@ const PricingSection = () => {
     },
     {
       name: "Mindset Emergence",
+      info: "For young adults ( above 18 years ) seeking structured guidance and clarity",
+      price: "₹11,800",
+      priceDescription: "1 Year platform access",
+      features: [
+        "Everything in Mindset Essential",
+        "8 one-to-one Coaching Sessions for you",
+        "Advanced Behavioural Tools",
+        "Progress Tracking Dashboard",
+        "Comprehensive Report",
+        "Priority Support",
+      ],
+      btn: {
+        text: "Begin Transformation",
+        href: "/coaching",
+        variant: "primary" as const,
+      },
+      forWhom: "Young Adults",
+    },
+    {
+      name: "Mindset Emergence",
       info: "For parents looking for structured guidance for their teenager",
-      price: "₹18,880",
+      price: "₹14,750",
       priceDescription: "1 Year platform access",
       features: [
         "Everything in Mindset Reflection",
@@ -89,9 +109,7 @@ const PricingSection = () => {
         "Advanced Behavioural Tools",
         "Progress Tracking Dashboard",
         "Comprehensive Report",
-        "Workshops for Teenagers & Parents",
         "Priority Support",
-        "Internal Community Access",
       ],
       btn: {
         text: "Begin Transformation",
@@ -132,13 +150,13 @@ const PricingSection = () => {
           <h2 className="text-center text-2xl sm:text-3xl md:text-4xl font-semibold font-heading leading-snug mt-6">
             Choose the Right Plan to nurture{" "}
             <span className="text-transparent bg-gradient-to-r from-primary-green-600 to-primary-blue-600 bg-clip-text">
-              Your Teenager&apos;s Mindset
+              Young Minds
             </span>
           </h2>
 
           <p className="text-center text-base sm:text-md md:text-lg leading-relaxed max-w-2xl mt-4 text-neutral-700">
-            Flexible pricing options designed to support parents and schools in
-            nurturing a strong learning mindset among teenagers.
+            Flexible pricing options designed to support individuals, parents,
+            and institutions in nurturing a strong learning mindset.
           </p>
         </div>
       </AnimationContainer>
@@ -161,7 +179,9 @@ const PricingSection = () => {
                     ? "border-primary-green-500/35 shadow-sm hover:border-primary-green-500/55 relative"
                     : plan.forWhom === "Schools"
                       ? "border-primary-blue-500/35 shadow-sm hover:border-primary-blue-500/55 relative"
-                      : "border-border hover:border-primary-blue-300",
+                      : plan.forWhom === "Young Adults"
+                        ? "border-purple-500/35 shadow-sm hover:border-purple-500/55 relative"
+                        : "border-border hover:border-primary-blue-300",
                 )}
               >
                 {plan.forWhom && (
@@ -173,7 +193,9 @@ const PricingSection = () => {
                           ? "bg-gradient-to-r from-primary-green-500 to-primary-blue-500"
                           : plan.forWhom === "Schools"
                             ? "bg-gradient-to-r from-primary-blue-500 to-purple-500"
-                            : "bg-gradient-to-r from-primary-green-500 to-primary-blue-500",
+                            : plan.forWhom === "Young Adults"
+                              ? "bg-gradient-to-r from-purple-500 to-primary-blue-500"
+                              : "bg-gradient-to-r from-primary-green-500 to-primary-blue-500",
                       )}
                     >
                       For {plan.forWhom}
@@ -188,7 +210,9 @@ const PricingSection = () => {
                       ? "bg-gradient-to-br from-primary-green-50 to-primary-blue-50"
                       : plan.forWhom === "Schools"
                         ? "bg-gradient-to-br from-primary-blue-50 to-purple-50"
-                        : "bg-white",
+                        : plan.forWhom === "Young Adults"
+                          ? "bg-gradient-to-br from-purple-50 to-primary-blue-50"
+                          : "bg-white",
                   )}
                 >
                   <CardTitle className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
@@ -227,7 +251,9 @@ const PricingSection = () => {
                               ? "text-primary-green-600"
                               : plan.forWhom === "Schools"
                                 ? "text-primary-blue-600"
-                                : "text-primary-blue-600",
+                                : plan.forWhom === "Young Adults"
+                                  ? "text-purple-600"
+                                  : "text-primary-blue-600",
                           )}
                         />
                         <span className="text-sm text-gray-700">{feature}</span>
@@ -255,6 +281,8 @@ const PricingSection = () => {
                           "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
                         plan.forWhom === "Schools" &&
                           "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
+                        plan.forWhom === "Young Adults" &&
+                          "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
                       )}
                       size="lg"
                     >
@@ -273,6 +301,8 @@ const PricingSection = () => {
                           plan.forWhom === "Parents" &&
                             "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
                           plan.forWhom === "Schools" &&
+                            "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
+                          plan.forWhom === "Young Adults" &&
                             "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
                         )}
                         size="lg"

@@ -53,7 +53,7 @@ const features = [
     step: "Step 5",
     title: "Grow with Community",
     content:
-      "Community connects students with peers, mentors, and educators, fostering shared learning, collaboration, and belonging while offering continuous support for growth.",
+      "Community connects individuals with peers, mentors, and educators, fostering shared learning, collaboration, and belonging while offering continuous support for growth.",
     image: "/community.svg",
     color: "primary-blue",
     accent: "accent-coral",
@@ -211,8 +211,8 @@ function FeatureSteps({
                         isActive
                           ? "border-primary-green-400 bg-gradient-to-br from-primary-green-50 to-white shadow-xl shadow-primary-green-100"
                           : isCompleted
-                          ? "border-primary-green-200 bg-primary-green-25"
-                          : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg"
+                            ? "border-primary-green-200 bg-primary-green-25"
+                            : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg"
                       }`}
                     >
                       <div className="flex items-start gap-4">

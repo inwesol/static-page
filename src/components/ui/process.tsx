@@ -23,7 +23,7 @@ function StickyScrollRevealDemo() {
           </h1>
 
           <p className="text-center text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl text-slate-600 font-medium">
-            A guided self-discovery journey designed to help students gain
+            A guided self-discovery journey designed to help individuals gain
             clarity, build confidence, and reduce stress in their career paths,
             ultimately leading to purpose-driven lives.
           </p>

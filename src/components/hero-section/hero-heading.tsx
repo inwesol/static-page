@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const words = ["Academic", "Personal", "Social"];
+const words = ["Clarity", "Balance", "Growth"];
 
 // Word width mapping for proper spacing
 const wordWidths: Record<string, string> = {
-  Academic: "5.2em",
-  Personal: "4.6em",
-  Social: "3.4em",
+  Clarity: "4.6em",
+  Balance: "4.6em",
+  Growth: "4.6em",
 };
 
 export default function HeroHeading() {
@@ -25,7 +25,7 @@ export default function HeroHeading() {
     <div className="w-full px-2 sm:px-6 md:px-8">
       <h1 className="w-full text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-center text-gray-900 leading-snug md:leading-tight lg:leading-[1.15] max-w-[880px] mx-auto">
         <span className="inline-block sm:whitespace-nowrap">
-          Transforming Student
+          Coaching Young People for
           {/* <br className="block sm:hidden" />{" "} */}
         </span>
         <br className="block sm:hidden" />{" "}
@@ -57,7 +57,7 @@ export default function HeroHeading() {
               </motion.span>
             </AnimatePresence>
           </motion.span>
-          Outcomes
+          in Life
           {/* <svg
             className="absolute -bottom-2 left-0 w-full h-[10px] sm:h-[16px]"
             viewBox="0 0 180 15"

@@ -33,7 +33,7 @@ export default function SchoolsPage() {
       icon: <Search className="size-8" />,
       title: "Identify",
       description:
-        "Assess student needs, strengths, and challenges along with school-level gaps to map opportunities for building a learning mindset ecosystem.",
+        "Assess student needs, strengths, and challenges along with institution-level gaps to map opportunities for building a learning mindset ecosystem.",
       color: "from-primary-blue-500 to-primary-blue-600",
       bgColor: "bg-primary-blue-50",
       glowColor: "shadow-primary-blue-500/25",
@@ -63,7 +63,7 @@ export default function SchoolsPage() {
       icon: <Repeat className="size-8" />,
       title: "Sustain",
       description:
-        "Embed learning mindset practices into daily routines, classrooms, and school culture for long-term impact.",
+        "Embed learning mindset practices into daily routines, classrooms, and institution culture for long-term impact.",
       color: "from-primary-green-500 to-primary-green-600",
       bgColor: "bg-primary-green-50",
       glowColor: "shadow-primary-green-500/25",
@@ -115,11 +115,11 @@ export default function SchoolsPage() {
                     <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
                       Learning Mindset
                     </span>{" "}
-                    Ecosystem in Your School
+                    Ecosystem in Your Institution
                   </h1>
                   <p className="text-base sm:text-xl text-white leading-snug sm:leading-relaxed font-light">
                     We combine psychology, technology, and community to nurture
-                    adolescents to be future-ready. With our personalised &
+                    young minds to be future-ready. With our personalised &
                     holistic approach, students develop a learning mindset to
                     manage stress, gain career clarity, and take confident
                     actions. This leads to stronger academic, personal and
@@ -225,8 +225,8 @@ export default function SchoolsPage() {
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 Our science-backed, integrated approach empowers students,
-                parents, and schools to create a learning mindset ecosystem that
-                drives lasting impact.
+                parents, and institutions to create a learning mindset ecosystem
+                that drives lasting impact.
               </p>
             </div>
 
@@ -258,9 +258,9 @@ export default function SchoolsPage() {
                 },
                 {
                   icon: <Network className="size-5 sm:size-8" />,
-                  title: "School-wide Ecosystem Development",
+                  title: "Institution-wide Ecosystem Development",
                   description:
-                    "Structured frameworks and best practices that enable a culture of learning mindset in the school to transform student outcomes.",
+                    "Structured frameworks and best practices that enable a culture of learning mindset in the institution to transform student outcomes.",
                   color: "from-orange-500 to-orange-600",
                   bgColor: "bg-orange-50",
                 },
@@ -414,8 +414,8 @@ export default function SchoolsPage() {
                 </span>
               </h2>
               <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                Enabling a school with learning mindset ecosystem based on a
-                scientific approach that drives measurable academic, personal,
+                Enabling a institution with learning mindset ecosystem based on
+                a scientific approach that drives measurable academic, personal,
                 and social growth of students.
               </p>
             </div>
@@ -517,7 +517,7 @@ export default function SchoolsPage() {
                       {description}
                     </p>
                   </div>
-                )
+                ),
               )}
             </div>
           </div>
@@ -548,20 +548,21 @@ export default function SchoolsPage() {
                 {[
                   {
                     question:
-                      "How is this different from traditional programs offered in schools?",
+                      "How is this different from traditional programs offered in institutions?",
                     answer:
                       "Beyond exam preparation and one-time workshops, this is a science-backed ecosystem approach. It focuses on self-discovery, mindset development, and overall growth of students, ensuring long-term impact beyond academics.",
                   },
                   {
-                    question: "What measurable outcomes can schools expect?",
+                    question:
+                      "What measurable outcomes can institutions expect?",
                     answer:
-                      "Schools see improvements in student well-being, better career clarity, and confident decision making. Over time, this leads to higher student performance and a stronger academic edge for the school.",
+                      "Institutions see improvements in student well-being, better career clarity, and confident decision making. Over time, this leads to higher student performance and a stronger academic edge for the institution.",
                   },
                   {
                     question:
                       "How much effort is required from our teachers and staff?",
                     answer:
-                      "We provide structured frameworks, training, and ready-to-use tools so teachers and staff can easily adopt the program without adding extra workload. Our model is designed to support schools, not burden them.",
+                      "We provide structured frameworks, training, and ready-to-use tools so teachers and staff can easily adopt the program without adding extra workload. Our model is designed to support institutions, not burden them.",
                   },
                 ].map((faq, index) => (
                   <AccordionItem

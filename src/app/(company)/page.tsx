@@ -23,9 +23,9 @@ const HomePage1 = () => {
       <ModalCTA isOpen={showModal} setIsOpen={setShowModal} delay={10000} />
 
       <HeroSection />
-      <SchoolSection />
+      {/* <SchoolSection /> */}
       <Testimonials />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
       <StickyScrollRevealDemo />
       <PricingSection />
       <ExplorerCard />

@@ -7,13 +7,13 @@ interface StickyBannerContextType {
 }
 
 const StickyBannerContext = createContext<StickyBannerContextType | undefined>(
-  undefined
+  undefined,
 );
 
 export const StickyBannerProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isBannerOpen, setIsBannerOpen] = useState(true);
+  const [isBannerOpen, setIsBannerOpen] = useState(false);
 
   return (
     <StickyBannerContext.Provider value={{ isBannerOpen, setIsBannerOpen }}>
@@ -26,7 +26,7 @@ export const useStickyBanner = () => {
   const context = useContext(StickyBannerContext);
   if (context === undefined) {
     throw new Error(
-      "useStickyBanner must be used within a StickyBannerProvider"
+      "useStickyBanner must be used within a StickyBannerProvider",
     );
   }
   return context;

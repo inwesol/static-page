@@ -80,26 +80,6 @@ const PricingSection = () => {
     },
     {
       name: "Mindset Emergence",
-      info: "For young adults ( above 18 years ) seeking structured guidance and clarity",
-      price: "₹11,800",
-      priceDescription: "1 Year platform access",
-      features: [
-        "Everything in Mindset Essential",
-        "8 one-to-one Coaching Sessions for you",
-        "Advanced Behavioural Tools",
-        "Progress Tracking Dashboard",
-        "Comprehensive Report",
-        "Priority Support",
-      ],
-      btn: {
-        text: "Begin Transformation",
-        href: "/coaching",
-        variant: "primary" as const,
-      },
-      forWhom: "Young Adults",
-    },
-    {
-      name: "Mindset Emergence",
       info: "For parents looking for structured guidance for their teenager",
       price: "₹14,750",
       priceDescription: "1 Year platform access",
@@ -119,14 +99,34 @@ const PricingSection = () => {
       forWhom: "Parents",
     },
     {
+      name: "Mindset Emergence",
+      info: "For young adults ( above 18 years ) seeking structured guidance and clarity",
+      price: "₹11,800",
+      priceDescription: "1 Year platform access",
+      features: [
+        "Everything in Mindset Essential",
+        "8 one-to-one Coaching Sessions for you",
+        "Advanced Behavioural Tools",
+        "Progress Tracking Dashboard",
+        "Comprehensive Report",
+        "Priority Support",
+      ],
+      btn: {
+        text: "Begin Transformation",
+        href: "/coaching",
+        variant: "primary" as const,
+      },
+      forWhom: "Young Adults",
+    },
+    {
       name: "Mindset Ecosystem",
-      info: "For schools building a culture of learning mindset among students",
+      info: "For institutions building a culture of learning mindset among students",
       price: "Custom",
-      priceDescription: "Tailored for your school",
+      priceDescription: "Tailored for your institutions",
       features: [
         "Everything in Mindset Emergence",
         "Learning Mindset Ecosystem",
-        "School Dashboard & Analytics",
+        "Institution Dashboard & Analytics",
         "Dedicated Support Manager",
         "Teacher Training & Resources",
         "Parent Engagement Tools",
@@ -137,7 +137,7 @@ const PricingSection = () => {
         href: "/school/#enquiry",
         variant: "primary" as const,
       },
-      forWhom: "Schools",
+      forWhom: "Institutions",
     },
   ];
 
@@ -177,7 +177,7 @@ const PricingSection = () => {
                   "h-full flex flex-col transition-all duration-300 hover:shadow-md",
                   plan.forWhom === "Parents"
                     ? "border-primary-green-500/35 shadow-sm hover:border-primary-green-500/55 relative"
-                    : plan.forWhom === "Schools"
+                    : plan.forWhom === "Institutions"
                       ? "border-primary-blue-500/35 shadow-sm hover:border-primary-blue-500/55 relative"
                       : plan.forWhom === "Young Adults"
                         ? "border-purple-500/35 shadow-sm hover:border-purple-500/55 relative"
@@ -191,7 +191,7 @@ const PricingSection = () => {
                         "text-white text-[11px] sm:text-xs font-semibold px-3.5 sm:px-4 py-0.5 sm:py-1 rounded-full",
                         plan.forWhom === "Parents"
                           ? "bg-gradient-to-r from-primary-green-500 to-primary-blue-500"
-                          : plan.forWhom === "Schools"
+                          : plan.forWhom === "Institutions"
                             ? "bg-gradient-to-r from-primary-blue-500 to-purple-500"
                             : plan.forWhom === "Young Adults"
                               ? "bg-gradient-to-r from-purple-500 to-primary-blue-500"
@@ -208,7 +208,7 @@ const PricingSection = () => {
                     "border-b border-border/60 rounded-t-lg lg:rounded-t-2xl p-5 sm:p-6",
                     plan.forWhom === "Parents"
                       ? "bg-gradient-to-br from-primary-green-50 to-primary-blue-50"
-                      : plan.forWhom === "Schools"
+                      : plan.forWhom === "Institutions"
                         ? "bg-gradient-to-br from-primary-blue-50 to-purple-50"
                         : plan.forWhom === "Young Adults"
                           ? "bg-gradient-to-br from-purple-50 to-primary-blue-50"
@@ -249,7 +249,7 @@ const PricingSection = () => {
                             "w-5 h-5 mt-0.5 flex-shrink-0",
                             plan.forWhom === "Parents"
                               ? "text-primary-green-600"
-                              : plan.forWhom === "Schools"
+                              : plan.forWhom === "Institutions"
                                 ? "text-primary-blue-600"
                                 : plan.forWhom === "Young Adults"
                                   ? "text-purple-600"
@@ -279,7 +279,7 @@ const PricingSection = () => {
                         "w-full group rounded-xl",
                         plan.forWhom === "Parents" &&
                           "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
-                        plan.forWhom === "Schools" &&
+                        plan.forWhom === "Institutions" &&
                           "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
                         plan.forWhom === "Young Adults" &&
                           "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
@@ -300,7 +300,7 @@ const PricingSection = () => {
                           "w-full group rounded-xl",
                           plan.forWhom === "Parents" &&
                             "bg-gradient-to-r from-primary-green-600 to-primary-blue-500 hover:from-primary-green-700 hover:to-primary-blue-600 text-white",
-                          plan.forWhom === "Schools" &&
+                          plan.forWhom === "Institutions" &&
                             "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
                           plan.forWhom === "Young Adults" &&
                             "bg-gradient-to-r from-primary-blue-600 to-purple-500 hover:from-primary-blue-700 hover:to-purple-600 text-white",
